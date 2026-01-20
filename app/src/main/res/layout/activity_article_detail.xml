@@ -12,8 +12,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:title="Article"
-            app:navigationIcon="?attr/actionBarNavIcon" />
+            app:title="Article" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -34,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                android:textColor="?attr/colorOnSurface"
+                android:textColor="@android:color/black"
                 android:layout_marginBottom="8dp" />
 
             <LinearLayout
@@ -48,7 +47,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
-                    android:textColor="?attr/colorPrimary"
+                    android:textColor="@color/purple_500"
                     android:background="?attr/selectableItemBackground"
                     android:padding="8dp" />
 
@@ -58,7 +57,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:textSize="14sp"
-                    android:textColor="?attr/colorOnSurfaceVariant"
+                    android:textColor="@android:color/darker_gray"
                     android:gravity="end"
                     android:layout_marginStart="8dp"
                     android:padding="8dp" />
@@ -70,7 +69,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
-                android:textColor="?attr/colorOnSurface"
+                android:textColor="@android:color/black"
                 android:lineSpacingMultiplier="1.3"
                 android:paddingTop="8dp"
                 android:paddingBottom="16dp" />

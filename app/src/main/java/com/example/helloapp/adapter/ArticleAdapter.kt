@@ -1,5 +1,10 @@
 package com.example.helloapp.adapter
 
+import android.graphics.Color
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.BackgroundColorSpan
+import android.text.style.ForegroundColorSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +18,13 @@ import com.example.helloapp.data.Article
 class ArticleAdapter(
     private val onItemClick: (Article) -> Unit
 ) : ListAdapter<Article, ArticleAdapter.ArticleViewHolder>(ArticleDiffCallback()) {
+
+    private var searchKeywords: List<String> = emptyList()
+    
+    fun setSearchKeywords(query: String) {
+        searchKeywords = query.lowercase().split(" ").filter { it.isNotBlank() && it.length > 1 }
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -31,14 +43,47 @@ class ArticleAdapter(
         private val source: TextView = itemView.findViewById(R.id.articleSource)
 
         fun bind(article: Article) {
-            title.text = article.title
-            summary.text = article.summary
-            category.text = article.category
+            if (searchKeywords.isNotEmpty()) {
+                title.text = highlightKeywords(article.title, searchKeywords)
+                summary.text = highlightKeywords(article.summary, searchKeywords)
+                category.text = highlightKeywords(article.category, searchKeywords)
+            } else {
+                title.text = article.title
+                summary.text = article.summary
+                category.text = article.category
+            }
             source.text = article.source
 
             itemView.setOnClickListener {
                 onItemClick(article)
             }
+        }
+        
+        private fun highlightKeywords(text: String, keywords: List<String>): SpannableString {
+            val spannable = SpannableString(text)
+            val highlightColor = Color.parseColor("#FFEB3B") // Yellow highlight
+            val textColor = Color.parseColor("#6200EE") // Purple text for highlighted
+            
+            keywords.forEach { keyword ->
+                var startIndex = text.lowercase().indexOf(keyword)
+                while (startIndex >= 0) {
+                    val endIndex = startIndex + keyword.length
+                    spannable.setSpan(
+                        BackgroundColorSpan(highlightColor),
+                        startIndex,
+                        endIndex,
+                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                    )
+                    spannable.setSpan(
+                        ForegroundColorSpan(textColor),
+                        startIndex,
+                        endIndex,
+                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                    )
+                    startIndex = text.lowercase().indexOf(keyword, endIndex)
+                }
+            }
+            return spannable
         }
     }
 
