@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Guide Santé Afrique</string>
+    
+    <!-- Main Activity -->
+    <string name="search_hint">Rechercher des sujets de santé (ex: paludisme, fièvre)</string>
+    <string name="search_icon_desc">Icône de recherche</string>
+    <string name="clear_search_desc">Effacer la recherche</string>
+    <string name="refresh_desc">Actualiser les articles</string>
+    <string name="no_articles">Aucun article disponible.\nAppuyez sur le bouton actualiser pour charger les articles.</string>
+    <string name="no_search_results">Aucun article trouvé pour \"%1$s\".\nEssayez d\'autres mots-clés.</string>
+    <string name="fetching_articles">Chargement des articles…</string>
+    <string name="error_init">Erreur d\'initialisation: %1$s\n\nVeuillez vérifier Logcat pour plus de détails.</string>
+    <string name="error_loading">Erreur de chargement des articles. Veuillez réessayer.</string>
+    
+    <!-- Article Detail -->
+    <string name="article_title">Article</string>
+    <string name="source_prefix">Source: %1$s</string>
+    
+    <!-- Language -->
+    <string name="language">Langue</string>
+    <string name="english">English</string>
+    <string name="french">Français</string>
+    <string name="language_changed">Langue changée en %1$s</string>
+    
+    <!-- Categories -->
+    <string name="category_infectious">Maladies Infectieuses</string>
+    <string name="category_maternal">Santé Maternelle</string>
+    <string name="category_nutrition">Nutrition</string>
+    <string name="category_water">Eau &amp; Assainissement</string>
+    <string name="category_emergency">Soins d\'Urgence</string>
+    <string name="category_mental">Santé Mentale</string>
+</resources>

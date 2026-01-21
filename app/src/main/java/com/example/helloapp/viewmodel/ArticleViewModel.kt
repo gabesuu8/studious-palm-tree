@@ -8,6 +8,7 @@ import com.example.helloapp.data.AppDatabase
 import com.example.helloapp.data.Article
 import com.example.helloapp.repository.ArticleRepository
 import com.example.helloapp.service.ArticleFetcher
+import com.example.helloapp.util.LanguageHelper
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -15,6 +16,7 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
 
 class ArticleViewModel(application: Application) : AndroidViewModel(application) {
+    private val context = application.applicationContext
     private val database: AppDatabase by lazy {
         try {
             android.util.Log.d("ArticleViewModel", "Initializing database")
@@ -89,10 +91,14 @@ class ArticleViewModel(application: Application) : AndroidViewModel(application)
     fun fetchAndSaveArticles() {
         viewModelScope.launch {
             try {
-                val articles = articleFetcher.fetchHealthcareArticles()
+                val languageCode = LanguageHelper.getLanguage(context)
+                val articles = articleFetcher.fetchHealthcareArticles(languageCode)
+                // Clear existing articles and insert new ones for the new language
+                repository.deleteAllArticles()
                 repository.insertArticles(articles)
             } catch (e: Exception) {
                 // Handle error - articles will fall back to sample articles
+                android.util.Log.e("ArticleViewModel", "Error fetching articles", e)
             }
         }
     }

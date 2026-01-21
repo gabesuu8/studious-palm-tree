@@ -22,4 +22,8 @@ class ArticleRepository(private val articleDao: ArticleDao) {
     suspend fun deleteArticle(article: Article) {
         articleDao.deleteArticle(article)
     }
+    
+    suspend fun deleteAllArticles() {
+        articleDao.deleteAllArticles()
+    }
 }

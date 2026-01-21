@@ -1,15 +1,19 @@
 package com.example.helloapp
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
@@ -18,9 +22,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.helloapp.adapter.ArticleAdapter
 import com.example.helloapp.data.Article
+import com.example.helloapp.util.LanguageHelper
 import com.example.helloapp.viewmodel.ArticleViewModel
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.appbar.MaterialToolbar
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -32,6 +36,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var adapter: ArticleAdapter
     private lateinit var searchEditText: EditText
     private lateinit var clearSearchButton: ImageView
+
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(LanguageHelper.applyLanguage(newBase))
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +55,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         try {
+            // Setup toolbar with menu
+            val toolbar = findViewById<MaterialToolbar>(R.id.toolbar)
+            setSupportActionBar(toolbar)
+            
             Log.d(TAG, "Initializing views")
             recyclerView = findViewById(R.id.articlesRecyclerView)
             emptyStateText = findViewById(R.id.emptyStateText)
@@ -79,11 +91,6 @@ class MainActivity : AppCompatActivity() {
             // Setup search functionality
             setupSearch()
 
-            findViewById<FloatingActionButton>(R.id.fabRefresh).setOnClickListener {
-                viewModel.fetchAndSaveArticles()
-                Snackbar.make(it, "Fetching articles...", Snackbar.LENGTH_SHORT).show()
-            }
-
             Log.d(TAG, "Starting article observation")
             // Observe filtered articles (responds to search)
             lifecycleScope.launch {
@@ -99,9 +106,9 @@ class MainActivity : AppCompatActivity() {
                                 emptyStateText.visibility = View.VISIBLE
                                 
                                 if (searchQuery.isNotBlank()) {
-                                    emptyStateText.text = "No articles found for \"$searchQuery\".\nTry different keywords."
+                                    emptyStateText.text = getString(R.string.no_search_results, searchQuery)
                                 } else {
-                                    emptyStateText.text = "No articles available.\nTap the refresh button to load articles."
+                                    emptyStateText.text = getString(R.string.no_articles)
                                     // Load articles on first launch if empty
                                     if (isFirstLoad) {
                                         isFirstLoad = false
@@ -126,7 +133,7 @@ class MainActivity : AppCompatActivity() {
                     // Show error message
                     try {
                         emptyStateText.visibility = View.VISIBLE
-                        emptyStateText.text = "Error loading articles. Please try again."
+                        emptyStateText.text = getString(R.string.error_loading)
                         recyclerView.visibility = View.GONE
                     } catch (ex: Exception) {
                         Log.e(TAG, "Error showing error message", ex)
@@ -189,4 +196,46 @@ class MainActivity : AppCompatActivity() {
         intent.putExtra("article", article)
         startActivity(intent)
     }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.menu_language -> {
+                showLanguageDialog()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun showLanguageDialog() {
+        val languages = arrayOf(getString(R.string.english), getString(R.string.french))
+        val languageCodes = arrayOf(LanguageHelper.ENGLISH, LanguageHelper.FRENCH)
+        val currentLanguage = LanguageHelper.getLanguage(this)
+        val currentIndex = languageCodes.indexOf(currentLanguage)
+
+        AlertDialog.Builder(this)
+            .setTitle(getString(R.string.language))
+            .setSingleChoiceItems(languages, currentIndex) { dialog, which ->
+                val selectedCode = languageCodes[which]
+                if (currentLanguage != selectedCode) {
+                    // Set the new language preference
+                    LanguageHelper.setLanguage(this, selectedCode)
+                    dialog.dismiss()
+                    // Fetch articles in the new language (clears old and loads new)
+                    viewModel.fetchAndSaveArticles()
+                    // Recreate the activity to apply new language to UI
+                    recreate()
+                } else {
+                    dialog.dismiss()
+                }
+            }
+            .setNegativeButton(android.R.string.cancel, null)
+            .show()
+    }
+
 }

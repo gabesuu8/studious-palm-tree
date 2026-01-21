@@ -1,4 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Healthcare Guide Africa</string>
+    
+    <!-- Main Activity -->
+    <string name="search_hint">Search health topics (e.g., malaria, fever)</string>
+    <string name="search_icon_desc">Search icon</string>
+    <string name="clear_search_desc">Clear search</string>
+    <string name="refresh_desc">Refresh articles</string>
+    <string name="no_articles">No articles available.\nTap the refresh button to load articles.</string>
+    <string name="no_search_results">No articles found for \"%1$s\".\nTry different keywords.</string>
+    <string name="fetching_articles">Fetching articles…</string>
+    <string name="error_init">Error initializing app: %1$s\n\nPlease check Logcat for details.</string>
+    <string name="error_loading">Error loading articles. Please try again.</string>
+    
+    <!-- Article Detail -->
+    <string name="article_title">Article</string>
+    <string name="source_prefix">Source: %1$s</string>
+    
+    <!-- Language -->
+    <string name="language">Language</string>
+    <string name="english">English</string>
+    <string name="french">Français</string>
+    <string name="language_changed">Language changed to %1$s</string>
+    
+    <!-- Categories -->
+    <string name="category_infectious">Infectious Diseases</string>
+    <string name="category_maternal">Maternal Health</string>
+    <string name="category_nutrition">Nutrition</string>
+    <string name="category_water">Water &amp; Sanitation</string>
+    <string name="category_emergency">Emergency Care</string>
+    <string name="category_mental">Mental Health</string>
 </resources>

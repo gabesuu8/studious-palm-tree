@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/purple_700"
-            app:title="Healthcare Guide Africa"
+            app:title="@string/app_name"
             app:titleTextColor="@android:color/white" />
 
         <com.google.android.material.card.MaterialCardView
@@ -37,7 +37,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@android:drawable/ic_menu_search"
-                    android:contentDescription="Search icon" />
+                    android:contentDescription="@string/search_icon_desc" />
 
                 <EditText
                     android:id="@+id/searchEditText"
@@ -46,7 +46,7 @@
                     android:layout_weight="1"
                     android:layout_marginStart="8dp"
                     android:background="@android:color/transparent"
-                    android:hint="Search health topics (e.g., malaria, fever)"
+                    android:hint="@string/search_hint"
                     android:textColorHint="@android:color/darker_gray"
                     android:textColor="@android:color/black"
                     android:inputType="text"
@@ -58,7 +58,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@android:drawable/ic_menu_close_clear_cancel"
-                    android:contentDescription="Clear search"
+                    android:contentDescription="@string/clear_search_desc"
                     android:visibility="gone"
                     android:clickable="true"
                     android:focusable="true" />
@@ -86,21 +86,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="No articles available.\nTap the refresh button to load articles."
+            android:text="@string/no_articles"
             android:textSize="16sp"
             android:visibility="gone" />
 
     </FrameLayout>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabRefresh"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
-        android:contentDescription="Refresh articles"
-        android:src="@android:drawable/ic_menu_rotate"
-        app:layout_anchor="@id/articlesRecyclerView"
-        app:layout_anchorGravity="bottom|end" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

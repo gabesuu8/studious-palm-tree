@@ -1,14 +1,21 @@
 package com.example.helloapp
 
+import android.content.Context
 import android.os.Bundle
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
 import com.example.helloapp.data.Article
+import com.example.helloapp.util.LanguageHelper
 import com.google.android.material.appbar.MaterialToolbar
 import android.widget.TextView
 
 class ArticleDetailActivity : AppCompatActivity() {
+    
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(LanguageHelper.applyLanguage(newBase))
+    }
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_article_detail)
