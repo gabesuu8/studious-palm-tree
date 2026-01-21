@@ -3,14 +3,10 @@ package com.example.helloapp.service
 import com.example.helloapp.data.Article
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import org.jsoup.Jsoup
-import java.net.URL
 
 class ArticleFetcher {
     
     suspend fun fetchHealthcareArticles(): List<Article> = withContext(Dispatchers.IO) {
-        // Return offline articles for reliability
-        // These are evidence-based articles with official source citations
         getSampleArticles()
     }
     
@@ -18,1679 +14,1282 @@ class ArticleFetcher {
         return listOf(
             // MALARIA
             Article(
-                title = "Malaria: Complete Guide for Prevention and Treatment",
+                title = "Malaria",
                 content = """
-OVERVIEW
+<div class="key-facts">
+    <h2>Key facts</h2>
+    <ul>
+        <li>Globally in 2024, there were an estimated 282 million malaria cases and 610,000 malaria deaths.</li>
+        <li>The WHO African Region carries 95% of the global malaria burden.</li>
+        <li>Children under 5 years of age account for about 75% of all malaria deaths in Africa.</li>
+        <li>Malaria is preventable and curable with early diagnosis and treatment.</li>
+        <li>Insecticide-treated bed nets and antimalarial medicines are the most effective prevention tools.</li>
+    </ul>
+</div>
 
-Malaria is a life-threatening disease caused by Plasmodium parasites transmitted through infected Anopheles mosquito bites. According to the World Health Organization (WHO), Africa carries the highest burden, with over 90% of global malaria cases.
+<h2>Overview</h2>
+<p>Malaria is a life-threatening disease spread to humans by some types of mosquitoes. It is mostly found in tropical countries. It is preventable and curable.</p>
+<p>The infection is caused by a parasite and does not spread from person to person. Symptoms can be mild or life-threatening. Mild symptoms are fever, chills and headache. Severe symptoms include fatigue, confusion, seizures, and difficulty breathing.</p>
+<p>Infants, children under 5 years, pregnant women and girls, travellers and people with HIV or AIDS are at higher risk of severe infection.</p>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<hr/>
 
-SYMPTOMS
+<h2>Symptoms</h2>
+<p>The most common early symptoms of malaria are fever, headache and chills. Symptoms usually start within 10–15 days of getting bitten by an infected mosquito.</p>
 
-Symptoms typically appear 10-15 days after infection:
+<h3>Severe symptoms include:</h3>
+<ul>
+    <li>Extreme tiredness and fatigue</li>
+    <li>Impaired consciousness</li>
+    <li>Multiple convulsions</li>
+    <li>Difficulty breathing</li>
+    <li>Dark or bloody urine</li>
+    <li>Jaundice (yellowing of the eyes and skin)</li>
+    <li>Abnormal bleeding</li>
+</ul>
 
-• High fever (38°C/100.4°F or higher)
-• Chills and sweating
-• Headache
-• Muscle and joint pain
-• Fatigue and weakness
-• Nausea, vomiting, diarrhea
-• Anemia (pale skin, weakness)
+<p class="warning"><b>⚠️ People with severe symptoms should get emergency care right away.</b></p>
 
-⚠️ DANGER SIGNS - Seek emergency care immediately:
-• Confusion or seizures
-• Difficulty breathing
-• Severe weakness
-• Dark or bloody urine
-• Jaundice (yellow eyes/skin)
+<hr/>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<h2>Prevention</h2>
+<p>Malaria can be prevented by avoiding mosquito bites and by taking medicines.</p>
 
-PREVENTION
+<h3>Lower the risk by avoiding mosquito bites:</h3>
+<ul>
+    <li>Use mosquito nets when sleeping in places where malaria is present</li>
+    <li>Use mosquito repellents (containing DEET, IR3535 or Icaridin) after dusk</li>
+    <li>Use coils and vaporizers</li>
+    <li>Wear protective clothing (long sleeves and pants)</li>
+    <li>Use window screens</li>
+</ul>
 
-1. SLEEP UNDER INSECTICIDE-TREATED BED NETS
-   - Use every night, even when it's hot
-   - Tuck net under mattress completely
-   - Check for and repair holes
+<h3>Vaccines</h3>
+<p>Since October 2021, WHO has recommended broad use of the RTS,S/AS01 malaria vaccine among children living in regions with moderate to high malaria transmission. In October 2023, WHO recommended a second safe and effective malaria vaccine, R21/Matrix-M.</p>
 
-2. ELIMINATE MOSQUITO BREEDING SITES
-   - Empty standing water from containers
-   - Cover water storage tanks
-   - Clear gutters and drains
+<hr/>
 
-3. PROTECT YOURSELF
-   - Wear long sleeves and pants at dusk/dawn
-   - Use mosquito repellent (DEET, picaridin)
-   - Keep doors and windows screened
+<h2>Treatment</h2>
+<p>Early diagnosis and treatment of malaria reduces disease, prevents deaths and contributes to reducing transmission.</p>
 
-4. FOR PREGNANT WOMEN
-   - Take preventive medication (IPTp) as prescribed
-   - Attend all prenatal visits
-   - Sleep under treated nets every night
+<h3>Common medicines for malaria:</h3>
+<ul>
+    <li><b>Artemisinin-based combination therapy (ACT)</b> – the most effective treatment</li>
+    <li><b>Chloroquine</b> – for P. vivax infection where effective</li>
+    <li><b>Primaquine</b> – to prevent relapses</li>
+</ul>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<p><b>Important:</b> Complete the full course of treatment even if you feel better.</p>
 
-TREATMENT
+<hr/>
 
-Seek medical care immediately if you suspect malaria. Treatment includes:
+<h2>Healthy lifestyle recommendations</h2>
+<ul>
+    <li>Eat iron-rich foods (dark leafy greens, beans, meat) to prevent anemia</li>
+    <li>Include vitamin C foods (oranges, tomatoes) to boost immunity</li>
+    <li>Stay well-hydrated with clean, safe water</li>
+    <li>Get adequate rest (7-8 hours of sleep)</li>
+    <li>Exercise regularly when healthy to strengthen your immune system</li>
+    <li>Avoid outdoor activities at dusk and dawn when mosquitoes are most active</li>
+</ul>
 
-• Artemisinin-based Combination Therapy (ACT) - first-line treatment
-• Complete the FULL course of medication (usually 3 days)
-• Rest and drink plenty of fluids
-• Take paracetamol for fever (NOT aspirin for children)
+<hr/>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-HEALTHY LIFESTYLE RECOMMENDATIONS
-
-To strengthen your body's defense against malaria:
-
-🥗 NUTRITION
-• Eat iron-rich foods (dark leafy greens, beans, meat)
-• Include vitamin C foods (oranges, tomatoes, peppers)
-• Stay well-hydrated with clean water
-
-💪 PHYSICAL ACTIVITY
-• Regular exercise strengthens immune system
-• 30 minutes of walking daily
-• Avoid outdoor exercise at dusk when mosquitoes are active
-
-😴 REST & RECOVERY
-• Get 7-8 hours of sleep
-• Rest when feeling unwell
-• Recover fully before resuming normal activities
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-OFFICIAL SOURCES
-
-This information is based on guidelines from:
-
-📚 World Health Organization (WHO)
-   www.who.int/malaria
-
-📚 Centers for Disease Control and Prevention (CDC)
-   www.cdc.gov/malaria
-
-📚 Roll Back Malaria Partnership
-   www.rollbackmalaria.org
-
-📚 Uganda Ministry of Health
-   www.health.go.ug
-
-📚 Togo Ministry of Health
-   www.sante.gouv.tg
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Remember: Early diagnosis and treatment save lives. If you have fever, get tested for malaria immediately at your nearest health facility.
+<div class="sources">
+    <h2>Sources</h2>
+    <div class="source-item">
+        <div class="source-name">World Health Organization (WHO)</div>
+        <a href="https://www.who.int/news-room/fact-sheets/detail/malaria">www.who.int/news-room/fact-sheets/detail/malaria</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">Centers for Disease Control and Prevention (CDC)</div>
+        <a href="https://www.cdc.gov/malaria">www.cdc.gov/malaria</a>
+    </div>
+</div>
                 """.trimIndent(),
-                summary = "WHO-approved guide to malaria prevention and treatment with lifestyle recommendations for Togo, Uganda, and Africa.",
-                source = "WHO, CDC, Roll Back Malaria",
+                summary = "WHO fact sheet on malaria: 282 million cases globally in 2024. Learn about symptoms, prevention with bed nets and vaccines, and treatment.",
+                source = "WHO, CDC",
                 category = "Infectious Diseases"
             ),
             
             // DIARRHEA
             Article(
-                title = "Diarrhea and Dehydration: Life-Saving Treatment Guide",
+                title = "Diarrhoeal disease",
                 content = """
-OVERVIEW
+<div class="key-facts">
+    <h2>Key facts</h2>
+    <ul>
+        <li>Diarrhoeal disease is the second leading cause of death in children under 5 years old.</li>
+        <li>Each year, diarrhoea kills around 443,000 children under 5.</li>
+        <li>Diarrhoea can be prevented by safe drinking water, adequate sanitation, and hand washing with soap.</li>
+        <li>Diarrhoea is treated with oral rehydration solution (ORS) and zinc supplements.</li>
+        <li>Most deaths from diarrhoea are preventable using simple, low-cost interventions.</li>
+    </ul>
+</div>
 
-Diarrheal diseases are the second leading cause of death in children under 5 years old globally. According to the WHO, proper treatment with Oral Rehydration Solution (ORS) and zinc can prevent most deaths.
+<h2>Overview</h2>
+<p>Diarrhoea is the passage of 3 or more loose or liquid stools per day. It is usually a symptom of gastrointestinal infection caused by bacteria, viruses or parasites.</p>
+<p>Most people who die from diarrhoea actually die from severe dehydration and fluid loss.</p>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<hr/>
 
-SYMPTOMS OF DEHYDRATION
+<h2>Signs of dehydration</h2>
 
-Watch for these warning signs:
+<h3>Mild to moderate dehydration:</h3>
+<ul>
+    <li>Thirst</li>
+    <li>Dry mouth and lips</li>
+    <li>Decreased urination</li>
+    <li>Slightly sunken eyes</li>
+</ul>
 
-MILD DEHYDRATION:
-• Thirst
-• Dry mouth and lips
-• Decreased urination
-• Slightly sunken eyes
+<h3 class="warning">Severe dehydration (EMERGENCY):</h3>
+<ul>
+    <li>Very sunken eyes</li>
+    <li>Unable to drink or drinks poorly</li>
+    <li>Skin pinch goes back very slowly (>2 seconds)</li>
+    <li>Lethargy or unconsciousness</li>
+    <li>No tears when crying</li>
+    <li>No urination for 6+ hours</li>
+</ul>
 
-SEVERE DEHYDRATION (EMERGENCY):
-• Very sunken eyes
-• Unable to drink or drinks poorly
-• Skin pinch goes back slowly (>2 seconds)
-• Lethargy or unconsciousness
-• No tears when crying
-• No urination for 6+ hours
+<p class="warning"><b>⚠️ Severe dehydration can cause death within hours if not treated!</b></p>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<hr/>
 
-TREATMENT: ORAL REHYDRATION THERAPY
+<h2>Treatment</h2>
 
-HOW TO MAKE ORS AT HOME:
-If you cannot get ORS packets, mix:
-• 1 liter of clean (boiled and cooled) water
-• 6 level teaspoons of sugar
-• 1/2 level teaspoon of salt
+<h3>Oral Rehydration Therapy (ORS)</h3>
+<p>ORS is the most important treatment for diarrhoea. It replaces fluid and essential salts lost.</p>
 
-HOW MUCH TO GIVE:
-• Children under 2 years: 50-100ml after each loose stool
-• Children 2-10 years: 100-200ml after each loose stool
-• Older children and adults: As much as wanted
+<div class="highlight-box">
+    <b>🏠 How to make ORS at home:</b><br/>
+    Mix in 1 litre of clean (boiled and cooled) water:<br/>
+    • 6 level teaspoons of sugar<br/>
+    • ½ level teaspoon of salt
+</div>
 
-ZINC SUPPLEMENTS (for children):
-• Children under 6 months: 10mg daily for 10-14 days
-• Children over 6 months: 20mg daily for 10-14 days
+<h3>How much ORS to give:</h3>
+<ul>
+    <li><b>Children under 2 years:</b> 50-100 ml after each loose stool</li>
+    <li><b>Children 2-10 years:</b> 100-200 ml after each loose stool</li>
+    <li><b>Older children and adults:</b> As much as wanted</li>
+</ul>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<h3>Zinc supplements (for children):</h3>
+<ul>
+    <li>Under 6 months: 10 mg daily for 10-14 days</li>
+    <li>Over 6 months: 20 mg daily for 10-14 days</li>
+</ul>
 
-WHEN TO SEEK MEDICAL HELP
+<hr/>
 
-Go to a health facility immediately if:
-• Blood in stool
-• Fever higher than 38.5°C
-• Signs of severe dehydration
-• Diarrhea lasting more than 3 days
-• Child refuses to eat or drink
-• Repeated vomiting
+<h2>When to seek medical help</h2>
+<p>Go to a health facility immediately if:</p>
+<ul>
+    <li>Blood in stool</li>
+    <li>Fever higher than 38.5°C (101.3°F)</li>
+    <li>Signs of severe dehydration</li>
+    <li>Diarrhoea lasting more than 3 days</li>
+    <li>Child refuses to eat or drink</li>
+    <li>Repeated vomiting</li>
+</ul>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<hr/>
 
-PREVENTION
+<h2>Prevention</h2>
 
-1. SAFE WATER
-   • Boil water before drinking
-   • Store water in clean, covered containers
-   • Use water purification tablets when available
+<h3>Safe water:</h3>
+<ul>
+    <li>Boil water for at least 1 minute before drinking</li>
+    <li>Store water in clean, covered containers</li>
+    <li>Use water purification tablets when available</li>
+</ul>
 
-2. HAND HYGIENE
-   • Wash hands with soap:
-     - Before eating
-     - Before preparing food
-     - After using the toilet
-     - After changing diapers
+<h3>Hand hygiene - Wash hands with soap:</h3>
+<ul>
+    <li>Before eating and preparing food</li>
+    <li>After using the toilet</li>
+    <li>After changing diapers</li>
+</ul>
 
-3. FOOD SAFETY
-   • Cook food thoroughly
-   • Eat food while hot
-   • Wash fruits and vegetables
-   • Keep food covered
+<h3>Food safety:</h3>
+<ul>
+    <li>Cook food thoroughly</li>
+    <li>Eat food while hot</li>
+    <li>Wash fruits and vegetables with safe water</li>
+    <li>Keep food covered</li>
+</ul>
 
-4. SANITATION
-   • Use latrines/toilets
-   • Dispose of feces safely
-   • Keep living areas clean
+<hr/>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<h2>Healthy lifestyle recommendations</h2>
+<ul>
+    <li>Continue breastfeeding infants during and after diarrhoea</li>
+    <li>Give small, frequent meals during recovery</li>
+    <li>Offer bananas, rice, toast, and potatoes (easy to digest)</li>
+    <li>Avoid fatty, spicy, or sugary foods during illness</li>
+    <li>Drink plenty of clean water throughout the day</li>
+</ul>
 
-HEALTHY LIFESTYLE RECOMMENDATIONS
+<hr/>
 
-🥗 NUTRITION DURING AND AFTER DIARRHEA
-• Continue breastfeeding for infants
-• Give small, frequent meals
-• Offer bananas, rice, toast, potatoes
-• Avoid fatty, spicy, or sugary foods
-• Continue normal diet once recovered
-
-💧 HYDRATION
-• Drink clean water throughout the day
-• Include soups and broths
-• Avoid sugary drinks and sodas
-• Coconut water is excellent for rehydration
-
-🏠 HOME ENVIRONMENT
-• Keep cooking areas clean
-• Store food properly
-• Maintain clean water sources
-• Practice good hygiene daily
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-OFFICIAL SOURCES
-
-📚 World Health Organization (WHO)
-   www.who.int/health-topics/diarrhoea
-
-📚 UNICEF - Oral Rehydration Therapy
-   www.unicef.org
-
-📚 Centers for Disease Control and Prevention
-   www.cdc.gov/healthywater
-
-📚 Rehydration Project
-   www.rehydrate.org
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Remember: Diarrhea can be deadly, but it's easily treated. ORS saves lives - give it early and give it often.
+<div class="sources">
+    <h2>Sources</h2>
+    <div class="source-item">
+        <div class="source-name">World Health Organization (WHO)</div>
+        <a href="https://www.who.int/news-room/fact-sheets/detail/diarrhoeal-disease">www.who.int/news-room/fact-sheets/detail/diarrhoeal-disease</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">UNICEF</div>
+        <a href="https://www.unicef.org/health/diarrhoea">www.unicef.org/health/diarrhoea</a>
+    </div>
+</div>
                 """.trimIndent(),
-                summary = "WHO-approved guide to treating diarrhea and preventing dehydration with ORS. Critical information for parents and caregivers.",
-                source = "WHO, UNICEF, CDC",
+                summary = "WHO fact sheet on diarrhoeal disease: second leading cause of death in children under 5. Learn about ORS treatment and prevention.",
+                source = "WHO, UNICEF",
                 category = "Child Health"
             ),
             
             // CHOLERA
             Article(
-                title = "Cholera: Prevention, Recognition, and Emergency Treatment",
+                title = "Cholera",
                 content = """
-OVERVIEW
+<div class="key-facts">
+    <h2>Key facts</h2>
+    <ul>
+        <li>Cholera is an acute diarrhoeal infection caused by ingestion of contaminated food or water.</li>
+        <li>Cholera affects 1-4 million people annually, causing 21,000-143,000 deaths worldwide.</li>
+        <li>Cholera can kill within hours if left untreated.</li>
+        <li>Up to 80% of cases can be successfully treated with oral rehydration salts.</li>
+        <li>Safe water and sanitation are the most effective ways to prevent cholera.</li>
+    </ul>
+</div>
 
-Cholera is an acute diarrheal infection caused by contaminated water or food. According to the WHO, cholera affects 1-4 million people annually with up to 143,000 deaths. It can kill within hours if untreated but is easily preventable and treatable.
+<h2>Overview</h2>
+<p>Cholera is an extremely virulent disease that can cause severe acute watery diarrhoea. It takes between 12 hours and 5 days for a person to show symptoms after ingesting contaminated food or water.</p>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<hr/>
 
-SYMPTOMS
+<h2>Symptoms</h2>
 
-Cholera can range from mild to severe:
+<h3>Mild to moderate:</h3>
+<ul>
+    <li>Watery diarrhoea</li>
+    <li>Mild dehydration</li>
+    <li>Thirst</li>
+</ul>
 
-MILD TO MODERATE:
-• Watery diarrhea
-• Mild dehydration
-• Thirst
+<h3 class="warning">Severe cholera (EMERGENCY):</h3>
+<ul>
+    <li>Profuse watery diarrhoea ("rice water" stools)</li>
+    <li>Vomiting</li>
+    <li>Leg cramps</li>
+    <li>Rapid heart rate</li>
+    <li>Sunken eyes, dry mouth</li>
+    <li>Wrinkled skin on fingers</li>
+</ul>
 
-SEVERE (EMERGENCY):
-• Profuse watery diarrhea ("rice water" appearance)
-• Vomiting
-• Leg cramps
-• Rapid dehydration
-• Shock (weak pulse, low blood pressure)
-• Sunken eyes, dry mouth
-• Wrinkled skin on fingers
+<p class="warning"><b>⚠️ Severe cholera can cause death within hours if not treated!</b></p>
 
-⚠️ Severe cholera can cause death within hours if not treated!
+<hr/>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<h2>Treatment</h2>
+<p>Cholera is easily treatable with oral rehydration solution (ORS).</p>
 
-IMMEDIATE TREATMENT
+<h3>Treatment steps:</h3>
+<ul>
+    <li><b>Rehydration:</b> Start ORS immediately. Give as much as the person can drink.</li>
+    <li><b>Severe cases:</b> May require intravenous fluids at a health facility.</li>
+    <li><b>Antibiotics:</b> Reduce duration; prescribed by health workers.</li>
+</ul>
 
-1. START REHYDRATION IMMEDIATELY
-   • Give ORS (Oral Rehydration Solution)
-   • As much as the person can drink
-   • Continue even if vomiting (give small sips)
+<p>With prompt treatment, the fatality rate should remain below 1%.</p>
 
-2. SEEK MEDICAL CARE
-   • Go to nearest health facility
-   • Cholera Treatment Centers during outbreaks
-   • IV fluids may be needed for severe cases
+<hr/>
 
-3. ANTIBIOTICS
-   • Prescribed by health workers
-   • Reduce duration and severity
-   • Complete the full course
+<h2>Prevention</h2>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<h3>Safe water – "Boil it, filter it, or forget it":</h3>
+<ul>
+    <li>Boil water for at least 1 minute</li>
+    <li>Use water purification tablets or filters</li>
+    <li>Drink only from known safe sources</li>
+</ul>
 
-PREVENTION
+<h3>Food safety:</h3>
+<ul>
+    <li>Cook food thoroughly, especially seafood</li>
+    <li>Eat food while hot</li>
+    <li>Avoid raw foods during outbreaks</li>
+    <li>Peel fruits yourself</li>
+</ul>
 
-1. SAFE WATER - "BOIL IT, FILTER IT, OR FORGET IT"
-   • Boil water for at least 1 minute
-   • Use water purification tablets
-   • Drink only from safe sources
+<h3>Hygiene:</h3>
+<ul>
+    <li>Wash hands frequently with soap</li>
+    <li>Use latrines or toilets</li>
+    <li>Dispose of faeces safely</li>
+</ul>
 
-2. FOOD SAFETY
-   • Cook food thoroughly
-   • Eat food while hot
-   • Avoid raw foods during outbreaks
-   • Peel fruits yourself
+<hr/>
 
-3. HAND HYGIENE
-   • Wash hands with soap frequently
-   • Especially after toilet and before eating
-   • Use ash or sand if soap unavailable
+<h2>Healthy lifestyle recommendations</h2>
+<ul>
+    <li>Eat freshly cooked, hot meals</li>
+    <li>Maintain good nutrition for strong immunity</li>
+    <li>Breastfeed infants exclusively for 6 months</li>
+    <li>Keep water containers clean and covered</li>
+    <li>Participate in community clean-up campaigns</li>
+</ul>
 
-4. SANITATION
-   • Use latrines properly
-   • Never defecate near water sources
-   • Dispose of waste safely
+<hr/>
 
-5. DURING OUTBREAKS
-   • Avoid public gatherings
-   • Get vaccinated if available
-   • Report cases to health authorities
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-HEALTHY LIFESTYLE RECOMMENDATIONS
-
-🥗 NUTRITION
-• Eat freshly cooked, hot meals
-• Include clean fruits and vegetables
-• Maintain good nutrition for strong immunity
-• Breastfeed infants exclusively for 6 months
-
-💧 WATER PRACTICES
-• Always treat water before drinking
-• Keep water containers clean and covered
-• Wash hands before handling water
-• Don't share drinking cups during outbreaks
-
-🏠 HOME HYGIENE
-• Keep cooking areas clean
-• Wash dishes with clean water
-• Dispose of garbage properly
-• Maintain clean latrines
-
-👥 COMMUNITY ACTION
-• Report suspected cases
-• Participate in clean-up campaigns
-• Support vaccination programs
-• Share prevention knowledge
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-OFFICIAL SOURCES
-
-📚 World Health Organization (WHO)
-   www.who.int/health-topics/cholera
-
-📚 Global Task Force on Cholera Control
-   www.gtfcc.org
-
-📚 Centers for Disease Control and Prevention
-   www.cdc.gov/cholera
-
-📚 Médecins Sans Frontières (MSF)
-   www.msf.org/cholera
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Remember: Cholera is preventable. Safe water and good hygiene are your best protection. During outbreaks, act fast - rehydration saves lives.
+<div class="sources">
+    <h2>Sources</h2>
+    <div class="source-item">
+        <div class="source-name">World Health Organization (WHO)</div>
+        <a href="https://www.who.int/news-room/fact-sheets/detail/cholera">www.who.int/news-room/fact-sheets/detail/cholera</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">Global Task Force on Cholera Control</div>
+        <a href="https://www.gtfcc.org">www.gtfcc.org</a>
+    </div>
+</div>
                 """.trimIndent(),
-                summary = "Emergency guide to cholera prevention and treatment. Learn to recognize symptoms and act fast to save lives.",
-                source = "WHO, CDC, MSF",
+                summary = "WHO fact sheet on cholera: acute diarrhoeal infection that can kill within hours. Learn about ORS treatment and safe water prevention.",
+                source = "WHO, GTFCC",
                 category = "Infectious Diseases"
             ),
             
             // TYPHOID
             Article(
-                title = "Typhoid Fever: Symptoms, Treatment, and Prevention",
+                title = "Typhoid",
                 content = """
-OVERVIEW
+<div class="key-facts">
+    <h2>Key facts</h2>
+    <ul>
+        <li>Typhoid fever is caused by the bacterium Salmonella typhi.</li>
+        <li>An estimated 11-20 million people get sick from typhoid each year.</li>
+        <li>Between 128,000 and 161,000 people die from typhoid annually.</li>
+        <li>Typhoid spreads through contaminated food and water.</li>
+        <li>Two vaccines are available to prevent typhoid.</li>
+    </ul>
+</div>
 
-Typhoid fever is a serious bacterial infection caused by Salmonella typhi, spread through contaminated water and food. The WHO estimates 11-20 million cases and 128,000-161,000 deaths annually, mostly in areas with poor sanitation.
+<h2>Overview</h2>
+<p>Typhoid fever is a life-threatening infection caused by the bacterium Salmonella typhi. It is usually spread through contaminated food or water.</p>
+<p>Typhoid fever is more common in places with poor sanitation and lack of safe drinking water.</p>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<hr/>
 
-SYMPTOMS
+<h2>Symptoms</h2>
+<p>Symptoms usually develop 1-3 weeks after exposure:</p>
 
-Symptoms usually develop 1-3 weeks after infection:
+<h3>Week 1:</h3>
+<ul>
+    <li>Gradually increasing fever</li>
+    <li>Headache</li>
+    <li>Weakness and fatigue</li>
+    <li>Muscle aches</li>
+    <li>Loss of appetite</li>
+</ul>
 
-WEEK 1:
-• Gradually increasing fever
-• Headache
-• Weakness and fatigue
-• Muscle aches
-• Loss of appetite
+<h3>Week 2-3:</h3>
+<ul>
+    <li>High fever (39-40°C / 102-104°F)</li>
+    <li>Abdominal pain and bloating</li>
+    <li>Constipation or diarrhoea</li>
+    <li>Rose-coloured spots on chest and abdomen</li>
+</ul>
 
-WEEK 2-3:
-• High fever (39-40°C/102-104°F)
-• Abdominal pain
-• Constipation OR diarrhea
-• Rose-colored spots on chest/abdomen
-• Enlarged liver and spleen
+<h3 class="warning">Danger signs (seek immediate care):</h3>
+<ul>
+    <li>Severe abdominal pain</li>
+    <li>Bloody stools</li>
+    <li>Confusion</li>
+    <li>Persistent high fever despite treatment</li>
+</ul>
 
-⚠️ DANGER SIGNS:
-• Severe abdominal pain
-• Bloody stools
-• Confusion
-• Persistent high fever
+<hr/>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<h2>Treatment</h2>
+<p>Typhoid fever is treated with antibiotics. Without treatment, the fatality rate can reach 10-30%.</p>
 
-TREATMENT
+<h3>Medical treatment:</h3>
+<ul>
+    <li>Blood test confirms diagnosis</li>
+    <li>Antibiotics are essential</li>
+    <li>Complete the full course (usually 7-14 days)</li>
+</ul>
 
-1. SEEK MEDICAL CARE
-   • Blood test confirms diagnosis
-   • Antibiotics are essential
-   • Complete the FULL course (usually 7-14 days)
+<h3>Home care:</h3>
+<ul>
+    <li>Rest in bed</li>
+    <li>Drink plenty of clean fluids</li>
+    <li>Eat small, frequent meals</li>
+    <li>Take paracetamol for fever</li>
+</ul>
 
-2. HOME CARE
-   • Rest in bed
-   • Drink plenty of clean fluids
-   • Eat small, frequent meals
-   • Take paracetamol for fever
+<hr/>
 
-3. PREVENT SPREAD
-   • Wash hands frequently
-   • Don't prepare food for others while sick
-   • Use separate toilet if possible
-   • Continue hygiene 2 weeks after recovery
+<h2>Prevention</h2>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<h3>Safe water:</h3>
+<ul>
+    <li>Boil or treat all drinking water</li>
+    <li>Avoid ice from unknown sources</li>
+    <li>Use safe water for brushing teeth</li>
+</ul>
 
-PREVENTION
+<h3>Food safety:</h3>
+<ul>
+    <li>Eat thoroughly cooked, hot foods</li>
+    <li>Avoid raw vegetables and salads from unknown sources</li>
+    <li>Peel fruits yourself</li>
+</ul>
 
-1. SAFE WATER
-   • Boil or treat all drinking water
-   • Avoid ice from unknown sources
-   • Use safe water for brushing teeth
+<h3>Vaccination:</h3>
+<ul>
+    <li>Injectable vaccine: single dose, protects for 3+ years</li>
+    <li>Oral vaccine: 4 doses, protects for 5 years</li>
+</ul>
 
-2. FOOD SAFETY
-   • Eat thoroughly cooked, hot foods
-   • Avoid raw vegetables and salads
-   • Peel fruits yourself
-   • Avoid street food during outbreaks
+<hr/>
 
-3. HAND HYGIENE
-   • Wash hands with soap before eating
-   • Wash hands after using toilet
-   • Use hand sanitizer when soap unavailable
+<h2>Healthy lifestyle recommendations</h2>
+<ul>
+    <li>Eat a balanced diet to maintain immunity</li>
+    <li>Drink at least 2 litres of safe water daily</li>
+    <li>Get adequate sleep (7-8 hours)</li>
+    <li>Exercise regularly when healthy</li>
+    <li>Complete vaccination schedules</li>
+</ul>
 
-4. VACCINATION
-   • Vaccines available for travelers and endemic areas
-   • Ask your health provider about vaccination
-   • Vaccine doesn't replace safe food/water practices
+<hr/>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-HEALTHY LIFESTYLE RECOMMENDATIONS
-
-🥗 NUTRITION
-• Eat a balanced diet to maintain immunity
-• Include fruits and vegetables (washed/cooked)
-• Protein-rich foods help recovery
-• Avoid raw or undercooked foods
-
-💧 HYDRATION
-• Drink at least 2 liters of safe water daily
-• Herbal teas can help (boiled water)
-• Oral rehydration if fever is high
-• Avoid unpasteurized drinks
-
-🏠 HOME ENVIRONMENT
-• Maintain clean cooking areas
-• Store food properly
-• Keep toilet areas clean
-• Dispose of waste safely
-
-💪 BUILDING IMMUNITY
-• Get adequate sleep (7-8 hours)
-• Exercise regularly when healthy
-• Manage stress effectively
-• Complete vaccination schedules
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-OFFICIAL SOURCES
-
-📚 World Health Organization (WHO)
-   www.who.int/immunization/diseases/typhoid
-
-📚 Centers for Disease Control and Prevention
-   www.cdc.gov/typhoid-fever
-
-📚 Sabin Vaccine Institute
-   www.sabin.org/programs/typhoid
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Remember: Typhoid is preventable with safe water and food. If you have prolonged fever, get tested - early treatment prevents complications.
+<div class="sources">
+    <h2>Sources</h2>
+    <div class="source-item">
+        <div class="source-name">World Health Organization (WHO)</div>
+        <a href="https://www.who.int/news-room/fact-sheets/detail/typhoid">www.who.int/news-room/fact-sheets/detail/typhoid</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">Centers for Disease Control and Prevention (CDC)</div>
+        <a href="https://www.cdc.gov/typhoid-fever">www.cdc.gov/typhoid-fever</a>
+    </div>
+</div>
                 """.trimIndent(),
-                summary = "Complete guide to typhoid fever - recognize symptoms early and learn prevention strategies for safe water and food.",
-                source = "WHO, CDC, Sabin Institute",
+                summary = "WHO fact sheet on typhoid: 11-20 million cases annually. Learn about symptoms, antibiotic treatment, and prevention through safe water.",
+                source = "WHO, CDC",
                 category = "Infectious Diseases"
             ),
             
             // HIV/AIDS
             Article(
-                title = "HIV/AIDS: Prevention, Testing, and Living Healthy",
+                title = "HIV/AIDS",
                 content = """
-OVERVIEW
+<div class="key-facts">
+    <h2>Key facts</h2>
+    <ul>
+        <li>HIV (human immunodeficiency virus) attacks the body's immune system.</li>
+        <li>Approximately 39 million people are living with HIV globally.</li>
+        <li>In 2022, 630,000 people died from HIV-related causes.</li>
+        <li>HIV can be suppressed by treatment with antiretroviral therapy (ART).</li>
+        <li>With proper treatment, people with HIV can live long, healthy lives.</li>
+    </ul>
+</div>
 
-HIV (Human Immunodeficiency Virus) attacks the immune system. Without treatment, it can lead to AIDS. According to UNAIDS, approximately 38 million people live with HIV globally. With proper treatment, people with HIV can live long, healthy lives.
+<h2>Overview</h2>
+<p>HIV attacks the body's immune system. If HIV is not treated, it can lead to AIDS.</p>
+<p>There is no effective cure for HIV. However, with proper medical care, HIV can be controlled. Treatment with ART can reduce the amount of HIV in the blood to undetectable levels.</p>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<hr/>
 
-HOW HIV IS TRANSMITTED
+<h2>Transmission</h2>
 
-HIV is spread through:
-• Unprotected sexual contact
-• Sharing needles or syringes
-• Mother to child (pregnancy, birth, breastfeeding)
-• Blood transfusions (rare with modern screening)
+<h3>HIV IS spread through:</h3>
+<ul>
+    <li>Unprotected sexual contact</li>
+    <li>Sharing needles or syringes</li>
+    <li>Mother-to-child during pregnancy, birth, or breastfeeding</li>
+    <li>Blood transfusion with infected blood (rare)</li>
+</ul>
 
-HIV is NOT spread through:
-• Casual contact (hugging, shaking hands)
-• Sharing food, drinks, or utensils
-• Mosquito bites
-• Toilet seats
-• Air, water, or saliva
+<h3>HIV is NOT spread through:</h3>
+<ul>
+    <li>Hugging, shaking hands, casual contact</li>
+    <li>Sharing food, drinks, or utensils</li>
+    <li>Mosquito bites</li>
+    <li>Air, water, or saliva</li>
+</ul>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<hr/>
 
-SYMPTOMS
+<h2>Symptoms</h2>
 
-EARLY INFECTION (2-4 weeks):
-• Flu-like symptoms
-• Fever, fatigue
-• Swollen lymph nodes
-• Sore throat, rash
+<h3>Early infection (2-4 weeks):</h3>
+<ul>
+    <li>Flu-like symptoms</li>
+    <li>Fever and fatigue</li>
+    <li>Swollen lymph nodes</li>
+    <li>Sore throat and rash</li>
+</ul>
 
-CHRONIC HIV (may have no symptoms for years)
+<h3>Chronic HIV:</h3>
+<p>Many people have no symptoms for years.</p>
 
-AIDS (without treatment):
-• Rapid weight loss
-• Recurring fever
-• Extreme fatigue
-• Prolonged swelling of lymph nodes
-• Frequent infections
-• Skin rashes or sores
+<h3>AIDS (without treatment):</h3>
+<ul>
+    <li>Rapid weight loss</li>
+    <li>Recurring fever</li>
+    <li>Extreme fatigue</li>
+    <li>Frequent infections</li>
+</ul>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<hr/>
 
-TESTING
+<h2>Testing</h2>
+<p>HIV testing is the only way to know your status. Testing is:</p>
+<ul>
+    <li><b>Free</b> at most health facilities</li>
+    <li><b>Confidential</b></li>
+    <li><b>Quick</b> – results in 15-30 minutes</li>
+</ul>
 
-GET TESTED IF YOU:
-• Have had unprotected sex
-• Have multiple sexual partners
-• Share injection equipment
-• Are pregnant (all pregnant women should test)
-• Want to know your status
+<hr/>
 
-Testing is:
-• Free at most health facilities
-• Confidential
-• Quick (results in 15-30 minutes)
-• The only way to know your status
+<h2>Treatment</h2>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<h3>Antiretroviral Therapy (ART):</h3>
+<ul>
+    <li>Available free in most African countries</li>
+    <li>Take medications daily as prescribed</li>
+    <li>Reduces HIV to undetectable levels</li>
+    <li><b>Undetectable = Untransmittable (U=U)</b></li>
+</ul>
 
-TREATMENT
+<p><b>Important:</b> Never skip doses. Attend all clinic appointments.</p>
 
-ANTIRETROVIRAL THERAPY (ART):
-• Available free in most African countries
-• Take daily as prescribed
-• Reduces HIV to undetectable levels
-• Prevents transmission to others
-• Allows normal, healthy life
+<hr/>
 
-U=U: Undetectable = Untransmittable
-When HIV is undetectable, it cannot be sexually transmitted.
+<h2>Prevention</h2>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<h3>Behavioural prevention:</h3>
+<ul>
+    <li>Use condoms correctly every time</li>
+    <li>Limit number of sexual partners</li>
+    <li>Get tested regularly</li>
+    <li>Never share needles</li>
+</ul>
 
-PREVENTION
+<h3>Medical prevention:</h3>
+<ul>
+    <li><b>PrEP:</b> Daily pill that prevents HIV for high-risk individuals</li>
+    <li><b>PEP:</b> Emergency medication within 72 hours of exposure</li>
+</ul>
 
-1. USE CONDOMS
-   • Male or female condoms
-   • Use correctly every time
-   • Store properly (away from heat)
+<hr/>
 
-2. GET TESTED REGULARLY
-   • Know your status
-   • Encourage partners to test
-   • Test every 3-6 months if at risk
+<h2>Healthy lifestyle with HIV</h2>
+<ul>
+    <li>Take ART exactly as prescribed</li>
+    <li>Eat a balanced, nutritious diet</li>
+    <li>Exercise regularly (30 minutes daily)</li>
+    <li>Get adequate sleep (7-8 hours)</li>
+    <li>Avoid smoking and limit alcohol</li>
+    <li>Attend all medical appointments</li>
+    <li>Join support groups for emotional wellbeing</li>
+</ul>
 
-3. LIMIT PARTNERS
-   • Fewer partners = lower risk
-   • Mutual monogamy with tested partner
+<hr/>
 
-4. PrEP (Pre-Exposure Prophylaxis)
-   • Daily pill prevents HIV
-   • For HIV-negative people at high risk
-   • Ask your health provider
-
-5. PREVENT MOTHER-TO-CHILD TRANSMISSION
-   • All pregnant women should test
-   • ART during pregnancy prevents transmission
-   • Safe delivery practices
-   • Follow infant feeding guidelines
-
-6. NEVER SHARE NEEDLES
-   • Use clean needles always
-   • Access needle exchange programs
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-HEALTHY LIFESTYLE WITH HIV
-
-🥗 NUTRITION
-• Eat balanced, nutritious meals
-• Include proteins, fruits, vegetables
-• Avoid raw or undercooked foods
-• Stay well-hydrated
-• Take supplements if recommended
-
-💪 PHYSICAL ACTIVITY
-• Regular exercise strengthens immunity
-• 30 minutes daily (walking, cycling)
-• Start slowly, increase gradually
-• Rest when needed
-
-😴 REST & MENTAL HEALTH
-• Get 7-8 hours of sleep
-• Manage stress (meditation, counseling)
-• Join support groups
-• Stay connected with loved ones
-
-🏥 MEDICAL CARE
-• Take ART exactly as prescribed
-• Never skip doses
-• Attend all clinic appointments
-• Get vaccinations as recommended
-• Treat other infections promptly
-
-❌ AVOID
-• Smoking and alcohol
-• Unprotected sex
-• Sharing personal items (razors, toothbrushes)
-• Stress and isolation
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-REDUCING STIGMA
-
-HIV does not define a person. People living with HIV:
-• Can live normal, productive lives
-• Deserve respect and support
-• Should not face discrimination
-• Need community acceptance
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-OFFICIAL SOURCES
-
-📚 UNAIDS
-   www.unaids.org
-
-📚 World Health Organization (WHO)
-   www.who.int/hiv
-
-📚 Centers for Disease Control and Prevention
-   www.cdc.gov/hiv
-
-📚 PEPFAR (U.S. President's Emergency Plan for AIDS Relief)
-   www.pepfar.gov
-
-📚 Uganda AIDS Commission
-   www.uac.go.ug
-
-📚 Togo National AIDS Program
-   pnls.tg
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Remember: HIV is preventable and treatable. Get tested, know your status, and access treatment. With ART, you can live a long, healthy life.
+<div class="sources">
+    <h2>Sources</h2>
+    <div class="source-item">
+        <div class="source-name">UNAIDS</div>
+        <a href="https://www.unaids.org">www.unaids.org</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">World Health Organization (WHO)</div>
+        <a href="https://www.who.int/news-room/fact-sheets/detail/hiv-aids">www.who.int/news-room/fact-sheets/detail/hiv-aids</a>
+    </div>
+</div>
                 """.trimIndent(),
-                summary = "Comprehensive HIV/AIDS guide: prevention, testing, treatment, and living healthy. Based on UNAIDS and WHO guidelines.",
-                source = "WHO, UNAIDS, CDC, PEPFAR",
+                summary = "WHO fact sheet on HIV/AIDS: 39 million people living with HIV globally. Learn about testing, ART treatment, and prevention.",
+                source = "WHO, UNAIDS",
                 category = "Sexual Health"
             ),
             
             // MATERNAL HEALTH
             Article(
-                title = "Pregnancy and Safe Motherhood: Essential Guide",
+                title = "Maternal health",
                 content = """
-OVERVIEW
+<div class="key-facts">
+    <h2>Key facts</h2>
+    <ul>
+        <li>Every day, approximately 800 women die from preventable causes related to pregnancy and childbirth.</li>
+        <li>94% of maternal deaths occur in low and middle-income countries.</li>
+        <li>Most maternal deaths are preventable with proper care.</li>
+        <li>Skilled care before, during and after childbirth can save lives.</li>
+        <li>WHO recommends at least 8 antenatal care contacts during pregnancy.</li>
+    </ul>
+</div>
 
-According to the WHO, approximately 295,000 women die during pregnancy and childbirth each year, mostly from preventable causes. This guide provides essential information for a healthy pregnancy and safe delivery.
+<h2>Overview</h2>
+<p>Maternal health refers to the health of women during pregnancy, childbirth, and the postnatal period.</p>
+<p>The major complications that account for 75% of maternal deaths are: severe bleeding, infections, high blood pressure, complications from delivery, and unsafe abortion.</p>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<hr/>
 
-PRENATAL CARE
+<h2>Antenatal care</h2>
+<p>WHO recommends a minimum of 8 contacts with a health provider during pregnancy.</p>
 
-ATTEND ALL ANTENATAL VISITS:
-WHO recommends at least 8 contacts during pregnancy:
-• First visit: Before 12 weeks
-• Regular visits throughout pregnancy
-• More frequent in third trimester
+<h3>What happens at antenatal visits:</h3>
+<ul>
+    <li>Blood pressure measurement</li>
+    <li>Weight monitoring</li>
+    <li>Urine and blood tests</li>
+    <li>Checking baby's growth and heartbeat</li>
+    <li>Nutrition counselling</li>
+    <li>Birth planning</li>
+</ul>
 
-AT EACH VISIT:
-• Blood pressure check
-• Weight monitoring
-• Urine test
-• Baby's growth and heartbeat
-• Nutrition counseling
-• Birth planning
+<hr/>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<h2 class="warning">⚠️ Danger signs</h2>
 
-DANGER SIGNS - SEEK HELP IMMEDIATELY
+<h3>During pregnancy – seek immediate care if:</h3>
+<ul>
+    <li>Vaginal bleeding</li>
+    <li>Severe headache or blurred vision</li>
+    <li>High fever</li>
+    <li>Severe abdominal pain</li>
+    <li>Reduced or no baby movement</li>
+    <li>Swelling of face and hands</li>
+    <li>Convulsions</li>
+</ul>
 
-⚠️ During Pregnancy:
-• Vaginal bleeding
-• Severe headache or blurred vision
-• High fever
-• Severe abdominal pain
-• Reduced or no baby movement
-• Swelling of face and hands
-• Convulsions
+<h3>During labour:</h3>
+<ul>
+    <li>Labour lasting more than 12 hours</li>
+    <li>Heavy bleeding</li>
+    <li>Cord coming out first</li>
+</ul>
 
-⚠️ During Labor:
-• Labor lasting more than 12 hours
-• Heavy bleeding
-• Cord or hand coming out first
-• Mother unable to push
+<h3>After delivery:</h3>
+<ul>
+    <li>Heavy bleeding (soaking >1 pad/hour)</li>
+    <li>High fever</li>
+    <li>Foul-smelling discharge</li>
+</ul>
 
-⚠️ After Delivery:
-• Heavy bleeding (soaking >1 pad/hour)
-• High fever
-• Foul-smelling discharge
-• Severe headache
-• Convulsions
+<hr/>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<h2>Essential care during pregnancy</h2>
 
-ESSENTIAL CARE DURING PREGNANCY
+<h3>Nutrition:</h3>
+<ul>
+    <li>Eat diverse, nutritious foods</li>
+    <li>One extra meal daily</li>
+    <li>Iron-rich foods (green vegetables, meat, beans)</li>
+    <li>Take iron and folic acid supplements</li>
+</ul>
 
-1. NUTRITION
-   • Eat diverse, nutritious foods
-   • Extra meal daily (eating for two)
-   • Iron-rich foods (green vegetables, meat, beans)
-   • Take iron and folic acid supplements
+<h3>What to avoid:</h3>
+<ul>
+    <li>Alcohol – no safe amount during pregnancy</li>
+    <li>Smoking</li>
+    <li>Heavy lifting</li>
+    <li>Self-medication</li>
+</ul>
 
-2. MEDICATIONS
-   • Take prescribed supplements
-   • Malaria prevention (IPTp) in endemic areas
-   • Deworming tablets as prescribed
-   • Avoid self-medication
+<hr/>
 
-3. VACCINATIONS
-   • Tetanus vaccines (protect mother and baby)
-   • COVID-19 vaccine (safe during pregnancy)
+<h2>Breastfeeding</h2>
+<ul>
+    <li>Start within 1 hour of birth</li>
+    <li>Give only breast milk for the first 6 months</li>
+    <li>Breastfeed on demand (8-12 times daily)</li>
+    <li>Continue breastfeeding up to 2 years</li>
+</ul>
 
-4. AVOID
-   • Alcohol (no safe amount)
-   • Smoking and secondhand smoke
-   • Heavy lifting
-   • Traditional medicines without doctor approval
+<h3>Benefits:</h3>
+<ul>
+    <li>Best nutrition for baby</li>
+    <li>Protects against infections</li>
+    <li>Helps mother recover</li>
+    <li>Free and always available</li>
+</ul>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<hr/>
 
-PREPARING FOR BIRTH
+<h2>Healthy lifestyle recommendations</h2>
+<ul>
+    <li>Eat 3 meals plus snacks daily</li>
+    <li>Drink plenty of clean water (8-10 glasses)</li>
+    <li>Get light exercise (walking 30 minutes daily)</li>
+    <li>Sleep 8 hours at night</li>
+    <li>Avoid stress</li>
+    <li>Attend all antenatal and postnatal visits</li>
+</ul>
 
-BIRTH PLAN - DISCUSS WITH FAMILY:
-1. Where will you deliver? (Health facility recommended)
-2. How will you get there?
-3. Who will accompany you?
-4. Do you have money saved for transport/emergency?
-5. Who will care for other children?
+<hr/>
 
-ITEMS TO PREPARE:
-• Clean clothes for mother and baby
-• Clean cloths/towels
-• Soap
-• Sanitary pads
-• Baby blanket
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-AFTER DELIVERY (POSTNATAL CARE)
-
-FOR MOTHER:
-• Rest as much as possible
-• Continue nutritious eating
-• Stay hydrated
-• Watch for danger signs
-• Take iron supplements
-• Attend postnatal visits
-
-FOR BABY:
-• Immediate skin-to-skin contact
-• Breastfeed within 1 hour of birth
-• Exclusive breastfeeding for 6 months
-• Keep baby warm
-• Keep cord clean and dry
-• Vaccinations on schedule
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-BREASTFEEDING
-
-BENEFITS:
-• Best nutrition for baby
-• Protects against infections
-• Helps mother recover
-• Creates bonding
-• Free and always available
-
-TIPS:
-• Start within 1 hour of birth
-• Breastfeed on demand (8-12 times daily)
-• No water, other foods, or drinks for 6 months
-• Continue breastfeeding up to 2 years
-• Seek help if having difficulties
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-HEALTHY LIFESTYLE RECOMMENDATIONS
-
-🥗 NUTRITION
-• Eat 3 meals + snacks daily
-• Include: proteins, vegetables, fruits, grains
-• Iron-rich foods prevent anemia
-• Calcium for strong bones (milk, small fish with bones)
-• Avoid raw meat/fish, unpasteurized products
-
-💧 HYDRATION
-• Drink 8-10 glasses of clean water daily
-• Avoid alcohol completely
-• Limit caffeine (tea, coffee)
-
-💪 PHYSICAL ACTIVITY
-• Light exercise is beneficial
-• Walking 30 minutes daily
-• Avoid heavy lifting
-• Rest when tired
-
-😴 REST
-• Sleep 8 hours at night
-• Nap during the day if possible
-• Sleep on your left side in late pregnancy
-
-🧠 MENTAL HEALTH
-• Share feelings with trusted people
-• Seek help for anxiety or depression
-• Join mother support groups
-• Prepare emotionally for parenthood
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-FAMILY PLANNING
-
-After delivery, discuss family planning:
-• Healthy spacing: wait 2 years between pregnancies
-• Many methods available (pills, injections, implants, IUDs)
-• Consult health provider about best option
-• Breastfeeding alone is NOT reliable contraception
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-OFFICIAL SOURCES
-
-📚 World Health Organization (WHO)
-   www.who.int/health-topics/maternal-health
-
-📚 UNICEF - Maternal and Newborn Health
-   www.unicef.org/health/maternal-and-newborn-health
-
-📚 UNFPA - Sexual and Reproductive Health
-   www.unfpa.org
-
-📚 Every Mother Counts
-   everymothercounts.org
-
-📚 White Ribbon Alliance
-   www.whiteribbonalliance.org
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Remember: Every pregnancy should be wanted, every birth safe. Attend prenatal care, know the danger signs, and deliver at a health facility.
+<div class="sources">
+    <h2>Sources</h2>
+    <div class="source-item">
+        <div class="source-name">World Health Organization (WHO)</div>
+        <a href="https://www.who.int/health-topics/maternal-health">www.who.int/health-topics/maternal-health</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">UNICEF</div>
+        <a href="https://www.unicef.org/health/maternal-and-newborn-health">www.unicef.org/health/maternal-and-newborn-health</a>
+    </div>
+</div>
                 """.trimIndent(),
-                summary = "Complete pregnancy and safe motherhood guide based on WHO recommendations. Prenatal care, danger signs, delivery, and newborn care.",
-                source = "WHO, UNICEF, UNFPA",
+                summary = "WHO fact sheet on maternal health: 800 women die daily from preventable causes. Learn about antenatal care, danger signs, and breastfeeding.",
+                source = "WHO, UNICEF",
                 category = "Maternal Health"
             ),
             
             // NUTRITION
             Article(
-                title = "Nutrition and Healthy Eating for Strong Immunity",
+                title = "Healthy diet",
                 content = """
-OVERVIEW
+<div class="key-facts">
+    <h2>Key facts</h2>
+    <ul>
+        <li>A healthy diet helps protect against malnutrition and noncommunicable diseases.</li>
+        <li>Unhealthy diet and lack of physical activity are leading global health risks.</li>
+        <li>Healthy dietary practices start early in life with breastfeeding.</li>
+        <li>Energy intake should be in balance with energy expenditure.</li>
+    </ul>
+</div>
 
-Good nutrition is the foundation of health. According to the WHO, undernutrition contributes to 45% of deaths in children under 5. Eating well protects against disease and helps the body fight infections.
+<h2>Overview</h2>
+<p>A healthy diet is essential for good health and nutrition. It protects you against chronic diseases such as heart disease, diabetes and cancer.</p>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<hr/>
 
-THE BALANCED DIET
+<h2>Food groups</h2>
 
-Eat from all food groups daily:
+<h3>1. Energy foods (carbohydrates):</h3>
+<p>Maize, millet, rice, cassava, yams, potatoes, bread</p>
+<p><i>Provide energy for daily activities</i></p>
 
-1. ENERGY FOODS (Carbohydrates)
-   • Maize, millet, sorghum, rice
-   • Cassava, yams, potatoes
-   • Bread, pasta
-   • Provide energy for daily activities
+<h3>2. Body-building foods (proteins):</h3>
+<p>Beans, lentils, fish, chicken, eggs, meat, milk</p>
+<p><i>Build and repair muscles and tissues</i></p>
 
-2. BODY-BUILDING FOODS (Proteins)
-   • Beans, lentils, peas, groundnuts
-   • Fish, chicken, eggs, meat
-   • Milk, yogurt, cheese
-   • Build and repair muscles and tissues
+<h3>3. Protective foods (vitamins & minerals):</h3>
+<p>Dark green vegetables, orange vegetables, fruits</p>
+<p><i>Protect against disease</i></p>
 
-3. PROTECTIVE FOODS (Vitamins & Minerals)
-   • Dark green vegetables (spinach, kale)
-   • Orange vegetables (carrots, pumpkin)
-   • Fruits (mangoes, oranges, bananas, papaya)
-   • Protect against disease
+<h3>4. Healthy fats:</h3>
+<p>Groundnut oil, sunflower oil, avocado, nuts, seeds</p>
+<p><i>Essential for brain function</i></p>
 
-4. HEALTHY FATS
-   • Groundnut oil, palm oil, sunflower oil
-   • Avocado
-   • Seeds and nuts
-   • Essential for brain and body function
+<hr/>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<h2>Eating for strong immunity</h2>
 
-EATING FOR IMMUNITY
+<h3>Vitamin A (fights infections):</h3>
+<p>Orange/yellow fruits and vegetables, dark green leaves, eggs, liver</p>
 
-Foods that strengthen your immune system:
+<h3>Vitamin C (boosts immune system):</h3>
+<p>Citrus fruits, tomatoes, peppers, guava, mango</p>
 
-🍊 VITAMIN A (fights infections)
-• Orange and yellow fruits/vegetables
-• Dark green leaves
-• Eggs, liver, fish
+<h3>Iron (prevents anaemia):</h3>
+<p>Red meat, liver, beans, dark green vegetables</p>
+<p><i>Eat with vitamin C for better absorption</i></p>
 
-🍋 VITAMIN C (boosts immunity)
-• Citrus fruits (oranges, lemons)
-• Tomatoes, peppers
-• Guava, mango, papaya
+<h3>Zinc (supports immune function):</h3>
+<p>Meat, fish, beans, nuts, whole grains</p>
 
-🥩 IRON (prevents anemia)
-• Red meat, liver
-• Beans, lentils
-• Dark green vegetables
-• Eat with vitamin C for better absorption
+<hr/>
 
-🐟 ZINC (supports immune function)
-• Meat, fish, shellfish
-• Beans, nuts, seeds
-• Whole grains
+<h2>Infant and child nutrition</h2>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<h3>0-6 months:</h3>
+<ul>
+    <li>Exclusive breastfeeding only</li>
+    <li>No water, juices, or other foods</li>
+</ul>
 
-INFANT AND CHILD NUTRITION
+<h3>6-12 months:</h3>
+<ul>
+    <li>Continue breastfeeding</li>
+    <li>Start soft, mashed foods</li>
+    <li>Feed 2-3 times daily plus snacks</li>
+</ul>
 
-0-6 MONTHS:
-• Exclusive breastfeeding only
-• No water, juices, or other foods
-• Breast milk is complete nutrition
+<h3>1-2 years:</h3>
+<ul>
+    <li>Continue breastfeeding</li>
+    <li>Family foods, cut small</li>
+    <li>Feed 3-4 times daily plus snacks</li>
+</ul>
 
-6-12 MONTHS:
-• Continue breastfeeding
-• Start soft, mashed foods
-• Feed 2-3 times daily + snacks
-• Include animal foods, vegetables, fruits
+<hr/>
 
-1-2 YEARS:
-• Continue breastfeeding
-• Family foods, cut small
-• Feed 3-4 times daily + snacks
-• Variety is important
+<h2>Food safety</h2>
+<ul>
+    <li><b>Clean:</b> Wash hands and surfaces often</li>
+    <li><b>Separate:</b> Keep raw meat away from other foods</li>
+    <li><b>Cook:</b> Cook food thoroughly</li>
+    <li><b>Chill:</b> Refrigerate promptly</li>
+</ul>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<hr/>
 
-FOOD SAFETY
+<h2>Healthy eating recommendations</h2>
+<ul>
+    <li>Eat 3 meals daily – don't skip breakfast</li>
+    <li>Include a variety of foods from all food groups</li>
+    <li>Eat fruits and vegetables every day</li>
+    <li>Choose whole grains over refined grains</li>
+    <li>Limit sugar, salt, and processed foods</li>
+    <li>Drink 6-8 glasses of clean water daily</li>
+</ul>
 
-1. CLEAN
-   • Wash hands before cooking/eating
-   • Wash fruits and vegetables
-   • Keep cooking area clean
+<h3>Affordable nutrition tips:</h3>
+<ul>
+    <li>Beans and lentils are cheap protein sources</li>
+    <li>Buy seasonal fruits and vegetables</li>
+    <li>Grow a small vegetable garden if possible</li>
+</ul>
 
-2. SEPARATE
-   • Keep raw meat away from other foods
-   • Use separate cutting boards
-   • Store raw meat at bottom of container
+<hr/>
 
-3. COOK
-   • Cook food thoroughly
-   • Boil, fry, or roast until hot throughout
-   • Reheat leftovers properly
-
-4. CHILL
-   • Eat food soon after cooking
-   • Cover and refrigerate leftovers
-   • Don't eat spoiled food
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-HEALTHY LIFESTYLE RECOMMENDATIONS
-
-🥗 EATING HABITS
-• Eat 3 meals daily, don't skip breakfast
-• Include variety of foods
-• Eat fruits and vegetables daily
-• Choose whole grains over refined
-• Limit sugar, salt, and processed foods
-
-💧 HYDRATION
-• Drink 6-8 glasses of clean water daily
-• Limit sugary drinks and sodas
-• Avoid excessive alcohol
-
-💪 PHYSICAL ACTIVITY
-• Exercise helps maintain healthy weight
-• 30 minutes daily
-• Walking, farming, housework all count
-
-📊 WEIGHT MANAGEMENT
-• Maintain healthy weight
-• Too thin = weakened immunity
-• Overweight = risk of diabetes, heart disease
-• Eat appropriate portions
-
-🍽️ MEAL PLANNING
-• Plan meals in advance
-• Use local, seasonal foods
-• Grow vegetables if possible
-• Budget wisely for nutritious foods
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-AFFORDABLE NUTRITION TIPS
-
-• Beans and lentils are cheap protein sources
-• Buy seasonal fruits and vegetables
-• Grow a small vegetable garden
-• Dry or preserve foods when abundant
-• Combine grains with legumes for complete protein
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-OFFICIAL SOURCES
-
-📚 World Health Organization (WHO)
-   www.who.int/nutrition
-
-📚 FAO - Food and Agriculture Organization
-   www.fao.org/nutrition
-
-📚 UNICEF Nutrition
-   www.unicef.org/nutrition
-
-📚 World Food Programme
-   www.wfp.org
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Remember: Good nutrition is medicine. Eat a variety of foods, practice food safety, and feed children well for a healthy community.
+<div class="sources">
+    <h2>Sources</h2>
+    <div class="source-item">
+        <div class="source-name">World Health Organization (WHO)</div>
+        <a href="https://www.who.int/news-room/fact-sheets/detail/healthy-diet">www.who.int/news-room/fact-sheets/detail/healthy-diet</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">FAO</div>
+        <a href="https://www.fao.org/nutrition">www.fao.org/nutrition</a>
+    </div>
+</div>
                 """.trimIndent(),
-                summary = "WHO-based nutrition guide for strong immunity. Learn what to eat, food safety, and affordable healthy eating tips for all ages.",
-                source = "WHO, FAO, UNICEF, WFP",
+                summary = "WHO fact sheet on healthy diet: essential for preventing malnutrition and disease. Learn about food groups, infant nutrition, and eating tips.",
+                source = "WHO, FAO",
                 category = "Nutrition"
             ),
             
-            // CLEAN WATER AND HYGIENE
+            // WATER AND SANITATION
             Article(
-                title = "Clean Water and Hygiene: Preventing Disease",
+                title = "Drinking-water",
                 content = """
-OVERVIEW
+<div class="key-facts">
+    <h2>Key facts</h2>
+    <ul>
+        <li>Contaminated water can transmit diseases such as diarrhoea, cholera, dysentery, typhoid, and polio.</li>
+        <li>Some 2 billion people use a drinking water source contaminated with faeces.</li>
+        <li>Contaminated drinking water causes an estimated 485,000 diarrhoeal deaths each year.</li>
+        <li>Safe water, sanitation, and hygiene could prevent around 400,000 deaths annually.</li>
+    </ul>
+</div>
 
-According to the WHO, 2 billion people lack access to safe drinking water, and poor hygiene causes many preventable diseases. Simple practices like handwashing and water treatment can prevent diarrhea, cholera, typhoid, and other illnesses.
+<h2>Overview</h2>
+<p>Safe and readily available water is important for public health. Improved water supply and sanitation can boost economic growth and reduce poverty.</p>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<hr/>
 
-SAFE DRINKING WATER
+<h2>Water treatment methods</h2>
 
-WATER TREATMENT METHODS:
+<h3>1. Boiling (most effective):</h3>
+<ul>
+    <li>Bring water to a rolling boil</li>
+    <li>Boil for at least 1 minute</li>
+    <li>Let cool naturally</li>
+    <li>Store in clean, covered container</li>
+</ul>
 
-1. BOILING (Most Effective)
-   • Bring water to a rolling boil
-   • Boil for at least 1 minute
-   • Let it cool naturally
-   • Store in clean, covered container
+<h3>2. Chlorine treatment:</h3>
+<ul>
+    <li>Use water purification tablets as directed</li>
+    <li>Or add 2 drops of bleach per litre</li>
+    <li>Wait 30 minutes before drinking</li>
+</ul>
 
-2. CHLORINE TREATMENT
-   • Use water purification tablets
-   • Or add 2 drops of bleach per liter
-   • Wait 30 minutes before drinking
-   • Water should smell slightly of chlorine
+<h3>3. Filtration:</h3>
+<ul>
+    <li>Use ceramic, cloth, or commercial filters</li>
+    <li>Clean filters regularly</li>
+</ul>
 
-3. FILTRATION
-   • Use ceramic or cloth filters
-   • Clean filters regularly
-   • Replace as recommended
+<h3>4. Solar disinfection (SODIS):</h3>
+<ul>
+    <li>Fill clear plastic bottles with water</li>
+    <li>Place in direct sunlight for 6+ hours</li>
+</ul>
 
-4. SOLAR DISINFECTION (SODIS)
-   • Fill clear plastic bottles with water
-   • Place in direct sunlight for 6+ hours
-   • Works best in hot, sunny weather
+<hr/>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<h2>Safe water storage</h2>
+<ul>
+    <li>Use clean containers with covers</li>
+    <li>Clean containers regularly with soap</li>
+    <li>Don't put hands into stored water</li>
+    <li>Use a clean cup or ladle</li>
+    <li>Keep containers off the ground</li>
+</ul>
 
-WATER STORAGE
+<hr/>
 
-• Use clean containers with covers
-• Clean containers regularly with soap
-• Don't put hands into water storage
-• Use a clean cup or ladle
-• Keep containers off the ground
+<h2>Hand hygiene</h2>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<h3>When to wash hands:</h3>
+<ul>
+    <li>Before eating or preparing food</li>
+    <li>After using the toilet</li>
+    <li>After changing diapers</li>
+    <li>After touching animals</li>
+    <li>After coughing or sneezing</li>
+</ul>
 
-HANDWASHING
+<h3>How to wash hands properly:</h3>
+<ul>
+    <li>Wet hands with clean water</li>
+    <li>Apply soap</li>
+    <li>Rub hands together for 20 seconds</li>
+    <li>Clean between fingers and under nails</li>
+    <li>Rinse and dry with clean cloth</li>
+</ul>
 
-WHEN TO WASH HANDS:
-• Before eating or preparing food
-• After using the toilet
-• After changing diapers
-• After touching animals
-• After coughing or sneezing
-• When hands are visibly dirty
-• After handling garbage
+<p><b>No soap?</b> Use ash, sand, or lemon juice.</p>
 
-HOW TO WASH HANDS PROPERLY:
-1. Wet hands with clean water
-2. Apply soap (any soap works)
-3. Rub hands together for 20 seconds
-4. Clean between fingers and under nails
-5. Rinse with clean water
-6. Dry with clean cloth or air dry
+<hr/>
 
-NO SOAP? USE:
-• Ash
-• Sand
-• Lemon juice
+<h2>Sanitation</h2>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<h3>Safe toilet use:</h3>
+<ul>
+    <li>Use latrines or toilets – avoid open defecation</li>
+    <li>Build latrines at least 30 metres from water sources</li>
+    <li>Always wash hands after using the toilet</li>
+</ul>
 
-SANITATION
+<hr/>
 
-SAFE TOILET USE:
-• Use latrines or toilets
-• Build latrines away from water sources
-• Cover pit after use
-• Wash hands after every use
+<h2>Healthy lifestyle recommendations</h2>
+<ul>
+    <li>Always treat water before drinking if safety is uncertain</li>
+    <li>Wash hands multiple times daily</li>
+    <li>Keep fingernails short and clean</li>
+    <li>Bathe regularly</li>
+    <li>Keep cooking and living areas clean</li>
+    <li>Protect community water sources</li>
+</ul>
 
-DISPOSE OF WASTE SAFELY:
-• Don't defecate in the open
-• Children's feces are dangerous too
-• Clean up animal waste
-• Dispose of garbage properly
+<hr/>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-HOME HYGIENE
-
-KITCHEN:
-• Keep cooking area clean
-• Wash dishes with soap and clean water
-• Store food covered
-• Clean surfaces daily
-
-GENERAL:
-• Sweep and mop floors regularly
-• Open windows for ventilation
-• Dispose of garbage daily
-• Control pests (flies, rats)
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-HEALTHY LIFESTYLE RECOMMENDATIONS
-
-💧 WATER HABITS
-• Always treat water before drinking
-• Carry treated water when traveling
-• Teach children about safe water
-• Check water sources regularly
-
-🧼 HYGIENE ROUTINE
-• Wash hands multiple times daily
-• Bathe regularly
-• Keep fingernails short and clean
-• Wear clean clothes
-
-🏠 HOME ENVIRONMENT
-• Maintain clean living spaces
-• Fix leaking pipes and taps
-• Ensure good drainage
-• Keep toilet/latrine clean
-
-👥 COMMUNITY ACTION
-• Protect water sources
-• Report broken pipes
-• Participate in clean-up campaigns
-• Share knowledge with neighbors
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-TEACHING CHILDREN
-
-Make hygiene fun for children:
-• Sing songs while washing hands
-• Make it a game
-• Lead by example
-• Praise good hygiene habits
-• Explain why hygiene matters
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-OFFICIAL SOURCES
-
-📚 World Health Organization (WHO)
-   www.who.int/water_sanitation_health
-
-📚 UNICEF WASH
-   www.unicef.org/wash
-
-📚 WaterAid
-   www.wateraid.org
-
-📚 Centers for Disease Control - Safe Water
-   www.cdc.gov/healthywater
-
-📚 Global Handwashing Partnership
-   www.globalhandwashing.org
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Remember: Clean water and proper hygiene prevent most diarrheal diseases. These simple practices save lives - make them daily habits.
+<div class="sources">
+    <h2>Sources</h2>
+    <div class="source-item">
+        <div class="source-name">World Health Organization (WHO)</div>
+        <a href="https://www.who.int/news-room/fact-sheets/detail/drinking-water">www.who.int/news-room/fact-sheets/detail/drinking-water</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">UNICEF WASH</div>
+        <a href="https://www.unicef.org/wash">www.unicef.org/wash</a>
+    </div>
+</div>
                 """.trimIndent(),
-                summary = "Essential guide to clean water treatment and hygiene practices. Learn handwashing, water safety, and sanitation to prevent disease.",
-                source = "WHO, UNICEF, CDC, WaterAid",
+                summary = "WHO fact sheet on drinking water: 2 billion people lack safe water. Learn about water treatment, storage, hand hygiene, and sanitation.",
+                source = "WHO, UNICEF",
                 category = "Hygiene & Sanitation"
             ),
             
             // FIRST AID
             Article(
-                title = "First Aid Basics: Essential Emergency Skills",
+                title = "First aid",
                 content = """
-OVERVIEW
+<div class="key-facts">
+    <h2>Key facts</h2>
+    <ul>
+        <li>First aid is the immediate care given to a sick or injured person until professional help arrives.</li>
+        <li>Basic first aid skills can save lives in emergencies.</li>
+        <li>The goals: preserve life, prevent worsening, promote recovery.</li>
+        <li>Anyone can learn first aid.</li>
+    </ul>
+</div>
 
-Basic first aid knowledge can save lives. This guide covers essential emergency responses that anyone can learn and apply until medical help arrives.
+<h2>General principles</h2>
+<ul>
+    <li><b>Stay calm</b> – think clearly before acting</li>
+    <li><b>Ensure safety</b> – check for dangers</li>
+    <li><b>Call for help</b> – get emergency assistance</li>
+    <li><b>Provide care</b> – give appropriate first aid</li>
+</ul>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<hr/>
 
-GENERAL FIRST AID PRINCIPLES
+<h2>Bleeding</h2>
 
-1. STAY CALM - Think clearly
-2. ENSURE SAFETY - Check for dangers
-3. CALL FOR HELP - Get medical assistance
-4. PROVIDE CARE - Help the injured person
+<h3>For minor cuts:</h3>
+<ul>
+    <li>Wash your hands first</li>
+    <li>Clean wound with clean water</li>
+    <li>Apply pressure with clean cloth</li>
+    <li>Cover with clean bandage</li>
+</ul>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<h3 class="warning">For severe bleeding:</h3>
+<ul>
+    <li>Apply firm, direct pressure with clean cloth</li>
+    <li>Keep pressing – don't remove the cloth</li>
+    <li>If blood soaks through, add more cloth on top</li>
+    <li>Raise injured limb above heart level</li>
+    <li>Get emergency help immediately</li>
+</ul>
 
-BLEEDING
+<hr/>
 
-FOR MINOR CUTS:
-• Wash hands first
-• Clean wound with clean water
-• Apply pressure with clean cloth
-• Cover with clean bandage
+<h2>Burns</h2>
 
-FOR SEVERE BLEEDING:
-• Apply firm pressure with clean cloth
-• Keep pressing - don't remove cloth
-• If blood soaks through, add more cloth
-• Raise injured limb above heart level
-• Get medical help immediately
+<h3>For minor burns:</h3>
+<ul>
+    <li>Cool with clean, cool water for 10-20 minutes</li>
+    <li>Remove jewelry near the burn</li>
+    <li>Cover with clean bandage</li>
+</ul>
 
-⚠️ Don't remove objects stuck in wounds - stabilize them
+<h3 class="warning">For severe burns:</h3>
+<ul>
+    <li>Cool with water (not ice)</li>
+    <li>Do NOT break blisters</li>
+    <li>Do NOT apply creams, butter, or oil</li>
+    <li>Cover loosely with clean cloth</li>
+    <li>Seek immediate medical care</li>
+</ul>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<hr/>
 
-BURNS
+<h2>Choking</h2>
 
-FOR MINOR BURNS:
-• Cool with clean, cool running water for 10-20 minutes
-• Remove jewelry/tight items
-• Cover with clean, non-stick bandage
-• Take pain relief if needed
+<h3>If person can cough:</h3>
+<ul>
+    <li>Encourage them to keep coughing</li>
+</ul>
 
-FOR SEVERE BURNS:
-• Cool the burn (not with ice)
-• Don't break blisters
-• Don't apply creams, oil, or butter
-• Cover loosely with clean cloth
-• Seek immediate medical care
+<h3 class="warning">If person cannot breathe or cough:</h3>
+<ul>
+    <li>Stand behind them</li>
+    <li>Place fist above belly button</li>
+    <li>Give quick upward thrusts</li>
+    <li>Repeat until object comes out</li>
+</ul>
 
-⚠️ For chemical burns, remove contaminated clothing and flush with water
+<h3>For infants:</h3>
+<ul>
+    <li>Lay baby face-down on forearm</li>
+    <li>Give 5 back blows between shoulder blades</li>
+    <li>Turn over, give 5 chest thrusts</li>
+    <li>Repeat until object comes out</li>
+</ul>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<hr/>
 
-CHOKING
+<h2>Unconsciousness</h2>
+<p>If person is unconscious but breathing:</p>
+<ul>
+    <li>Check for response – tap and call their name</li>
+    <li>Call for help</li>
+    <li>Place in recovery position (on their side)</li>
+    <li>Monitor breathing until help arrives</li>
+</ul>
 
-IF PERSON CAN COUGH:
-• Encourage them to keep coughing
-• Stay with them
+<hr/>
 
-IF PERSON CANNOT BREATHE/COUGH:
-1. Stand behind them
-2. Place fist above belly button
-3. Grasp fist with other hand
-4. Give quick upward thrusts
-5. Repeat until object comes out
+<h2>Snake bites</h2>
 
-FOR INFANTS:
-1. Lay baby face-down on your forearm
-2. Support head
-3. Give 5 back blows between shoulder blades
-4. Turn over, give 5 chest thrusts
-5. Repeat until object comes out
+<h3>DO:</h3>
+<ul>
+    <li>Keep person calm and still</li>
+    <li>Remove jewelry near bite</li>
+    <li>Keep bitten area below heart level</li>
+    <li>Get to hospital immediately</li>
+</ul>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<h3 class="warning">DON'T:</h3>
+<ul>
+    <li>Cut the wound</li>
+    <li>Try to suck out venom</li>
+    <li>Apply ice or tourniquet</li>
+</ul>
 
-UNCONSCIOUSNESS
+<hr/>
 
-IF PERSON IS UNCONSCIOUS BUT BREATHING:
-1. Check for response (tap, call name)
-2. Call for help
-3. Place in recovery position (on side)
-4. Monitor breathing until help arrives
+<h2>First aid kit essentials</h2>
+<ul>
+    <li>Clean bandages and gauze</li>
+    <li>Adhesive tape and plasters</li>
+    <li>Scissors and tweezers</li>
+    <li>Antiseptic solution</li>
+    <li>Paracetamol</li>
+    <li>ORS packets</li>
+    <li>Thermometer</li>
+    <li>Emergency contact numbers</li>
+</ul>
 
-RECOVERY POSITION:
-• Kneel beside person
-• Place nearest arm at right angle
-• Bring far arm across chest
-• Bend far knee
-• Roll toward you onto their side
-• Tilt head back slightly
+<hr/>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-SEIZURES/CONVULSIONS
-
-DURING SEIZURE:
-• Stay calm
-• Clear area of dangerous objects
-• Protect head with soft material
-• Time the seizure
-• Don't put anything in mouth
-• Don't restrain the person
-
-AFTER SEIZURE:
-• Place in recovery position
-• Stay with them until fully alert
-• Seek medical help if:
-  - First seizure
-  - Seizure lasts >5 minutes
-  - Person doesn't wake up
-  - Person is pregnant
-  - Person is injured
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-SNAKE BITES
-
-DO:
-• Keep person calm and still
-• Remove jewelry near bite
-• Keep bitten area below heart level
-• Get to hospital immediately
-• Remember snake's appearance if safe
-
-DON'T:
-• Cut the wound
-• Suck out venom
-• Apply ice
-• Apply tourniquet
-• Give alcohol
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-FEVER
-
-FOR HIGH FEVER:
-• Remove excess clothing
-• Give fluids (water, ORS)
-• Sponge with lukewarm water
-• Give paracetamol (correct dose for age)
-• Seek medical help if fever doesn't improve
-
-⚠️ For children: Seek help immediately if fever with stiff neck, rash, or convulsions
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-HEALTHY LIFESTYLE FOR PREVENTION
-
-🏠 HOME SAFETY
-• Store medicines out of children's reach
-• Keep matches/chemicals safely
-• Cover wells and water containers
-• Clear paths to prevent falls
-
-🚗 TRAVEL SAFETY
-• Use seatbelts
-• Don't drink and drive
-• Supervise children near roads
-• Carry first aid kit when traveling
-
-💪 GENERAL HEALTH
-• Stay fit to respond in emergencies
-• Learn first aid skills
-• Keep emergency numbers accessible
-• Know location of nearest health facility
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-FIRST AID KIT ESSENTIALS
-
-Keep these items at home:
-• Clean bandages and gauze
-• Adhesive tape
-• Scissors
-• Antiseptic solution
-• Paracetamol
-• ORS packets
-• Thermometer
-• Clean gloves
-• Emergency contact numbers
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-OFFICIAL SOURCES
-
-📚 World Health Organization (WHO)
-   www.who.int/emergencies
-
-📚 Red Cross / Red Crescent
-   www.ifrc.org/first-aid
-
-📚 St John Ambulance
-   www.sja.org.uk/first-aid-advice
-
-📚 American Heart Association
-   www.heart.org/en/cpr
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Remember: First aid saves lives. Stay calm, get help, and provide basic care. Your quick action can make the difference between life and death.
+<div class="sources">
+    <h2>Sources</h2>
+    <div class="source-item">
+        <div class="source-name">Red Cross / Red Crescent</div>
+        <a href="https://www.ifrc.org/first-aid">www.ifrc.org/first-aid</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">World Health Organization (WHO)</div>
+        <a href="https://www.who.int/emergencies">www.who.int/emergencies</a>
+    </div>
+</div>
                 """.trimIndent(),
-                summary = "Essential first aid guide: bleeding, burns, choking, seizures, and more. Learn life-saving skills everyone should know.",
-                source = "WHO, Red Cross, St John Ambulance",
+                summary = "Essential first aid guide: bleeding, burns, choking, unconsciousness, and snake bites. Life-saving skills everyone should know.",
+                source = "Red Cross, WHO",
                 category = "Emergency Care"
             ),
             
             // MENTAL HEALTH
             Article(
-                title = "Mental Health and Emotional Wellbeing",
+                title = "Mental health",
                 content = """
-OVERVIEW
+<div class="key-facts">
+    <h2>Key facts</h2>
+    <ul>
+        <li>1 in every 8 people in the world lives with a mental disorder.</li>
+        <li>People with severe mental health conditions die 10-20 years earlier than the general population.</li>
+        <li>Mental health conditions are treatable, and recovery is possible.</li>
+        <li>Mental health is just as important as physical health.</li>
+    </ul>
+</div>
 
-Mental health is just as important as physical health. According to the WHO, 1 in 4 people will experience a mental health condition in their lifetime. Good mental health helps us cope with stress, work productively, and contribute to our communities.
+<h2>Overview</h2>
+<p>Mental health is a state of mental well-being that enables people to cope with the stresses of life, realize their abilities, learn well and work well, and contribute to their community.</p>
+<p>Mental health problems are NOT a sign of weakness. They are medical conditions like any other.</p>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<hr/>
 
-UNDERSTANDING MENTAL HEALTH
+<h2>Common conditions</h2>
 
-Mental health includes:
-• Emotional wellbeing
-• Ability to cope with stress
-• Healthy relationships
-• Productive work and activities
-• Making meaningful contributions
+<h3>Depression - Signs may include:</h3>
+<ul>
+    <li>Persistent sadness or low mood</li>
+    <li>Loss of interest in activities</li>
+    <li>Changes in sleep (too much or too little)</li>
+    <li>Fatigue and lack of energy</li>
+    <li>Difficulty concentrating</li>
+    <li>Feelings of worthlessness</li>
+    <li>Thoughts of death or suicide</li>
+</ul>
 
-Mental health problems are:
-• Common and treatable
-• Not a sign of weakness
-• Not caused by evil spirits
-• Medical conditions like any other
+<h3>Anxiety - Signs may include:</h3>
+<ul>
+    <li>Excessive worry</li>
+    <li>Restlessness</li>
+    <li>Racing heart</li>
+    <li>Difficulty sleeping</li>
+    <li>Avoiding situations</li>
+    <li>Physical symptoms (headaches, stomach problems)</li>
+</ul>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<hr/>
 
-COMMON MENTAL HEALTH CONDITIONS
+<h2>When to seek help</h2>
+<p>Seek professional help if you experience:</p>
+<ul>
+    <li>Persistent sadness or worry lasting more than 2 weeks</li>
+    <li>Difficulty performing daily activities</li>
+    <li>Thoughts of harming yourself or others</li>
+    <li>Using substances to cope</li>
+    <li>Withdrawal from friends and family</li>
+</ul>
 
-DEPRESSION
-Signs:
-• Persistent sadness
-• Loss of interest in activities
-• Sleep problems
-• Fatigue
-• Difficulty concentrating
-• Feeling worthless
-• Thoughts of death or suicide
+<p class="warning"><b>⚠️ CRISIS: If you or someone has thoughts of suicide, seek immediate help. This is a medical emergency.</b></p>
 
-ANXIETY
-Signs:
-• Excessive worry
-• Restlessness
-• Racing heart
-• Difficulty sleeping
-• Avoiding situations
-• Physical symptoms (headaches, stomach problems)
+<hr/>
 
-POST-TRAUMATIC STRESS
-After experiencing trauma:
-• Flashbacks or nightmares
-• Avoiding reminders of trauma
-• Feeling on edge
-• Emotional numbness
+<h2>Treatment</h2>
+<p>Mental health conditions are treatable:</p>
+<ul>
+    <li><b>Talking therapies:</b> Counselling, cognitive behavioural therapy</li>
+    <li><b>Medication:</b> Prescribed by doctors when needed</li>
+    <li><b>Support groups:</b> Connecting with others</li>
+    <li><b>Self-help:</b> Lifestyle changes and coping strategies</li>
+</ul>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<hr/>
 
-WHEN TO SEEK HELP
+<h2>Healthy lifestyle for mental wellness</h2>
 
-Seek professional help if you experience:
-• Persistent sadness or worry (more than 2 weeks)
-• Difficulty doing daily activities
-• Thoughts of harming yourself or others
-• Substance use to cope
-• Significant changes in sleep or appetite
-• Withdrawal from friends and family
+<h3>Physical activity:</h3>
+<ul>
+    <li>Exercise releases mood-boosting chemicals</li>
+    <li>Aim for 30 minutes daily</li>
+    <li>Walking, dancing, sports all help</li>
+</ul>
 
-⚠️ CRISIS: If you or someone has thoughts of suicide, seek immediate help. This is a medical emergency.
+<h3>Sleep:</h3>
+<ul>
+    <li>Aim for 7-8 hours per night</li>
+    <li>Keep a regular sleep schedule</li>
+    <li>Limit screens before bedtime</li>
+</ul>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<h3>Social connection:</h3>
+<ul>
+    <li>Spend time with people you trust</li>
+    <li>Share your feelings with others</li>
+    <li>Help others – it improves your own wellbeing</li>
+</ul>
 
-HEALTHY LIFESTYLE FOR MENTAL WELLNESS
+<h3>Stress management:</h3>
+<ul>
+    <li>Practice deep breathing</li>
+    <li>Spend time in nature</li>
+    <li>Engage in activities you enjoy</li>
+</ul>
 
-🏃 PHYSICAL ACTIVITY
-• Exercise releases mood-boosting chemicals
-• 30 minutes daily
-• Walking, dancing, sports, gardening
-• Start small, build gradually
+<hr/>
 
-😴 QUALITY SLEEP
-• 7-8 hours per night
-• Regular sleep schedule
-• Limit screen time before bed
-• Create calm sleep environment
+<h2>Supporting others</h2>
 
-🥗 NUTRITION
-• Balanced diet supports brain health
-• Regular meals
-• Limit alcohol and caffeine
-• Stay hydrated
+<h3>Helpful things to say:</h3>
+<ul>
+    <li>"I'm here for you"</li>
+    <li>"How can I help?"</li>
+    <li>"You're not alone"</li>
+    <li>"It's okay to not be okay"</li>
+</ul>
 
-👥 SOCIAL CONNECTION
-• Spend time with loved ones
-• Join community activities
-• Share feelings with trusted people
-• Help others
+<h3 class="warning">Things to avoid saying:</h3>
+<ul>
+    <li>"Just cheer up"</li>
+    <li>"Others have it worse"</li>
+    <li>"It's all in your head"</li>
+</ul>
 
-🧘 STRESS MANAGEMENT
-• Deep breathing exercises
-• Prayer or meditation
-• Time in nature
-• Enjoyable hobbies
+<hr/>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-COPING STRATEGIES
-
-WHEN FEELING STRESSED:
-• Take slow, deep breaths
-• Go for a walk
-• Talk to someone you trust
-• Focus on what you can control
-• Take one step at a time
-
-WHEN FEELING SAD:
-• Acknowledge your feelings
-• Be kind to yourself
-• Stay connected with others
-• Maintain daily routine
-• Seek professional help if needed
-
-WHEN FEELING ANXIOUS:
-• Practice deep breathing
-• Ground yourself (5 things you see, 4 you hear, 3 you feel)
-• Challenge negative thoughts
-• Take breaks from worrying
-• Focus on the present moment
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-SUPPORTING OTHERS
-
-HOW TO HELP:
-• Listen without judgment
-• Show you care
-• Encourage professional help
-• Stay in regular contact
-• Learn about their condition
-• Take care of yourself too
-
-WHAT TO SAY:
-• "I'm here for you"
-• "How can I help?"
-• "You're not alone"
-• "It's okay to not be okay"
-• "Would you like me to help you find support?"
-
-WHAT NOT TO SAY:
-• "Just cheer up"
-• "Others have it worse"
-• "It's all in your head"
-• "You don't look sick"
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-REDUCING STIGMA
-
-Mental health conditions:
-• Are real medical conditions
-• Can affect anyone
-• Are treatable
-• Are not shameful
-• Don't define a person
-
-How to reduce stigma:
-• Educate yourself and others
-• Use respectful language
-• Share stories of recovery
-• Support those affected
-• Challenge discrimination
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-TREATMENT OPTIONS
-
-Treatment is available and effective:
-• Talking therapy/counseling
-• Medication (when needed)
-• Support groups
-• Community support
-• Traditional healing (alongside medical care)
-
-Treatment can be accessed at:
-• Health centers and hospitals
-• Community mental health services
-• Schools and workplaces
-• Religious organizations
-• Telephone helplines
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-OFFICIAL SOURCES
-
-📚 World Health Organization (WHO)
-   www.who.int/mental_health
-
-📚 Mental Health Foundation
-   www.mentalhealth.org
-
-📚 Mind (Mental Health Charity)
-   www.mind.org.uk
-
-📚 UNHCR Mental Health
-   www.unhcr.org/mental-health
-
-📚 BasicNeeds
-   www.basicneeds.org
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Remember: Mental health matters. It's okay to struggle, and it's brave to seek help. With support, people recover and live fulfilling lives.
+<div class="sources">
+    <h2>Sources</h2>
+    <div class="source-item">
+        <div class="source-name">World Health Organization (WHO)</div>
+        <a href="https://www.who.int/news-room/fact-sheets/detail/mental-health">www.who.int/news-room/fact-sheets/detail/mental-health</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">Mental Health Foundation</div>
+        <a href="https://www.mentalhealth.org">www.mentalhealth.org</a>
+    </div>
+</div>
                 """.trimIndent(),
-                summary = "Comprehensive mental health guide: understanding emotions, coping strategies, when to seek help, and supporting others.",
-                source = "WHO, Mental Health Foundation, Mind",
+                summary = "WHO fact sheet on mental health: 1 in 8 people lives with a mental disorder. Learn about symptoms, treatment, and how to support others.",
+                source = "WHO",
                 category = "Mental Health"
             )
         )
