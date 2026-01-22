@@ -55,6 +55,207 @@ class ArticleFetcher {
 
 <hr/>
 
+<h2>👁️ Visual Symptom Guide</h2>
+<p><i>Learn to recognize these warning signs:</i></p>
+
+<!-- JAUNDICE VISUAL GUIDE -->
+<div style="background: linear-gradient(135deg, #FFF9C4 0%, #FFF59D 100%); border-radius: 12px; padding: 16px; margin: 16px 0; border-left: 5px solid #F9A825;">
+    <h3 style="margin-top: 0; color: #F57F17;">🟡 Jaundice (Yellowing)</h3>
+    <p style="margin-bottom: 8px;"><b>What to look for:</b></p>
+    <table style="width: 100%; border-collapse: collapse;">
+        <tr>
+            <td style="padding: 8px; vertical-align: top; width: 50%;">
+                <div style="text-align: center; padding: 12px; background: white; border-radius: 8px; margin-bottom: 8px;">
+                    <div style="font-size: 40px;">👁️</div>
+                    <div style="font-size: 12px; color: #666;">EYES</div>
+                </div>
+                <p style="font-size: 13px; margin: 0;"><b>Normal:</b> White part is clear white</p>
+                <p style="font-size: 13px; margin: 4px 0 0 0; color: #E65100;"><b>Jaundice:</b> White part turns yellow</p>
+            </td>
+            <td style="padding: 8px; vertical-align: top; width: 50%;">
+                <div style="text-align: center; padding: 12px; background: white; border-radius: 8px; margin-bottom: 8px;">
+                    <div style="font-size: 40px;">🖐️</div>
+                    <div style="font-size: 12px; color: #666;">PALMS</div>
+                </div>
+                <p style="font-size: 13px; margin: 0;"><b>Normal:</b> Pink or natural skin tone</p>
+                <p style="font-size: 13px; margin: 4px 0 0 0; color: #E65100;"><b>Jaundice:</b> Yellowish tint on palms</p>
+            </td>
+        </tr>
+    </table>
+    <p style="font-size: 12px; color: #666; margin: 8px 0 0 0; font-style: italic;">💡 Check eyes and palms in natural daylight for best visibility</p>
+</div>
+
+<!-- DEHYDRATION VISUAL GUIDE -->
+<div style="background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%); border-radius: 12px; padding: 16px; margin: 16px 0; border-left: 5px solid #1976D2;">
+    <h3 style="margin-top: 0; color: #0D47A1;">💧 Dehydration Signs</h3>
+    <p style="margin-bottom: 12px;"><b>Check these areas:</b></p>
+    
+    <div style="background: white; border-radius: 8px; padding: 12px; margin-bottom: 12px;">
+        <div style="display: flex; align-items: center; margin-bottom: 8px;">
+            <span style="font-size: 28px; margin-right: 12px;">👄</span>
+            <div>
+                <b>Mouth & Lips</b><br/>
+                <span style="font-size: 13px;">Dry, cracked lips • Sticky or dry mouth • Thick saliva</span>
+            </div>
+        </div>
+    </div>
+    
+    <div style="background: white; border-radius: 8px; padding: 12px; margin-bottom: 12px;">
+        <div style="display: flex; align-items: center; margin-bottom: 8px;">
+            <span style="font-size: 28px; margin-right: 12px;">👁️</span>
+            <div>
+                <b>Eyes</b><br/>
+                <span style="font-size: 13px;">Sunken appearance • No tears when crying (in children) • Dark circles</span>
+            </div>
+        </div>
+    </div>
+    
+    <div style="background: white; border-radius: 8px; padding: 12px; margin-bottom: 12px;">
+        <div style="display: flex; align-items: center; margin-bottom: 8px;">
+            <span style="font-size: 28px; margin-right: 12px;">🖐️</span>
+            <div>
+                <b>Skin Pinch Test</b><br/>
+                <span style="font-size: 13px;">Pinch skin on back of hand → If it stays "tented" for >2 seconds = dehydration</span>
+            </div>
+        </div>
+    </div>
+    
+    <div style="background: #FFECB3; border-radius: 8px; padding: 12px;">
+        <b>🚽 Urine Check:</b>
+        <table style="width: 100%; margin-top: 8px; font-size: 13px;">
+            <tr>
+                <td style="padding: 4px;">
+                    <span style="display: inline-block; width: 20px; height: 20px; background: #FFFDE7; border: 1px solid #ddd; border-radius: 4px; vertical-align: middle;"></span>
+                    Pale yellow = Good
+                </td>
+                <td style="padding: 4px;">
+                    <span style="display: inline-block; width: 20px; height: 20px; background: #FFD54F; border: 1px solid #ddd; border-radius: 4px; vertical-align: middle;"></span>
+                    Dark yellow = Drink more
+                </td>
+                <td style="padding: 4px;">
+                    <span style="display: inline-block; width: 20px; height: 20px; background: #FF8F00; border: 1px solid #ddd; border-radius: 4px; vertical-align: middle;"></span>
+                    Orange/Brown = Urgent!
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- BREATHING DIFFICULTY VISUAL GUIDE -->
+<div style="background: linear-gradient(135deg, #FFEBEE 0%, #FFCDD2 100%); border-radius: 12px; padding: 16px; margin: 16px 0; border-left: 5px solid #D32F2F;">
+    <h3 style="margin-top: 0; color: #B71C1C;">🫁 Breathing Difficulty Signs</h3>
+    <p style="margin-bottom: 12px;"><b>Watch for these warning signs:</b></p>
+    
+    <div style="background: white; border-radius: 8px; padding: 12px; margin-bottom: 8px;">
+        <table style="width: 100%; border-collapse: collapse;">
+            <tr>
+                <td style="padding: 8px; text-align: center; vertical-align: top; width: 33%;">
+                    <div style="font-size: 36px;">😮‍💨</div>
+                    <div style="font-size: 12px; font-weight: bold; margin: 4px 0;">Fast Breathing</div>
+                    <div style="font-size: 11px; color: #666;">Rapid, shallow breaths<br/>Can't catch breath</div>
+                </td>
+                <td style="padding: 8px; text-align: center; vertical-align: top; width: 33%;">
+                    <div style="font-size: 36px;">😰</div>
+                    <div style="font-size: 12px; font-weight: bold; margin: 4px 0;">Nostril Flaring</div>
+                    <div style="font-size: 11px; color: #666;">Nostrils open wide<br/>with each breath</div>
+                </td>
+                <td style="padding: 8px; text-align: center; vertical-align: top; width: 33%;">
+                    <div style="font-size: 36px;">😣</div>
+                    <div style="font-size: 12px; font-weight: bold; margin: 4px 0;">Chest Pulling</div>
+                    <div style="font-size: 11px; color: #666;">Skin sinks between<br/>ribs when breathing</div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    <div style="background: white; border-radius: 8px; padding: 12px;">
+        <b>📊 Normal Breathing Rates:</b>
+        <table style="width: 100%; margin-top: 8px; font-size: 13px; border-collapse: collapse;">
+            <tr style="background: #f5f5f5;">
+                <td style="padding: 6px; border: 1px solid #ddd;"><b>Age</b></td>
+                <td style="padding: 6px; border: 1px solid #ddd;"><b>Normal (breaths/min)</b></td>
+                <td style="padding: 6px; border: 1px solid #ddd;"><b>⚠️ Danger</b></td>
+            </tr>
+            <tr>
+                <td style="padding: 6px; border: 1px solid #ddd;">Baby (0-1 yr)</td>
+                <td style="padding: 6px; border: 1px solid #ddd;">30-60</td>
+                <td style="padding: 6px; border: 1px solid #ddd; color: #D32F2F;">&gt;60</td>
+            </tr>
+            <tr>
+                <td style="padding: 6px; border: 1px solid #ddd;">Child (1-5 yrs)</td>
+                <td style="padding: 6px; border: 1px solid #ddd;">20-40</td>
+                <td style="padding: 6px; border: 1px solid #ddd; color: #D32F2F;">&gt;40</td>
+            </tr>
+            <tr>
+                <td style="padding: 6px; border: 1px solid #ddd;">Adult</td>
+                <td style="padding: 6px; border: 1px solid #ddd;">12-20</td>
+                <td style="padding: 6px; border: 1px solid #ddd; color: #D32F2F;">&gt;30</td>
+            </tr>
+        </table>
+        <p style="font-size: 12px; color: #666; margin: 8px 0 0 0;">💡 Count breaths for 60 seconds while person is calm/resting</p>
+    </div>
+</div>
+
+<!-- SKIN CHANGES / PALLOR GUIDE -->
+<div style="background: linear-gradient(135deg, #F3E5F5 0%, #E1BEE7 100%); border-radius: 12px; padding: 16px; margin: 16px 0; border-left: 5px solid #7B1FA2;">
+    <h3 style="margin-top: 0; color: #4A148C;">🩺 Skin Changes & Pallor</h3>
+    <p style="margin-bottom: 12px;"><b>Signs of anemia (low blood) from malaria:</b></p>
+    
+    <div style="background: white; border-radius: 8px; padding: 12px;">
+        <table style="width: 100%; border-collapse: collapse;">
+            <tr>
+                <td style="padding: 8px; text-align: center; vertical-align: top; width: 33%;">
+                    <div style="font-size: 36px;">👅</div>
+                    <div style="font-size: 12px; font-weight: bold; margin: 4px 0;">Tongue & Gums</div>
+                    <div style="font-size: 11px; color: #666;">Pale pink or white<br/>instead of healthy red</div>
+                </td>
+                <td style="padding: 8px; text-align: center; vertical-align: top; width: 33%;">
+                    <div style="font-size: 36px;">💅</div>
+                    <div style="font-size: 12px; font-weight: bold; margin: 4px 0;">Nail Beds</div>
+                    <div style="font-size: 11px; color: #666;">Press nail → Color<br/>slow to return</div>
+                </td>
+                <td style="padding: 8px; text-align: center; vertical-align: top; width: 33%;">
+                    <div style="font-size: 36px;">👁️</div>
+                    <div style="font-size: 12px; font-weight: bold; margin: 4px 0;">Inner Eyelid</div>
+                    <div style="font-size: 11px; color: #666;">Pull down lower lid<br/>Should be pink/red</div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <p style="font-size: 12px; color: #666; margin: 8px 0 0 0; font-style: italic;">💡 Pallor check works for all skin tones - check areas listed above</p>
+</div>
+
+<!-- FEVER PATTERN GUIDE -->
+<div style="background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%); border-radius: 12px; padding: 16px; margin: 16px 0; border-left: 5px solid #E65100;">
+    <h3 style="margin-top: 0; color: #BF360C;">🌡️ Fever Pattern in Malaria</h3>
+    
+    <div style="background: white; border-radius: 8px; padding: 12px; margin-bottom: 12px;">
+        <p style="margin: 0 0 8px 0;"><b>Typical malaria fever cycle:</b></p>
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 8px 0;">
+            <div style="text-align: center; flex: 1;">
+                <div style="font-size: 24px;">🥶</div>
+                <div style="font-size: 11px;"><b>Cold Stage</b><br/>Shivering, chills<br/>(15-60 min)</div>
+            </div>
+            <div style="font-size: 20px;">→</div>
+            <div style="text-align: center; flex: 1;">
+                <div style="font-size: 24px;">🥵</div>
+                <div style="font-size: 11px;"><b>Hot Stage</b><br/>High fever, headache<br/>(2-6 hours)</div>
+            </div>
+            <div style="font-size: 20px;">→</div>
+            <div style="text-align: center; flex: 1;">
+                <div style="font-size: 24px;">😓</div>
+                <div style="font-size: 11px;"><b>Sweating Stage</b><br/>Fever breaks, sweats<br/>(2-4 hours)</div>
+            </div>
+        </div>
+    </div>
+    
+    <p style="font-size: 13px; background: #FFF8E1; padding: 8px; border-radius: 4px; margin: 0;">
+        <b>⚠️ Danger:</b> Temperature above <b>39.5°C (103°F)</b> = Seek immediate medical care
+    </p>
+</div>
+
+<hr/>
+
 <h2>Prevention</h2>
 <p>Malaria can be prevented by avoiding mosquito bites and by taking medicines.</p>
 
@@ -110,7 +311,7 @@ class ArticleFetcher {
     </div>
 </div>
                 """.trimIndent(),
-                summary = "WHO fact sheet on malaria: 282 million cases globally in 2024. Learn about symptoms, prevention with bed nets and vaccines, and treatment.",
+                summary = "WHO fact sheet on malaria: 282 million cases globally in 2024. Includes visual symptom guides for jaundice, dehydration, and breathing difficulty.",
                 source = "WHO, CDC",
                 category = "Infectious Diseases"
             ),
@@ -608,6 +809,393 @@ class ArticleFetcher {
                 summary = "WHO fact sheet on mental health: 1 in 8 people has a mental disorder. Learn about symptoms and support.",
                 source = "WHO",
                 category = "Mental Health"
+            ),
+            
+            // ANTIMALARIALS - English
+            Article(
+                title = "Antimalarial Medications",
+                content = """
+<div class="highlight-box">
+    <b>⚠️ IMPORTANT DISCLAIMER</b><br/>
+    This information is for <b>educational purposes only</b>. It does not replace professional medical advice. Always consult a healthcare provider before taking any medication. Do not self-diagnose or self-treat malaria.
+</div>
+
+<div class="key-facts">
+    <h2>Overview</h2>
+    <ul>
+        <li>Antimalarials are medications used to prevent and treat malaria.</li>
+        <li>The choice of medication depends on the type of malaria and local drug resistance patterns.</li>
+        <li>Always complete the full course of treatment.</li>
+    </ul>
+</div>
+
+<hr/>
+
+<h2>Artemether-Lumefantrine (Coartem®/AL)</h2>
+<p><b>Purpose:</b> First-line treatment for uncomplicated P. falciparum malaria. Most commonly used ACT in Africa.</p>
+
+<h3>Dosage (by weight):</h3>
+<ul>
+    <li><b>5-14 kg:</b> 1 tablet per dose</li>
+    <li><b>15-24 kg:</b> 2 tablets per dose</li>
+    <li><b>25-34 kg:</b> 3 tablets per dose</li>
+    <li><b>≥35 kg (Adult):</b> 4 tablets per dose</li>
+</ul>
+<p><b>Schedule:</b> 6 doses over 3 days (at 0, 8, 24, 36, 48, and 60 hours)</p>
+
+<h3>⚠️ Warnings:</h3>
+<ul>
+    <li>Take with food or milk (fatty food improves absorption)</li>
+    <li>Do not use in first trimester of pregnancy</li>
+    <li>May cause dizziness – avoid driving</li>
+    <li>Do not take with grapefruit juice</li>
+</ul>
+
+<hr/>
+
+<h2>Artesunate-Amodiaquine (ASAQ)</h2>
+<p><b>Purpose:</b> Alternative ACT for uncomplicated malaria treatment.</p>
+
+<h3>Dosage (once daily for 3 days):</h3>
+<ul>
+    <li><b>4.5-8 kg:</b> 25mg/67.5mg tablet</li>
+    <li><b>9-17 kg:</b> 50mg/135mg tablet</li>
+    <li><b>18-35 kg:</b> 100mg/270mg tablet</li>
+    <li><b>≥36 kg (Adult):</b> 100mg/270mg × 2 tablets</li>
+</ul>
+
+<h3>⚠️ Warnings:</h3>
+<ul>
+    <li>May cause temporary itching (more common in dark-skinned individuals)</li>
+    <li>Can cause nausea – take with food</li>
+    <li>Avoid in patients with liver problems</li>
+</ul>
+
+<hr/>
+
+<h2>Quinine</h2>
+<p><b>Purpose:</b> Treatment of severe malaria; used when ACTs are not available or contraindicated.</p>
+
+<h3>Dosage:</h3>
+<ul>
+    <li><b>Adults:</b> 600mg (2 tablets) every 8 hours for 7 days</li>
+    <li><b>Children:</b> 10mg/kg every 8 hours for 7 days</li>
+</ul>
+
+<h3>⚠️ Warnings:</h3>
+<ul>
+    <li>Can cause ringing in ears (tinnitus), dizziness, blurred vision</li>
+    <li>Can cause low blood sugar – eat regularly</li>
+    <li>Do not exceed recommended dose</li>
+    <li>Not recommended for prevention</li>
+</ul>
+
+<hr/>
+
+<h2>Sulfadoxine-Pyrimethamine (SP/Fansidar®)</h2>
+<p><b>Purpose:</b> Intermittent preventive treatment in pregnancy (IPTp) and infants (IPTi). NOT for treatment due to widespread resistance.</p>
+
+<h3>Dosage for IPTp:</h3>
+<ul>
+    <li><b>Pregnant women:</b> 3 tablets as single dose at each antenatal visit (starting 2nd trimester)</li>
+</ul>
+
+<h3>⚠️ Warnings:</h3>
+<ul>
+    <li>Do not use if allergic to sulfa drugs</li>
+    <li>Not for treatment of acute malaria</li>
+    <li>Avoid in first trimester and last 4 weeks of pregnancy</li>
+</ul>
+
+<hr/>
+
+<div class="sources">
+    <h2>Sources</h2>
+    <div class="source-item">
+        <div class="source-name">WHO Guidelines for Malaria Treatment</div>
+        <a href="https://www.who.int/publications/i/item/guidelines-for-malaria">www.who.int/publications/guidelines-for-malaria</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">WHO Essential Medicines List</div>
+        <a href="https://www.who.int/groups/expert-committee-on-selection-and-use-of-essential-medicines/essential-medicines-lists">WHO Essential Medicines</a>
+    </div>
+</div>
+                """.trimIndent(),
+                summary = "Reference guide for antimalarial medications: Coartem, ASAQ, Quinine, SP. Includes dosages for adults and children, and safety warnings.",
+                source = "WHO",
+                category = "Medications"
+            ),
+            
+            // ANTIBIOTICS - English
+            Article(
+                title = "Common Antibiotics",
+                content = """
+<div class="highlight-box">
+    <b>⚠️ IMPORTANT DISCLAIMER</b><br/>
+    This information is for <b>educational purposes only</b>. Antibiotics require a prescription. Improper use contributes to antibiotic resistance. Never share antibiotics or use leftover medications. Always complete the full course as prescribed.
+</div>
+
+<div class="key-facts">
+    <h2>Overview</h2>
+    <ul>
+        <li>Antibiotics treat bacterial infections only – they do NOT work against viruses.</li>
+        <li>Antibiotic resistance is a growing global threat.</li>
+        <li>Always complete the full course even if you feel better.</li>
+    </ul>
+</div>
+
+<hr/>
+
+<h2>Amoxicillin</h2>
+<p><b>Purpose:</b> Respiratory infections, ear infections, urinary tract infections, skin infections.</p>
+
+<h3>Dosage:</h3>
+<ul>
+    <li><b>Adults:</b> 250-500mg every 8 hours, or 500-875mg every 12 hours</li>
+    <li><b>Children:</b> 25-50mg/kg/day divided into 2-3 doses</li>
+</ul>
+<p><b>Duration:</b> Usually 5-10 days depending on infection</p>
+
+<h3>⚠️ Warnings:</h3>
+<ul>
+    <li>Do NOT take if allergic to penicillin</li>
+    <li>May cause diarrhea, nausea, rash</li>
+    <li>Can reduce effectiveness of birth control pills</li>
+    <li>Take with or without food</li>
+</ul>
+
+<hr/>
+
+<h2>Metronidazole (Flagyl®)</h2>
+<p><b>Purpose:</b> Amoebic dysentery, giardia, bacterial vaginosis, dental infections, some stomach infections.</p>
+
+<h3>Dosage:</h3>
+<ul>
+    <li><b>Adults:</b> 400-500mg every 8 hours</li>
+    <li><b>Children:</b> 7.5mg/kg every 8 hours</li>
+</ul>
+<p><b>Duration:</b> 5-10 days depending on infection</p>
+
+<h3>⚠️ Warnings:</h3>
+<ul>
+    <li class="warning"><b>Do NOT drink alcohol</b> – causes severe nausea and vomiting</li>
+    <li>Avoid alcohol for 48 hours after completing treatment</li>
+    <li>May cause metallic taste in mouth</li>
+    <li>Take with food to reduce stomach upset</li>
+    <li>May darken urine (harmless)</li>
+</ul>
+
+<hr/>
+
+<h2>Ciprofloxacin</h2>
+<p><b>Purpose:</b> Urinary tract infections, typhoid fever, severe diarrhea (bacterial), bone infections.</p>
+
+<h3>Dosage:</h3>
+<ul>
+    <li><b>Adults:</b> 250-750mg every 12 hours</li>
+    <li><b>Children:</b> Generally avoided in children; if necessary, 10-20mg/kg/day</li>
+</ul>
+<p><b>Duration:</b> 3-14 days depending on infection</p>
+
+<h3>⚠️ Warnings:</h3>
+<ul>
+    <li>Not recommended for children/adolescents (may affect bone growth)</li>
+    <li>Not for pregnant or breastfeeding women</li>
+    <li>Can cause tendon problems – stop if joint pain occurs</li>
+    <li>Avoid dairy products and antacids (take 2 hours apart)</li>
+    <li>May cause sun sensitivity – use sunscreen</li>
+</ul>
+
+<hr/>
+
+<h2>Cotrimoxazole (Septrin®/Bactrim®)</h2>
+<p><b>Purpose:</b> Respiratory infections, urinary tract infections, ear infections, prevention of opportunistic infections in HIV patients.</p>
+
+<h3>Dosage:</h3>
+<ul>
+    <li><b>Adults:</b> 960mg (double-strength tablet) every 12 hours</li>
+    <li><b>Children:</b> 24mg/kg/day divided into 2 doses</li>
+    <li><b>HIV prophylaxis (adult):</b> 960mg once daily</li>
+</ul>
+
+<h3>⚠️ Warnings:</h3>
+<ul>
+    <li>Do NOT take if allergic to sulfa drugs</li>
+    <li>Drink plenty of water</li>
+    <li>May cause skin rash – stop immediately if rash appears</li>
+    <li>Can cause sun sensitivity</li>
+    <li>Not for late pregnancy or newborns</li>
+</ul>
+
+<hr/>
+
+<h2>Doxycycline</h2>
+<p><b>Purpose:</b> Respiratory infections, malaria prevention, cholera, sexually transmitted infections.</p>
+
+<h3>Dosage:</h3>
+<ul>
+    <li><b>Adults:</b> 100mg every 12 hours or 200mg once daily</li>
+    <li><b>Children (>8 years):</b> 2-4mg/kg/day in 1-2 doses</li>
+</ul>
+
+<h3>⚠️ Warnings:</h3>
+<ul>
+    <li>NOT for children under 8 years (affects teeth development)</li>
+    <li>NOT for pregnant or breastfeeding women</li>
+    <li>Causes severe sun sensitivity – use strong sunscreen</li>
+    <li>Take with plenty of water; do not lie down for 30 minutes after</li>
+    <li>Avoid dairy products near dosing time</li>
+</ul>
+
+<hr/>
+
+<div class="sources">
+    <h2>Sources</h2>
+    <div class="source-item">
+        <div class="source-name">WHO Model Formulary</div>
+        <a href="https://www.who.int/publications/i/item/9789241547659">WHO Model Formulary</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">WHO AWaRe Antibiotic Classification</div>
+        <a href="https://www.who.int/publications/i/item/WHO-MHP-HPS-EML-2021.04">WHO AWaRe Classification</a>
+    </div>
+</div>
+                """.trimIndent(),
+                summary = "Reference guide for common antibiotics: Amoxicillin, Metronidazole, Ciprofloxacin, Cotrimoxazole, Doxycycline. Dosages and safety warnings.",
+                source = "WHO",
+                category = "Medications"
+            ),
+            
+            // ORS - English
+            Article(
+                title = "Oral Rehydration Salts (ORS)",
+                content = """
+<div class="highlight-box">
+    <b>⚠️ IMPORTANT DISCLAIMER</b><br/>
+    This information is for <b>educational purposes only</b>. Severe dehydration is a medical emergency requiring professional care. ORS treats dehydration, not the underlying cause of diarrhea.
+</div>
+
+<div class="key-facts">
+    <h2>Overview</h2>
+    <ul>
+        <li>ORS is the most effective treatment for dehydration from diarrhea.</li>
+        <li>ORS saves millions of lives every year, especially children.</li>
+        <li>ORS replaces fluids AND essential salts lost during diarrhea.</li>
+        <li>ORS does NOT stop diarrhea but prevents death from dehydration.</li>
+    </ul>
+</div>
+
+<hr/>
+
+<h2>What is ORS?</h2>
+<p>Oral Rehydration Salts is a precise mixture of:</p>
+<ul>
+    <li>Glucose (sugar)</li>
+    <li>Sodium chloride (salt)</li>
+    <li>Potassium chloride</li>
+    <li>Trisodium citrate or sodium bicarbonate</li>
+</ul>
+
+<hr/>
+
+<h2>When to Use ORS</h2>
+<ul>
+    <li>Diarrhea (3 or more loose stools per day)</li>
+    <li>Vomiting</li>
+    <li>Cholera</li>
+    <li>Any condition causing fluid loss</li>
+</ul>
+
+<hr/>
+
+<h2>How to Prepare ORS</h2>
+<h3>Using ORS Packets:</h3>
+<ol>
+    <li>Wash hands with soap and water</li>
+    <li>Pour entire packet into 1 litre of clean (boiled and cooled) water</li>
+    <li>Stir until completely dissolved</li>
+    <li>Use within 24 hours; discard if not used</li>
+</ol>
+
+<div class="highlight-box">
+    <b>🏠 Homemade ORS (Emergency only):</b><br/>
+    If packets unavailable, mix in 1 litre of clean water:<br/>
+    • <b>6 level teaspoons</b> of sugar<br/>
+    • <b>½ level teaspoon</b> of salt<br/><br/>
+    <i>Note: Commercial ORS packets are preferred as they contain the correct balance of salts.</i>
+</div>
+
+<hr/>
+
+<h2>Dosage Guidelines</h2>
+
+<h3>For Children:</h3>
+<ul>
+    <li><b>Under 2 years:</b> 50-100ml after each loose stool</li>
+    <li><b>2-10 years:</b> 100-200ml after each loose stool</li>
+    <li><b>Over 10 years:</b> As much as wanted</li>
+</ul>
+
+<h3>For Adults:</h3>
+<ul>
+    <li>200-400ml after each loose stool</li>
+    <li>Drink as much as tolerated</li>
+    <li>Typically 2-3 litres per day during acute diarrhea</li>
+</ul>
+
+<h3>For Severe Dehydration:</h3>
+<ul>
+    <li><b>Children:</b> 75ml/kg over 4 hours</li>
+    <li><b>Adults:</b> 750ml-1 litre per hour initially</li>
+</ul>
+
+<hr/>
+
+<h2>⚠️ Important Warnings</h2>
+<ul>
+    <li>Do NOT add extra sugar or salt – follow instructions exactly</li>
+    <li>Do NOT use fruit juice, soft drinks, or sports drinks as substitutes</li>
+    <li>Continue breastfeeding infants alongside ORS</li>
+    <li>Continue eating if able – do not fast</li>
+</ul>
+
+<h3 class="warning">Seek Emergency Care If:</h3>
+<ul>
+    <li>Unable to drink or keep fluids down</li>
+    <li>Very sunken eyes</li>
+    <li>Lethargy or unconsciousness</li>
+    <li>No urine for 6+ hours</li>
+    <li>Blood in stool</li>
+    <li>High fever with diarrhea</li>
+</ul>
+
+<hr/>
+
+<h2>Zinc Supplementation</h2>
+<p>WHO recommends zinc supplements with ORS for children under 5:</p>
+<ul>
+    <li><b>Under 6 months:</b> 10mg zinc daily for 10-14 days</li>
+    <li><b>6 months - 5 years:</b> 20mg zinc daily for 10-14 days</li>
+</ul>
+<p>Zinc reduces duration and severity of diarrhea and prevents future episodes.</p>
+
+<hr/>
+
+<div class="sources">
+    <h2>Sources</h2>
+    <div class="source-item">
+        <div class="source-name">WHO/UNICEF Joint Statement on ORS</div>
+        <a href="https://www.who.int/publications/i/item/WHO-FCH-CAH-06.1">WHO ORS Guidelines</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">WHO Treatment of Diarrhoea Manual</div>
+        <a href="https://www.who.int/publications/i/item/9241593180">WHO Diarrhoea Treatment</a>
+    </div>
+</div>
+                """.trimIndent(),
+                summary = "Complete guide to Oral Rehydration Salts (ORS): preparation, dosage for children and adults, zinc supplementation, and warning signs.",
+                source = "WHO, UNICEF",
+                category = "Medications"
             )
         )
     }
@@ -650,6 +1238,207 @@ class ArticleFetcher {
 </ul>
 
 <p class="warning"><b>⚠️ Les personnes présentant des symptômes graves doivent recevoir des soins d'urgence immédiatement.</b></p>
+
+<hr/>
+
+<h2>👁️ Guide visuel des symptômes</h2>
+<p><i>Apprenez à reconnaître ces signes d'alerte :</i></p>
+
+<!-- GUIDE VISUEL JAUNISSE -->
+<div style="background: linear-gradient(135deg, #FFF9C4 0%, #FFF59D 100%); border-radius: 12px; padding: 16px; margin: 16px 0; border-left: 5px solid #F9A825;">
+    <h3 style="margin-top: 0; color: #F57F17;">🟡 Jaunisse (Ictère)</h3>
+    <p style="margin-bottom: 8px;"><b>Ce qu'il faut observer :</b></p>
+    <table style="width: 100%; border-collapse: collapse;">
+        <tr>
+            <td style="padding: 8px; vertical-align: top; width: 50%;">
+                <div style="text-align: center; padding: 12px; background: white; border-radius: 8px; margin-bottom: 8px;">
+                    <div style="font-size: 40px;">👁️</div>
+                    <div style="font-size: 12px; color: #666;">YEUX</div>
+                </div>
+                <p style="font-size: 13px; margin: 0;"><b>Normal :</b> Le blanc est bien blanc</p>
+                <p style="font-size: 13px; margin: 4px 0 0 0; color: #E65100;"><b>Jaunisse :</b> Le blanc devient jaune</p>
+            </td>
+            <td style="padding: 8px; vertical-align: top; width: 50%;">
+                <div style="text-align: center; padding: 12px; background: white; border-radius: 8px; margin-bottom: 8px;">
+                    <div style="font-size: 40px;">🖐️</div>
+                    <div style="font-size: 12px; color: #666;">PAUMES</div>
+                </div>
+                <p style="font-size: 13px; margin: 0;"><b>Normal :</b> Rose ou teint naturel</p>
+                <p style="font-size: 13px; margin: 4px 0 0 0; color: #E65100;"><b>Jaunisse :</b> Teinte jaunâtre sur les paumes</p>
+            </td>
+        </tr>
+    </table>
+    <p style="font-size: 12px; color: #666; margin: 8px 0 0 0; font-style: italic;">💡 Vérifiez les yeux et les paumes à la lumière naturelle pour une meilleure visibilité</p>
+</div>
+
+<!-- GUIDE VISUEL DÉSHYDRATATION -->
+<div style="background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%); border-radius: 12px; padding: 16px; margin: 16px 0; border-left: 5px solid #1976D2;">
+    <h3 style="margin-top: 0; color: #0D47A1;">💧 Signes de déshydratation</h3>
+    <p style="margin-bottom: 12px;"><b>Vérifiez ces zones :</b></p>
+    
+    <div style="background: white; border-radius: 8px; padding: 12px; margin-bottom: 12px;">
+        <div style="display: flex; align-items: center; margin-bottom: 8px;">
+            <span style="font-size: 28px; margin-right: 12px;">👄</span>
+            <div>
+                <b>Bouche et lèvres</b><br/>
+                <span style="font-size: 13px;">Lèvres sèches et craquelées • Bouche sèche ou collante • Salive épaisse</span>
+            </div>
+        </div>
+    </div>
+    
+    <div style="background: white; border-radius: 8px; padding: 12px; margin-bottom: 12px;">
+        <div style="display: flex; align-items: center; margin-bottom: 8px;">
+            <span style="font-size: 28px; margin-right: 12px;">👁️</span>
+            <div>
+                <b>Yeux</b><br/>
+                <span style="font-size: 13px;">Apparence enfoncée • Pas de larmes en pleurant (chez les enfants) • Cernes</span>
+            </div>
+        </div>
+    </div>
+    
+    <div style="background: white; border-radius: 8px; padding: 12px; margin-bottom: 12px;">
+        <div style="display: flex; align-items: center; margin-bottom: 8px;">
+            <span style="font-size: 28px; margin-right: 12px;">🖐️</span>
+            <div>
+                <b>Test du pli cutané</b><br/>
+                <span style="font-size: 13px;">Pincez la peau du dos de la main → Si elle reste "pliée" >2 secondes = déshydratation</span>
+            </div>
+        </div>
+    </div>
+    
+    <div style="background: #FFECB3; border-radius: 8px; padding: 12px;">
+        <b>🚽 Vérification de l'urine :</b>
+        <table style="width: 100%; margin-top: 8px; font-size: 13px;">
+            <tr>
+                <td style="padding: 4px;">
+                    <span style="display: inline-block; width: 20px; height: 20px; background: #FFFDE7; border: 1px solid #ddd; border-radius: 4px; vertical-align: middle;"></span>
+                    Jaune pâle = Bien
+                </td>
+                <td style="padding: 4px;">
+                    <span style="display: inline-block; width: 20px; height: 20px; background: #FFD54F; border: 1px solid #ddd; border-radius: 4px; vertical-align: middle;"></span>
+                    Jaune foncé = Boire plus
+                </td>
+                <td style="padding: 4px;">
+                    <span style="display: inline-block; width: 20px; height: 20px; background: #FF8F00; border: 1px solid #ddd; border-radius: 4px; vertical-align: middle;"></span>
+                    Orange/Brun = Urgent !
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- GUIDE VISUEL DIFFICULTÉS RESPIRATOIRES -->
+<div style="background: linear-gradient(135deg, #FFEBEE 0%, #FFCDD2 100%); border-radius: 12px; padding: 16px; margin: 16px 0; border-left: 5px solid #D32F2F;">
+    <h3 style="margin-top: 0; color: #B71C1C;">🫁 Signes de difficultés respiratoires</h3>
+    <p style="margin-bottom: 12px;"><b>Surveillez ces signes d'alerte :</b></p>
+    
+    <div style="background: white; border-radius: 8px; padding: 12px; margin-bottom: 8px;">
+        <table style="width: 100%; border-collapse: collapse;">
+            <tr>
+                <td style="padding: 8px; text-align: center; vertical-align: top; width: 33%;">
+                    <div style="font-size: 36px;">😮‍💨</div>
+                    <div style="font-size: 12px; font-weight: bold; margin: 4px 0;">Respiration rapide</div>
+                    <div style="font-size: 11px; color: #666;">Respirations rapides<br/>et superficielles</div>
+                </td>
+                <td style="padding: 8px; text-align: center; vertical-align: top; width: 33%;">
+                    <div style="font-size: 36px;">😰</div>
+                    <div style="font-size: 12px; font-weight: bold; margin: 4px 0;">Battement des ailes du nez</div>
+                    <div style="font-size: 11px; color: #666;">Narines s'ouvrent<br/>à chaque respiration</div>
+                </td>
+                <td style="padding: 8px; text-align: center; vertical-align: top; width: 33%;">
+                    <div style="font-size: 36px;">😣</div>
+                    <div style="font-size: 12px; font-weight: bold; margin: 4px 0;">Tirage intercostal</div>
+                    <div style="font-size: 11px; color: #666;">La peau se creuse entre<br/>les côtes à la respiration</div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    <div style="background: white; border-radius: 8px; padding: 12px;">
+        <b>📊 Fréquences respiratoires normales :</b>
+        <table style="width: 100%; margin-top: 8px; font-size: 13px; border-collapse: collapse;">
+            <tr style="background: #f5f5f5;">
+                <td style="padding: 6px; border: 1px solid #ddd;"><b>Âge</b></td>
+                <td style="padding: 6px; border: 1px solid #ddd;"><b>Normal (resp/min)</b></td>
+                <td style="padding: 6px; border: 1px solid #ddd;"><b>⚠️ Danger</b></td>
+            </tr>
+            <tr>
+                <td style="padding: 6px; border: 1px solid #ddd;">Bébé (0-1 an)</td>
+                <td style="padding: 6px; border: 1px solid #ddd;">30-60</td>
+                <td style="padding: 6px; border: 1px solid #ddd; color: #D32F2F;">&gt;60</td>
+            </tr>
+            <tr>
+                <td style="padding: 6px; border: 1px solid #ddd;">Enfant (1-5 ans)</td>
+                <td style="padding: 6px; border: 1px solid #ddd;">20-40</td>
+                <td style="padding: 6px; border: 1px solid #ddd; color: #D32F2F;">&gt;40</td>
+            </tr>
+            <tr>
+                <td style="padding: 6px; border: 1px solid #ddd;">Adulte</td>
+                <td style="padding: 6px; border: 1px solid #ddd;">12-20</td>
+                <td style="padding: 6px; border: 1px solid #ddd; color: #D32F2F;">&gt;30</td>
+            </tr>
+        </table>
+        <p style="font-size: 12px; color: #666; margin: 8px 0 0 0;">💡 Comptez les respirations pendant 60 secondes au repos</p>
+    </div>
+</div>
+
+<!-- GUIDE CHANGEMENTS CUTANÉS / PÂLEUR -->
+<div style="background: linear-gradient(135deg, #F3E5F5 0%, #E1BEE7 100%); border-radius: 12px; padding: 16px; margin: 16px 0; border-left: 5px solid #7B1FA2;">
+    <h3 style="margin-top: 0; color: #4A148C;">🩺 Changements cutanés et pâleur</h3>
+    <p style="margin-bottom: 12px;"><b>Signes d'anémie (manque de sang) due au paludisme :</b></p>
+    
+    <div style="background: white; border-radius: 8px; padding: 12px;">
+        <table style="width: 100%; border-collapse: collapse;">
+            <tr>
+                <td style="padding: 8px; text-align: center; vertical-align: top; width: 33%;">
+                    <div style="font-size: 36px;">👅</div>
+                    <div style="font-size: 12px; font-weight: bold; margin: 4px 0;">Langue et gencives</div>
+                    <div style="font-size: 11px; color: #666;">Rose pâle ou blanc<br/>au lieu de rouge sain</div>
+                </td>
+                <td style="padding: 8px; text-align: center; vertical-align: top; width: 33%;">
+                    <div style="font-size: 36px;">💅</div>
+                    <div style="font-size: 12px; font-weight: bold; margin: 4px 0;">Lit des ongles</div>
+                    <div style="font-size: 11px; color: #666;">Appuyez sur l'ongle →<br/>Couleur lente à revenir</div>
+                </td>
+                <td style="padding: 8px; text-align: center; vertical-align: top; width: 33%;">
+                    <div style="font-size: 36px;">👁️</div>
+                    <div style="font-size: 12px; font-weight: bold; margin: 4px 0;">Intérieur de la paupière</div>
+                    <div style="font-size: 11px; color: #666;">Tirez la paupière inférieure<br/>Devrait être rose/rouge</div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <p style="font-size: 12px; color: #666; margin: 8px 0 0 0; font-style: italic;">💡 La vérification de la pâleur fonctionne pour toutes les couleurs de peau</p>
+</div>
+
+<!-- GUIDE PATTERN DE FIÈVRE -->
+<div style="background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%); border-radius: 12px; padding: 16px; margin: 16px 0; border-left: 5px solid #E65100;">
+    <h3 style="margin-top: 0; color: #BF360C;">🌡️ Cycle de fièvre du paludisme</h3>
+    
+    <div style="background: white; border-radius: 8px; padding: 12px; margin-bottom: 12px;">
+        <p style="margin: 0 0 8px 0;"><b>Cycle typique de la fièvre paludéenne :</b></p>
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 8px 0;">
+            <div style="text-align: center; flex: 1;">
+                <div style="font-size: 24px;">🥶</div>
+                <div style="font-size: 11px;"><b>Stade froid</b><br/>Frissons, tremblements<br/>(15-60 min)</div>
+            </div>
+            <div style="font-size: 20px;">→</div>
+            <div style="text-align: center; flex: 1;">
+                <div style="font-size: 24px;">🥵</div>
+                <div style="font-size: 11px;"><b>Stade chaud</b><br/>Forte fièvre, maux de tête<br/>(2-6 heures)</div>
+            </div>
+            <div style="font-size: 20px;">→</div>
+            <div style="text-align: center; flex: 1;">
+                <div style="font-size: 24px;">😓</div>
+                <div style="font-size: 11px;"><b>Stade de sueur</b><br/>Fièvre tombe, sueurs<br/>(2-4 heures)</div>
+            </div>
+        </div>
+    </div>
+    
+    <p style="font-size: 13px; background: #FFF8E1; padding: 8px; border-radius: 4px; margin: 0;">
+        <b>⚠️ Danger :</b> Température supérieure à <b>39,5°C (103°F)</b> = Consultez immédiatement
+    </p>
+</div>
 
 <hr/>
 
@@ -704,7 +1493,7 @@ class ArticleFetcher {
     </div>
 </div>
                 """.trimIndent(),
-                summary = "Fiche d'information de l'OMS sur le paludisme : 282 millions de cas en 2024. Symptômes, prévention et traitement.",
+                summary = "Fiche OMS sur le paludisme : 282 millions de cas en 2024. Inclut des guides visuels pour la jaunisse, la déshydratation et les difficultés respiratoires.",
                 source = "OMS, CDC",
                 category = "Maladies Infectieuses"
             ),
@@ -1202,6 +1991,381 @@ class ArticleFetcher {
                 summary = "Fiche OMS sur la santé mentale : 1 personne sur 8 a un trouble mental. Symptômes et soutien.",
                 source = "OMS",
                 category = "Santé Mentale"
+            ),
+            
+            // ANTIPALUDÉENS - French
+            Article(
+                title = "Médicaments antipaludiques",
+                content = """
+<div class="highlight-box">
+    <b>⚠️ AVERTISSEMENT IMPORTANT</b><br/>
+    Ces informations sont <b>à titre éducatif uniquement</b>. Elles ne remplacent pas les conseils médicaux professionnels. Consultez toujours un professionnel de santé avant de prendre tout médicament. Ne vous auto-diagnostiquez pas et ne traitez pas le paludisme vous-même.
+</div>
+
+<div class="key-facts">
+    <h2>Aperçu</h2>
+    <ul>
+        <li>Les antipaludiques sont des médicaments utilisés pour prévenir et traiter le paludisme.</li>
+        <li>Le choix du médicament dépend du type de paludisme et des résistances locales.</li>
+        <li>Terminez toujours le traitement complet.</li>
+    </ul>
+</div>
+
+<hr/>
+
+<h2>Artéméther-Luméfantrine (Coartem®/AL)</h2>
+<p><b>Usage :</b> Traitement de première intention du paludisme à P. falciparum non compliqué. CTA le plus utilisé en Afrique.</p>
+
+<h3>Posologie (selon le poids) :</h3>
+<ul>
+    <li><b>5-14 kg :</b> 1 comprimé par prise</li>
+    <li><b>15-24 kg :</b> 2 comprimés par prise</li>
+    <li><b>25-34 kg :</b> 3 comprimés par prise</li>
+    <li><b>≥35 kg (Adulte) :</b> 4 comprimés par prise</li>
+</ul>
+<p><b>Schéma :</b> 6 prises sur 3 jours (à 0, 8, 24, 36, 48 et 60 heures)</p>
+
+<h3>⚠️ Mises en garde :</h3>
+<ul>
+    <li>Prendre avec de la nourriture ou du lait (les graisses améliorent l'absorption)</li>
+    <li>Ne pas utiliser au premier trimestre de grossesse</li>
+    <li>Peut causer des vertiges – éviter de conduire</li>
+    <li>Ne pas prendre avec du jus de pamplemousse</li>
+</ul>
+
+<hr/>
+
+<h2>Artésunate-Amodiaquine (ASAQ)</h2>
+<p><b>Usage :</b> CTA alternative pour le traitement du paludisme non compliqué.</p>
+
+<h3>Posologie (une fois par jour pendant 3 jours) :</h3>
+<ul>
+    <li><b>4,5-8 kg :</b> comprimé 25mg/67,5mg</li>
+    <li><b>9-17 kg :</b> comprimé 50mg/135mg</li>
+    <li><b>18-35 kg :</b> comprimé 100mg/270mg</li>
+    <li><b>≥36 kg (Adulte) :</b> 100mg/270mg × 2 comprimés</li>
+</ul>
+
+<h3>⚠️ Mises en garde :</h3>
+<ul>
+    <li>Peut causer des démangeaisons temporaires (plus fréquent chez les personnes à peau foncée)</li>
+    <li>Peut causer des nausées – prendre avec de la nourriture</li>
+    <li>Éviter chez les patients ayant des problèmes hépatiques</li>
+</ul>
+
+<hr/>
+
+<h2>Quinine</h2>
+<p><b>Usage :</b> Traitement du paludisme grave ; utilisée quand les CTA ne sont pas disponibles ou contre-indiquées.</p>
+
+<h3>Posologie :</h3>
+<ul>
+    <li><b>Adultes :</b> 600mg (2 comprimés) toutes les 8 heures pendant 7 jours</li>
+    <li><b>Enfants :</b> 10mg/kg toutes les 8 heures pendant 7 jours</li>
+</ul>
+
+<h3>⚠️ Mises en garde :</h3>
+<ul>
+    <li>Peut causer des bourdonnements d'oreilles (acouphènes), vertiges, vision floue</li>
+    <li>Peut causer une hypoglycémie – manger régulièrement</li>
+    <li>Ne pas dépasser la dose recommandée</li>
+    <li>Non recommandée pour la prévention</li>
+</ul>
+
+<hr/>
+
+<h2>Sulfadoxine-Pyriméthamine (SP/Fansidar®)</h2>
+<p><b>Usage :</b> Traitement préventif intermittent pendant la grossesse (TPIg) et chez les nourrissons (TPIn). PAS pour le traitement en raison de la résistance répandue.</p>
+
+<h3>Posologie pour le TPIg :</h3>
+<ul>
+    <li><b>Femmes enceintes :</b> 3 comprimés en dose unique à chaque visite prénatale (à partir du 2e trimestre)</li>
+</ul>
+
+<h3>⚠️ Mises en garde :</h3>
+<ul>
+    <li>Ne pas utiliser en cas d'allergie aux sulfamides</li>
+    <li>Pas pour le traitement du paludisme aigu</li>
+    <li>Éviter au premier trimestre et dans les 4 dernières semaines de grossesse</li>
+</ul>
+
+<hr/>
+
+<div class="sources">
+    <h2>Sources</h2>
+    <div class="source-item">
+        <div class="source-name">Directives OMS pour le traitement du paludisme</div>
+        <a href="https://www.who.int/publications/i/item/guidelines-for-malaria">www.who.int/publications/guidelines-for-malaria</a>
+    </div>
+</div>
+                """.trimIndent(),
+                summary = "Guide de référence des antipaludiques : Coartem, ASAQ, Quinine, SP. Posologies pour adultes et enfants, mises en garde.",
+                source = "OMS",
+                category = "Médicaments"
+            ),
+            
+            // ANTIBIOTIQUES - French
+            Article(
+                title = "Antibiotiques courants",
+                content = """
+<div class="highlight-box">
+    <b>⚠️ AVERTISSEMENT IMPORTANT</b><br/>
+    Ces informations sont <b>à titre éducatif uniquement</b>. Les antibiotiques nécessitent une ordonnance. Une mauvaise utilisation contribue à la résistance aux antibiotiques. Ne partagez jamais les antibiotiques et n'utilisez pas de médicaments restants. Terminez toujours le traitement complet prescrit.
+</div>
+
+<div class="key-facts">
+    <h2>Aperçu</h2>
+    <ul>
+        <li>Les antibiotiques traitent uniquement les infections bactériennes – ils NE fonctionnent PAS contre les virus.</li>
+        <li>La résistance aux antibiotiques est une menace mondiale croissante.</li>
+        <li>Terminez toujours le traitement complet même si vous vous sentez mieux.</li>
+    </ul>
+</div>
+
+<hr/>
+
+<h2>Amoxicilline</h2>
+<p><b>Usage :</b> Infections respiratoires, otites, infections urinaires, infections cutanées.</p>
+
+<h3>Posologie :</h3>
+<ul>
+    <li><b>Adultes :</b> 250-500mg toutes les 8 heures, ou 500-875mg toutes les 12 heures</li>
+    <li><b>Enfants :</b> 25-50mg/kg/jour divisés en 2-3 prises</li>
+</ul>
+<p><b>Durée :</b> Généralement 5-10 jours selon l'infection</p>
+
+<h3>⚠️ Mises en garde :</h3>
+<ul>
+    <li>NE PAS prendre en cas d'allergie à la pénicilline</li>
+    <li>Peut causer diarrhée, nausées, éruption cutanée</li>
+    <li>Peut réduire l'efficacité des pilules contraceptives</li>
+    <li>Prendre avec ou sans nourriture</li>
+</ul>
+
+<hr/>
+
+<h2>Métronidazole (Flagyl®)</h2>
+<p><b>Usage :</b> Dysenterie amibienne, giardiase, vaginose bactérienne, infections dentaires, certaines infections gastriques.</p>
+
+<h3>Posologie :</h3>
+<ul>
+    <li><b>Adultes :</b> 400-500mg toutes les 8 heures</li>
+    <li><b>Enfants :</b> 7,5mg/kg toutes les 8 heures</li>
+</ul>
+<p><b>Durée :</b> 5-10 jours selon l'infection</p>
+
+<h3>⚠️ Mises en garde :</h3>
+<ul>
+    <li class="warning"><b>NE PAS boire d'alcool</b> – provoque nausées et vomissements sévères</li>
+    <li>Éviter l'alcool pendant 48 heures après la fin du traitement</li>
+    <li>Peut causer un goût métallique dans la bouche</li>
+    <li>Prendre avec de la nourriture pour réduire les maux d'estomac</li>
+    <li>Peut foncer les urines (sans danger)</li>
+</ul>
+
+<hr/>
+
+<h2>Ciprofloxacine</h2>
+<p><b>Usage :</b> Infections urinaires, fièvre typhoïde, diarrhée sévère (bactérienne), infections osseuses.</p>
+
+<h3>Posologie :</h3>
+<ul>
+    <li><b>Adultes :</b> 250-750mg toutes les 12 heures</li>
+    <li><b>Enfants :</b> Généralement évité chez les enfants ; si nécessaire, 10-20mg/kg/jour</li>
+</ul>
+<p><b>Durée :</b> 3-14 jours selon l'infection</p>
+
+<h3>⚠️ Mises en garde :</h3>
+<ul>
+    <li>Non recommandé pour les enfants/adolescents (peut affecter la croissance osseuse)</li>
+    <li>Non recommandé pour les femmes enceintes ou allaitantes</li>
+    <li>Peut causer des problèmes tendineux – arrêter en cas de douleur articulaire</li>
+    <li>Éviter les produits laitiers et antiacides (prendre à 2 heures d'intervalle)</li>
+    <li>Peut causer une sensibilité au soleil – utiliser un écran solaire</li>
+</ul>
+
+<hr/>
+
+<h2>Cotrimoxazole (Bactrim®)</h2>
+<p><b>Usage :</b> Infections respiratoires, infections urinaires, otites, prévention des infections opportunistes chez les patients VIH.</p>
+
+<h3>Posologie :</h3>
+<ul>
+    <li><b>Adultes :</b> 960mg (comprimé forte dose) toutes les 12 heures</li>
+    <li><b>Enfants :</b> 24mg/kg/jour divisés en 2 prises</li>
+    <li><b>Prophylaxie VIH (adulte) :</b> 960mg une fois par jour</li>
+</ul>
+
+<h3>⚠️ Mises en garde :</h3>
+<ul>
+    <li>NE PAS prendre en cas d'allergie aux sulfamides</li>
+    <li>Boire beaucoup d'eau</li>
+    <li>Peut causer une éruption cutanée – arrêter immédiatement si éruption</li>
+    <li>Peut causer une sensibilité au soleil</li>
+    <li>Non recommandé en fin de grossesse ou chez les nouveau-nés</li>
+</ul>
+
+<hr/>
+
+<h2>Doxycycline</h2>
+<p><b>Usage :</b> Infections respiratoires, prévention du paludisme, choléra, infections sexuellement transmissibles.</p>
+
+<h3>Posologie :</h3>
+<ul>
+    <li><b>Adultes :</b> 100mg toutes les 12 heures ou 200mg une fois par jour</li>
+    <li><b>Enfants (>8 ans) :</b> 2-4mg/kg/jour en 1-2 prises</li>
+</ul>
+
+<h3>⚠️ Mises en garde :</h3>
+<ul>
+    <li>NON pour les enfants de moins de 8 ans (affecte le développement des dents)</li>
+    <li>NON pour les femmes enceintes ou allaitantes</li>
+    <li>Provoque une forte sensibilité au soleil – utiliser un écran solaire puissant</li>
+    <li>Prendre avec beaucoup d'eau ; ne pas s'allonger pendant 30 minutes après</li>
+    <li>Éviter les produits laitiers au moment de la prise</li>
+</ul>
+
+<hr/>
+
+<div class="sources">
+    <h2>Sources</h2>
+    <div class="source-item">
+        <div class="source-name">Formulaire modèle de l'OMS</div>
+        <a href="https://www.who.int/publications/i/item/9789241547659">Formulaire modèle OMS</a>
+    </div>
+</div>
+                """.trimIndent(),
+                summary = "Guide de référence des antibiotiques courants : Amoxicilline, Métronidazole, Ciprofloxacine, Cotrimoxazole, Doxycycline. Posologies et mises en garde.",
+                source = "OMS",
+                category = "Médicaments"
+            ),
+            
+            // SRO - French
+            Article(
+                title = "Sels de réhydratation orale (SRO)",
+                content = """
+<div class="highlight-box">
+    <b>⚠️ AVERTISSEMENT IMPORTANT</b><br/>
+    Ces informations sont <b>à titre éducatif uniquement</b>. La déshydratation sévère est une urgence médicale nécessitant des soins professionnels. La SRO traite la déshydratation, pas la cause sous-jacente de la diarrhée.
+</div>
+
+<div class="key-facts">
+    <h2>Aperçu</h2>
+    <ul>
+        <li>La SRO est le traitement le plus efficace contre la déshydratation due à la diarrhée.</li>
+        <li>La SRO sauve des millions de vies chaque année, surtout des enfants.</li>
+        <li>La SRO remplace les liquides ET les sels essentiels perdus pendant la diarrhée.</li>
+        <li>La SRO N'arrête PAS la diarrhée mais prévient la mort par déshydratation.</li>
+    </ul>
+</div>
+
+<hr/>
+
+<h2>Qu'est-ce que la SRO ?</h2>
+<p>Les Sels de réhydratation orale sont un mélange précis de :</p>
+<ul>
+    <li>Glucose (sucre)</li>
+    <li>Chlorure de sodium (sel)</li>
+    <li>Chlorure de potassium</li>
+    <li>Citrate trisodique ou bicarbonate de sodium</li>
+</ul>
+
+<hr/>
+
+<h2>Quand utiliser la SRO</h2>
+<ul>
+    <li>Diarrhée (3 selles molles ou plus par jour)</li>
+    <li>Vomissements</li>
+    <li>Choléra</li>
+    <li>Toute condition causant une perte de liquides</li>
+</ul>
+
+<hr/>
+
+<h2>Comment préparer la SRO</h2>
+<h3>Avec les sachets de SRO :</h3>
+<ol>
+    <li>Se laver les mains avec du savon et de l'eau</li>
+    <li>Verser tout le sachet dans 1 litre d'eau propre (bouillie et refroidie)</li>
+    <li>Remuer jusqu'à dissolution complète</li>
+    <li>Utiliser dans les 24 heures ; jeter si non utilisée</li>
+</ol>
+
+<div class="highlight-box">
+    <b>🏠 SRO maison (Urgence uniquement) :</b><br/>
+    Si les sachets ne sont pas disponibles, mélanger dans 1 litre d'eau propre :<br/>
+    • <b>6 cuillères à café rases</b> de sucre<br/>
+    • <b>½ cuillère à café rase</b> de sel<br/><br/>
+    <i>Note : Les sachets de SRO commerciaux sont préférables car ils contiennent le bon équilibre de sels.</i>
+</div>
+
+<hr/>
+
+<h2>Guide de posologie</h2>
+
+<h3>Pour les enfants :</h3>
+<ul>
+    <li><b>Moins de 2 ans :</b> 50-100ml après chaque selle liquide</li>
+    <li><b>2-10 ans :</b> 100-200ml après chaque selle liquide</li>
+    <li><b>Plus de 10 ans :</b> Autant que désiré</li>
+</ul>
+
+<h3>Pour les adultes :</h3>
+<ul>
+    <li>200-400ml après chaque selle liquide</li>
+    <li>Boire autant que toléré</li>
+    <li>Généralement 2-3 litres par jour pendant la diarrhée aiguë</li>
+</ul>
+
+<h3>Pour la déshydratation sévère :</h3>
+<ul>
+    <li><b>Enfants :</b> 75ml/kg sur 4 heures</li>
+    <li><b>Adultes :</b> 750ml-1 litre par heure initialement</li>
+</ul>
+
+<hr/>
+
+<h2>⚠️ Mises en garde importantes</h2>
+<ul>
+    <li>NE PAS ajouter de sucre ou de sel supplémentaire – suivre exactement les instructions</li>
+    <li>NE PAS utiliser de jus de fruits, boissons gazeuses ou boissons sportives comme substituts</li>
+    <li>Continuer l'allaitement des nourrissons en parallèle de la SRO</li>
+    <li>Continuer à manger si possible – ne pas jeûner</li>
+</ul>
+
+<h3 class="warning">Consulter en urgence si :</h3>
+<ul>
+    <li>Incapacité de boire ou de garder les liquides</li>
+    <li>Yeux très enfoncés</li>
+    <li>Léthargie ou inconscience</li>
+    <li>Pas d'urine depuis plus de 6 heures</li>
+    <li>Sang dans les selles</li>
+    <li>Forte fièvre avec diarrhée</li>
+</ul>
+
+<hr/>
+
+<h2>Supplémentation en zinc</h2>
+<p>L'OMS recommande des suppléments de zinc avec la SRO pour les enfants de moins de 5 ans :</p>
+<ul>
+    <li><b>Moins de 6 mois :</b> 10mg de zinc par jour pendant 10-14 jours</li>
+    <li><b>6 mois - 5 ans :</b> 20mg de zinc par jour pendant 10-14 jours</li>
+</ul>
+<p>Le zinc réduit la durée et la sévérité de la diarrhée et prévient les épisodes futurs.</p>
+
+<hr/>
+
+<div class="sources">
+    <h2>Sources</h2>
+    <div class="source-item">
+        <div class="source-name">Déclaration conjointe OMS/UNICEF sur la SRO</div>
+        <a href="https://www.who.int/publications/i/item/WHO-FCH-CAH-06.1">Directives OMS SRO</a>
+    </div>
+</div>
+                """.trimIndent(),
+                summary = "Guide complet des Sels de réhydratation orale (SRO) : préparation, posologie pour enfants et adultes, supplémentation en zinc et signes d'alerte.",
+                source = "OMS, UNICEF",
+                category = "Médicaments"
             )
         )
     }

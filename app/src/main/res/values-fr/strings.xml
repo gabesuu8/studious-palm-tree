@@ -17,6 +17,17 @@
     <string name="article_title">Article</string>
     <string name="source_prefix">Source: %1$s</string>
     
+    <!-- Favorites -->
+    <string name="favorites">Favoris</string>
+    <string name="favorite_desc">Ajouter aux favoris</string>
+    <string name="no_favorites">Pas encore d\'articles favoris.\nAppuyez sur l\'étoile d\'un article pour l\'enregistrer ici.</string>
+    <string name="added_to_favorites">Ajouté aux favoris</string>
+    <string name="removed_from_favorites">Retiré des favoris</string>
+    
+    <!-- Category Filter -->
+    <string name="all_categories">Tous</string>
+    <string name="filter_by_category">Filtrer par catégorie</string>
+    
     <!-- Language -->
     <string name="language">Langue</string>
     <string name="english">English</string>

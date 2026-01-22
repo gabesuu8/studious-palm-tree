@@ -15,5 +15,6 @@ data class Article(
     val summary: String,
     val source: String,
     val dateAdded: Long = System.currentTimeMillis(),
-    val category: String = "General Health"
+    val category: String = "General Health",
+    val isFavorite: Boolean = false
 ) : Parcelable

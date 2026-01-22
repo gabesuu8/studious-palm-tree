@@ -8,6 +8,7 @@ import android.text.style.ForegroundColorSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -16,7 +17,8 @@ import com.example.helloapp.R
 import com.example.helloapp.data.Article
 
 class ArticleAdapter(
-    private val onItemClick: (Article) -> Unit
+    private val onItemClick: (Article) -> Unit,
+    private val onFavoriteClick: (Article) -> Unit
 ) : ListAdapter<Article, ArticleAdapter.ArticleViewHolder>(ArticleDiffCallback()) {
 
     private var searchKeywords: List<String> = emptyList()
@@ -41,6 +43,7 @@ class ArticleAdapter(
         private val summary: TextView = itemView.findViewById(R.id.articleSummary)
         private val category: TextView = itemView.findViewById(R.id.articleCategory)
         private val source: TextView = itemView.findViewById(R.id.articleSource)
+        private val favoriteButton: ImageView = itemView.findViewById(R.id.favoriteButton)
 
         fun bind(article: Article) {
             if (searchKeywords.isNotEmpty()) {
@@ -53,9 +56,19 @@ class ArticleAdapter(
                 category.text = article.category
             }
             source.text = article.source
+            
+            // Update favorite star icon
+            favoriteButton.setImageResource(
+                if (article.isFavorite) android.R.drawable.btn_star_big_on
+                else android.R.drawable.btn_star_big_off
+            )
 
             itemView.setOnClickListener {
                 onItemClick(article)
+            }
+            
+            favoriteButton.setOnClickListener {
+                onFavoriteClick(article)
             }
         }
         

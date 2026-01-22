@@ -43,6 +43,10 @@ class ArticleViewModel(application: Application) : AndroidViewModel(application)
     private val _searchQuery = MutableStateFlow("")
     val searchQuery: StateFlow<String> = _searchQuery
     
+    // Category filter state
+    private val _selectedCategory = MutableStateFlow<String?>(null)
+    val selectedCategory: StateFlow<String?> = _selectedCategory
+    
     val allArticles: Flow<List<Article>> by lazy {
         try {
             android.util.Log.d("ArticleViewModel", "Getting allArticles flow")
@@ -53,16 +57,32 @@ class ArticleViewModel(application: Application) : AndroidViewModel(application)
         }
     }
     
-    // Filtered articles based on search query
+    val favoriteArticles: Flow<List<Article>> by lazy {
+        repository.favoriteArticles
+    }
+    
+    val allCategories: Flow<List<String>> by lazy {
+        repository.allCategories
+    }
+    
+    // Filtered articles based on search query and category
     val filteredArticles: Flow<List<Article>> by lazy {
-        combine(allArticles, _searchQuery) { articles, query ->
+        combine(allArticles, _searchQuery, _selectedCategory) { articles, query, category ->
+            var filtered = articles
+            
+            // Filter by category first
+            if (category != null) {
+                filtered = filtered.filter { it.category == category }
+            }
+            
+            // Then filter by search query
             if (query.isBlank()) {
-                articles
+                filtered
             } else {
                 val queryLower = query.lowercase().trim()
                 val keywords = queryLower.split(" ").filter { it.isNotBlank() }
                 
-                articles.filter { article ->
+                filtered.filter { article ->
                     keywords.any { keyword ->
                         article.title.lowercase().contains(keyword) ||
                         article.summary.lowercase().contains(keyword) ||
@@ -86,6 +106,16 @@ class ArticleViewModel(application: Application) : AndroidViewModel(application)
     
     fun setSearchQuery(query: String) {
         _searchQuery.value = query
+    }
+    
+    fun setSelectedCategory(category: String?) {
+        _selectedCategory.value = category
+    }
+    
+    fun toggleFavorite(article: Article) {
+        viewModelScope.launch {
+            repository.toggleFavorite(article.id, !article.isFavorite)
+        }
     }
     
     fun fetchAndSaveArticles() {

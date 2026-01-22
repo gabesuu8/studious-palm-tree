@@ -11,6 +11,15 @@ interface ArticleDao {
     @Query("SELECT * FROM articles WHERE id = :id")
     suspend fun getArticleById(id: Long): Article?
     
+    @Query("SELECT * FROM articles WHERE isFavorite = 1 ORDER BY dateAdded DESC")
+    fun getFavoriteArticles(): Flow<List<Article>>
+    
+    @Query("UPDATE articles SET isFavorite = :isFavorite WHERE id = :articleId")
+    suspend fun updateFavoriteStatus(articleId: Long, isFavorite: Boolean)
+    
+    @Query("SELECT DISTINCT category FROM articles ORDER BY category")
+    fun getAllCategories(): Flow<List<String>>
+    
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertArticle(article: Article)
     

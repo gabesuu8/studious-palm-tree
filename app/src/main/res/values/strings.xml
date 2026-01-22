@@ -17,6 +17,17 @@
     <string name="article_title">Article</string>
     <string name="source_prefix">Source: %1$s</string>
     
+    <!-- Favorites -->
+    <string name="favorites">Favorites</string>
+    <string name="favorite_desc">Add to favorites</string>
+    <string name="no_favorites">No favorite articles yet.\nTap the star on any article to save it here.</string>
+    <string name="added_to_favorites">Added to favorites</string>
+    <string name="removed_from_favorites">Removed from favorites</string>
+    
+    <!-- Category Filter -->
+    <string name="all_categories">All</string>
+    <string name="filter_by_category">Filter by category</string>
+    
     <!-- Language -->
     <string name="language">Language</string>
     <string name="english">English</string>

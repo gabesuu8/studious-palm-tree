@@ -25,6 +25,9 @@ import com.example.helloapp.data.Article
 import com.example.helloapp.util.LanguageHelper
 import com.example.helloapp.viewmodel.ArticleViewModel
 import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -36,6 +39,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var adapter: ArticleAdapter
     private lateinit var searchEditText: EditText
     private lateinit var clearSearchButton: ImageView
+    private lateinit var categoryChipGroup: ChipGroup
+    private lateinit var chipAll: Chip
 
     override fun attachBaseContext(newBase: Context) {
         super.attachBaseContext(LanguageHelper.applyLanguage(newBase))
@@ -64,10 +69,13 @@ class MainActivity : AppCompatActivity() {
             emptyStateText = findViewById(R.id.emptyStateText)
             searchEditText = findViewById(R.id.searchEditText)
             clearSearchButton = findViewById(R.id.clearSearchButton)
+            categoryChipGroup = findViewById(R.id.categoryChipGroup)
+            chipAll = findViewById(R.id.chipAll)
             
-            adapter = ArticleAdapter { article ->
-                openArticleDetail(article)
-            }
+            adapter = ArticleAdapter(
+                onItemClick = { article -> openArticleDetail(article) },
+                onFavoriteClick = { article -> toggleFavorite(article) }
+            )
             
             recyclerView.layoutManager = LinearLayoutManager(this)
             recyclerView.adapter = adapter
@@ -90,9 +98,12 @@ class MainActivity : AppCompatActivity() {
 
             // Setup search functionality
             setupSearch()
+            
+            // Setup category filter chips
+            setupCategoryChips()
 
             Log.d(TAG, "Starting article observation")
-            // Observe filtered articles (responds to search)
+            // Observe filtered articles (responds to search and category filter)
             lifecycleScope.launch {
                 try {
                     var isFirstLoad = true
@@ -190,11 +201,62 @@ class MainActivity : AppCompatActivity() {
             clearSearchButton.visibility = View.GONE
         }
     }
+    
+    private fun setupCategoryChips() {
+        // Handle "All" chip click
+        chipAll.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                viewModel.setSelectedCategory(null)
+            }
+        }
+        
+        // Observe categories and create chips dynamically
+        lifecycleScope.launch {
+            viewModel.allCategories.collect { categories ->
+                // Remove all chips except "All"
+                val chipsToRemove = mutableListOf<View>()
+                for (i in 0 until categoryChipGroup.childCount) {
+                    val chip = categoryChipGroup.getChildAt(i)
+                    if (chip.id != R.id.chipAll) {
+                        chipsToRemove.add(chip)
+                    }
+                }
+                chipsToRemove.forEach { categoryChipGroup.removeView(it) }
+                
+                // Add category chips
+                categories.forEach { category ->
+                    val chip = Chip(this@MainActivity).apply {
+                        text = category
+                        isCheckable = true
+                        isCheckedIconVisible = false
+                        setChipBackgroundColorResource(R.color.chip_background_color)
+                        setOnCheckedChangeListener { _, isChecked ->
+                            if (isChecked) {
+                                viewModel.setSelectedCategory(category)
+                                chipAll.isChecked = false
+                            }
+                        }
+                    }
+                    categoryChipGroup.addView(chip)
+                }
+            }
+        }
+    }
 
     private fun openArticleDetail(article: Article) {
         val intent = Intent(this, ArticleDetailActivity::class.java)
         intent.putExtra("article", article)
         startActivity(intent)
+    }
+    
+    private fun toggleFavorite(article: Article) {
+        viewModel.toggleFavorite(article)
+        val message = if (article.isFavorite) {
+            getString(R.string.removed_from_favorites)
+        } else {
+            getString(R.string.added_to_favorites)
+        }
+        Snackbar.make(recyclerView, message, Snackbar.LENGTH_SHORT).show()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -204,6 +266,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
+            R.id.menu_favorites -> {
+                startActivity(Intent(this, FavoritesActivity::class.java))
+                true
+            }
             R.id.menu_language -> {
                 showLanguageDialog()
                 true
