@@ -40,7 +40,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var searchEditText: EditText
     private lateinit var clearSearchButton: ImageView
     private lateinit var categoryChipGroup: ChipGroup
-    private lateinit var chipAll: Chip
 
     override fun attachBaseContext(newBase: Context) {
         super.attachBaseContext(LanguageHelper.applyLanguage(newBase))
@@ -70,7 +69,6 @@ class MainActivity : AppCompatActivity() {
             searchEditText = findViewById(R.id.searchEditText)
             clearSearchButton = findViewById(R.id.clearSearchButton)
             categoryChipGroup = findViewById(R.id.categoryChipGroup)
-            chipAll = findViewById(R.id.chipAll)
             
             adapter = ArticleAdapter(
                 onItemClick = { article -> openArticleDetail(article) },
@@ -203,25 +201,11 @@ class MainActivity : AppCompatActivity() {
     }
     
     private fun setupCategoryChips() {
-        // Handle "All" chip click
-        chipAll.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                viewModel.setSelectedCategory(null)
-            }
-        }
-        
         // Observe categories and create chips dynamically
         lifecycleScope.launch {
             viewModel.allCategories.collect { categories ->
-                // Remove all chips except "All"
-                val chipsToRemove = mutableListOf<View>()
-                for (i in 0 until categoryChipGroup.childCount) {
-                    val chip = categoryChipGroup.getChildAt(i)
-                    if (chip.id != R.id.chipAll) {
-                        chipsToRemove.add(chip)
-                    }
-                }
-                chipsToRemove.forEach { categoryChipGroup.removeView(it) }
+                // Remove all existing chips
+                categoryChipGroup.removeAllViews()
                 
                 // Add category chips
                 categories.forEach { category ->
@@ -233,7 +217,9 @@ class MainActivity : AppCompatActivity() {
                         setOnCheckedChangeListener { _, isChecked ->
                             if (isChecked) {
                                 viewModel.setSelectedCategory(category)
-                                chipAll.isChecked = false
+                            } else {
+                                // When deselected, show all articles
+                                viewModel.setSelectedCategory(null)
                             }
                         }
                     }
