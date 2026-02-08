@@ -164,6 +164,32 @@
     <string name="onboarding_vaccine_title">Vaccination Tracker</string>
     <string name="onboarding_vaccine_desc">Keep track of your child\'s vaccinations. Never miss an important vaccine with our comprehensive immunization schedule.</string>
     
+    <string name="onboarding_clinics_title">Find Nearby Clinics</string>
+    <string name="onboarding_clinics_desc">Locate hospitals and health centers near you. Get directions, phone numbers, and see which facilities offer emergency care.</string>
+    
     <string name="onboarding_offline_title">Works Offline</string>
     <string name="onboarding_offline_desc">All your data is stored safely on your device. Access health information and track your family\'s health even without an internet connection.</string>
+    
+    <!-- Clinics -->
+    <string name="clinics">Clinics</string>
+    <string name="find_clinics">Find Clinics</string>
+    <string name="no_clinics">No clinics found in this area.</string>
+    <string name="clinic_icon">Clinic icon</string>
+    <string name="emergency_24_7">Emergency 24/7</string>
+    <string name="emergency_only">Emergency Only</string>
+    <string name="call">Call</string>
+    <string name="directions">Directions</string>
+    <string name="phone">Phone</string>
+    <string name="services">Services</string>
+    <string name="hours">Hours</string>
+    <string name="distance">Distance</string>
+    <string name="location">Location</string>
+    <string name="enable_location">Enable location for nearby clinics</string>
+    <string name="enable">Enable</string>
+    <string name="toggle_map">Toggle map view</string>
+    <string name="map_requires_internet">Map view requires internet connection</string>
+    <string name="all_countries">All countries</string>
+    
+    <!-- Google Maps API Key - Replace with your actual key from Google Cloud Console -->
+    <string name="google_maps_key">YOUR_GOOGLE_MAPS_API_KEY</string>
 </resources>

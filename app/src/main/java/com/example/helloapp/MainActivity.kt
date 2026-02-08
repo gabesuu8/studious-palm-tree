@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.helloapp.fragment.ArticlesFragment
+import com.example.helloapp.fragment.ClinicsFragment
 import com.example.helloapp.fragment.GrowthTrackerFragment
 import com.example.helloapp.fragment.PregnancyTrackerFragment
 import com.example.helloapp.fragment.VaccinationFragment
@@ -56,6 +57,7 @@ class MainActivity : AppCompatActivity() {
         bottomNavigation.setOnItemSelectedListener { item ->
             val tag = when (item.itemId) {
                 R.id.nav_articles -> TAG_ARTICLES
+                R.id.nav_clinics -> TAG_CLINICS
                 R.id.nav_growth -> TAG_GROWTH
                 R.id.nav_pregnancy -> TAG_PREGNANCY
                 R.id.nav_vaccinations -> TAG_VACCINATION
@@ -68,6 +70,7 @@ class MainActivity : AppCompatActivity() {
         // Set the selected item based on current fragment
         bottomNavigation.selectedItemId = when (currentFragmentTag) {
             TAG_ARTICLES -> R.id.nav_articles
+            TAG_CLINICS -> R.id.nav_clinics
             TAG_GROWTH -> R.id.nav_growth
             TAG_PREGNANCY -> R.id.nav_pregnancy
             TAG_VACCINATION -> R.id.nav_vaccinations
@@ -85,6 +88,7 @@ class MainActivity : AppCompatActivity() {
         
         val fragment = when (tag) {
             TAG_ARTICLES -> ArticlesFragment()
+            TAG_CLINICS -> ClinicsFragment()
             TAG_GROWTH -> GrowthTrackerFragment()
             TAG_PREGNANCY -> PregnancyTrackerFragment()
             TAG_VACCINATION -> VaccinationFragment()
@@ -98,6 +102,7 @@ class MainActivity : AppCompatActivity() {
     
     companion object {
         private const val TAG_ARTICLES = "articles"
+        private const val TAG_CLINICS = "clinics"
         private const val TAG_GROWTH = "growth"
         private const val TAG_PREGNANCY = "pregnancy"
         private const val TAG_VACCINATION = "vaccination"

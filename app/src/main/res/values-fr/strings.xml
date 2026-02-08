@@ -164,6 +164,29 @@
     <string name="onboarding_vaccine_title">Carnet de Vaccination</string>
     <string name="onboarding_vaccine_desc">Suivez les vaccinations de votre enfant. Ne manquez jamais un vaccin important avec notre calendrier de vaccination complet.</string>
     
+    <string name="onboarding_clinics_title">Trouver des Cliniques</string>
+    <string name="onboarding_clinics_desc">Localisez les hôpitaux et centres de santé près de chez vous. Obtenez les itinéraires, numéros de téléphone et services d\'urgence.</string>
+    
     <string name="onboarding_offline_title">Fonctionne Hors Ligne</string>
     <string name="onboarding_offline_desc">Toutes vos données sont stockées en sécurité sur votre appareil. Accédez aux informations de santé et suivez la santé de votre famille même sans connexion internet.</string>
+    
+    <!-- Clinics -->
+    <string name="clinics">Cliniques</string>
+    <string name="find_clinics">Trouver des Cliniques</string>
+    <string name="no_clinics">Aucune clinique trouvée dans cette zone.</string>
+    <string name="clinic_icon">Icône de clinique</string>
+    <string name="emergency_24_7">Urgences 24h/24</string>
+    <string name="emergency_only">Urgences uniquement</string>
+    <string name="call">Appeler</string>
+    <string name="directions">Itinéraire</string>
+    <string name="phone">Téléphone</string>
+    <string name="services">Services</string>
+    <string name="hours">Horaires</string>
+    <string name="distance">Distance</string>
+    <string name="location">Localisation</string>
+    <string name="enable_location">Activez la localisation pour les cliniques à proximité</string>
+    <string name="enable">Activer</string>
+    <string name="toggle_map">Basculer vers la carte</string>
+    <string name="map_requires_internet">La vue carte nécessite une connexion internet</string>
+    <string name="all_countries">Tous les pays</string>
 </resources>
