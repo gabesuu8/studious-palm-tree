@@ -2,6 +2,12 @@
 <resources>
     <string name="app_name">Healthcare Guide Africa</string>
     
+    <!-- Bottom Navigation -->
+    <string name="articles">Articles</string>
+    <string name="growth">Growth</string>
+    <string name="pregnancy">Pregnancy</string>
+    <string name="vaccinations">Vaccines</string>
+    
     <!-- Main Activity -->
     <string name="search_hint">Search health topics (e.g., malaria, fever)</string>
     <string name="search_icon_desc">Search icon</string>
@@ -27,6 +33,7 @@
     <!-- Category Filter -->
     <string name="all_categories">All</string>
     <string name="filter_by_category">Filter by category</string>
+    <string name="category_icon_desc">Category icon</string>
     
     <!-- Language -->
     <string name="language">Language</string>
@@ -41,4 +48,122 @@
     <string name="category_water">Water &amp; Sanitation</string>
     <string name="category_emergency">Emergency Care</string>
     <string name="category_mental">Mental Health</string>
+    
+    <!-- Vaccination Tracker -->
+    <string name="vaccination_tracker">Vaccination Tracker</string>
+    <string name="vaccination_progress">Vaccination Progress</string>
+    <string name="completed">completed</string>
+    <string name="no_vaccinations">No vaccinations found.</string>
+    <string name="filter_all">All</string>
+    <string name="filter_pending">Pending</string>
+    <string name="filter_completed">Completed</string>
+    <string name="vaccination_marked_complete">%1$s marked as complete</string>
+    <string name="vaccination_marked_incomplete">%1$s marked as incomplete</string>
+    <string name="recommended_age">Recommended age</string>
+    <string name="completed_on">Completed on</string>
+    <string name="mark_as_done">Mark as Done</string>
+    <string name="mark_as_not_done">Mark as Not Done</string>
+    <string name="select_date">Select date</string>
+    
+    <!-- Growth Tracker -->
+    <string name="growth_tracker">Child Growth Tracker</string>
+    <string name="select_child">Select Child</string>
+    <string name="add_child">Add Child</string>
+    <string name="no_children">No children registered.\nTap \"Add Child\" to start tracking growth.</string>
+    <string name="current_status">Current Status</string>
+    <string name="weight">Weight</string>
+    <string name="height">Height</string>
+    <string name="bmi">BMI</string>
+    <string name="nutritional_status">Nutritional Status</string>
+    <string name="who_z_scores">WHO Z-Scores</string>
+    <string name="weight_for_age_z">Weight-for-age: %1$s</string>
+    <string name="height_for_age_z">Height-for-age: %1$s</string>
+    <string name="weight_for_age">Weight-for-age</string>
+    <string name="height_for_age">Height-for-age</string>
+    <string name="weight_for_height">Weight-for-height</string>
+    <string name="add_measurement">Add Measurement</string>
+    <string name="growth_history">Growth History</string>
+    <string name="child_name">Child\'s Name</string>
+    <string name="date_of_birth">Date of Birth</string>
+    <string name="gender">Gender</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="save">Save</string>
+    <string name="fill_all_fields">Please fill all required fields</string>
+    <string name="measurement_date">Measurement Date</string>
+    <string name="today">Today</string>
+    <string name="weight_kg">Weight (kg)</string>
+    <string name="height_cm">Height (cm)</string>
+    <string name="head_circumference_optional">Head Circumference (cm) - Optional</string>
+    <string name="head_circumference">Head Circumference</string>
+    <string name="notes_optional">Notes (Optional)</string>
+    <string name="notes">Notes</string>
+    <string name="enter_weight_height">Please enter weight and height</string>
+    <string name="measurement_details">Measurement Details</string>
+    <string name="delete">Delete</string>
+    <string name="date">Date</string>
+    <string name="age">Age</string>
+    <string name="months">months</string>
+    <string name="age_months">Age: %1$d months</string>
+    <string name="age_years">Age: %1$d years</string>
+    <string name="age_years_months">Age: %1$d years, %2$d months</string>
+    <string name="no_data">No data</string>
+    
+    <!-- Pregnancy Tracker -->
+    <string name="pregnancy_tracker">Pregnancy Tracker</string>
+    <string name="select_pregnancy">Select Pregnancy</string>
+    <string name="add_pregnancy">Add Pregnancy</string>
+    <string name="no_pregnancies">No pregnancies registered.\nTap \"Add Pregnancy\" to start tracking.</string>
+    <string name="weeks">weeks</string>
+    <string name="week">Week</string>
+    <string name="week_number">Week %1$d</string>
+    <string name="trimester">trimester</string>
+    <string name="days_left">days left</string>
+    <string name="expected_due_date">Expected due date: %1$s</string>
+    <string name="add_prenatal_visit">Add Prenatal Visit</string>
+    <string name="danger_signs_title">Danger Signs</string>
+    <string name="danger_signs_subtitle">Know when to seek emergency care</string>
+    <string name="view_danger_signs">View All Danger Signs</string>
+    <string name="prenatal_visits">Prenatal Visits</string>
+    <string name="no_visits">No visits recorded yet.</string>
+    <string name="mother_name">Mother\'s Name</string>
+    <string name="last_menstrual_period">Last Menstrual Period (LMP)</string>
+    <string name="lmp_hint">First day of your last period</string>
+    <string name="visit_date">Visit Date</string>
+    <string name="blood_pressure">Blood Pressure</string>
+    <string name="bp_hint">e.g., 120/80</string>
+    <string name="fetal_heart_rate">Fetal Heart Rate</string>
+    <string name="next_visit_date">Next Visit Date (Optional)</string>
+    <string name="weight_helper">Enter mother\'s current weight</string>
+    <string name="bp_helper">Format: systolic/diastolic (e.g., 120/80)</string>
+    <string name="fhr_helper">Normal range: 120–160 bpm</string>
+    <string name="next_visit_helper">Schedule your next prenatal checkup</string>
+    <string name="next_visit">Next visit</string>
+    <string name="visit_details">Visit Details</string>
+    <string name="seek_immediate_care">Seek immediate medical care if you experience any of these symptoms:</string>
+    <string name="warning">Warning</string>
+    
+    <!-- Onboarding -->
+    <string name="skip">Skip</string>
+    <string name="next">Next</string>
+    <string name="get_started">Get Started</string>
+    <string name="feature_icon">Feature icon</string>
+    
+    <string name="onboarding_welcome_title">Welcome to Healthcare Guide</string>
+    <string name="onboarding_welcome_desc">Your trusted offline health companion for families in Africa. Access essential health information anytime, anywhere — even without internet.</string>
+    
+    <string name="onboarding_articles_title">Health Articles</string>
+    <string name="onboarding_articles_desc">Read easy-to-understand articles about common health conditions like malaria, diarrhea, and more. Search by topic and save your favorites.</string>
+    
+    <string name="onboarding_growth_title">Child Growth Tracker</string>
+    <string name="onboarding_growth_desc">Monitor your child\'s growth with WHO standards. Track weight, height, and detect early signs of malnutrition.</string>
+    
+    <string name="onboarding_pregnancy_title">Pregnancy Tracker</string>
+    <string name="onboarding_pregnancy_desc">Track your pregnancy week by week. Record prenatal visits and learn about danger signs that need immediate attention.</string>
+    
+    <string name="onboarding_vaccine_title">Vaccination Tracker</string>
+    <string name="onboarding_vaccine_desc">Keep track of your child\'s vaccinations. Never miss an important vaccine with our comprehensive immunization schedule.</string>
+    
+    <string name="onboarding_offline_title">Works Offline</string>
+    <string name="onboarding_offline_desc">All your data is stored safely on your device. Access health information and track your family\'s health even without an internet connection.</string>
 </resources>

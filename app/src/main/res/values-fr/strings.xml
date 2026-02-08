@@ -2,6 +2,12 @@
 <resources>
     <string name="app_name">Guide Santé Afrique</string>
     
+    <!-- Bottom Navigation -->
+    <string name="articles">Articles</string>
+    <string name="growth">Croissance</string>
+    <string name="pregnancy">Grossesse</string>
+    <string name="vaccinations">Vaccins</string>
+    
     <!-- Main Activity -->
     <string name="search_hint">Rechercher des sujets de santé (ex: paludisme, fièvre)</string>
     <string name="search_icon_desc">Icône de recherche</string>
@@ -27,6 +33,7 @@
     <!-- Category Filter -->
     <string name="all_categories">Tous</string>
     <string name="filter_by_category">Filtrer par catégorie</string>
+    <string name="category_icon_desc">Icône de catégorie</string>
     
     <!-- Language -->
     <string name="language">Langue</string>
@@ -41,4 +48,122 @@
     <string name="category_water">Eau &amp; Assainissement</string>
     <string name="category_emergency">Soins d\'Urgence</string>
     <string name="category_mental">Santé Mentale</string>
+    
+    <!-- Vaccination Tracker -->
+    <string name="vaccination_tracker">Carnet de Vaccination</string>
+    <string name="vaccination_progress">Progrès de vaccination</string>
+    <string name="completed">effectués</string>
+    <string name="no_vaccinations">Aucun vaccin enregistré.</string>
+    <string name="filter_all">Tous</string>
+    <string name="filter_pending">En attente</string>
+    <string name="filter_completed">Effectués</string>
+    <string name="vaccination_marked_complete">%1$s marqué comme effectué</string>
+    <string name="vaccination_marked_incomplete">%1$s marqué comme non effectué</string>
+    <string name="recommended_age">Âge recommandé</string>
+    <string name="completed_on">Effectué le</string>
+    <string name="mark_as_done">Marquer comme effectué</string>
+    <string name="mark_as_not_done">Marquer comme non effectué</string>
+    <string name="select_date">Choisir la date</string>
+    
+    <!-- Growth Tracker -->
+    <string name="growth_tracker">Suivi de Croissance</string>
+    <string name="select_child">Sélectionner l\'enfant</string>
+    <string name="add_child">Ajouter un enfant</string>
+    <string name="no_children">Aucun enfant enregistré.\nAppuyez sur \"Ajouter un enfant\" pour commencer le suivi.</string>
+    <string name="current_status">État Actuel</string>
+    <string name="weight">Poids</string>
+    <string name="height">Taille</string>
+    <string name="bmi">IMC</string>
+    <string name="nutritional_status">État Nutritionnel</string>
+    <string name="who_z_scores">Scores Z (OMS)</string>
+    <string name="weight_for_age_z">Poids-pour-âge: %1$s</string>
+    <string name="height_for_age_z">Taille-pour-âge: %1$s</string>
+    <string name="weight_for_age">Poids-pour-âge</string>
+    <string name="height_for_age">Taille-pour-âge</string>
+    <string name="weight_for_height">Poids-pour-taille</string>
+    <string name="add_measurement">Ajouter une mesure</string>
+    <string name="growth_history">Historique de Croissance</string>
+    <string name="child_name">Nom de l\'enfant</string>
+    <string name="date_of_birth">Date de naissance</string>
+    <string name="gender">Sexe</string>
+    <string name="male">Garçon</string>
+    <string name="female">Fille</string>
+    <string name="save">Enregistrer</string>
+    <string name="fill_all_fields">Veuillez remplir tous les champs requis</string>
+    <string name="measurement_date">Date de mesure</string>
+    <string name="today">Aujourd\'hui</string>
+    <string name="weight_kg">Poids (kg)</string>
+    <string name="height_cm">Taille (cm)</string>
+    <string name="head_circumference_optional">Périmètre crânien (cm) - Optionnel</string>
+    <string name="head_circumference">Périmètre crânien</string>
+    <string name="notes_optional">Notes (Optionnel)</string>
+    <string name="notes">Notes</string>
+    <string name="enter_weight_height">Veuillez entrer le poids et la taille</string>
+    <string name="measurement_details">Détails de la mesure</string>
+    <string name="delete">Supprimer</string>
+    <string name="date">Date</string>
+    <string name="age">Âge</string>
+    <string name="months">mois</string>
+    <string name="age_months">Âge: %1$d mois</string>
+    <string name="age_years">Âge: %1$d ans</string>
+    <string name="age_years_months">Âge: %1$d ans, %2$d mois</string>
+    <string name="no_data">Pas de données</string>
+    
+    <!-- Pregnancy Tracker -->
+    <string name="pregnancy_tracker">Suivi de Grossesse</string>
+    <string name="select_pregnancy">Sélectionner la grossesse</string>
+    <string name="add_pregnancy">Ajouter une grossesse</string>
+    <string name="no_pregnancies">Aucune grossesse enregistrée.\nAppuyez sur \"Ajouter une grossesse\" pour commencer le suivi.</string>
+    <string name="weeks">semaines</string>
+    <string name="week">Semaine</string>
+    <string name="week_number">Semaine %1$d</string>
+    <string name="trimester">trimestre</string>
+    <string name="days_left">jours restants</string>
+    <string name="expected_due_date">Date prévue d\'accouchement: %1$s</string>
+    <string name="add_prenatal_visit">Ajouter une visite prénatale</string>
+    <string name="danger_signs_title">Signes de Danger</string>
+    <string name="danger_signs_subtitle">Sachez quand consulter en urgence</string>
+    <string name="view_danger_signs">Voir tous les signes de danger</string>
+    <string name="prenatal_visits">Visites Prénatales</string>
+    <string name="no_visits">Aucune visite enregistrée.</string>
+    <string name="mother_name">Nom de la mère</string>
+    <string name="last_menstrual_period">Dernières règles (DDR)</string>
+    <string name="lmp_hint">Premier jour de vos dernières règles</string>
+    <string name="visit_date">Date de visite</string>
+    <string name="blood_pressure">Tension artérielle</string>
+    <string name="bp_hint">ex: 120/80</string>
+    <string name="fetal_heart_rate">Rythme cardiaque fœtal</string>
+    <string name="next_visit_date">Prochaine visite (Optionnel)</string>
+    <string name="weight_helper">Entrez le poids actuel de la mère</string>
+    <string name="bp_helper">Format: systolique/diastolique (ex: 120/80)</string>
+    <string name="fhr_helper">Plage normale: 120–160 bpm</string>
+    <string name="next_visit_helper">Planifiez votre prochain contrôle prénatal</string>
+    <string name="next_visit">Prochaine visite</string>
+    <string name="visit_details">Détails de la visite</string>
+    <string name="seek_immediate_care">Consultez immédiatement si vous ressentez l\'un de ces symptômes:</string>
+    <string name="warning">Attention</string>
+    
+    <!-- Onboarding -->
+    <string name="skip">Passer</string>
+    <string name="next">Suivant</string>
+    <string name="get_started">Commencer</string>
+    <string name="feature_icon">Icône de fonctionnalité</string>
+    
+    <string name="onboarding_welcome_title">Bienvenue dans Guide Santé</string>
+    <string name="onboarding_welcome_desc">Votre compagnon santé hors ligne pour les familles en Afrique. Accédez aux informations de santé essentielles à tout moment, n\'importe où — même sans internet.</string>
+    
+    <string name="onboarding_articles_title">Articles de Santé</string>
+    <string name="onboarding_articles_desc">Lisez des articles faciles à comprendre sur les maladies courantes comme le paludisme, la diarrhée, et plus encore. Recherchez par sujet et sauvegardez vos favoris.</string>
+    
+    <string name="onboarding_growth_title">Suivi de Croissance</string>
+    <string name="onboarding_growth_desc">Surveillez la croissance de votre enfant avec les normes OMS. Suivez le poids, la taille et détectez les premiers signes de malnutrition.</string>
+    
+    <string name="onboarding_pregnancy_title">Suivi de Grossesse</string>
+    <string name="onboarding_pregnancy_desc">Suivez votre grossesse semaine par semaine. Enregistrez vos visites prénatales et apprenez les signes de danger nécessitant une attention immédiate.</string>
+    
+    <string name="onboarding_vaccine_title">Carnet de Vaccination</string>
+    <string name="onboarding_vaccine_desc">Suivez les vaccinations de votre enfant. Ne manquez jamais un vaccin important avec notre calendrier de vaccination complet.</string>
+    
+    <string name="onboarding_offline_title">Fonctionne Hors Ligne</string>
+    <string name="onboarding_offline_desc">Toutes vos données sont stockées en sécurité sur votre appareil. Accédez aux informations de santé et suivez la santé de votre famille même sans connexion internet.</string>
 </resources>

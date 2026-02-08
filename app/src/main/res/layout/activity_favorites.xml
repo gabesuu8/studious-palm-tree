@@ -15,7 +15,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/purple_700"
+            android:background="@color/teal_700"
             app:title="@string/favorites"
             app:titleTextColor="@android:color/white"
             app:navigationIconTint="@android:color/white" />

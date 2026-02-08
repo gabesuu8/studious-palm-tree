@@ -50,7 +50,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
-                    android:textColor="@color/purple_500"
+                    android:textColor="@color/teal_700"
                     android:background="?attr/selectableItemBackground"
                     android:padding="4dp" />
 
