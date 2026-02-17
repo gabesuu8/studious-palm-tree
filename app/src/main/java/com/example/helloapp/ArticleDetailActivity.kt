@@ -1,7 +1,11 @@
 package com.example.helloapp
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +15,8 @@ import com.google.android.material.appbar.MaterialToolbar
 import android.widget.TextView
 
 class ArticleDetailActivity : AppCompatActivity() {
+
+    private lateinit var article: Article
     
     override fun attachBaseContext(newBase: Context) {
         super.attachBaseContext(LanguageHelper.applyLanguage(newBase))
@@ -20,7 +26,10 @@ class ArticleDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_article_detail)
 
-        val article = intent.getParcelableExtra<Article>("article") ?: return
+        article = intent.getParcelableExtra<Article>("article") ?: run {
+            finish()
+            return
+        }
 
         val toolbar = findViewById<MaterialToolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -30,6 +39,11 @@ class ArticleDetailActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.articleTitle).text = article.title
         findViewById<TextView>(R.id.articleCategory).text = article.category
         findViewById<TextView>(R.id.articleSource).text = "Source: ${article.source}"
+
+        // Hide in-article disclaimer if user dismissed it on the Articles list
+        val disclaimerDismissed = getSharedPreferences("articles_fragment", Context.MODE_PRIVATE)
+            .getBoolean("disclaimer_dismissed", false)
+        findViewById<View>(R.id.articleDisclaimer).visibility = if (disclaimerDismissed) View.GONE else View.VISIBLE
 
         // Render HTML content with CSS styling in WebView
         val webView = findViewById<WebView>(R.id.articleContent)
@@ -196,5 +210,36 @@ class ArticleDetailActivity : AppCompatActivity() {
         """.trimIndent()
         
         webView.loadDataWithBaseURL(null, styledHtml, "text/html", "UTF-8", null)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.article_detail_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.menu_share -> {
+                shareArticle()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun shareArticle() {
+        val text = buildString {
+            append(article.title)
+            append("\n\n")
+            append(article.summary)
+            append("\n\n")
+            append(getString(R.string.source_prefix, article.source))
+        }
+        val sendIntent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, text)
+            type = "text/plain"
+        }
+        startActivity(Intent.createChooser(sendIntent, getString(R.string.share)))
     }
 }

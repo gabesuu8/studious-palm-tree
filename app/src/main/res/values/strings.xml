@@ -15,6 +15,10 @@
     <string name="refresh_desc">Refresh articles</string>
     <string name="no_articles">No articles available.\nTap the refresh button to load articles.</string>
     <string name="no_search_results">No articles found for \"%1$s\".\nTry different keywords.</string>
+    <string name="did_you_mean">Did you mean: %1$s?</string>
+    <string name="suggest_condition_from_symptoms">Suggest condition from symptoms</string>
+    <string name="possible_conditions">Possible conditions</string>
+    <string name="no_conditions_match">No conditions match. Try different symptoms (e.g. fever, headache).</string>
     <string name="fetching_articles">Fetching articles…</string>
     <string name="error_init">Error initializing app: %1$s\n\nPlease check Logcat for details.</string>
     <string name="error_loading">Error loading articles. Please try again.</string>
@@ -22,6 +26,9 @@
     <!-- Article Detail -->
     <string name="article_title">Article</string>
     <string name="source_prefix">Source: %1$s</string>
+    <string name="share">Share</string>
+    <string name="disclaimer_articles">This app and its articles are for information only. They are not a replacement for professional medical advice, diagnosis, or treatment. Always seek the advice of your doctor or another qualified health provider.</string>
+    <string name="dismiss_disclaimer">Dismiss warning</string>
     
     <!-- Favorites -->
     <string name="favorites">Favorites</string>
@@ -53,7 +60,9 @@
     <string name="vaccination_tracker">Vaccination Tracker</string>
     <string name="vaccination_progress">Vaccination Progress</string>
     <string name="completed">completed</string>
-    <string name="no_vaccinations">No vaccinations found.</string>
+    <string name="no_vaccinations">No vaccinations for this child.</string>
+    <string name="select_child_vaccines">Track vaccines for</string>
+    <string name="add_child_in_growth_first">Add a child in the Growth tracker first, then track their vaccines here.</string>
     <string name="filter_all">All</string>
     <string name="filter_pending">Pending</string>
     <string name="filter_completed">Completed</string>
@@ -64,11 +73,15 @@
     <string name="mark_as_done">Mark as Done</string>
     <string name="mark_as_not_done">Mark as Not Done</string>
     <string name="select_date">Select date</string>
+    <string name="next_vaccine_due_by">Next due: %1$s by %2$s</string>
+    <string name="overdue_vaccine">Overdue: %1$s (recommended by %2$s)</string>
     
     <!-- Growth Tracker -->
     <string name="growth_tracker">Child Growth Tracker</string>
     <string name="select_child">Select Child</string>
     <string name="add_child">Add Child</string>
+    <string name="delete_child">Delete child</string>
+    <string name="delete_child_confirm">Remove this child and all their growth and vaccine records? This cannot be undone.</string>
     <string name="no_children">No children registered.\nTap \"Add Child\" to start tracking growth.</string>
     <string name="current_status">Current Status</string>
     <string name="weight">Weight</string>
@@ -121,6 +134,7 @@
     <string name="days_left">days left</string>
     <string name="expected_due_date">Expected due date: %1$s</string>
     <string name="add_prenatal_visit">Add Prenatal Visit</string>
+    <string name="recommended_next_visit_week">Recommended next visit: week %d</string>
     <string name="danger_signs_title">Danger Signs</string>
     <string name="danger_signs_subtitle">Know when to seek emergency care</string>
     <string name="view_danger_signs">View All Danger Signs</string>

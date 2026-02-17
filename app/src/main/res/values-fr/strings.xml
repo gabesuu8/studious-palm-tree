@@ -15,6 +15,10 @@
     <string name="refresh_desc">Actualiser les articles</string>
     <string name="no_articles">Aucun article disponible.\nAppuyez sur le bouton actualiser pour charger les articles.</string>
     <string name="no_search_results">Aucun article trouvé pour \"%1$s\".\nEssayez d\'autres mots-clés.</string>
+    <string name="did_you_mean">Voulez-vous dire : %1$s ?</string>
+    <string name="suggest_condition_from_symptoms">Suggérer une affection selon les symptômes</string>
+    <string name="possible_conditions">Affections possibles</string>
+    <string name="no_conditions_match">Aucune affection ne correspond. Essayez d\'autres symptômes (ex. fièvre, mal de tête).</string>
     <string name="fetching_articles">Chargement des articles…</string>
     <string name="error_init">Erreur d\'initialisation: %1$s\n\nVeuillez vérifier Logcat pour plus de détails.</string>
     <string name="error_loading">Erreur de chargement des articles. Veuillez réessayer.</string>
@@ -22,6 +26,9 @@
     <!-- Article Detail -->
     <string name="article_title">Article</string>
     <string name="source_prefix">Source: %1$s</string>
+    <string name="share">Partager</string>
+    <string name="disclaimer_articles">Cette application et ses articles sont à titre informatif uniquement. Ils ne remplacent pas l\'avis médical professionnel, le diagnostic ou le traitement. Consultez toujours un médecin ou un professionnel de santé qualifié.</string>
+    <string name="dismiss_disclaimer">Fermer l\'avertissement</string>
     
     <!-- Favorites -->
     <string name="favorites">Favoris</string>
@@ -53,7 +60,9 @@
     <string name="vaccination_tracker">Carnet de Vaccination</string>
     <string name="vaccination_progress">Progrès de vaccination</string>
     <string name="completed">effectués</string>
-    <string name="no_vaccinations">Aucun vaccin enregistré.</string>
+    <string name="no_vaccinations">Aucun vaccin pour cet enfant.</string>
+    <string name="select_child_vaccines">Suivi des vaccins pour</string>
+    <string name="add_child_in_growth_first">Ajoutez d\'abord un enfant dans le suivi de croissance, puis suivez ses vaccins ici.</string>
     <string name="filter_all">Tous</string>
     <string name="filter_pending">En attente</string>
     <string name="filter_completed">Effectués</string>
@@ -64,11 +73,15 @@
     <string name="mark_as_done">Marquer comme effectué</string>
     <string name="mark_as_not_done">Marquer comme non effectué</string>
     <string name="select_date">Choisir la date</string>
+    <string name="next_vaccine_due_by">Prochaine échéance : %1$s avant le %2$s</string>
+    <string name="overdue_vaccine">En retard : %1$s (recommandé avant le %2$s)</string>
     
     <!-- Growth Tracker -->
     <string name="growth_tracker">Suivi de Croissance</string>
     <string name="select_child">Sélectionner l\'enfant</string>
     <string name="add_child">Ajouter un enfant</string>
+    <string name="delete_child">Supprimer l\'enfant</string>
+    <string name="delete_child_confirm">Supprimer cet enfant et tous ses enregistrements de croissance et de vaccins ? Cette action est irréversible.</string>
     <string name="no_children">Aucun enfant enregistré.\nAppuyez sur \"Ajouter un enfant\" pour commencer le suivi.</string>
     <string name="current_status">État Actuel</string>
     <string name="weight">Poids</string>
@@ -121,6 +134,7 @@
     <string name="days_left">jours restants</string>
     <string name="expected_due_date">Date prévue d\'accouchement: %1$s</string>
     <string name="add_prenatal_visit">Ajouter une visite prénatale</string>
+    <string name="recommended_next_visit_week">Prochaine visite recommandée : semaine %d</string>
     <string name="danger_signs_title">Signes de Danger</string>
     <string name="danger_signs_subtitle">Sachez quand consulter en urgence</string>
     <string name="view_danger_signs">Voir tous les signes de danger</string>

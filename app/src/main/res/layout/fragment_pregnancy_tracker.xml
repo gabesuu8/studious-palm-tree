@@ -193,6 +193,18 @@
                         android:textSize="14sp"
                         tools:text="Expected due date: 15 June 2026" />
 
+                    <TextView
+                        android:id="@+id/txtRecommendedNextVisit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center"
+                        android:textColor="@color/teal_700"
+                        android:textSize="14sp"
+                        android:visibility="gone"
+                        tools:text="Recommended next visit: week 28"
+                        tools:visibility="visible" />
+
                     <ProgressBar
                         android:id="@+id/progressBar"
                         style="@style/Widget.AppCompat.ProgressBar.Horizontal"

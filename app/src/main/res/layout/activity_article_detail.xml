@@ -73,6 +73,18 @@
 
             </LinearLayout>
 
+            <!-- Disclaimer (hidden if user dismissed it on Articles list) -->
+            <TextView
+                android:id="@+id/articleDisclaimer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:background="#FFF8E1"
+                android:text="@string/disclaimer_articles"
+                android:textSize="11sp"
+                android:textColor="#795548"
+                android:lineSpacingMultiplier="1.2" />
+
             <!-- Divider -->
             <View
                 android:layout_width="match_parent"
