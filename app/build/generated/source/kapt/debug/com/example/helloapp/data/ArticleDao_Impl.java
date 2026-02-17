@@ -37,6 +37,8 @@ public final class ArticleDao_Impl implements ArticleDao {
 
   private final EntityDeletionOrUpdateAdapter<Article> __deletionAdapterOfArticle;
 
+  private final SharedSQLiteStatement __preparedStmtOfUpdateFavoriteStatus;
+
   private final SharedSQLiteStatement __preparedStmtOfDeleteAllArticles;
 
   public ArticleDao_Impl(@NonNull final RoomDatabase __db) {
@@ -45,7 +47,7 @@ public final class ArticleDao_Impl implements ArticleDao {
       @Override
       @NonNull
       protected String createQuery() {
-        return "INSERT OR REPLACE INTO `articles` (`id`,`title`,`content`,`summary`,`source`,`dateAdded`,`category`) VALUES (nullif(?, 0),?,?,?,?,?,?)";
+        return "INSERT OR REPLACE INTO `articles` (`id`,`title`,`content`,`summary`,`source`,`dateAdded`,`category`,`isFavorite`) VALUES (nullif(?, 0),?,?,?,?,?,?,?)";
       }
 
       @Override
@@ -78,6 +80,8 @@ public final class ArticleDao_Impl implements ArticleDao {
         } else {
           statement.bindString(7, entity.getCategory());
         }
+        final int _tmp = entity.isFavorite() ? 1 : 0;
+        statement.bindLong(8, _tmp);
       }
     };
     this.__deletionAdapterOfArticle = new EntityDeletionOrUpdateAdapter<Article>(__db) {
@@ -93,6 +97,14 @@ public final class ArticleDao_Impl implements ArticleDao {
         statement.bindLong(1, entity.getId());
       }
     };
+    this.__preparedStmtOfUpdateFavoriteStatus = new SharedSQLiteStatement(__db) {
+      @Override
+      @NonNull
+      public String createQuery() {
+        final String _query = "UPDATE articles SET isFavorite = ? WHERE id = ?";
+        return _query;
+      }
+    };
     this.__preparedStmtOfDeleteAllArticles = new SharedSQLiteStatement(__db) {
       @Override
       @NonNull
@@ -104,7 +116,7 @@ public final class ArticleDao_Impl implements ArticleDao {
   }
 
   @Override
-  public Object insertArticle(final Article article, final Continuation<? super Unit> $completion) {
+  public Object insertArticle(final Article article, final Continuation<? super Unit> arg1) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -118,12 +130,12 @@ public final class ArticleDao_Impl implements ArticleDao {
           __db.endTransaction();
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @Override
   public Object insertArticles(final List<Article> articles,
-      final Continuation<? super Unit> $completion) {
+      final Continuation<? super Unit> arg1) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -137,11 +149,11 @@ public final class ArticleDao_Impl implements ArticleDao {
           __db.endTransaction();
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @Override
-  public Object deleteArticle(final Article article, final Continuation<? super Unit> $completion) {
+  public Object deleteArticle(final Article article, final Continuation<? super Unit> arg1) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -155,11 +167,40 @@ public final class ArticleDao_Impl implements ArticleDao {
           __db.endTransaction();
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @Override
-  public Object deleteAllArticles(final Continuation<? super Unit> $completion) {
+  public Object updateFavoriteStatus(final long articleId, final boolean isFavorite,
+      final Continuation<? super Unit> arg2) {
+    return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
+      @Override
+      @NonNull
+      public Unit call() throws Exception {
+        final SupportSQLiteStatement _stmt = __preparedStmtOfUpdateFavoriteStatus.acquire();
+        int _argIndex = 1;
+        final int _tmp = isFavorite ? 1 : 0;
+        _stmt.bindLong(_argIndex, _tmp);
+        _argIndex = 2;
+        _stmt.bindLong(_argIndex, articleId);
+        try {
+          __db.beginTransaction();
+          try {
+            _stmt.executeUpdateDelete();
+            __db.setTransactionSuccessful();
+            return Unit.INSTANCE;
+          } finally {
+            __db.endTransaction();
+          }
+        } finally {
+          __preparedStmtOfUpdateFavoriteStatus.release(_stmt);
+        }
+      }
+    }, arg2);
+  }
+
+  @Override
+  public Object deleteAllArticles(final Continuation<? super Unit> arg0) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -178,7 +219,7 @@ public final class ArticleDao_Impl implements ArticleDao {
           __preparedStmtOfDeleteAllArticles.release(_stmt);
         }
       }
-    }, $completion);
+    }, arg0);
   }
 
   @Override
@@ -198,6 +239,7 @@ public final class ArticleDao_Impl implements ArticleDao {
           final int _cursorIndexOfSource = CursorUtil.getColumnIndexOrThrow(_cursor, "source");
           final int _cursorIndexOfDateAdded = CursorUtil.getColumnIndexOrThrow(_cursor, "dateAdded");
           final int _cursorIndexOfCategory = CursorUtil.getColumnIndexOrThrow(_cursor, "category");
+          final int _cursorIndexOfIsFavorite = CursorUtil.getColumnIndexOrThrow(_cursor, "isFavorite");
           final List<Article> _result = new ArrayList<Article>(_cursor.getCount());
           while (_cursor.moveToNext()) {
             final Article _item;
@@ -235,7 +277,11 @@ public final class ArticleDao_Impl implements ArticleDao {
             } else {
               _tmpCategory = _cursor.getString(_cursorIndexOfCategory);
             }
-            _item = new Article(_tmpId,_tmpTitle,_tmpContent,_tmpSummary,_tmpSource,_tmpDateAdded,_tmpCategory);
+            final boolean _tmpIsFavorite;
+            final int _tmp;
+            _tmp = _cursor.getInt(_cursorIndexOfIsFavorite);
+            _tmpIsFavorite = _tmp != 0;
+            _item = new Article(_tmpId,_tmpTitle,_tmpContent,_tmpSummary,_tmpSource,_tmpDateAdded,_tmpCategory,_tmpIsFavorite);
             _result.add(_item);
           }
           return _result;
@@ -252,7 +298,7 @@ public final class ArticleDao_Impl implements ArticleDao {
   }
 
   @Override
-  public Object getArticleById(final long id, final Continuation<? super Article> $completion) {
+  public Object getArticleById(final long id, final Continuation<? super Article> arg1) {
     final String _sql = "SELECT * FROM articles WHERE id = ?";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
     int _argIndex = 1;
@@ -271,6 +317,7 @@ public final class ArticleDao_Impl implements ArticleDao {
           final int _cursorIndexOfSource = CursorUtil.getColumnIndexOrThrow(_cursor, "source");
           final int _cursorIndexOfDateAdded = CursorUtil.getColumnIndexOrThrow(_cursor, "dateAdded");
           final int _cursorIndexOfCategory = CursorUtil.getColumnIndexOrThrow(_cursor, "category");
+          final int _cursorIndexOfIsFavorite = CursorUtil.getColumnIndexOrThrow(_cursor, "isFavorite");
           final Article _result;
           if (_cursor.moveToFirst()) {
             final long _tmpId;
@@ -307,7 +354,11 @@ public final class ArticleDao_Impl implements ArticleDao {
             } else {
               _tmpCategory = _cursor.getString(_cursorIndexOfCategory);
             }
-            _result = new Article(_tmpId,_tmpTitle,_tmpContent,_tmpSummary,_tmpSource,_tmpDateAdded,_tmpCategory);
+            final boolean _tmpIsFavorite;
+            final int _tmp;
+            _tmp = _cursor.getInt(_cursorIndexOfIsFavorite);
+            _tmpIsFavorite = _tmp != 0;
+            _result = new Article(_tmpId,_tmpTitle,_tmpContent,_tmpSummary,_tmpSource,_tmpDateAdded,_tmpCategory,_tmpIsFavorite);
           } else {
             _result = null;
           }
@@ -317,7 +368,115 @@ public final class ArticleDao_Impl implements ArticleDao {
           _statement.release();
         }
       }
-    }, $completion);
+    }, arg1);
+  }
+
+  @Override
+  public Flow<List<Article>> getFavoriteArticles() {
+    final String _sql = "SELECT * FROM articles WHERE isFavorite = 1 ORDER BY dateAdded DESC";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
+    return CoroutinesRoom.createFlow(__db, false, new String[] {"articles"}, new Callable<List<Article>>() {
+      @Override
+      @NonNull
+      public List<Article> call() throws Exception {
+        final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+        try {
+          final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
+          final int _cursorIndexOfTitle = CursorUtil.getColumnIndexOrThrow(_cursor, "title");
+          final int _cursorIndexOfContent = CursorUtil.getColumnIndexOrThrow(_cursor, "content");
+          final int _cursorIndexOfSummary = CursorUtil.getColumnIndexOrThrow(_cursor, "summary");
+          final int _cursorIndexOfSource = CursorUtil.getColumnIndexOrThrow(_cursor, "source");
+          final int _cursorIndexOfDateAdded = CursorUtil.getColumnIndexOrThrow(_cursor, "dateAdded");
+          final int _cursorIndexOfCategory = CursorUtil.getColumnIndexOrThrow(_cursor, "category");
+          final int _cursorIndexOfIsFavorite = CursorUtil.getColumnIndexOrThrow(_cursor, "isFavorite");
+          final List<Article> _result = new ArrayList<Article>(_cursor.getCount());
+          while (_cursor.moveToNext()) {
+            final Article _item;
+            final long _tmpId;
+            _tmpId = _cursor.getLong(_cursorIndexOfId);
+            final String _tmpTitle;
+            if (_cursor.isNull(_cursorIndexOfTitle)) {
+              _tmpTitle = null;
+            } else {
+              _tmpTitle = _cursor.getString(_cursorIndexOfTitle);
+            }
+            final String _tmpContent;
+            if (_cursor.isNull(_cursorIndexOfContent)) {
+              _tmpContent = null;
+            } else {
+              _tmpContent = _cursor.getString(_cursorIndexOfContent);
+            }
+            final String _tmpSummary;
+            if (_cursor.isNull(_cursorIndexOfSummary)) {
+              _tmpSummary = null;
+            } else {
+              _tmpSummary = _cursor.getString(_cursorIndexOfSummary);
+            }
+            final String _tmpSource;
+            if (_cursor.isNull(_cursorIndexOfSource)) {
+              _tmpSource = null;
+            } else {
+              _tmpSource = _cursor.getString(_cursorIndexOfSource);
+            }
+            final long _tmpDateAdded;
+            _tmpDateAdded = _cursor.getLong(_cursorIndexOfDateAdded);
+            final String _tmpCategory;
+            if (_cursor.isNull(_cursorIndexOfCategory)) {
+              _tmpCategory = null;
+            } else {
+              _tmpCategory = _cursor.getString(_cursorIndexOfCategory);
+            }
+            final boolean _tmpIsFavorite;
+            final int _tmp;
+            _tmp = _cursor.getInt(_cursorIndexOfIsFavorite);
+            _tmpIsFavorite = _tmp != 0;
+            _item = new Article(_tmpId,_tmpTitle,_tmpContent,_tmpSummary,_tmpSource,_tmpDateAdded,_tmpCategory,_tmpIsFavorite);
+            _result.add(_item);
+          }
+          return _result;
+        } finally {
+          _cursor.close();
+        }
+      }
+
+      @Override
+      protected void finalize() {
+        _statement.release();
+      }
+    });
+  }
+
+  @Override
+  public Flow<List<String>> getAllCategories() {
+    final String _sql = "SELECT DISTINCT category FROM articles ORDER BY category";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
+    return CoroutinesRoom.createFlow(__db, false, new String[] {"articles"}, new Callable<List<String>>() {
+      @Override
+      @NonNull
+      public List<String> call() throws Exception {
+        final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+        try {
+          final List<String> _result = new ArrayList<String>(_cursor.getCount());
+          while (_cursor.moveToNext()) {
+            final String _item;
+            if (_cursor.isNull(0)) {
+              _item = null;
+            } else {
+              _item = _cursor.getString(0);
+            }
+            _result.add(_item);
+          }
+          return _result;
+        } finally {
+          _cursor.close();
+        }
+      }
+
+      @Override
+      protected void finalize() {
+        _statement.release();
+      }
+    });
   }
 
   @NonNull

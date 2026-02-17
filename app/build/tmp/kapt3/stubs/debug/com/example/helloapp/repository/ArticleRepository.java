@@ -1,11 +1,15 @@
 package com.example.helloapp.repository;
 
-@kotlin.Metadata(mv = {1, 9, 0}, k = 1, xi = 48, d1 = {"\u00002\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\u0010 \n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0010\u0002\n\u0002\b\u0004\n\u0002\u0010\t\n\u0002\b\u0006\u0018\u00002\u00020\u0001B\r\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u00a2\u0006\u0002\u0010\u0004J\u0016\u0010\u000b\u001a\u00020\f2\u0006\u0010\r\u001a\u00020\bH\u0086@\u00a2\u0006\u0002\u0010\u000eJ\u0018\u0010\u000f\u001a\u0004\u0018\u00010\b2\u0006\u0010\u0010\u001a\u00020\u0011H\u0086@\u00a2\u0006\u0002\u0010\u0012J\u0016\u0010\u0013\u001a\u00020\f2\u0006\u0010\r\u001a\u00020\bH\u0086@\u00a2\u0006\u0002\u0010\u000eJ\u001c\u0010\u0014\u001a\u00020\f2\f\u0010\u0015\u001a\b\u0012\u0004\u0012\u00020\b0\u0007H\u0086@\u00a2\u0006\u0002\u0010\u0016R\u001d\u0010\u0005\u001a\u000e\u0012\n\u0012\b\u0012\u0004\u0012\u00020\b0\u00070\u0006\u00a2\u0006\b\n\u0000\u001a\u0004\b\t\u0010\nR\u000e\u0010\u0002\u001a\u00020\u0003X\u0082\u0004\u00a2\u0006\u0002\n\u0000\u00a8\u0006\u0017"}, d2 = {"Lcom/example/helloapp/repository/ArticleRepository;", "", "articleDao", "Lcom/example/helloapp/data/ArticleDao;", "(Lcom/example/helloapp/data/ArticleDao;)V", "allArticles", "Lkotlinx/coroutines/flow/Flow;", "", "Lcom/example/helloapp/data/Article;", "getAllArticles", "()Lkotlinx/coroutines/flow/Flow;", "deleteArticle", "", "article", "(Lcom/example/helloapp/data/Article;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "getArticleById", "id", "", "(JLkotlin/coroutines/Continuation;)Ljava/lang/Object;", "insertArticle", "insertArticles", "articles", "(Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "app_debug"})
+@kotlin.Metadata(mv = {1, 9, 0}, k = 1, xi = 48, d1 = {"\u0000B\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\u0010 \n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0010\u000e\n\u0002\b\u0004\n\u0002\u0010\u0002\n\u0002\b\u0006\n\u0002\u0010\t\n\u0002\b\b\n\u0002\u0010\u000b\n\u0002\b\u0002\u0018\u00002\u00020\u0001B\r\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u00a2\u0006\u0002\u0010\u0004J\u000e\u0010\u0010\u001a\u00020\u0011H\u0086@\u00a2\u0006\u0002\u0010\u0012J\u0016\u0010\u0013\u001a\u00020\u00112\u0006\u0010\u0014\u001a\u00020\bH\u0086@\u00a2\u0006\u0002\u0010\u0015J\u0018\u0010\u0016\u001a\u0004\u0018\u00010\b2\u0006\u0010\u0017\u001a\u00020\u0018H\u0086@\u00a2\u0006\u0002\u0010\u0019J\u0016\u0010\u001a\u001a\u00020\u00112\u0006\u0010\u0014\u001a\u00020\bH\u0086@\u00a2\u0006\u0002\u0010\u0015J\u001c\u0010\u001b\u001a\u00020\u00112\f\u0010\u001c\u001a\b\u0012\u0004\u0012\u00020\b0\u0007H\u0086@\u00a2\u0006\u0002\u0010\u001dJ\u001e\u0010\u001e\u001a\u00020\u00112\u0006\u0010\u001f\u001a\u00020\u00182\u0006\u0010 \u001a\u00020!H\u0086@\u00a2\u0006\u0002\u0010\"R\u001d\u0010\u0005\u001a\u000e\u0012\n\u0012\b\u0012\u0004\u0012\u00020\b0\u00070\u0006\u00a2\u0006\b\n\u0000\u001a\u0004\b\t\u0010\nR\u001d\u0010\u000b\u001a\u000e\u0012\n\u0012\b\u0012\u0004\u0012\u00020\f0\u00070\u0006\u00a2\u0006\b\n\u0000\u001a\u0004\b\r\u0010\nR\u000e\u0010\u0002\u001a\u00020\u0003X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u001d\u0010\u000e\u001a\u000e\u0012\n\u0012\b\u0012\u0004\u0012\u00020\b0\u00070\u0006\u00a2\u0006\b\n\u0000\u001a\u0004\b\u000f\u0010\n\u00a8\u0006#"}, d2 = {"Lcom/example/helloapp/repository/ArticleRepository;", "", "articleDao", "Lcom/example/helloapp/data/ArticleDao;", "(Lcom/example/helloapp/data/ArticleDao;)V", "allArticles", "Lkotlinx/coroutines/flow/Flow;", "", "Lcom/example/helloapp/data/Article;", "getAllArticles", "()Lkotlinx/coroutines/flow/Flow;", "allCategories", "", "getAllCategories", "favoriteArticles", "getFavoriteArticles", "deleteAllArticles", "", "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "deleteArticle", "article", "(Lcom/example/helloapp/data/Article;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "getArticleById", "id", "", "(JLkotlin/coroutines/Continuation;)Ljava/lang/Object;", "insertArticle", "insertArticles", "articles", "(Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "toggleFavorite", "articleId", "isFavorite", "", "(JZLkotlin/coroutines/Continuation;)Ljava/lang/Object;", "app_debug"})
 public final class ArticleRepository {
     @org.jetbrains.annotations.NotNull()
     private final com.example.helloapp.data.ArticleDao articleDao = null;
     @org.jetbrains.annotations.NotNull()
     private final kotlinx.coroutines.flow.Flow<java.util.List<com.example.helloapp.data.Article>> allArticles = null;
+    @org.jetbrains.annotations.NotNull()
+    private final kotlinx.coroutines.flow.Flow<java.util.List<com.example.helloapp.data.Article>> favoriteArticles = null;
+    @org.jetbrains.annotations.NotNull()
+    private final kotlinx.coroutines.flow.Flow<java.util.List<java.lang.String>> allCategories = null;
     
     public ArticleRepository(@org.jetbrains.annotations.NotNull()
     com.example.helloapp.data.ArticleDao articleDao) {
@@ -17,9 +21,25 @@ public final class ArticleRepository {
         return null;
     }
     
+    @org.jetbrains.annotations.NotNull()
+    public final kotlinx.coroutines.flow.Flow<java.util.List<com.example.helloapp.data.Article>> getFavoriteArticles() {
+        return null;
+    }
+    
+    @org.jetbrains.annotations.NotNull()
+    public final kotlinx.coroutines.flow.Flow<java.util.List<java.lang.String>> getAllCategories() {
+        return null;
+    }
+    
     @org.jetbrains.annotations.Nullable()
     public final java.lang.Object getArticleById(long id, @org.jetbrains.annotations.NotNull()
     kotlin.coroutines.Continuation<? super com.example.helloapp.data.Article> $completion) {
+        return null;
+    }
+    
+    @org.jetbrains.annotations.Nullable()
+    public final java.lang.Object toggleFavorite(long articleId, boolean isFavorite, @org.jetbrains.annotations.NotNull()
+    kotlin.coroutines.Continuation<? super kotlin.Unit> $completion) {
         return null;
     }
     
@@ -40,6 +60,12 @@ public final class ArticleRepository {
     @org.jetbrains.annotations.Nullable()
     public final java.lang.Object deleteArticle(@org.jetbrains.annotations.NotNull()
     com.example.helloapp.data.Article article, @org.jetbrains.annotations.NotNull()
+    kotlin.coroutines.Continuation<? super kotlin.Unit> $completion) {
+        return null;
+    }
+    
+    @org.jetbrains.annotations.Nullable()
+    public final java.lang.Object deleteAllArticles(@org.jetbrains.annotations.NotNull()
     kotlin.coroutines.Continuation<? super kotlin.Unit> $completion) {
         return null;
     }

@@ -1,3 +1,0 @@
-com.example.helloapp.test
-style WhiteBackgroundDialogTheme
-style WhiteBackgroundTheme

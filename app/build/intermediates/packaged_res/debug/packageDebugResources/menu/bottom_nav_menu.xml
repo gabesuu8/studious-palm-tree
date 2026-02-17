@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_articles"
+        android:icon="@android:drawable/ic_menu_agenda"
+        android:title="@string/articles" />
+
+    <item
+        android:id="@+id/nav_clinics"
+        android:icon="@drawable/ic_clinic"
+        android:title="@string/clinics" />
+
+    <item
+        android:id="@+id/nav_growth"
+        android:icon="@drawable/ic_growth"
+        android:title="@string/growth" />
+
+    <item
+        android:id="@+id/nav_pregnancy"
+        android:icon="@drawable/ic_pregnant"
+        android:title="@string/pregnancy" />
+
+    <item
+        android:id="@+id/nav_vaccinations"
+        android:icon="@drawable/ic_vaccine"
+        android:title="@string/vaccinations" />
+
+</menu>
