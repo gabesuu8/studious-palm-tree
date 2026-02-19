@@ -1196,38 +1196,61 @@ class ArticleFetcher {
                 category = "Nutrition"
             ),
             
-            // WATER - English
+            // WATER - English (combined treatment + storage)
             Article(
-                title = "Drinking-water",
+                title = "Drinking Water: Treatment and Safe Storage",
                 content = """
 <div class="key-facts">
     <h2>Key facts</h2>
     <ul>
-        <li>Contaminated water transmits diseases like cholera and typhoid.</li>
-        <li>2 billion people use contaminated water sources.</li>
-        <li>Safe water could prevent 400,000 deaths annually.</li>
+        <li>Over 2 billion people lack access to safely managed drinking water.</li>
+        <li>Contaminated water transmits cholera, typhoid, hepatitis A and E, and diarrheal disease.</li>
+        <li>Household water treatment and safe storage (HWTS) reduce diarrheal disease and save lives.</li>
+        <li>Safe water could prevent an estimated 400,000 deaths annually.</li>
     </ul>
 </div>
 
-<h2>Water treatment</h2>
-<h3>1. Boiling:</h3>
+<h2>Water treatment at home</h2>
+<h3>1. Boiling (most effective):</h3>
 <ul>
-    <li>Boil for at least 1 minute</li>
-    <li>Let cool naturally</li>
-    <li>Store in clean container</li>
+    <li>Bring water to a <b>rolling boil</b> for at least 1 minute (3 minutes at elevations above 6,500 ft / 2,000 m).</li>
+    <li>Kills viruses, bacteria, and parasites.</li>
+    <li>Let cool naturally; store in a clean, covered container.</li>
 </ul>
 
-<h3>2. Chlorine:</h3>
-<p>Use purification tablets or 2 drops bleach per litre</p>
+<h3>2. Chlorination:</h3>
+<ul>
+    <li>Use purification tablets or liquid chlorine (e.g. 2 drops of household bleach per litre of clear water).</li>
+    <li>Follow product instructions. Wait 30 minutes before drinking.</li>
+    <li>Chlorine kills most bacteria and viruses; less effective against some parasites (e.g. Cryptosporidium).</li>
+</ul>
+
+<h3>3. Other options (when available):</h3>
+<ul>
+    <li><b>Solar disinfection (SODIS):</b> Clear plastic bottles in strong sunlight for 6–8 hours (or 2 days if cloudy).</li>
+    <li><b>Filters:</b> Certified filters can remove bacteria and some parasites; follow manufacturer instructions.</li>
+</ul>
+
+<hr/>
+
+<h2>Safe water storage</h2>
+<p>Keeping treated water in containers that protect it from recontamination is essential.</p>
+<ul>
+    <li>Use a <b>clean, covered container</b> with a tap or narrow opening so hands and dirty cups do not enter.</li>
+    <li>Keep the container <b>off the ground</b> to avoid contact with dirt and pests.</li>
+    <li>Do not put hands or dirty utensils inside; pour water out or use a clean ladle.</li>
+    <li>Wash and dry the container regularly. Use stored water within 1–2 days if not treated with chlorine.</li>
+</ul>
 
 <hr/>
 
 <h2>Hand hygiene</h2>
-<p>Wash hands with soap:</p>
+<p>Wash hands with soap and clean water:</p>
 <ul>
-    <li>Before eating</li>
-    <li>After using toilet</li>
-    <li>After changing diapers</li>
+    <li>Before eating or preparing food</li>
+    <li>After using the toilet</li>
+    <li>After changing diapers or cleaning a child</li>
+    <li>After touching animals</li>
 </ul>
 
 <hr/>
@@ -1238,10 +1261,18 @@ class ArticleFetcher {
         <div class="source-name">World Health Organization (WHO)</div>
         <a href="https://www.who.int/news-room/fact-sheets/detail/drinking-water">www.who.int/news-room/fact-sheets/detail/drinking-water</a>
     </div>
+    <div class="source-item">
+        <div class="source-name">WHO – Household water treatment and safe storage</div>
+        <a href="https://www.who.int/teams/environment-climate-change-and-health/water-sanitation-and-health/water-safety-and-quality/household-water-treatment-and-safe-storage">who.int/.../household-water-treatment-and-safe-storage</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">CDC – Household Water Treatment &amp; Safe Water Storage</div>
+        <a href="https://www.cdc.gov/global-water-sanitation-hygiene/about/about-household-water-treatment.html">www.cdc.gov/global-water-sanitation-hygiene/about/about-household-water-treatment</a>
+    </div>
 </div>
                 """.trimIndent(),
-                summary = "WHO fact sheet on drinking water: 2 billion people lack safe water. Learn about water treatment and hand hygiene.",
-                source = "WHO, UNICEF",
+                summary = "Safe drinking water: treatment (boiling, chlorine, filters) and safe storage at home. WHO, CDC.",
+                source = "WHO, UNICEF, CDC",
                 category = "Hygiene & Sanitation"
             ),
             
@@ -2055,17 +2086,187 @@ class ArticleFetcher {
 
             // === 30 articles for Uganda & Togo (English) ===
             Article(title = "Schistosomiasis (Bilharzia)", content = """<h2>Key facts</h2><p>Common in Uganda and Togo where people use freshwater lakes and rivers. Caused by parasites from snails.</p><h2>Symptoms</h2><p>Blood in urine, stomach pain, diarrhoea. Children may have poor growth.</p><h2>Prevention</h2><p>Avoid swimming or wading in freshwater in high-risk areas. Use safe water for washing.</p><h2>Treatment</h2><p>Medicine (praziquantel) from a health centre. Seek care if you have symptoms.</p>""", summary = "What schistosomiasis is, symptoms, and how to prevent and treat it.", source = "WHO", category = "Infectious Diseases"),
-            Article(title = "River Blindness (Onchocerciasis)", content = """<h2>Key facts</h2><p>Spread by blackfly bites near fast-flowing rivers. Can cause itchy skin and eye damage (blindness) if untreated.</p><h2>Symptoms</h2><p>Itchy skin, rash, eye irritation, vision problems.</p><h2>Prevention & treatment</h2><p>Take ivermectin when offered in mass drug campaigns. Avoid being bitten near rivers at peak biting times.</p>""", summary = "River blindness: causes, symptoms, and the importance of ivermectin treatment.", source = "WHO", category = "Infectious Diseases"),
+            // RIVER BLINDNESS (ONCHOCERCIASIS) - English
+            Article(
+                title = "River Blindness (Onchocerciasis)",
+                content = """
+<div class="key-facts">
+    <h2>Key facts</h2>
+    <ul>
+        <li>River blindness is caused by the parasitic worm <i>Onchocerca volvulus</i>, spread by the bite of infected blackflies that breed near fast-flowing rivers and streams.</li>
+        <li>More than 99% of infected people live in sub-Saharan Africa and Yemen; the disease also exists in parts of Latin America.</li>
+        <li>Symptoms include severe itching, disfiguring skin conditions, and visual impairment including permanent blindness.</li>
+        <li>Population-based treatment with ivermectin (mass drug administration, MDA) is the core strategy; ivermectin is taken at least once yearly for 10–15 years in endemic areas.</li>
+        <li>In 2024, over 171 million people were treated for onchocerciasis worldwide; several countries have been verified free of the disease.</li>
+    </ul>
+</div>
+
+<h2>Overview</h2>
+<p>Onchocerciasis is transmitted when an infected blackfly (<i>Simulium</i>) bites a person. The fly picks up immature worms (microfilariae) from an infected person and, after development, passes infective larvae to another person. Inside the human host, larvae mature into adult worms that form nodules under the skin and produce microfilariae. The microfilariae move through the skin and eyes; when they die they trigger intense inflammation, leading to itching, skin changes, and eye damage that can result in blindness.</p>
+
+<h2>Symptoms</h2>
+<ul>
+    <li><b>Skin:</b> Severe itching, rash, thickening or discolouration of skin, nodules under the skin.</li>
+    <li><b>Eyes:</b> Eye irritation, sensitivity to light, lesions of the cornea and other parts of the eye, visual impairment, and permanent blindness (often after many years of infection).</li>
+    <li>Early exposure to infection is associated with an increased risk of epilepsy in children in some areas.</li>
+</ul>
+
+<h2>Prevention and treatment</h2>
+<p><b>Treatment:</b> Take ivermectin when offered during mass drug administration (MDA) campaigns. WHO recommends treatment at least once yearly for 10–15 years in endemic areas. Do not skip doses—communities need sustained treatment to eliminate transmission.</p>
+<p><b>Prevention:</b> There is no vaccine. Reduce exposure to blackfly bites by avoiding areas near fast-flowing rivers at peak biting times (often daytime), wearing long sleeves and trousers, and using insect repellent where available.</p>
+
+<hr/>
+
+<div class="sources">
+    <h2>Sources</h2>
+    <div class="source-item">
+        <div class="source-name">World Health Organization (WHO)</div>
+        <a href="https://www.who.int/news-room/fact-sheets/detail/onchocerciasis">www.who.int/news-room/fact-sheets/detail/onchocerciasis</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">Centers for Disease Control and Prevention (CDC)</div>
+        <a href="https://www.cdc.gov/filarial-worms/about/onchocerciasis.html">www.cdc.gov/filarial-worms/about/onchocerciasis</a>
+    </div>
+</div>
+                """.trimIndent(),
+                summary = "River blindness: spread by blackflies, symptoms, and the importance of ivermectin mass drug administration. WHO and CDC sources.",
+                source = "WHO, CDC",
+                category = "Infectious Diseases"
+            ),
+
             Article(title = "Lymphatic Filariasis (Elephantiasis)", content = """<h2>Key facts</h2><p>Spread by mosquitoes. Can cause swelling of legs, arms, or genitals (elephantiasis) over time.</p><h2>Symptoms</h2><p>Swelling, fever, pain. Early treatment prevents disability.</p><h2>Prevention & treatment</h2><p>Take medicines in mass drug administration (MDA) when offered. Use bed nets and avoid mosquito bites.</p>""", summary = "What elephantiasis is and how to prevent it with MDA and bed nets.", source = "WHO", category = "Infectious Diseases"),
-            Article(title = "Trachoma", content = """<h2>Key facts</h2><p>Eye infection spread by contact and flies. Leading cause of preventable blindness in some areas.</p><h2>Symptoms</h2><p>Itchy eyes, discharge, eyelashes turning in (trichiasis), vision loss.</p><h2>Prevention</h2><p>Face washing, clean water, latrines to reduce flies. Surgery for trichiasis; antibiotics when offered.</p>""", summary = "Trachoma: eye infection, prevention with hygiene and SAFE strategy.", source = "WHO", category = "Infectious Diseases"),
-            Article(title = "Soil-Transmitted Helminths (Worms)", content = """<h2>Key facts</h2><p>Intestinal worms (e.g. roundworm, whipworm, hookworm) from contaminated soil. Common in children.</p><h2>Symptoms</h2><p>Stomach pain, diarrhoea, anaemia, poor growth, tiredness.</p><h2>Prevention & treatment</h2><p>Deworming medicines (e.g. albendazole) when offered at school or clinic. Wear shoes; use latrines; wash hands.</p>""", summary = "Intestinal worms: symptoms and deworming in Uganda and Togo.", source = "WHO", category = "Infectious Diseases"),
-            Article(title = "Safe Water Storage at Home", content = """<h2>Why it matters</h2><p>Storing water safely prevents diarrhoea and other diseases. Important in Uganda and Togo.</p><h2>Do</h2><ul><li>Use a clean, covered container with a tap or narrow opening.</li><li>Keep the container off the ground.</li><li>Do not put hands or dirty cups inside.</li></ul><h2>Clean</h2><p>Wash and dry the container regularly. Use water within 1–2 days if not treated.</p>""", summary = "How to store water safely at home to prevent illness.", source = "WHO/UNICEF", category = "Water & Sanitation"),
+
+            // TRACHOMA - English
+            Article(
+                title = "Trachoma",
+                content = """
+<div class="key-facts">
+    <h2>Key facts</h2>
+    <ul>
+        <li>Trachoma is a bacterial eye infection caused by <i>Chlamydia trachomatis</i> and is the leading infectious cause of preventable blindness worldwide.</li>
+        <li>Infection spreads through contact with eye or nose discharge (hands, clothing, bedding, shared items) and by flies that have been in contact with infected discharge.</li>
+        <li>Repeated infections over years cause scarring of the inner eyelid; the eyelashes then turn inward (trichiasis) and scratch the cornea, leading to pain and blindness.</li>
+        <li>About 1.9 million people are blind or visually impaired from trachoma; 103 million people live in trachoma-endemic areas (2025). Most cases are in poor, rural areas of Africa, Asia, and the Middle East.</li>
+        <li>WHO’s SAFE strategy (Surgery for trichiasis, Antibiotics, Facial cleanliness, Environmental improvement) is used to eliminate trachoma. In 2024, 87 349 people had trichiasis surgery and 44.4 million received antibiotics.</li>
+    </ul>
+</div>
+
+<h2>Overview</h2>
+<p>Trachoma is contagious and often affects young children, who are the main reservoir of infection. Symptoms can start with mild itching and irritation of the eyes and eyelids, then swollen eyelids and pus or mucus from the eyes. The disease progresses slowly; the most painful and blinding stage (trichiasis—in-turned eyelashes) often appears in adulthood. Women are affected more often than men, partly due to closer contact with infected children.</p>
+
+<h2>Symptoms</h2>
+<ul>
+    <li>Itching and irritation of the eyes and eyelids</li>
+    <li>Eye redness, pain, sensitivity to light</li>
+    <li>Swollen eyelids, discharge containing mucus or pus</li>
+    <li>Scarring of the inner eyelid (visible as white lines with magnification)</li>
+    <li>Eyelashes turning inward (trichiasis), rubbing the eye and damaging the cornea</li>
+    <li>Clouding of the cornea and vision loss, which may become permanent</li>
+</ul>
+
+<h2>Prevention and treatment</h2>
+<p><b>SAFE strategy:</b></p>
+<ul>
+    <li><b>S</b>urgery for trachomatous trichiasis (in-turned eyelashes) to prevent blindness.</li>
+    <li><b>A</b>ntibiotics (e.g. azithromycin) to clear infection—take when offered in mass treatment campaigns.</li>
+    <li><b>F</b>acial cleanliness: wash children’s faces and your own hands to reduce spread.</li>
+    <li><b>E</b>nvironmental improvement: access to clean water, sanitation, and fly control (e.g. proper waste disposal) to reduce transmission.</li>
+</ul>
+<p>Seek care if you or your child has itchy or irritated eyes or discharge, especially if you live in or have travelled to an area where trachoma is common. Early treatment helps prevent serious damage.</p>
+
+<hr/>
+
+<div class="sources">
+    <h2>Sources</h2>
+    <div class="source-item">
+        <div class="source-name">World Health Organization (WHO)</div>
+        <a href="https://www.who.int/news-room/fact-sheets/detail/trachoma">www.who.int/news-room/fact-sheets/detail/trachoma</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">Mayo Clinic</div>
+        <a href="https://www.mayoclinic.org/diseases-conditions/trachoma/symptoms-causes/syc-20378505">www.mayoclinic.org/diseases-conditions/trachoma</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">National Eye Institute (NIH)</div>
+        <a href="https://www.nei.nih.gov/about/our-impact/nei-research-initiatives/international-vision-research/improving-global-vision-path-eliminating-trachoma">www.nei.nih.gov – Trachoma elimination</a>
+    </div>
+</div>
+                """.trimIndent(),
+                summary = "Trachoma: leading infectious cause of preventable blindness. Symptoms, SAFE strategy, and sources from WHO, Mayo Clinic, and NIH.",
+                source = "WHO, Mayo Clinic, NIH",
+                category = "Infectious Diseases"
+            ),
+
+            // SOIL-TRANSMITTED HELMINTHS (WORMS) - English
+            Article(
+                title = "Soil-Transmitted Helminths (Worms)",
+                content = """
+<div class="key-facts">
+    <h2>Key facts</h2>
+    <ul>
+        <li>Soil-transmitted helminths (STH) are parasitic worms that infect the intestine. An estimated 1.5 billion people (about 24% of the world’s population) are infected, mainly in tropical and subtropical areas with poor sanitation.</li>
+        <li>The main types are roundworm (<i>Ascaris</i>), whipworm (<i>Trichuris</i>), and hookworms (<i>Necator</i>, <i>Ancylostoma</i>). They are spread by eggs in human faeces that contaminate soil; hookworm larvae can also enter through the skin when walking barefoot.</li>
+        <li>Infected children are often nutritionally and physically impaired; in girls and women of reproductive age, blood loss from hookworm can worsen anaemia and increase the risk of maternal and infant mortality.</li>
+        <li>Safe, effective medicines (albendazole 400 mg or mebendazole 500 mg) are used for deworming. WHO recommends periodic deworming without prior individual diagnosis for at-risk people in endemic areas.</li>
+        <li>Control also depends on health education, handwashing, using latrines, wearing shoes, and improved access to clean water and sanitation.</li>
+    </ul>
+</div>
+
+<h2>Overview</h2>
+<p>Soil-transmitted helminths are transmitted by eggs passed in the faeces of infected people. In areas with inadequate sanitation, these eggs contaminate the soil. People become infected by ingesting eggs (e.g. from contaminated hands, water, or unwashed/uncooked vegetables) or, in the case of hookworm, when larvae in soil penetrate the skin—often when walking barefoot. There is no direct person-to-person spread; eggs need about 3 weeks in soil to become infective. Pinworm (another common intestinal worm, especially in children) spreads when eggs are swallowed or inhaled from contaminated surfaces or hands.</p>
+
+<h2>Types and transmission</h2>
+<ul>
+    <li><b>Roundworm and whipworm:</b> Eggs are swallowed from contaminated soil, water, or food.</li>
+    <li><b>Hookworm:</b> Eggs hatch in soil; larvae penetrate the skin (e.g. bare feet), then travel to the intestine.</li>
+    <li>Infection is common in preschool and school-age children, and in women of reproductive age in endemic areas.</li>
+</ul>
+
+<h2>Symptoms</h2>
+<p>Light infections may cause no symptoms. Heavier infections can cause:</p>
+<ul>
+    <li>Abdominal pain, diarrhoea (whipworm can cause dysentery)</li>
+    <li>Anaemia (especially with hookworm due to blood loss)</li>
+    <li>Malnutrition, poor growth, and tiredness</li>
+    <li>Loss of appetite and reduced physical fitness</li>
+    <li>In pinworm: anal or vaginal itching (especially at night), restless sleep; many people have no symptoms</li>
+</ul>
+<p>Very heavy worm loads can rarely cause intestinal obstruction, which needs urgent care.</p>
+
+<h2>Prevention and treatment</h2>
+<p><b>Treatment:</b> Take deworming medicine (e.g. albendazole or mebendazole) when offered at school, during child health days, or at a clinic. Entire households may need treatment for pinworm. Complete the dose as advised.</p>
+<p><b>Prevention:</b> Wash hands with soap after using the toilet and before eating; use latrines and keep them clean; wear shoes to reduce hookworm; wash and cook vegetables properly; drink safe water. Keep fingernails short and avoid scratching the anal area to reduce pinworm spread. Wash bedding and underwear in hot water if someone at home has pinworm.</p>
+
+<hr/>
+
+<div class="sources">
+    <h2>Sources</h2>
+    <div class="source-item">
+        <div class="source-name">World Health Organization (WHO)</div>
+        <a href="https://www.who.int/news-room/fact-sheets/detail/soil-transmitted-helminth-infections">www.who.int/news-room/fact-sheets/detail/soil-transmitted-helminth-infections</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">Centers for Disease Control and Prevention (CDC)</div>
+        <a href="https://www.cdc.gov/sth/about/index.html">www.cdc.gov/sth/about</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">Mayo Clinic (Pinworm)</div>
+        <a href="https://www.mayoclinic.org/diseases-conditions/pinworm/symptoms-causes/syc-20376382">www.mayoclinic.org/diseases-conditions/pinworm</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">National Institutes of Health (NIH) – NCBI</div>
+        <a href="https://www.ncbi.nlm.nih.gov/books/NBK560525/">www.ncbi.nlm.nih.gov/books – Helminthiasis</a>
+    </div>
+</div>
+                """.trimIndent(),
+                summary = "Intestinal worms (roundworm, whipworm, hookworm): symptoms, deworming with albendazole/mebendazole, and prevention. WHO, CDC, Mayo Clinic, NIH sources.",
+                source = "WHO, CDC, Mayo Clinic, NIH",
+                category = "Infectious Diseases"
+            ),
             Article(title = "Handwashing: When and How", content = """<h2>When to wash hands</h2><p>Before eating or preparing food; after using the toilet; after cleaning a child; after touching animals.</p><h2>How</h2><p>Use soap and clean water. Rub for at least 20 seconds. Dry with a clean cloth or air.</p><h2>If no soap</h2><p>Use ash or clean water alone. Handwashing with soap is best to prevent diarrhoea and respiratory infections.</p>""", summary = "When and how to wash hands to protect your family.", source = "WHO", category = "Water & Sanitation"),
-            Article(title = "Household Water Treatment", content = """<h2>Options</h2><p>Boiling (1 minute), chlorine drops, or a filter. Choose what is available and affordable.</p><h2>Boiling</h2><p>Bring water to a rolling boil for 1 minute. Cool before use. Store in a clean container.</p><h2>Chlorine</h2><p>Follow the product instructions. Wait 30 minutes before drinking.</p>""", summary = "Simple ways to make water safe to drink at home.", source = "WHO", category = "Water & Sanitation"),
             Article(title = "Postpartum Haemorrhage: Danger Signs", content = """<h2>What is it?</h2><p>Heavy bleeding after birth. Main cause of maternal death in many settings.</p><h2>Danger signs</h2><p>Soaking more than one pad per hour; large clots; dizziness; fast heartbeat; pale skin.</p><h2>What to do</h2><p>Seek emergency care immediately. Lie down; keep warm. In facility, oxytocin and other care save lives.</p>""", summary = "Recognise heavy bleeding after birth and get help fast.", source = "WHO", category = "Maternal Health"),
             Article(title = "Newborn Care: First 24 Hours", content = """<h2>Right after birth</h2><p>Dry the baby; keep skin-to-skin; tie and cut cord with clean equipment; encourage breastfeeding within 1 hour.</p><h2>Keep warm</h2><p>No bathing in first 24 hours. Wrap the baby; avoid drafts.</p><h2>Danger signs</h2><p>Difficulty breathing; not feeding; convulsions; very hot or cold; yellow palms/soles. Seek care at once.</p>""", summary = "Essential care for the first day of life.", source = "WHO", category = "Maternal Health"),
-            Article(title = "Exclusive Breastfeeding", content = """<h2>What it means</h2><p>Only breast milk for the first 6 months—no water, formula, or other foods.</p><h2>Benefits</h2><p>Protects against diarrhoea and infection; best nutrition. Good for mother too.</p><h2>Tips</h2><p>Feed on demand day and night. Position baby well; ensure good latch. Seek support if pain or low milk.</p>""", summary = "Why and how to breastfeed only for the first 6 months.", source = "WHO", category = "Maternal Health"),
-            Article(title = "Complementary Feeding (6–24 Months)", content = """<h2>When</h2><p>Start at 6 months with soft, nutritious foods while continuing breastfeeding.</p><h2>What to give</h2><p>Mashed vegetables, fruits, beans, eggs, fish, meat. Small, frequent meals. Avoid sugary drinks.</p><h2>Safety</h2><p>Wash hands and food. Use clean utensils. Watch for choking.</p>""", summary = "How to introduce solid foods from 6 months.", source = "WHO", category = "Nutrition"),
+            Article(title = "Infant Feeding (0–24 Months)", content = """<div class="key-facts"><h2>Key facts</h2><ul><li>WHO recommends exclusive breastfeeding for the first 6 months, with breastfeeding started within 1 hour of birth.</li><li>Exclusive breastfeeding protects against diarrhoea and infection and reduces infant mortality.</li><li>From 6 months, introduce complementary foods while continuing breastfeeding up to 2 years or beyond.</li><li>Complementary foods should be safe, adequate, and given responsively (following the child’s hunger and fullness).</li></ul></div><h2>From birth to 6 months – exclusive breastfeeding</h2><p><b>What it means:</b> Only breast milk—no water, formula, juice, or other foods. No pacifiers or bottles in the first weeks if possible.</p><p><b>Benefits:</b> Best nutrition; protects against diarrhoea and infection; good for the mother’s health and bonding.</p><p><b>Tips:</b> Feed on demand day and night. Hold the baby in a good position; ensure a deep latch. Seek support from a health worker or counsellor if you have pain, cracked nipples, or concerns about low milk supply.</p><h2>From 6 months – complementary feeding</h2><p>When the baby is about 6 months old, breast milk alone is no longer enough. Start offering soft, nutritious foods <b>in addition to</b> breastfeeding.</p><h3>How often:</h3><ul><li>6–8 months: 2–3 meals per day; increase as the baby accepts more.</li><li>9–11 months: 3–4 meals per day.</li><li>12–24 months: 3–4 meals plus 1–2 nutritious snacks per day.</li></ul><h3>What to give:</h3><ul><li>Mashed or soft vegetables, fruits, beans, lentils, eggs, fish, meat, poultry. Include iron-rich and vitamin A–rich foods.</li><li>Progress from purees to mashed and finger foods by about 8 months, and family foods by 12 months.</li><li>Avoid sugary drinks and limit added sugar and salt.</li></ul><h3>Safety:</h3><ul><li>Wash hands and food; use clean utensils and safe water.</li><li>Watch for choking; avoid hard or small round foods (e.g. whole nuts) in young children.</li></ul><hr/><div class="sources"><h2>Sources</h2><div class="source-item"><div class="source-name">WHO – Infant and young child feeding</div><a href="https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding">www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding</a></div><div class="source-item"><div class="source-name">WHO – Complementary feeding</div><a href="https://www.who.int/health-topics/complementary-feeding">www.who.int/health-topics/complementary-feeding</a></div><div class="source-item"><div class="source-name">NIH – Infant and young child feeding (NCBI)</div><a href="https://www.ncbi.nlm.nih.gov/books/NBK596430/">www.ncbi.nlm.nih.gov/books/NBK596430</a></div></div>""", summary = "Infant feeding from birth to 24 months: exclusive breastfeeding, then complementary foods. WHO, NIH.", source = "WHO, NIH", category = "Maternal Health"),
             Article(title = "Vitamin A Deficiency", content = """<h2>Why it matters</h2><p>Causes poor vision, weak immunity, and higher risk of severe illness in children.</p><h2>Prevention</h2><p>Vitamin A supplements when offered at clinic (every 6 months in many programmes). Eat orange and green vegetables, eggs, liver.</p><h2>Signs</h2><p>Night blindness; dry eyes; more infections. Seek care.</p>""", summary = "Vitamin A: why supplements and diet matter for children.", source = "WHO", category = "Nutrition"),
             Article(title = "Anaemia in Women and Children", content = """<h2>What is anaemia?</h2><p>Too few red blood cells. Common in pregnancy and young children. Causes tiredness and weakness.</p><h2>Causes</h2><p>Iron deficiency, malaria, worms, poor diet.</p><h2>What to do</h2><p>Eat iron-rich foods (meat, beans, leafy greens). Take iron tablets in pregnancy if given. Deworm. Treat malaria. Seek test if very tired or pale.</p>""", summary = "Anaemia: causes, prevention, and when to seek care.", source = "WHO", category = "Nutrition"),
             Article(title = "Hepatitis A and E (Waterborne)", content = """<h2>Key facts</h2><p>Spread by contaminated water and food. Cause jaundice (yellow skin/eyes), fever, tiredness.</p><h2>Prevention</h2><p>Safe water; handwashing; cooked food; avoid raw shellfish.</p><h2>Treatment</h2><p>Rest; fluids; no alcohol. Most recover. Seek care if severe vomiting, confusion, or prolonged jaundice.</p>""", summary = "Waterborne hepatitis: prevention and when to seek care.", source = "WHO", category = "Infectious Diseases"),
@@ -2074,7 +2275,7 @@ class ArticleFetcher {
             Article(title = "HIV: Testing and Prevention", content = """<h2>Testing</h2><p>HIV tests are available at health facilities. Knowing your status helps you get treatment and protect others.</p><h2>Prevention</h2><p>Use condoms; avoid sharing needles; take PrEP if advised. Pregnant women: get tested and take treatment to protect the baby.</p><h2>Treatment</h2><p>Antiretroviral therapy (ART) keeps people healthy. Start and stay on treatment as advised.</p>""", summary = "HIV testing, prevention, and treatment in Uganda and Togo.", source = "WHO", category = "Infectious Diseases"),
             Article(title = "Lassa Fever: Awareness", content = """<h2>What is it?</h2><p>Viral illness spread by rodents (multimammate rat). Found in West Africa including Togo.</p><h2>Symptoms</h2><p>Fever, headache, sore throat, vomiting, diarrhoea, bleeding. Can be severe.</p><h2>Prevention</h2><p>Store food in rodent-proof containers; keep house clean. Avoid contact with blood/body fluids of sick people. Seek care early if you have been in an affected area and feel unwell.</p>""", summary = "Lassa fever: how it spreads and how to reduce risk.", source = "WHO", category = "Infectious Diseases"),
             Article(title = "Ebola: What to Know", content = """<h2>What is Ebola?</h2><p>Severe viral disease. Spread by contact with blood or body fluids of sick people or animals.</p><h2>Symptoms</h2><p>Sudden fever, weakness, headache, vomiting, diarrhoea, rash, sometimes bleeding.</p><h2>What to do</h2><p>Seek care at a health facility. Avoid touching sick people or bodies. Wash hands. Follow official advice during outbreaks.</p>""", summary = "Ebola: symptoms, spread, and what to do during an outbreak.", source = "WHO", category = "Infectious Diseases"),
-            Article(title = "Heat Exhaustion and Heatstroke", content = """<h2>Heat exhaustion</h2><p>Heavy sweating; weakness; dizziness; nausea. Move to shade; drink water; rest.</p><h2>Heatstroke (emergency)</h2><p>High fever; confusion; no sweating; seizure. Cool the person (wet cloth, fan); get to hospital fast.</p><h2>Prevention</h2><p>Drink plenty of water; wear light clothing; avoid hard work in hottest hours.</p>""", summary = "Recognise and treat heat illness in hot climates.", source = "WHO", category = "Emergency Care"),
+            Article(title = "Heat Exhaustion and Heatstroke", content = """<div class="key-facts"><h2>Key facts</h2><ul><li>Heat exhaustion and heatstroke are caused by the body overheating, often with high humidity and strenuous activity.</li><li>Heat exhaustion can progress to heatstroke, which is life-threatening and requires emergency care.</li><li>Older adults, young children, and people who are sick or overweight are at higher risk.</li></ul></div><h2>Heat exhaustion – signs and treatment</h2><p><b>Symptoms:</b> Heavy sweating; cool, moist skin with goosebumps; weakness; dizziness; nausea; headache; muscle cramps; fast, weak pulse; fatigue.</p><p><b>What to do:</b> Move to a cooler place (shade or indoors). Stop activity. Drink cool water or drinks with electrolytes. Remove extra clothing. Lie down with legs slightly raised. Cool skin with wet cloths or a cool shower. If symptoms do not improve within about 1 hour, or they worsen, seek medical care.</p><h2>Heatstroke – medical emergency</h2><p><b>Symptoms:</b> Body temperature 40°C (104°F) or higher; confusion or slurred speech; loss of consciousness; hot, dry skin or changed sweating; nausea and vomiting; rapid breathing; racing heart; severe headache.</p><p class="warning"><b>⚠️ Heatstroke can quickly damage the brain, heart, kidneys and muscles. Get emergency help immediately.</b></p><p><b>While waiting for help:</b> Move the person to shade or a cool place. Remove excess clothing. Cool them with whatever is available: cool water, wet cloths or towels on head, neck, armpits and groin; fan; ice packs if available. Do not give fluids if the person is not fully awake.</p><h2>Prevention</h2><ul><li>Drink plenty of fluids; replace salt and minerals (e.g. through food or rehydration drinks).</li><li>Wear light, loose clothing and a hat.</li><li>Limit strenuous work or exercise during the hottest hours; take breaks in the shade.</li><li>Never leave anyone (especially children or pets) in a parked car.</li><li>Be extra careful if you are older, have young children, or have chronic illness.</li></ul><hr/><div class="sources"><h2>Sources</h2><div class="source-item"><div class="source-name">Mayo Clinic – Heat exhaustion / Heatstroke</div><a href="https://www.mayoclinic.org/diseases-conditions/heat-exhaustion/symptoms-causes/syc-20373250">mayoclinic.org/diseases-conditions/heat-exhaustion</a></div><div class="source-item"><div class="source-name">NIH MedlinePlus – Heat illness</div><a href="https://medlineplus.gov/heatillness.html">medlineplus.gov/heatillness</a></div><div class="source-item"><div class="source-name">WHO – Heat and health</div><a href="https://www.who.int/news-room/fact-sheets/detail/climate-change-heat-and-health">who.int/news-room/fact-sheets/detail/climate-change-heat-and-health</a></div></div>""", summary = "Heat exhaustion and heatstroke: signs, first aid, and prevention. Mayo Clinic, WHO, NIH.", source = "Mayo Clinic, WHO, NIH", category = "Emergency Care"),
             Article(title = "Safe Food in Hot Weather", content = """<h2>Why it matters</h2><p>Food spoils faster in heat. Contaminated food causes diarrhoea and vomiting.</p><h2>Do</h2><p>Cook food well; eat soon after cooking; store leftovers in a cool place or reheat well. Wash hands and surfaces.</p><h2>Avoid</h2><p>Raw or undercooked meat; food left out for hours; dirty water for washing food.</p>""", summary = "Keep food safe in hot weather to avoid illness.", source = "WHO", category = "Water & Sanitation"),
             Article(title = "Burns: First Aid at Home", content = """<h2>Small burns</h2><p>Cool under clean running water for 10–20 minutes. Cover with a clean cloth. Do not put butter or paste.</p><h2>When to seek care</h2><p>Burns on face, hands, joints; large area; blisters; or if child or pregnant. Deep or infected burns need care.</p><h2>Do not</h2><p>Break blisters; stick cloth to the burn.</p>""", summary = "First aid for burns and when to go to the clinic.", source = "WHO", category = "Emergency Care"),
             Article(title = "Cuts and Wounds: When to Stitch", content = """<h2>First aid</h2><p>Press with clean cloth to stop bleeding. Wash with clean water and soap. Cover with clean dressing.</p><h2>When to seek care</h2><p>Deep or long cut; wound on face or hand; bite; dirty or rusty object; signs of infection (redness, pus, fever). May need stitches, tetanus shot, or antibiotics.</p>""", summary = "When to treat cuts at home and when to get stitches.", source = "WHO", category = "Emergency Care"),
@@ -3265,38 +3466,61 @@ class ArticleFetcher {
                 category = "Nutrition"
             ),
             
-            // EAU POTABLE - French
+            // EAU POTABLE - French (traitement + stockage combinés)
             Article(
-                title = "Eau potable",
+                title = "Eau potable : traitement et stockage sûr",
                 content = """
 <div class="key-facts">
     <h2>Principaux faits</h2>
     <ul>
-        <li>L'eau contaminée transmet des maladies comme le choléra et la typhoïde.</li>
-        <li>2 milliards de personnes utilisent des sources d'eau contaminées.</li>
-        <li>L'eau potable pourrait prévenir 400 000 décès par an.</li>
+        <li>Plus de 2 milliards de personnes n'ont pas accès à une eau de boisson gérée en toute sécurité.</li>
+        <li>L'eau contaminée transmet choléra, typhoïde, hépatites A et E, et maladies diarrhéiques.</li>
+        <li>Le traitement et le stockage sûrs de l'eau à domicile réduisent les diarrhées et sauvent des vies.</li>
+        <li>L'eau potable pourrait prévenir environ 400 000 décès par an.</li>
     </ul>
 </div>
 
-<h2>Traitement de l'eau</h2>
-<h3>1. Ébullition :</h3>
+<h2>Traitement de l'eau à domicile</h2>
+<h3>1. Ébullition (le plus efficace) :</h3>
 <ul>
-    <li>Faire bouillir pendant au moins 1 minute</li>
-    <li>Laisser refroidir naturellement</li>
-    <li>Conserver dans un récipient propre</li>
+    <li>Porter l'eau à <b>ébullition soutenue</b> pendant au moins 1 minute (3 minutes au-dessus de 2 000 m d'altitude).</li>
+    <li>Tue virus, bactéries et parasites.</li>
+    <li>Laisser refroidir ; conserver dans un récipient propre et couvert.</li>
 </ul>
 
 <h3>2. Chloration :</h3>
-<p>Utiliser des comprimés de purification ou 2 gouttes d'eau de Javel par litre</p>
+<ul>
+    <li>Comprimés de purification ou chlore liquide (ex. 2 gouttes d'eau de Javel par litre d'eau claire).</li>
+    <li>Suivre les instructions du produit. Attendre 30 minutes avant de boire.</li>
+    <li>Le chlore tue la plupart des bactéries et virus ; moins efficace contre certains parasites.</li>
+</ul>
+
+<h3>3. Autres options (si disponibles) :</h3>
+<ul>
+    <li><b>Désinfection solaire (SODIS) :</b> bouteilles en plastique transparent au soleil 6–8 h (ou 2 jours si nuageux).</li>
+    <li><b>Filtres :</b> filtres certifiés ; suivre les instructions du fabricant.</li>
+</ul>
+
+<hr/>
+
+<h2>Stockage sûr de l'eau</h2>
+<p>Conserver l'eau traitée dans des récipients qui la protègent de la recontamination.</p>
+<ul>
+    <li>Récipient <b>propre et couvert</b>, avec robinet ou ouverture étroite (pas de mains ni de récipients sales à l'intérieur).</li>
+    <li>Garder le récipient <b>au-dessus du sol</b>.</li>
+    <li>Ne pas mettre les mains ou des ustensiles sales ; verser l'eau ou utiliser une louche propre.</li>
+    <li>Laver et sécher le récipient régulièrement. Utiliser l'eau sous 1–2 jours si non traitée au chlore.</li>
+</ul>
 
 <hr/>
 
 <h2>Hygiène des mains</h2>
-<p>Se laver les mains au savon :</p>
+<p>Se laver les mains au savon et à l'eau propre :</p>
 <ul>
-    <li>Avant de manger</li>
-    <li>Après être allé aux toilettes</li>
-    <li>Après avoir changé les couches</li>
+    <li>Avant de manger ou préparer les repas</li>
+    <li>Après les toilettes</li>
+    <li>Après avoir changé les couches ou nettoyé un enfant</li>
+    <li>Après avoir touché des animaux</li>
 </ul>
 
 <hr/>
@@ -3307,10 +3531,18 @@ class ArticleFetcher {
         <div class="source-name">Organisation mondiale de la Santé (OMS)</div>
         <a href="https://www.who.int/fr/news-room/fact-sheets/detail/drinking-water">www.who.int/fr/news-room/fact-sheets/detail/drinking-water</a>
     </div>
+    <div class="source-item">
+        <div class="source-name">OMS – Traitement et stockage sûrs de l'eau à domicile</div>
+        <a href="https://www.who.int/teams/environment-climate-change-and-health/water-sanitation-and-health/water-safety-and-quality/household-water-treatment-and-safe-storage">who.int/.../household-water-treatment-and-safe-storage</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">CDC – Traitement et stockage de l'eau à domicile</div>
+        <a href="https://www.cdc.gov/global-water-sanitation-hygiene/about/about-household-water-treatment.html">www.cdc.gov/global-water-sanitation-hygiene</a>
+    </div>
 </div>
                 """.trimIndent(),
-                summary = "Fiche OMS sur l'eau potable : 2 milliards de personnes manquent d'eau potable. Traitement de l'eau et hygiène des mains.",
-                source = "OMS, UNICEF",
+                summary = "Eau potable : traitement (ébullition, chlore, filtres) et stockage sûr à domicile. OMS, CDC.",
+                source = "OMS, UNICEF, CDC",
                 category = "Hygiène et Assainissement"
             ),
             
@@ -4112,17 +4344,170 @@ class ArticleFetcher {
 
             // === 30 articles pour Ouganda & Togo (français) ===
             Article(title = "Schistosomiase (Bilharziose)", content = """<h2>Principaux faits</h2><p>Fréquent en Ouganda et au Togo où l'on utilise les lacs et rivières. Causé par des parasites des mollusques.</p><h2>Symptômes</h2><p>Sang dans les urines, douleurs abdominales, diarrhée. Retard de croissance chez l'enfant.</p><h2>Prévention</h2><p>Éviter de nager ou de marcher dans l'eau douce en zone à risque. Utiliser de l'eau sûre.</p><h2>Traitement</h2><p>Médicament (praziquantel) en centre de santé. Consulter en cas de symptômes.</p>""", summary = "Schistosomiase : symptômes, prévention et traitement.", source = "OMS", category = "Maladies Infectieuses"),
-            Article(title = "Cécité des rivières (Onchocercose)", content = """<h2>Principaux faits</h2><p>Transmise par les piqûres de simulies près des rivières. Peut causer démangeaisons et lésions oculaires (cécité).</p><h2>Symptômes</h2><p>Démangeaisons, éruptions, irritation des yeux, troubles de la vue.</p><h2>Prévention et traitement</h2><p>Prendre l'ivermectine lors des campagnes de traitement. Éviter les piqûres près des rivières.</p>""", summary = "Cécité des rivières : causes et importance de l'ivermectine.", source = "OMS", category = "Maladies Infectieuses"),
+            // Cécité des rivières (Onchocercose) - Français
+            Article(
+                title = "Cécité des rivières (Onchocercose)",
+                content = """
+<div class="key-facts">
+    <h2>Principaux faits</h2>
+    <ul>
+        <li>L'onchocercose est causée par le ver parasite <i>Onchocerca volvulus</i>, transmis par la piqûre de simulies infectées qui se reproduisent près des rivières à courant rapide.</li>
+        <li>Plus de 99 % des personnes infectées vivent en Afrique subsaharienne et au Yémen ; la maladie existe aussi en Amérique latine.</li>
+        <li>Symptômes : démangeaisons intenses, lésions cutanées, atteinte oculaire pouvant mener à la cécité.</li>
+        <li>Le traitement de masse à l'ivermectine (MDA) est la stratégie centrale ; prise au moins une fois par an pendant 10–15 ans en zone d'endémie.</li>
+        <li>En 2024, plus de 171 millions de personnes ont été traitées dans le monde ; plusieurs pays ont été certifiés libres de la maladie.</li>
+    </ul>
+</div>
+
+<h2>Vue d'ensemble</h2>
+<p>La transmission se fait par la piqûre d'une simulie infectée. Les microfilaires se développent dans l'organisme et provoquent des nodules sous la peau ; en mourant, elles déclenchent une inflammation intense (démangeaisons, lésions cutanées et oculaires, cécité).</p>
+
+<h2>Symptômes</h2>
+<ul>
+    <li><b>Peau :</b> Démangeaisons intenses, éruptions, épaississement ou décoloration de la peau, nodules.</li>
+    <li><b>Yeux :</b> Irritation, sensibilité à la lumière, lésions de la cornée, baisse de la vue, cécité (souvent après des années d'infection).</li>
+</ul>
+
+<h2>Prévention et traitement</h2>
+<p><b>Traitement :</b> Prendre l'ivermectine lors des campagnes de traitement de masse (MDA). Ne pas interrompre le traitement—les communautés ont besoin d'un traitement soutenu pour éliminer la transmission.</p>
+<p><b>Prévention :</b> Pas de vaccin. Réduire les piqûres : éviter les zones près des rivières aux heures de pic, manches longues, pantalons, répulsif si disponible.</p>
+
+<hr/>
+
+<div class="sources">
+    <h2>Sources</h2>
+    <div class="source-item">
+        <div class="source-name">Organisation mondiale de la Santé (OMS)</div>
+        <a href="https://www.who.int/news-room/fact-sheets/detail/onchocerciasis">www.who.int/news-room/fact-sheets/detail/onchocerciasis</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">Centers for Disease Control and Prevention (CDC)</div>
+        <a href="https://www.cdc.gov/filarial-worms/about/onchocerciasis.html">www.cdc.gov/filarial-worms/about/onchocerciasis</a>
+    </div>
+</div>
+                """.trimIndent(),
+                summary = "Cécité des rivières : transmission par simulies, symptômes et importance de l'ivermectine (MDA). Sources OMS et CDC.",
+                source = "OMS, CDC",
+                category = "Maladies Infectieuses"
+            ),
             Article(title = "Filariose lymphatique (Éléphantiasis)", content = """<h2>Principaux faits</h2><p>Transmise par les moustiques. Peut causer gonflement des jambes, bras ou organes génitaux.</p><h2>Symptômes</h2><p>Gonflement, fièvre, douleur. Un traitement précoce évite l'infirmité.</p><h2>Prévention</h2><p>Prendre les médicaments en MDA quand proposés. Moustiquaires et protection contre les piqûres.</p>""", summary = "Éléphantiasis : prévention par la MDA et moustiquaires.", source = "OMS", category = "Maladies Infectieuses"),
-            Article(title = "Trachome", content = """<h2>Principaux faits</h2><p>Infection oculaire transmise par contact et mouches. Cause évitable de cécité.</p><h2>Symptômes</h2><p>Démangeaisons, écoulement, cils qui se tournent (trichiasis), perte de vue.</p><h2>Prévention</h2><p>Lavage du visage, eau propre, latrines. Chirurgie pour trichiasis ; antibiotiques quand proposés.</p>""", summary = "Trachome : hygiène et stratégie SAFE.", source = "OMS", category = "Maladies Infectieuses"),
-            Article(title = "Helminthiases (Vers intestinaux)", content = """<h2>Principaux faits</h2><p>Vers intestinaux (ascaris, trichocéphale, ankylostome) par sol contaminé. Fréquent chez l'enfant.</p><h2>Symptômes</h2><p>Douleurs abdominales, diarrhée, anémie, retard de croissance.</p><h2>Prévention</h2><p>Vermifuges (albendazole) à l'école ou au centre. Chaussures, latrines, lavage des mains.</p>""", summary = "Vers intestinaux : symptômes et vermifugation.", source = "OMS", category = "Maladies Infectieuses"),
-            Article(title = "Stockage sûr de l'eau à la maison", content = """<h2>Pourquoi</h2><p>Stocker l'eau proprement évite diarrhées et maladies. Important en Ouganda et au Togo.</p><h2>À faire</h2><ul><li>Récipient propre, couvert, avec robinet ou ouverture étroite.</li><li>Ne pas mettre les mains ou des récipients sales dedans.</li></ul><h2>Entretien</h2><p>Laver et sécher le récipient. Utiliser l'eau sous 1–2 jours si non traitée.</p>""", summary = "Comment stocker l'eau pour éviter les maladies.", source = "OMS/UNICEF", category = "Eau et Assainissement"),
+            // Trachome - Français
+            Article(
+                title = "Trachome",
+                content = """
+<div class="key-facts">
+    <h2>Principaux faits</h2>
+    <ul>
+        <li>Le trachome est une infection oculaire bactérienne due à <i>Chlamydia trachomatis</i> et constitue la première cause infectieuse de cécité évitable dans le monde.</li>
+        <li>Transmission par contact avec les sécrétions oculaires ou nasales (mains, vêtements, literie) et par les mouches en contact avec ces sécrétions.</li>
+        <li>Les infections répétées provoquent des cicatrices de la face interne de la paupière ; les cils se tournent vers l'intérieur (trichiasis), grattent la cornée et mènent à la cécité.</li>
+        <li>Environ 1,9 million de personnes sont aveugles ou malvoyantes ; 103 millions vivent en zone d'endémie. La stratégie SAFE (Chirurgie, Antibiotiques, Propreté du visage, Environnement) est utilisée pour l'élimination.</li>
+    </ul>
+</div>
+
+<h2>Vue d'ensemble</h2>
+<p>Le trachome est contagieux et touche souvent les jeunes enfants. Au début : démangeaisons, irritation, paupières gonflées, écoulement purulent ou muqueux. L'évolution est lente ; le trichiasis (cils qui tournent vers l'œil) apparaît souvent à l'âge adulte. Les femmes sont plus touchées que les hommes.</p>
+
+<h2>Symptômes</h2>
+<ul>
+    <li>Démangeaisons et irritation des yeux et des paupières</li>
+    <li>Rougeur, douleur, sensibilité à la lumière</li>
+    <li>Paupières gonflées, écoulement (mucus ou pus)</li>
+    <li>Cicatrices de la paupière, cils qui se tournent vers l'œil (trichiasis)</li>
+    <li>Opacité de la cornée et perte de vision</li>
+</ul>
+
+<h2>Prévention et traitement</h2>
+<p><b>Stratégie SAFE :</b></p>
+<ul>
+    <li><b>C</b>hirurgie du trichiasis pour éviter la cécité.</li>
+    <li><b>A</b>ntibiotiques (ex. azithromycine) lors des campagnes de traitement de masse.</li>
+    <li><b>P</b>ropreté du visage : laver le visage des enfants et se laver les mains.</li>
+    <li><b>E</b>nvironnement : eau propre, assainissement, réduction des mouches.</li>
+</ul>
+<p>Consulter en cas d'yeux qui démangent ou qui coulent, surtout en zone d'endémie.</p>
+
+<hr/>
+
+<div class="sources">
+    <h2>Sources</h2>
+    <div class="source-item">
+        <div class="source-name">Organisation mondiale de la Santé (OMS)</div>
+        <a href="https://www.who.int/news-room/fact-sheets/detail/trachoma">www.who.int/news-room/fact-sheets/detail/trachoma</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">Mayo Clinic</div>
+        <a href="https://www.mayoclinic.org/diseases-conditions/trachoma/symptoms-causes/syc-20378505">www.mayoclinic.org/diseases-conditions/trachoma</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">National Eye Institute (NIH)</div>
+        <a href="https://www.nei.nih.gov/about/our-impact/nei-research-initiatives/international-vision-research/improving-global-vision-path-eliminating-trachoma">www.nei.nih.gov – Trachoma elimination</a>
+    </div>
+</div>
+                """.trimIndent(),
+                summary = "Trachome : première cause infectieuse de cécité évitable. Symptômes, stratégie SAFE. Sources OMS, Mayo Clinic, NIH.",
+                source = "OMS, Mayo Clinic, NIH",
+                category = "Maladies Infectieuses"
+            ),
+            // Helminthiases (Vers intestinaux) - Français
+            Article(
+                title = "Helminthiases (Vers intestinaux)",
+                content = """
+<div class="key-facts">
+    <h2>Principaux faits</h2>
+    <ul>
+        <li>Les helminthiases transmises par le sol (HTS) sont des vers parasites de l'intestin. Environ 1,5 milliard de personnes sont infectées, surtout en zones tropicales et subtropicales à assainissement insuffisant.</li>
+        <li>Principaux types : ascaris, trichocéphale, ankylostomes. Transmission par les œufs dans les selles qui contaminent le sol ; les larves d'ankylostomes pénètrent la peau (marcher pieds nus).</li>
+        <li>Les enfants infectés ont souvent un retard nutritionnel et physique ; l'ankylostome aggrave l'anémie chez les femmes en âge de procréer.</li>
+        <li>Médicaments efficaces : albendazole 400 mg ou mébendazole 500 mg. L'OMS recommande la vermifugation périodique en zone d'endémie. Prévention : latrines, lavage des mains, chaussures, eau propre.</li>
+    </ul>
+</div>
+
+<h2>Vue d'ensemble</h2>
+<p>Les œufs des vers sont évacués dans les selles et contaminent le sol en l'absence d'assainissement. L'infection se fait en avalant des œufs (mains, eau, légumes mal lavés ou cuits) ou, pour l'ankylostome, par pénétration des larves dans la peau (pieds nus). Pas de transmission directe de personne à personne ; les œufs doivent mûrir environ 3 semaines dans le sol. L'oxyurose (vers communs chez l'enfant) se transmet par ingestion ou inhalation d'œufs à partir des mains ou des surfaces.</p>
+
+<h2>Symptômes</h2>
+<ul>
+    <li>Douleurs abdominales, diarrhée (le trichocéphale peut causer la dysenterie)</li>
+    <li>Anémie (surtout avec l'ankylostome)</li>
+    <li>Malnutrition, retard de croissance, fatigue</li>
+    <li>Oxyurose : démangeaisons anales ou vaginales (surtout la nuit), sommeil agité ; souvent sans symptôme</li>
+</ul>
+
+<h2>Prévention et traitement</h2>
+<p><b>Traitement :</b> Prendre le vermifuge (albendazole ou mébendazole) quand il est distribué à l'école, en journée de santé ou au centre. Pour l'oxyurose, traiter toute la famille si besoin.</p>
+<p><b>Prévention :</b> Se laver les mains après les toilettes et avant les repas ; utiliser des latrines ; porter des chaussures ; bien laver et cuire les légumes ; eau potable. Ongles courts, ne pas se gratter la zone anale. Laver draps et sous-vêtements à l'eau chaude en cas d'oxyurose.</p>
+
+<hr/>
+
+<div class="sources">
+    <h2>Sources</h2>
+    <div class="source-item">
+        <div class="source-name">Organisation mondiale de la Santé (OMS)</div>
+        <a href="https://www.who.int/news-room/fact-sheets/detail/soil-transmitted-helminth-infections">www.who.int/news-room/fact-sheets/detail/soil-transmitted-helminth-infections</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">Centers for Disease Control and Prevention (CDC)</div>
+        <a href="https://www.cdc.gov/sth/about/index.html">www.cdc.gov/sth/about</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">Mayo Clinic (Oxyurose)</div>
+        <a href="https://www.mayoclinic.org/diseases-conditions/pinworm/symptoms-causes/syc-20376382">www.mayoclinic.org/diseases-conditions/pinworm</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">National Institutes of Health (NIH) – NCBI</div>
+        <a href="https://www.ncbi.nlm.nih.gov/books/NBK560525/">www.ncbi.nlm.nih.gov/books – Helminthiasis</a>
+    </div>
+</div>
+                """.trimIndent(),
+                summary = "Vers intestinaux (ascaris, trichocéphale, ankylostome) : symptômes, vermifugation, prévention. Sources OMS, CDC, Mayo Clinic, NIH.",
+                source = "OMS, CDC, Mayo Clinic, NIH",
+                category = "Maladies Infectieuses"
+            ),
             Article(title = "Lavage des mains : quand et comment", content = """<h2>Quand se laver les mains</h2><p>Avant de manger ou préparer les repas ; après les toilettes ; après avoir nettoyé un enfant.</p><h2>Comment</h2><p>Savon et eau propre. Frotter au moins 20 secondes. Sécher avec un linge propre.</p><h2>Sans savon</h2><p>Cendres ou eau seule. Le savon est le meilleur pour éviter diarrhées et infections.</p>""", summary = "Quand et comment se laver les mains.", source = "OMS", category = "Eau et Assainissement"),
-            Article(title = "Traitement de l'eau à domicile", content = """<h2>Options</h2><p>Ébullition (1 minute), chlore, ou filtre. Choisir ce qui est disponible.</p><h2>Ébullition</h2><p>Faire bouillir 1 minute. Laisser refroidir. Stocker dans un récipient propre.</p><h2>Chlore</h2><p>Suivre les instructions. Attendre 30 minutes avant de boire.</p>""", summary = "Rendre l'eau potable à la maison.", source = "OMS", category = "Eau et Assainissement"),
             Article(title = "Hémorragie du postpartum : signes de danger", content = """<h2>Qu'est-ce que c'est ?</h2><p>Saignement abondant après l'accouchement. Cause majeure de décès maternel.</p><h2>Signes de danger</h2><p>Plus d'une serviette trempée par heure ; gros caillots ; vertiges ; pouls rapide.</p><h2>Que faire</h2><p>Urgence immédiate. Allonger la femme ; la garder au chaud. À l'hôpital : ocytocine et soins.</p>""", summary = "Reconnaître l'hémorragie après l'accouchement.", source = "OMS", category = "Santé Maternelle"),
             Article(title = "Soins du nouveau-né : premières 24 heures", content = """<h2>À la naissance</h2><p>Sécher le bébé ; contact peau à peau ; couper le cordon avec matériel propre ; allaiter dans l'heure.</p><h2>Chaleur</h2><p>Pas de bain les 24 premières heures. Couvrir le bébé.</p><h2>Signes de danger</h2><p>Difficulté à respirer ; ne tète pas ; convulsions ; très chaud ou froid. Consulter tout de suite.</p>""", summary = "Soins essentiels du premier jour de vie.", source = "OMS", category = "Santé Maternelle"),
-            Article(title = "Allaitement maternel exclusif", content = """<h2>Qu'est-ce que c'est ?</h2><p>Seul le lait maternel les 6 premiers mois — pas d'eau, ni de lait artificiel.</p><h2>Avantages</h2><p>Protège contre la diarrhée et les infections ; meilleure nutrition.</p><h2>Conseils</h2><p>Allaiter à la demande. Bonne position et prise du sein. Demander de l'aide en cas de douleur.</p>""", summary = "Pourquoi et comment allaiter exclusivement 6 mois.", source = "OMS", category = "Santé Maternelle"),
-            Article(title = "Alimentation de complément (6–24 mois)", content = """<h2>Quand</h2><p>Commencer à 6 mois avec des aliments mous et nutritifs tout en continuant l'allaitement.</p><h2>Quoi donner</h2><p>Légumes, fruits, haricots, œufs, poisson, viande en purée. Petits repas fréquents.</p><h2>Sécurité</h2><p>Lavage des mains et des aliments. Ustensiles propres. Surveiller les fausses routes.</p>""", summary = "Introduction des aliments à 6 mois.", source = "OMS", category = "Nutrition"),
+            Article(title = "Alimentation du nourrisson (0–24 mois)", content = """<div class="key-facts"><h2>Principaux faits</h2><ul><li>L'OMS recommande l'allaitement maternel exclusif pendant les 6 premiers mois, en commençant dans l'heure qui suit la naissance.</li><li>L'allaitement exclusif protège contre la diarrhée et les infections et réduit la mortalité infantile.</li><li>À partir de 6 mois, introduire des aliments de complément tout en poursuivant l'allaitement jusqu'à 2 ans ou plus.</li><li>Les aliments de complément doivent être sûrs, adaptés et donnés de façon responsive (selon la faim et la satiété de l'enfant).</li></ul></div><h2>De la naissance à 6 mois – allaitement exclusif</h2><p><b>Qu'est-ce que c'est :</b> Seul le lait maternel — pas d'eau, de lait artificiel, de jus ni d'autres aliments.</p><p><b>Avantages :</b> Meilleure nutrition ; protection contre diarrhée et infections ; bon pour la santé de la mère et le lien.</p><p><b>Conseils :</b> Allaiter à la demande jour et nuit. Bonne position et prise du sein. Demander de l'aide (personnel de santé, conseillère) en cas de douleur, crevasses ou inquiétude sur la quantité de lait.</p><h2>À partir de 6 mois – alimentation de complément</h2><p>Vers 6 mois, le lait seul ne suffit plus. Proposer des aliments mous et nutritifs <b>en plus</b> du lait.</p><h3>Fréquence :</h3><ul><li>6–8 mois : 2–3 repas par jour.</li><li>9–11 mois : 3–4 repas par jour.</li><li>12–24 mois : 3–4 repas + 1–2 collations nutritives par jour.</li></ul><h3>Quoi donner :</h3><ul><li>Légumes, fruits, haricots, lentilles, œufs, poisson, viande en purée ou mou. Inclure aliments riches en fer et en vitamine A.</li><li>Passer des purées aux aliments en morceaux vers 8 mois, puis aliments familiaux vers 12 mois.</li><li>Éviter les boissons sucrées ; limiter sucre et sel ajoutés.</li></ul><h3>Sécurité :</h3><ul><li>Lavage des mains et des aliments ; ustensiles et eau propres.</li><li>Surveiller les fausses routes ; éviter aliments durs ou petits et ronds (ex. noix entières) chez le jeune enfant.</li></ul><hr/><div class="sources"><h2>Sources</h2><div class="source-item"><div class="source-name">OMS – Alimentation du nourrisson et du jeune enfant</div><a href="https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding">www.who.int/.../infant-and-young-child-feeding</a></div><div class="source-item"><div class="source-name">OMS – Alimentation de complément</div><a href="https://www.who.int/health-topics/complementary-feeding">www.who.int/health-topics/complementary-feeding</a></div><div class="source-item"><div class="source-name">NIH – Alimentation du nourrisson (NCBI)</div><a href="https://www.ncbi.nlm.nih.gov/books/NBK596430/">www.ncbi.nlm.nih.gov/books/NBK596430</a></div></div>""", summary = "Alimentation de 0 à 24 mois : allaitement exclusif puis aliments de complément. OMS, NIH.", source = "OMS, NIH", category = "Santé Maternelle"),
             Article(title = "Carence en vitamine A", content = """<h2>Pourquoi c'est important</h2><p>Provoque mauvaise vision et infections plus graves chez l'enfant.</p><h2>Prévention</h2><p>Compléments en vitamine A au centre de santé. Manger légumes orange et verts, œufs.</p><h2>Signes</h2><p>Cécité nocturne ; yeux secs. Consulter.</p>""", summary = "Vitamine A : suppléments et alimentation.", source = "OMS", category = "Nutrition"),
             Article(title = "Anémie chez la femme et l'enfant", content = """<h2>Qu'est-ce que l'anémie ?</h2><p>Pas assez de globules rouges. Fréquent en grossesse et chez l'enfant. Fatigue, faiblesse.</p><h2>Causes</h2><p>Manque de fer, paludisme, vers, mauvaise alimentation.</p><h2>Que faire</h2><p>Aliments riches en fer (viande, haricots, légumes). Comprimés de fer en grossesse. Vermifuger. Traiter le paludisme.</p>""", summary = "Anémie : causes, prévention et soins.", source = "OMS", category = "Nutrition"),
             Article(title = "Hépatite A et E (hydrique)", content = """<h2>Principaux faits</h2><p>Transmises par eau et aliments contaminés. Jaunisse, fièvre, fatigue.</p><h2>Prévention</h2><p>Eau sûre ; lavage des mains ; aliments cuits.</p><h2>Traitement</h2><p>Repos ; boire. La plupart guérissent. Consulter si vomissements, confusion, jaunisse prolongée.</p>""", summary = "Hépatite hydrique : prévention et soins.", source = "OMS", category = "Maladies Infectieuses"),
@@ -4131,7 +4516,7 @@ class ArticleFetcher {
             Article(title = "VIH : dépistage et prévention", content = """<h2>Dépistage</h2><p>Tests VIH en centre de santé. Connaître son statut permet de se soigner et de protéger les autres.</p><h2>Prévention</h2><p>Préservatifs ; ne pas partager les aiguilles ; PrEP si conseillé. Femmes enceintes : dépistage et traitement pour protéger le bébé.</p><h2>Traitement</h2><p>Les antirétroviraux (ARV) gardent en bonne santé. Suivre le traitement.</p>""", summary = "VIH : dépistage, prévention et traitement.", source = "OMS", category = "Maladies Infectieuses"),
             Article(title = "Fièvre de Lassa : sensibilisation", content = """<h2>Qu'est-ce que c'est ?</h2><p>Maladie virale transmise par des rongeurs. Présente en Afrique de l'Ouest dont le Togo.</p><h2>Symptômes</h2><p>Fièvre, mal de tête, gorge, vomissements, diarrhée, saignements.</p><h2>Prévention</h2><p>Ranger la nourriture à l'abri des rongeurs ; maison propre. Éviter le contact avec sang et liquides des malades. Consulter tôt si zone à risque.</p>""", summary = "Fièvre de Lassa : transmission et prévention.", source = "OMS", category = "Maladies Infectieuses"),
             Article(title = "Ebola : à savoir", content = """<h2>Qu'est-ce qu'Ebola ?</h2><p>Maladie virale grave. Transmission par contact avec sang ou liquides des malades ou animaux.</p><h2>Symptômes</h2><p>Fièvre brutale, faiblesse, tête, vomissements, diarrhée, éruption, parfois saignements.</p><h2>Que faire</h2><p>Consulter à l'hôpital. Ne pas toucher les malades ou les corps. Se laver les mains. Suivre les consignes en épidémie.</p>""", summary = "Ebola : symptômes et conduite à tenir.", source = "OMS", category = "Maladies Infectieuses"),
-            Article(title = "Épuisement et coup de chaleur", content = """<h2>Épuisement</h2><p>Transpiration, faiblesse, vertiges, nausées. Mettre à l'ombre ; boire ; repos.</p><h2>Coup de chaleur (urgence)</h2><p>Fièvre élevée ; confusion ; pas de sueur ; convulsion. Refroidir (linge mouillé, ventilateur) ; hôpital vite.</p><h2>Prévention</h2><p>Boire beaucoup ; vêtements légers ; éviter l'effort aux heures chaudes.</p>""", summary = "Reconnaître et traiter les coups de chaleur.", source = "OMS", category = "Soins d'Urgence"),
+            Article(title = "Épuisement et coup de chaleur", content = """<div class="key-facts"><h2>Principaux faits</h2><ul><li>L'épuisement par la chaleur et le coup de chaleur sont dus à une surchauffe du corps, souvent avec forte humidité et effort intense.</li><li>L'épuisement peut évoluer en coup de chaleur, qui met la vie en danger et exige des soins d'urgence.</li><li>Les personnes âgées, les jeunes enfants et les malades ou en surpoids sont plus à risque.</li></ul></div><h2>Épuisement par la chaleur – signes et traitement</h2><p><b>Symptômes :</b> Transpiration abondante ; peau fraîche et moite avec chair de poule ; faiblesse ; vertiges ; nausées ; mal de tête ; crampes ; pouls rapide et faible ; fatigue.</p><p><b>Que faire :</b> Mettre la personne au frais (ombre ou intérieur). Arrêter l'effort. Donner de l'eau fraîche ou des boissons avec électrolytes. Retirer les vêtements en trop. Allonger avec les jambes légèrement surélevées. Refroidir la peau avec linges mouillés ou douche fraîche. Si pas d'amélioration en environ 1 h, ou aggravation, consulter.</p><h2>Coup de chaleur – urgence médicale</h2><p><b>Symptômes :</b> Température ≥ 40 °C ; confusion ou parole difficile ; perte de conscience ; peau chaude et sèche ou transpiration anormale ; nausées, vomissements ; respiration rapide ; cœur qui s'emballe ; mal de tête sévère.</p><p class="warning"><b>⚠️ Le coup de chaleur peut endommager rapidement le cerveau, le cœur, les reins. Appeler les urgences immédiatement.</b></p><p><b>En attendant les secours :</b> Mettre la personne à l'ombre ou au frais. Retirer les vêtements en trop. La refroidir (eau fraîche, linges mouillés sur tête, cou, aisselles, aine ; ventilateur ; glace si possible). Ne pas donner à boire si la personne n'est pas bien consciente.</p><h2>Prévention</h2><ul><li>Boire suffisamment ; compenser le sel et les minéraux (alimentation, solutés de réhydratation).</li><li>Porter des vêtements légers et amples, un chapeau.</li><li>Limiter l'effort intense aux heures les plus chaudes ; faire des pauses à l'ombre.</li><li>Ne jamais laisser quelqu'un (surtout un enfant) dans une voiture en stationnement.</li><li>Être vigilant si on est âgé, avec de jeunes enfants, ou en mauvaise santé.</li></ul><hr/><div class="sources"><h2>Sources</h2><div class="source-item"><div class="source-name">Mayo Clinic – Épuisement / Coup de chaleur</div><a href="https://www.mayoclinic.org/diseases-conditions/heat-exhaustion/symptoms-causes/syc-20373250">mayoclinic.org/diseases-conditions/heat-exhaustion</a></div><div class="source-item"><div class="source-name">NIH MedlinePlus – Maladies liées à la chaleur</div><a href="https://medlineplus.gov/heatillness.html">medlineplus.gov/heatillness</a></div><div class="source-item"><div class="source-name">OMS – Chaleur et santé</div><a href="https://www.who.int/news-room/fact-sheets/detail/climate-change-heat-and-health">who.int/.../climate-change-heat-and-health</a></div></div>""", summary = "Épuisement et coup de chaleur : signes, premiers secours et prévention. Mayo Clinic, OMS, NIH.", source = "Mayo Clinic, OMS, NIH", category = "Soins d'Urgence"),
             Article(title = "Alimentation sûre par temps chaud", content = """<h2>Pourquoi</h2><p>Les aliments se gâtent vite à la chaleur. Aliments contaminés = diarrhée et vomissements.</p><h2>À faire</h2><p>Bien cuire ; manger rapidement ; garder les restes au frais. Mains et surfaces propres.</p><h2>À éviter</h2><p>Viande crue ; aliments laissés des heures ; eau sale pour laver.</p>""", summary = "Conserver les aliments en sécurité quand il fait chaud.", source = "OMS", category = "Eau et Assainissement"),
             Article(title = "Brûlures : premiers secours", content = """<h2>Petites brûlures</h2><p>Refroidir sous l'eau propre 10–20 min. Couvrir avec un linge propre. Pas de beurre ni pâte.</p><h2>Quand consulter</h2><p>Brûlure au visage, mains, articulations ; grande surface ; cloques ; enfant ou femme enceinte.</p><h2>Ne pas</h2><p>Percer les cloques ; coller le tissu sur la brûlure.</p>""", summary = "Premiers secours pour brûlures.", source = "OMS", category = "Soins d'Urgence"),
             Article(title = "Coupures et plaies : quand suturer", content = """<h2>Premiers secours</h2><p>Appuyer avec un linge propre pour arrêter le sang. Laver à l'eau et au savon. Pansement propre.</p><h2>Quand consulter</h2><p>Plaie profonde ou longue ; visage ou main ; morsure ; objet sale ou rouillé ; infection (rougeur, pus, fièvre). Points, vaccin antitétanique ou antibiotiques possibles.</p>""", summary = "Quand soigner à la maison et quand faire suturer.", source = "OMS", category = "Soins d'Urgence"),
