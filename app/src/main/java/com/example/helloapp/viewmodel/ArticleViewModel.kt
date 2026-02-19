@@ -9,8 +9,9 @@ import com.example.helloapp.data.Article
 import com.example.helloapp.repository.ArticleRepository
 import com.example.helloapp.service.ArticleFetcher
 import com.example.helloapp.util.LanguageHelper
+import com.example.helloapp.util.keywordMatchesText
 import com.example.helloapp.util.matchesWithTypo
-import com.example.helloapp.util.suggestClosestMatch
+import com.example.helloapp.util.suggestClosestMatchFromTexts
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -77,16 +78,17 @@ class ArticleViewModel(application: Application) : AndroidViewModel(application)
             val queryLower = query.lowercase().trim()
             val keywords = queryLower.split(" ").filter { it.isNotBlank() }
             if (keywords.isEmpty()) return@combine null
+            val categoryFiltered = filtered
             filtered = filtered.filter { article ->
                 keywords.any { keyword ->
-                    article.title.lowercase().contains(keyword) ||
-                    article.summary.lowercase().contains(keyword) ||
-                    article.content.lowercase().contains(keyword) ||
-                    article.category.lowercase().contains(keyword)
+                    keywordMatchesText(keyword, article.title) ||
+                    keywordMatchesText(keyword, article.summary) ||
+                    keywordMatchesText(keyword, article.content) ||
+                    keywordMatchesText(keyword, article.category)
                 }
             }
             if (filtered.isNotEmpty()) return@combine null
-            suggestClosestMatch(query, articles.map { it.title })
+            suggestClosestMatchFromTexts(query, categoryFiltered.map { it.title to (it.title + " " + it.summary) })
         }
     }
 
@@ -109,19 +111,23 @@ class ArticleViewModel(application: Application) : AndroidViewModel(application)
                 
                 filtered.filter { article ->
                     keywords.any { keyword ->
-                        article.title.lowercase().contains(keyword) ||
-                        article.summary.lowercase().contains(keyword) ||
-                        article.content.lowercase().contains(keyword) ||
-                        article.category.lowercase().contains(keyword)
+                        keywordMatchesText(keyword, article.title) ||
+                        keywordMatchesText(keyword, article.summary) ||
+                        keywordMatchesText(keyword, article.content) ||
+                        keywordMatchesText(keyword, article.category)
                     }
                 }.sortedByDescending { article ->
-                    // Score articles by relevance - title matches score higher
+                    // Score by relevance: exact substring > fuzzy/prefix; title > summary > category > content
                     var score = 0
                     keywords.forEach { keyword ->
-                        if (article.title.lowercase().contains(keyword)) score += 10
-                        if (article.summary.lowercase().contains(keyword)) score += 5
-                        if (article.category.lowercase().contains(keyword)) score += 3
-                        if (article.content.lowercase().contains(keyword)) score += 1
+                        val t = article.title.lowercase()
+                        val s = article.summary.lowercase()
+                        val c = article.category.lowercase()
+                        val b = article.content.lowercase()
+                        if (t.contains(keyword)) score += 10 else if (keywordMatchesText(keyword, article.title)) score += 7
+                        if (s.contains(keyword)) score += 5 else if (keywordMatchesText(keyword, article.summary)) score += 3
+                        if (c.contains(keyword)) score += 3 else if (keywordMatchesText(keyword, article.category)) score += 2
+                        if (b.contains(keyword)) score += 1 else if (keywordMatchesText(keyword, article.content)) score += 1
                     }
                     score
                 }

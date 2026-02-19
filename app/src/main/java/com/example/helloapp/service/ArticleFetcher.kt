@@ -2085,7 +2085,68 @@ class ArticleFetcher {
             ),
 
             // === 30 articles for Uganda & Togo (English) ===
-            Article(title = "Schistosomiasis (Bilharzia)", content = """<h2>Key facts</h2><p>Common in Uganda and Togo where people use freshwater lakes and rivers. Caused by parasites from snails.</p><h2>Symptoms</h2><p>Blood in urine, stomach pain, diarrhoea. Children may have poor growth.</p><h2>Prevention</h2><p>Avoid swimming or wading in freshwater in high-risk areas. Use safe water for washing.</p><h2>Treatment</h2><p>Medicine (praziquantel) from a health centre. Seek care if you have symptoms.</p>""", summary = "What schistosomiasis is, symptoms, and how to prevent and treat it.", source = "WHO", category = "Infectious Diseases"),
+            // SCHISTOSOMIASIS (BILHARZIA) - English (expanded)
+            Article(
+                title = "Schistosomiasis (Bilharzia)",
+                content = """
+<div class="key-facts">
+    <h2>Key facts</h2>
+    <ul>
+        <li>Schistosomiasis (bilharzia) is a parasitic disease caused by blood flukes (schistosomes). Infection happens when skin contacts freshwater where infected snails release parasite larvae.</li>
+        <li>About 240 million people worldwide need treatment; over 90% of them live in the WHO African Region. It is common in Uganda and Togo where people use freshwater lakes and rivers.</li>
+        <li>Intestinal form: abdominal pain, diarrhoea, blood in stool. Urogenital form: blood in urine, bladder and kidney damage. In children it can cause anaemia, stunting, and reduced learning.</li>
+        <li>Praziquantel is the recommended, effective, low-cost treatment. There is no vaccine; prevention relies on avoiding contact with contaminated freshwater and using safe water.</li>
+    </ul>
+</div>
+
+<h2>How you get it</h2>
+<ul>
+    <li>Skin contact with freshwater where infected snails live (swimming, bathing, washing clothes).</li>
+    <li>Drinking or using contaminated water.</li>
+</ul>
+
+<h2>Symptoms</h2>
+<ul>
+    <li><b>Early:</b> Itchy rash where parasite entered; later fever, chills, cough, stomach pain.</li>
+    <li><b>Intestinal:</b> Abdominal pain, diarrhoea, blood in stool.</li>
+    <li><b>Urogenital:</b> Blood in urine, pain when passing urine; in children, poor growth, anaemia. Seek care if you have these signs.</li>
+</ul>
+
+<h2>Prevention</h2>
+<ul>
+    <li>Avoid swimming or wading in freshwater in high-risk areas.</li>
+    <li>Use safe water for drinking and washing; boil or treat water when needed.</li>
+    <li>Use proper sanitation to reduce contamination of water bodies.</li>
+</ul>
+
+<h2>Treatment</h2>
+<ul>
+    <li>Praziquantel from a health centre is effective for all major forms.</li>
+    <li>Take as prescribed; early treatment prevents long-term damage.</li>
+</ul>
+
+<hr/>
+
+<div class="sources">
+    <h2>Sources</h2>
+    <div class="source-item">
+        <div class="source-name">World Health Organization (WHO)</div>
+        <a href="https://www.who.int/news-room/fact-sheets/detail/schistosomiasis">www.who.int/news-room/fact-sheets/detail/schistosomiasis</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">National Institutes of Health (NIH) – NIAID</div>
+        <a href="https://www.niaid.nih.gov/diseases-conditions/schistosomiasis-bilharzia">www.niaid.nih.gov – Schistosomiasis (Bilharzia)</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">NIH – NCBI Bookshelf</div>
+        <a href="https://www.ncbi.nlm.nih.gov/books/NBK554434/">www.ncbi.nlm.nih.gov/books – Schistosomiasis</a>
+    </div>
+</div>
+                """.trimIndent(),
+                summary = "Schistosomiasis (bilharzia): spread by freshwater snails, symptoms, prevention, and treatment with praziquantel. WHO, NIH sources.",
+                source = "WHO, NIH",
+                category = "Infectious Diseases"
+            ),
             // RIVER BLINDNESS (ONCHOCERCIASIS) - English
             Article(
                 title = "River Blindness (Onchocerciasis)",
@@ -2134,7 +2195,68 @@ class ArticleFetcher {
                 category = "Infectious Diseases"
             ),
 
-            Article(title = "Lymphatic Filariasis (Elephantiasis)", content = """<h2>Key facts</h2><p>Spread by mosquitoes. Can cause swelling of legs, arms, or genitals (elephantiasis) over time.</p><h2>Symptoms</h2><p>Swelling, fever, pain. Early treatment prevents disability.</p><h2>Prevention & treatment</h2><p>Take medicines in mass drug administration (MDA) when offered. Use bed nets and avoid mosquito bites.</p>""", summary = "What elephantiasis is and how to prevent it with MDA and bed nets.", source = "WHO", category = "Infectious Diseases"),
+            // LYMPHATIC FILARIASIS (ELEPHANTIASIS) - English (expanded)
+            Article(
+                title = "Lymphatic Filariasis (Elephantiasis)",
+                content = """
+<div class="key-facts">
+    <h2>Key facts</h2>
+    <ul>
+        <li>Lymphatic filariasis (elephantiasis) is caused by parasitic roundworms transmitted by mosquito bites. The worms damage the lymphatic system and can cause severe swelling of legs, arms, or genitals.</li>
+        <li>Over 856 million people in 52 countries are at risk. About 36 million have chronic disease, including lymphoedema and hydrocele (scrotal swelling in men).</li>
+        <li>Most infected people have no symptoms at first; swelling and disability often develop over months or years. Early treatment prevents long-term disability.</li>
+        <li>Preventive chemotherapy (mass drug administration, MDA) with safe medicines given yearly for at least 5 years can eliminate the disease in affected communities.</li>
+    </ul>
+</div>
+
+<h2>How it spreads</h2>
+<ul>
+    <li>Infected mosquitoes (Culex, Anopheles, Aedes) bite people; repeated bites over time usually needed.</li>
+    <li>Uganda and Togo are among affected countries; MDA programmes run in many endemic areas.</li>
+</ul>
+
+<h2>Symptoms</h2>
+<ul>
+    <li><b>Early:</b> Fever, swollen lymph nodes, pain.</li>
+    <li><b>Later:</b> Swelling of legs, arms, breasts, or genitals (elephantiasis); skin thickening; in men, hydrocele (scrotal swelling).</li>
+    <li>Bacterial skin infections can worsen swelling. Early treatment prevents disability.</li>
+</ul>
+
+<h2>Treatment</h2>
+<ul>
+    <li>Take MDA medicines when offered—once a year for at least 5 years.</li>
+    <li>Do not skip; community-wide treatment is needed to stop transmission.</li>
+</ul>
+
+<h2>Prevention</h2>
+<ul>
+    <li>Use insecticide-treated bed nets.</li>
+    <li>Avoid mosquito bites (repellent, long sleeves, stay indoors at peak biting times).</li>
+    <li>No vaccine available.</li>
+</ul>
+
+<hr/>
+
+<div class="sources">
+    <h2>Sources</h2>
+    <div class="source-item">
+        <div class="source-name">World Health Organization (WHO)</div>
+        <a href="https://www.who.int/news-room/fact-sheets/detail/lymphatic-filariasis">www.who.int/news-room/fact-sheets/detail/lymphatic-filariasis</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">Centers for Disease Control and Prevention (CDC)</div>
+        <a href="https://www.cdc.gov/filarial-worms/about/lymphatic-filariasis.html">www.cdc.gov/filarial-worms/about/lymphatic-filariasis</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">National Institutes of Health (NIH) – NCBI Bookshelf</div>
+        <a href="https://www.ncbi.nlm.nih.gov/books/NBK556012/">www.ncbi.nlm.nih.gov/books – Filariasis</a>
+    </div>
+</div>
+                """.trimIndent(),
+                summary = "Lymphatic filariasis (elephantiasis): spread by mosquitoes, symptoms, MDA treatment, and prevention. WHO, CDC, NIH sources.",
+                source = "WHO, CDC, NIH",
+                category = "Infectious Diseases"
+            ),
 
             // TRACHOMA - English
             Article(
@@ -2263,28 +2385,1102 @@ class ArticleFetcher {
                 source = "WHO, CDC, Mayo Clinic, NIH",
                 category = "Infectious Diseases"
             ),
-            Article(title = "Handwashing: When and How", content = """<h2>When to wash hands</h2><p>Before eating or preparing food; after using the toilet; after cleaning a child; after touching animals.</p><h2>How</h2><p>Use soap and clean water. Rub for at least 20 seconds. Dry with a clean cloth or air.</p><h2>If no soap</h2><p>Use ash or clean water alone. Handwashing with soap is best to prevent diarrhoea and respiratory infections.</p>""", summary = "When and how to wash hands to protect your family.", source = "WHO", category = "Water & Sanitation"),
-            Article(title = "Postpartum Haemorrhage: Danger Signs", content = """<h2>What is it?</h2><p>Heavy bleeding after birth. Main cause of maternal death in many settings.</p><h2>Danger signs</h2><p>Soaking more than one pad per hour; large clots; dizziness; fast heartbeat; pale skin.</p><h2>What to do</h2><p>Seek emergency care immediately. Lie down; keep warm. In facility, oxytocin and other care save lives.</p>""", summary = "Recognise heavy bleeding after birth and get help fast.", source = "WHO", category = "Maternal Health"),
-            Article(title = "Newborn Care: First 24 Hours", content = """<h2>Right after birth</h2><p>Dry the baby; keep skin-to-skin; tie and cut cord with clean equipment; encourage breastfeeding within 1 hour.</p><h2>Keep warm</h2><p>No bathing in first 24 hours. Wrap the baby; avoid drafts.</p><h2>Danger signs</h2><p>Difficulty breathing; not feeding; convulsions; very hot or cold; yellow palms/soles. Seek care at once.</p>""", summary = "Essential care for the first day of life.", source = "WHO", category = "Maternal Health"),
+            // HANDWASHING - English (expanded)
+            Article(
+                title = "Handwashing: When and How",
+                content = """
+<div class="key-facts">
+    <h2>Key facts</h2>
+    <ul>
+        <li>Hand hygiene is one of the most cost-effective ways to prevent diarrhoea, respiratory infections, and many other illnesses. WHO and UNICEF promote hand hygiene for all.</li>
+        <li>Handwashing with soap can reduce diarrhoeal disease by about 30% and acute respiratory infections by up to 20%.</li>
+        <li>Wash for at least 20 seconds with soap and running water. If soap is not available, use ash or clean water—soap is best.</li>
+    </ul>
+</div>
+
+<h2>When to wash hands</h2>
+<ul>
+    <li>Before eating or preparing food.</li>
+    <li>After using the toilet; after cleaning a child or changing nappies.</li>
+    <li>After touching animals or animal waste; after blowing your nose, coughing, or sneezing.</li>
+    <li>Before and after caring for someone who is sick; when hands look dirty.</li>
+</ul>
+
+<h2>How to wash</h2>
+<ul>
+    <li>Use soap and clean, running water.</li>
+    <li>Rub for at least 20 seconds—backs of hands, between fingers, under nails. (Tip: hum “Happy Birthday” twice.)</li>
+    <li>Rinse well and dry with a clean cloth or air dry.</li>
+</ul>
+
+<h2>If no soap available</h2>
+<ul>
+    <li>Use ash and water, or clean water alone—soap is best.</li>
+    <li>When soap and water aren’t available: use hand rub with at least 60% alcohol.</li>
+</ul>
+
+<hr/>
+
+<div class="sources">
+    <h2>Sources</h2>
+    <div class="source-item">
+        <div class="source-name">World Health Organization (WHO)</div>
+        <a href="https://www.who.int/publications/m/item/hand-hygiene-why-how-when">www.who.int – Hand Hygiene: Why, How & When?</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">Mayo Clinic</div>
+        <a href="https://www.mayoclinic.org/healthy-lifestyle/adult-health/in-depth/hand-washing/art-20046253">www.mayoclinic.org – Hand-washing</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">National Institutes of Health (NIH) – MedlinePlus</div>
+        <a href="https://medlineplus.gov/ency/patientinstructions/000972.htm">medlineplus.gov – Handwashing</a>
+    </div>
+</div>
+                """.trimIndent(),
+                summary = "When and how to wash hands to prevent illness. WHO, Mayo Clinic, NIH sources.",
+                source = "WHO, Mayo Clinic, NIH",
+                category = "Water & Sanitation"
+            ),
+            // POSTPARTUM HAEMORRHAGE - English (expanded)
+            Article(
+                title = "Postpartum Haemorrhage: Danger Signs",
+                content = """
+<div class="key-facts">
+    <h2>Key facts</h2>
+    <ul>
+        <li>Postpartum haemorrhage (PPH) is heavy bleeding after birth—often defined as 500 ml or more within 24 hours after vaginal birth. It is one of the main direct causes of maternal death worldwide.</li>
+        <li>Most PPH happens right after delivery. Common causes: uterus not contracting well (uterine atony), retained placenta, tears, or clotting problems.</li>
+        <li>Danger signs: soaking more than one pad per hour; passing large clots (e.g. bigger than a golf ball); dizziness; fast heartbeat; pale or clammy skin; feeling faint.</li>
+        <li>Seek emergency care immediately. In a health facility, oxytocin and other treatments save lives.</li>
+    </ul>
+</div>
+
+<h2>What is PPH?</h2>
+<ul>
+    <li>Heavy bleeding after the baby is born; one of the main direct causes of maternal death worldwide.</li>
+    <li>Primary PPH: within 24 hours. Late PPH: up to 12 weeks after birth.</li>
+</ul>
+
+<h2>Danger signs</h2>
+<ul>
+    <li>Soaking more than one pad per hour; large blood clots (e.g. bigger than a golf ball).</li>
+    <li>Dizziness or fainting; fast heartbeat; pale, cold, or clammy skin.</li>
+    <li>Pain or swelling in the vaginal area; extreme tiredness. Any of these need urgent care.</li>
+</ul>
+
+<h2>What to do</h2>
+<ul>
+    <li>Seek emergency care immediately.</li>
+    <li>Lie down; keep warm; get to a hospital or health centre as fast as possible.</li>
+    <li>In facility: oxytocin and other treatments save lives; early treatment leads to full recovery for most women.</li>
+</ul>
+
+<hr/>
+
+<div class="sources">
+    <h2>Sources</h2>
+    <div class="source-item">
+        <div class="source-name">World Health Organization (WHO)</div>
+        <a href="https://www.who.int/tools/bleeding-after-birth">www.who.int – Bleeding after birth</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">Mayo Clinic</div>
+        <a href="https://www.mayoclinic.org/healthy-lifestyle/labor-and-delivery/in-depth/postpartum-complications/art-20446702">www.mayoclinic.org – Postpartum complications</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">National Institutes of Health (NIH) – NCBI Bookshelf</div>
+        <a href="https://www.ncbi.nlm.nih.gov/books/NBK499988/">www.ncbi.nlm.nih.gov/books – Postpartum Hemorrhage</a>
+    </div>
+</div>
+                """.trimIndent(),
+                summary = "Recognise heavy bleeding after birth and get help fast. WHO, Mayo Clinic, NIH sources.",
+                source = "WHO, Mayo Clinic, NIH",
+                category = "Maternal Health"
+            ),
+            // NEWBORN CARE: FIRST 24 HOURS - English (expanded)
+            Article(
+                title = "Newborn Care: First 24 Hours",
+                content = """
+<div class="key-facts">
+    <h2>Key facts</h2>
+    <ul>
+        <li>WHO recommends immediate skin-to-skin contact after birth: place the baby (naked or in a nappy) on the mother’s bare chest for at least 1 hour, until after the first breastfeed.</li>
+        <li>Skin-to-skin keeps the baby warm, stabilises breathing and heart rate, and helps breastfeeding. Dry the baby first; tie and cut the cord with clean equipment.</li>
+        <li>Do not bathe the baby in the first 24 hours. Wrap the baby and avoid drafts to prevent cold.</li>
+        <li>Danger signs need urgent care: difficulty breathing; not feeding; convulsions; very hot or cold; yellow palms or soles (jaundice).</li>
+    </ul>
+</div>
+
+<h2>Right after birth</h2>
+<ul>
+    <li>Dry the baby with a clean cloth; clear mouth/nose if needed.</li>
+    <li>Place the baby skin-to-skin on the mother’s chest.</li>
+    <li>Tie and cut the cord with clean equipment.</li>
+    <li>Encourage breastfeeding within 1 hour (helps womb contract and gives colostrum).</li>
+</ul>
+
+<h2>Keep warm</h2>
+<ul>
+    <li>Do not bathe the baby in the first 24 hours.</li>
+    <li>Wrap the baby (including head) in a clean, dry cloth; avoid drafts.</li>
+    <li>Skin-to-skin is one of the best ways to keep the baby warm.</li>
+</ul>
+
+<h2>Danger signs – seek care at once</h2>
+<ul>
+    <li>Difficulty breathing; not feeding or very weak sucking.</li>
+    <li>Convulsions or fits; body very hot or cold.</li>
+    <li>Yellow palms or soles (jaundice); lethargy or floppiness.</li>
+</ul>
+
+<hr/>
+
+<div class="sources">
+    <h2>Sources</h2>
+    <div class="source-item">
+        <div class="source-name">World Health Organization (WHO)</div>
+        <a href="https://www.who.int/news-room/questions-and-answers/item/early-essential-newborn-care">www.who.int – Early essential newborn care</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">Mayo Clinic</div>
+        <a href="https://www.mayoclinic.org/healthy-lifestyle/infant-and-toddler-health/basics/newborn-health/hlv-20049400">www.mayoclinic.org – Newborn health</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">National Institutes of Health (NIH) – MedlinePlus</div>
+        <a href="https://medlineplus.gov/ency/article/002395.htm">medlineplus.gov – Changes in the newborn at birth</a>
+    </div>
+</div>
+                """.trimIndent(),
+                summary = "Essential care for the first day of life: skin-to-skin, warmth, breastfeeding, danger signs. WHO, Mayo Clinic, NIH.",
+                source = "WHO, Mayo Clinic, NIH",
+                category = "Maternal Health"
+            ),
             Article(title = "Infant Feeding (0–24 Months)", content = """<div class="key-facts"><h2>Key facts</h2><ul><li>WHO recommends exclusive breastfeeding for the first 6 months, with breastfeeding started within 1 hour of birth.</li><li>Exclusive breastfeeding protects against diarrhoea and infection and reduces infant mortality.</li><li>From 6 months, introduce complementary foods while continuing breastfeeding up to 2 years or beyond.</li><li>Complementary foods should be safe, adequate, and given responsively (following the child’s hunger and fullness).</li></ul></div><h2>From birth to 6 months – exclusive breastfeeding</h2><p><b>What it means:</b> Only breast milk—no water, formula, juice, or other foods. No pacifiers or bottles in the first weeks if possible.</p><p><b>Benefits:</b> Best nutrition; protects against diarrhoea and infection; good for the mother’s health and bonding.</p><p><b>Tips:</b> Feed on demand day and night. Hold the baby in a good position; ensure a deep latch. Seek support from a health worker or counsellor if you have pain, cracked nipples, or concerns about low milk supply.</p><h2>From 6 months – complementary feeding</h2><p>When the baby is about 6 months old, breast milk alone is no longer enough. Start offering soft, nutritious foods <b>in addition to</b> breastfeeding.</p><h3>How often:</h3><ul><li>6–8 months: 2–3 meals per day; increase as the baby accepts more.</li><li>9–11 months: 3–4 meals per day.</li><li>12–24 months: 3–4 meals plus 1–2 nutritious snacks per day.</li></ul><h3>What to give:</h3><ul><li>Mashed or soft vegetables, fruits, beans, lentils, eggs, fish, meat, poultry. Include iron-rich and vitamin A–rich foods.</li><li>Progress from purees to mashed and finger foods by about 8 months, and family foods by 12 months.</li><li>Avoid sugary drinks and limit added sugar and salt.</li></ul><h3>Safety:</h3><ul><li>Wash hands and food; use clean utensils and safe water.</li><li>Watch for choking; avoid hard or small round foods (e.g. whole nuts) in young children.</li></ul><hr/><div class="sources"><h2>Sources</h2><div class="source-item"><div class="source-name">WHO – Infant and young child feeding</div><a href="https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding">www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding</a></div><div class="source-item"><div class="source-name">WHO – Complementary feeding</div><a href="https://www.who.int/health-topics/complementary-feeding">www.who.int/health-topics/complementary-feeding</a></div><div class="source-item"><div class="source-name">NIH – Infant and young child feeding (NCBI)</div><a href="https://www.ncbi.nlm.nih.gov/books/NBK596430/">www.ncbi.nlm.nih.gov/books/NBK596430</a></div></div>""", summary = "Infant feeding from birth to 24 months: exclusive breastfeeding, then complementary foods. WHO, NIH.", source = "WHO, NIH", category = "Maternal Health"),
-            Article(title = "Vitamin A Deficiency", content = """<h2>Why it matters</h2><p>Causes poor vision, weak immunity, and higher risk of severe illness in children.</p><h2>Prevention</h2><p>Vitamin A supplements when offered at clinic (every 6 months in many programmes). Eat orange and green vegetables, eggs, liver.</p><h2>Signs</h2><p>Night blindness; dry eyes; more infections. Seek care.</p>""", summary = "Vitamin A: why supplements and diet matter for children.", source = "WHO", category = "Nutrition"),
-            Article(title = "Anaemia in Women and Children", content = """<h2>What is anaemia?</h2><p>Too few red blood cells. Common in pregnancy and young children. Causes tiredness and weakness.</p><h2>Causes</h2><p>Iron deficiency, malaria, worms, poor diet.</p><h2>What to do</h2><p>Eat iron-rich foods (meat, beans, leafy greens). Take iron tablets in pregnancy if given. Deworm. Treat malaria. Seek test if very tired or pale.</p>""", summary = "Anaemia: causes, prevention, and when to seek care.", source = "WHO", category = "Nutrition"),
-            Article(title = "Hepatitis A and E (Waterborne)", content = """<h2>Key facts</h2><p>Spread by contaminated water and food. Cause jaundice (yellow skin/eyes), fever, tiredness.</p><h2>Prevention</h2><p>Safe water; handwashing; cooked food; avoid raw shellfish.</p><h2>Treatment</h2><p>Rest; fluids; no alcohol. Most recover. Seek care if severe vomiting, confusion, or prolonged jaundice.</p>""", summary = "Waterborne hepatitis: prevention and when to seek care.", source = "WHO", category = "Infectious Diseases"),
-            Article(title = "Meningitis: Signs and Prevention", content = """<h2>What is meningitis?</h2><p>Infection of the lining of the brain. Can spread in outbreaks. Urgent.</p><h2>Signs</h2><p>Stiff neck; severe headache; fever; dislike of bright light; rash; confusion. In babies: bulging fontanelle, refusal to feed.</p><h2>What to do</h2><p>Seek emergency care immediately. Vaccination (when available) helps prevent some types.</p>""", summary = "Recognise meningitis and get emergency care.", source = "WHO", category = "Infectious Diseases"),
-            Article(title = "Measles: Symptoms and Vaccination", content = """<h2>Symptoms</h2><p>Fever, cough, runny nose, red eyes; then rash spreading from face. Can cause pneumonia, diarrhoea, death.</p><h2>Prevention</h2><p>Vaccination (MCV) protects. Two doses recommended. Keep children away from infected people.</p><h2>Treatment</h2><p>No specific cure. Supportive care; vitamin A; treat complications. Seek care for severe illness.</p>""", summary = "Measles: symptoms, vaccination, and when to seek care.", source = "WHO", category = "Infectious Diseases"),
-            Article(title = "HIV: Testing and Prevention", content = """<h2>Testing</h2><p>HIV tests are available at health facilities. Knowing your status helps you get treatment and protect others.</p><h2>Prevention</h2><p>Use condoms; avoid sharing needles; take PrEP if advised. Pregnant women: get tested and take treatment to protect the baby.</p><h2>Treatment</h2><p>Antiretroviral therapy (ART) keeps people healthy. Start and stay on treatment as advised.</p>""", summary = "HIV testing, prevention, and treatment in Uganda and Togo.", source = "WHO", category = "Infectious Diseases"),
-            Article(title = "Lassa Fever: Awareness", content = """<h2>What is it?</h2><p>Viral illness spread by rodents (multimammate rat). Found in West Africa including Togo.</p><h2>Symptoms</h2><p>Fever, headache, sore throat, vomiting, diarrhoea, bleeding. Can be severe.</p><h2>Prevention</h2><p>Store food in rodent-proof containers; keep house clean. Avoid contact with blood/body fluids of sick people. Seek care early if you have been in an affected area and feel unwell.</p>""", summary = "Lassa fever: how it spreads and how to reduce risk.", source = "WHO", category = "Infectious Diseases"),
-            Article(title = "Ebola: What to Know", content = """<h2>What is Ebola?</h2><p>Severe viral disease. Spread by contact with blood or body fluids of sick people or animals.</p><h2>Symptoms</h2><p>Sudden fever, weakness, headache, vomiting, diarrhoea, rash, sometimes bleeding.</p><h2>What to do</h2><p>Seek care at a health facility. Avoid touching sick people or bodies. Wash hands. Follow official advice during outbreaks.</p>""", summary = "Ebola: symptoms, spread, and what to do during an outbreak.", source = "WHO", category = "Infectious Diseases"),
+            // VITAMIN A DEFICIENCY - English (expanded)
+            Article(
+                title = "Vitamin A Deficiency",
+                content = """
+<div class="key-facts">
+    <h2>Key facts</h2>
+    <ul>
+        <li>Vitamin A deficiency is a leading preventable cause of childhood blindness and increases the risk of severe infection and death. It is common in many countries in Africa and Asia.</li>
+        <li>Early signs: night blindness (poor vision in dim light), dry eyes, Bitot spots. Severe deficiency can lead to corneal damage and permanent blindness.</li>
+        <li>WHO recommends vitamin A supplementation for children 6–59 months in areas where deficiency is a public health problem—often every 6 months at clinic or during campaigns.</li>
+        <li>Diet: eat orange and green vegetables (carrots, sweet potato, spinach), eggs, liver, and fortified foods when available.</li>
+    </ul>
+</div>
+
+<h2>Prevention</h2>
+<ul>
+    <li>Take vitamin A supplements when offered at the clinic (every 6 months in many programmes).</li>
+    <li>Eat orange and green vegetables (carrots, sweet potato, pumpkin, spinach), eggs, liver, mango, papaya.</li>
+    <li>Breastfeed infants—breast milk is a good source of vitamin A.</li>
+</ul>
+
+<h2>Signs – when to seek care</h2>
+<ul>
+    <li>Night blindness; dry or cloudy eyes; repeated infections; slow growth.</li>
+    <li>A health worker can assess and advise on supplements or treatment; high-dose vitamin A can correct deficiency when given under supervision.</li>
+</ul>
+
+<hr/>
+
+<div class="sources">
+    <h2>Sources</h2>
+    <div class="source-item">
+        <div class="source-name">World Health Organization (WHO)</div>
+        <a href="https://www.who.int/tools/elena/interventions/vitamina-children">www.who.int – Vitamin A supplementation in children</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">Mayo Clinic</div>
+        <a href="https://www.mayoclinic.org/drugs-supplements-vitamin-a/art-20365945">www.mayoclinic.org – Vitamin A</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">National Institutes of Health (NIH) – MedlinePlus</div>
+        <a href="https://medlineplus.gov/ency/article/002400.htm">medlineplus.gov – Vitamin A</a>
+    </div>
+</div>
+                """.trimIndent(),
+                summary = "Vitamin A: why supplements and diet matter for children. WHO, Mayo Clinic, NIH sources.",
+                source = "WHO, Mayo Clinic, NIH",
+                category = "Nutrition"
+            ),
+            // ANAEMIA IN WOMEN AND CHILDREN - English (expanded)
+            Article(
+                title = "Anaemia in Women and Children",
+                content = """
+<div class="key-facts">
+    <h2>Key facts</h2>
+    <ul>
+        <li>Anaemia means too few red blood cells or low haemoglobin. It affects about 40% of children under 5, 37% of pregnant women, and 30% of women of reproductive age globally.</li>
+        <li>Most common cause is iron deficiency (poor diet, blood loss). Other causes: malaria, intestinal worms, folate or vitamin B12 deficiency, chronic infections.</li>
+        <li>Signs: tiredness, weakness, pale skin, shortness of breath, dizziness. In pregnancy it increases risk of prematurity and low birth weight; in children it can affect growth and learning.</li>
+        <li>Prevention and treatment: iron-rich foods, iron supplements in pregnancy, deworming, treating malaria. Seek a test if very tired or pale.</li>
+    </ul>
+</div>
+
+<h2>Causes</h2>
+<ul>
+    <li>Iron deficiency (poor diet, heavy periods, blood loss); malaria; intestinal worms.</li>
+    <li>Poor diet low in iron, folate, or vitamin B12; chronic diseases; HIV or TB.</li>
+</ul>
+
+<h2>What to do</h2>
+<ul>
+    <li>Eat iron-rich foods: meat, beans, lentils, leafy greens (spinach, kale), fortified cereals.</li>
+    <li>Take iron tablets in pregnancy if given; deworm when offered; treat malaria; take folate if advised.</li>
+    <li>Seek a blood test if very tired, pale, short of breath, or dizzy—treatment depends on the cause.</li>
+</ul>
+
+<hr/>
+
+<div class="sources">
+    <h2>Sources</h2>
+    <div class="source-item">
+        <div class="source-name">World Health Organization (WHO)</div>
+        <a href="https://www.who.int/news-room/fact-sheets/detail/anaemia">www.who.int/news-room/fact-sheets/detail/anaemia</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">Mayo Clinic</div>
+        <a href="https://www.mayoclinic.org/diseases-conditions/iron-deficiency-anemia/symptoms-causes/syc-20355034">www.mayoclinic.org – Iron deficiency anemia</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">National Institutes of Health (NIH) – MedlinePlus</div>
+        <a href="https://medlineplus.gov/anemia.html">medlineplus.gov – Anemia</a>
+    </div>
+</div>
+                """.trimIndent(),
+                summary = "Anaemia: causes, prevention, and when to seek care. WHO, Mayo Clinic, NIH sources.",
+                source = "WHO, Mayo Clinic, NIH",
+                category = "Nutrition"
+            ),
+            // HEPATITIS A AND E (WATERBORNE) - English (expanded)
+            Article(
+                title = "Hepatitis A and E (Waterborne)",
+                content = """
+<div class="key-facts">
+    <h2>Key facts</h2>
+    <ul>
+        <li>Hepatitis A and E are viral liver infections spread mainly by contaminated water and food (faeces in water, uncooked or contaminated food). Hepatitis E is a major cause of waterborne outbreaks.</li>
+        <li>Symptoms: jaundice (yellow skin and eyes), fever, tiredness, nausea, vomiting, dark urine, pale stools. Many people, especially children, have mild or no symptoms.</li>
+        <li>There is no specific medicine; the body usually clears the virus. Rest, fluids, good nutrition, and no alcohol. Most people recover fully. Hepatitis A vaccine is available and effective.</li>
+        <li>Prevention: safe water, handwashing, cooked food, avoid raw shellfish and unpeeled raw fruits/vegetables in high-risk areas.</li>
+    </ul>
+</div>
+
+<h2>Prevention</h2>
+<ul>
+    <li>Use safe water for drinking and washing food; wash hands with soap after toilet and before eating.</li>
+    <li>Cook food well; avoid raw shellfish; in endemic areas, peel or wash fruits and vegetables with safe water.</li>
+    <li>Hepatitis A vaccine (when available) recommended for at-risk groups and travellers.</li>
+</ul>
+
+<h2>Treatment</h2>
+<ul>
+    <li>Rest; plenty of fluids; nutritious food; no alcohol or unnecessary medicines.</li>
+    <li>Most people recover within weeks to months. Seek care for severe vomiting, confusion, prolonged jaundice, or signs of liver failure.</li>
+</ul>
+
+<hr/>
+
+<div class="sources">
+    <h2>Sources</h2>
+    <div class="source-item">
+        <div class="source-name">World Health Organization (WHO)</div>
+        <a href="https://www.who.int/news-room/fact-sheets/detail/hepatitis-a">www.who.int – Hepatitis A</a><br/>
+        <a href="https://www.who.int/news-room/fact-sheets/detail/hepatitis-e">www.who.int – Hepatitis E</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">Mayo Clinic</div>
+        <a href="https://www.mayoclinic.org/diseases-conditions/hepatitis-a/symptoms-causes/syc-20367007">www.mayoclinic.org – Hepatitis A</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">National Institutes of Health (NIH) – MedlinePlus</div>
+        <a href="https://medlineplus.gov/ency/article/000278.htm">medlineplus.gov – Hepatitis A</a>
+    </div>
+</div>
+                """.trimIndent(),
+                summary = "Waterborne hepatitis A and E: prevention and when to seek care. WHO, Mayo Clinic, NIH sources.",
+                source = "WHO, Mayo Clinic, NIH",
+                category = "Infectious Diseases"
+            ),
+            // MENINGITIS: SIGNS AND PREVENTION - English (expanded)
+            Article(
+                title = "Meningitis: Signs and Prevention",
+                content = """
+<div class="key-facts">
+    <h2>Key facts</h2>
+    <ul>
+        <li>Meningitis is infection and swelling of the membranes and fluid around the brain and spinal cord. It can be caused by bacteria, viruses, or other germs. Bacterial meningitis can be fatal within days without prompt treatment.</li>
+        <li>Signs in adults and older children: sudden high fever, stiff neck, severe headache, nausea or vomiting, confusion, sensitivity to light, rash (in some types), sleepiness or difficulty waking.</li>
+        <li>Signs in babies: high fever, constant crying, bulging soft spot (fontanelle), refusal to feed, vomiting, stiffness, extreme sleepiness or irritability.</li>
+        <li>Seek emergency care immediately. Vaccination (when available) helps prevent some bacterial causes (e.g. meningococcal, pneumococcal).</li>
+    </ul>
+</div>
+
+<h2>Signs in adults and older children</h2>
+<ul>
+    <li>Sudden high fever; stiff neck; severe headache; nausea or vomiting.</li>
+    <li>Confusion; sensitivity to light; rash (in some types); sleepiness or difficulty waking.</li>
+</ul>
+
+<h2>Signs in babies</h2>
+<ul>
+    <li>High fever; constant crying; bulging soft spot (fontanelle); refusal to feed; vomiting.</li>
+    <li>Body stiffness; extreme sleepiness or irritability. Symptoms can develop over hours.</li>
+</ul>
+
+<h2>What to do</h2>
+<ul>
+    <li>Seek emergency care immediately—bacterial meningitis can be fatal within days without antibiotics.</li>
+    <li>Vaccination (when available) helps prevent some bacterial causes (e.g. meningococcal, pneumococcal).</li>
+    <li>During outbreaks, follow official health advice.</li>
+</ul>
+
+<hr/>
+
+<div class="sources">
+    <h2>Sources</h2>
+    <div class="source-item">
+        <div class="source-name">World Health Organization (WHO)</div>
+        <a href="https://www.who.int/news-room/fact-sheets/detail/meningitis">www.who.int/news-room/fact-sheets/detail/meningitis</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">Mayo Clinic</div>
+        <a href="https://www.mayoclinic.org/diseases-conditions/meningitis/symptoms-causes/syc-20350508">www.mayoclinic.org – Meningitis</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">National Institutes of Health (NIH) – MedlinePlus</div>
+        <a href="https://medlineplus.gov/meningitis.html">medlineplus.gov – Meningitis</a>
+    </div>
+</div>
+                """.trimIndent(),
+                summary = "Recognise meningitis and get emergency care. WHO, Mayo Clinic, NIH sources.",
+                source = "WHO, Mayo Clinic, NIH",
+                category = "Infectious Diseases"
+            ),
+            // MEASLES: SYMPTOMS AND VACCINATION - English (expanded)
+            Article(
+                title = "Measles: Symptoms and Vaccination",
+                content = """
+<div class="key-facts">
+    <h2>Key facts</h2>
+    <ul>
+        <li>Measles is a highly contagious viral disease spread by coughs, sneezes, or contact with nose or throat secretions. Symptoms usually start 7–14 days after exposure.</li>
+        <li>Early symptoms: high fever, cough, runny nose, red watery eyes. Then a rash that starts on the face and spreads down the body. Tiny white spots (Koplik spots) may appear inside the mouth.</li>
+        <li>Complications include pneumonia, diarrhoea, ear infections, blindness, encephalitis, and death—especially in children under 5, malnourished children, and pregnant women. Vitamin A can reduce severity.</li>
+        <li>Two doses of measles-containing vaccine (MCV/MMR) are highly effective. Keep vaccination records; catch up if doses were missed.</li>
+    </ul>
+</div>
+
+<h2>Symptoms</h2>
+<ul>
+    <li>High fever, cough, runny nose, red watery eyes; then blotchy red rash from face downward.</li>
+    <li>Tiny white spots (Koplik spots) inside mouth can appear before rash. Complications: pneumonia, severe diarrhoea, ear infections, blindness, brain inflammation, death.</li>
+</ul>
+
+<h2>Prevention</h2>
+<ul>
+    <li>Two doses of measles-containing vaccine (MCV/MMR)—keep to national schedule; catch up if missed.</li>
+    <li>Keep children away from people with measles. If exposed and unvaccinated, ask a health worker about vaccination or immunoglobulin as soon as possible.</li>
+</ul>
+
+<h2>Treatment</h2>
+<ul>
+    <li>No specific cure. Rest, fluids, fever control. Vitamin A (as advised by health worker) reduces complications and death in children.</li>
+    <li>Seek care for severe illness, difficulty breathing, or confusion.</li>
+</ul>
+
+<hr/>
+
+<div class="sources">
+    <h2>Sources</h2>
+    <div class="source-item">
+        <div class="source-name">World Health Organization (WHO)</div>
+        <a href="https://www.who.int/news-room/fact-sheets/detail/measles">www.who.int/news-room/fact-sheets/detail/measles</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">Mayo Clinic</div>
+        <a href="https://www.mayoclinic.org/diseases-conditions/measles/symptoms-causes/syc-20374857">www.mayoclinic.org – Measles</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">National Institutes of Health (NIH) – MedlinePlus</div>
+        <a href="https://medlineplus.gov/measles.html">medlineplus.gov – Measles</a>
+    </div>
+</div>
+                """.trimIndent(),
+                summary = "Measles: symptoms, vaccination, and when to seek care. WHO, Mayo Clinic, NIH sources.",
+                source = "WHO, Mayo Clinic, NIH",
+                category = "Infectious Diseases"
+            ),
+            // HIV: TESTING AND PREVENTION - English (expanded)
+            Article(
+                title = "HIV: Testing and Prevention",
+                content = """
+<div class="key-facts">
+    <h2>Key facts</h2>
+    <ul>
+        <li>HIV attacks the immune system and is spread through blood, semen, vaginal fluids, and breast milk—not through casual contact, hugging, or sharing food. There is no cure, but with treatment people can live long, healthy lives.</li>
+        <li>Testing: HIV tests are available at health facilities (blood or oral). Knowing your status lets you start treatment and protect others. People on effective treatment with undetectable viral load do not pass HIV to sexual partners.</li>
+        <li>Prevention: use condoms; do not share needles; take PrEP (pre-exposure prophylaxis) if advised. Pregnant women: get tested and take treatment to prevent passing HIV to the baby.</li>
+        <li>Treatment: antiretroviral therapy (ART) is recommended for everyone with HIV. Start and stay on treatment as advised.</li>
+    </ul>
+</div>
+
+<h2>Testing</h2>
+<ul>
+    <li>HIV tests available at health facilities (blood or rapid tests). Knowing your status helps you get treatment and protect others.</li>
+    <li>If you might have been exposed recently, ask about the right test and when to retest.</li>
+</ul>
+
+<h2>Prevention</h2>
+<ul>
+    <li>Use condoms correctly every time; do not share needles or syringes.</li>
+    <li>Take PrEP (daily medicine to prevent HIV) if a health worker recommends it.</li>
+    <li>Pregnant women: get tested and take ART as prescribed to protect the baby.</li>
+</ul>
+
+<h2>Treatment</h2>
+<ul>
+    <li>Antiretroviral therapy (ART)—daily medicines—keeps people with HIV healthy and reduces transmission.</li>
+    <li>Start treatment as soon as possible; take it every day as advised. Stay in care and have viral load checked when offered.</li>
+</ul>
+
+<hr/>
+
+<div class="sources">
+    <h2>Sources</h2>
+    <div class="source-item">
+        <div class="source-name">World Health Organization (WHO)</div>
+        <a href="https://www.who.int/news-room/fact-sheets/detail/hiv-aids">www.who.int/news-room/fact-sheets/detail/hiv-aids</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">Mayo Clinic</div>
+        <a href="https://www.mayoclinic.org/diseases-conditions/hiv-aids/diagnosis-treatment/drc-20373531">www.mayoclinic.org – HIV/AIDS diagnosis and treatment</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">National Institutes of Health (NIH) – MedlinePlus</div>
+        <a href="https://medlineplus.gov/hiv.html">medlineplus.gov – HIV</a>
+    </div>
+</div>
+                """.trimIndent(),
+                summary = "HIV testing, prevention, and treatment. WHO, Mayo Clinic, NIH sources.",
+                source = "WHO, Mayo Clinic, NIH",
+                category = "Infectious Diseases"
+            ),
+            // LASSA FEVER: AWARENESS - English (expanded)
+            Article(
+                title = "Lassa Fever: Awareness",
+                content = """
+<div class="key-facts">
+    <h2>Key facts</h2>
+    <ul>
+        <li>Lassa fever is a viral haemorrhagic illness caused by Lassa virus. It is spread mainly by the multimammate rat (Mastomys), which carries the virus in urine and faeces. Found in West Africa, including Nigeria, Sierra Leone, Liberia, Guinea, Benin, Ghana, Mali, and Togo.</li>
+        <li>People get infected by contact with contaminated food or household items, or by breathing in particles. Person-to-person spread can occur through blood and body fluids, especially in health care without proper precautions.</li>
+        <li>About 80% of infections cause no or mild symptoms. When symptoms occur (usually 1–3 weeks after exposure): fever, headache, sore throat, muscle pain, vomiting, diarrhoea, cough. Severe cases: facial swelling, bleeding, shock, seizures. Pregnant women in the third trimester are at very high risk.</li>
+        <li>No licensed vaccine yet. Prevention: store food in rodent-proof containers; keep the house clean; avoid contact with blood and body fluids of sick people. Seek care early if you have been in an affected area and feel unwell.</li>
+    </ul>
+</div>
+
+<h2>How it spreads</h2>
+<ul>
+    <li>Contact with food or household items contaminated by rodent urine or faeces; breathing in particles.</li>
+    <li>Person-to-person through blood and body fluids (e.g. in health care without proper precautions).</li>
+</ul>
+
+<h2>Symptoms</h2>
+<ul>
+    <li>Fever, headache, sore throat, muscle pain, vomiting, diarrhoea, cough, abdominal pain (usually 1–3 weeks after exposure).</li>
+    <li>Severe: bleeding, facial swelling, shock, seizures, coma. Hearing loss in about one in four survivors (sometimes permanent). Pregnant women in third trimester at very high risk.</li>
+</ul>
+
+<h2>Prevention</h2>
+<ul>
+    <li>Store food in rodent-proof containers; dispose of garbage away from the house; keep the house clean; keep cats to deter rats.</li>
+    <li>Avoid contact with blood and body fluids of sick people; health workers must use infection prevention measures.</li>
+</ul>
+
+<h2>What to do</h2>
+<ul>
+    <li>Seek care early if you have been in an affected area and develop fever or other symptoms—supportive care in hospital improves survival.</li>
+</ul>
+
+<hr/>
+
+<div class="sources">
+    <h2>Sources</h2>
+    <div class="source-item">
+        <div class="source-name">World Health Organization (WHO)</div>
+        <a href="https://www.who.int/health-topics/lassa-fever">www.who.int – Lassa fever</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">Centers for Disease Control and Prevention (CDC)</div>
+        <a href="https://www.cdc.gov/lassa-fever/about/index.html">www.cdc.gov/lassa-fever/about</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">National Institutes of Health (NIH) – MedlinePlus</div>
+        <a href="https://medlineplus.gov/hemorrhagicfevers.html">medlineplus.gov – Hemorrhagic fevers</a>
+    </div>
+</div>
+                """.trimIndent(),
+                summary = "Lassa fever: how it spreads and how to reduce risk. WHO, CDC, NIH sources.",
+                source = "WHO, CDC, NIH",
+                category = "Infectious Diseases"
+            ),
+            // EBOLA: WHAT TO KNOW - English (expanded)
+            Article(
+                title = "Ebola: What to Know",
+                content = """
+<div class="key-facts">
+    <h2>Key facts</h2>
+    <ul>
+        <li>Ebola virus disease (EVD) is a severe, often fatal illness. It spreads through direct contact with blood or body fluids (vomit, urine, faeces, saliva, sweat, breast milk, semen) of infected people or animals, or contaminated objects.</li>
+        <li>It does not spread through the air. Symptoms usually appear 2–21 days after exposure (average 8–10 days). People become contagious when symptoms start.</li>
+        <li>Early signs: sudden fever, weakness, headache, muscle pain, sore throat, vomiting, diarrhoea, stomach pain. Can progress to rash, red eyes, and unexplained bleeding or bruising.</li>
+        <li>Vaccines exist for one type (Zaire ebolavirus). Supportive care in a health facility improves survival. Follow official advice during outbreaks.</li>
+    </ul>
+</div>
+
+<h2>How it spreads</h2>
+<ul>
+    <li>Contact with blood or body fluids of sick people or those who have died from Ebola.</li>
+    <li>Contact with contaminated objects (clothing, bedding, needles). Contact with infected animals (e.g. bats, primates).</li>
+</ul>
+
+<h2>Symptoms</h2>
+<ul>
+    <li>Sudden fever, weakness, headache, muscle pain, vomiting, diarrhoea, rash, sometimes bleeding or bruising.</li>
+    <li>Disease can progress quickly. Seek care at a health facility as soon as symptoms appear.</li>
+</ul>
+
+<h2>What to do</h2>
+<ul>
+    <li>Seek care at a health facility. Avoid touching sick people or bodies; wash hands often.</li>
+    <li>Health workers and families must use strict infection prevention (gloves, safe burial). Follow official advice during outbreaks.</li>
+</ul>
+
+<hr/>
+
+<div class="sources">
+    <h2>Sources</h2>
+    <div class="source-item">
+        <div class="source-name">World Health Organization (WHO)</div>
+        <a href="https://www.who.int/news-room/fact-sheets/detail/ebola-virus-disease">www.who.int/news-room/fact-sheets/detail/ebola-virus-disease</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">Mayo Clinic</div>
+        <a href="https://www.mayoclinic.org/diseases-conditions/infectious-diseases/expert-answers/can-ebola-spread-through-air/faq-20115575">www.mayoclinic.org – Ebola transmission</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">National Institutes of Health (NIH) – MedlinePlus</div>
+        <a href="https://medlineplus.gov/ebola.html">medlineplus.gov – Ebola</a>
+    </div>
+</div>
+                """.trimIndent(),
+                summary = "Ebola: symptoms, spread, and what to do during an outbreak. WHO, Mayo Clinic, NIH sources.",
+                source = "WHO, Mayo Clinic, NIH",
+                category = "Infectious Diseases"
+            ),
             Article(title = "Heat Exhaustion and Heatstroke", content = """<div class="key-facts"><h2>Key facts</h2><ul><li>Heat exhaustion and heatstroke are caused by the body overheating, often with high humidity and strenuous activity.</li><li>Heat exhaustion can progress to heatstroke, which is life-threatening and requires emergency care.</li><li>Older adults, young children, and people who are sick or overweight are at higher risk.</li></ul></div><h2>Heat exhaustion – signs and treatment</h2><p><b>Symptoms:</b> Heavy sweating; cool, moist skin with goosebumps; weakness; dizziness; nausea; headache; muscle cramps; fast, weak pulse; fatigue.</p><p><b>What to do:</b> Move to a cooler place (shade or indoors). Stop activity. Drink cool water or drinks with electrolytes. Remove extra clothing. Lie down with legs slightly raised. Cool skin with wet cloths or a cool shower. If symptoms do not improve within about 1 hour, or they worsen, seek medical care.</p><h2>Heatstroke – medical emergency</h2><p><b>Symptoms:</b> Body temperature 40°C (104°F) or higher; confusion or slurred speech; loss of consciousness; hot, dry skin or changed sweating; nausea and vomiting; rapid breathing; racing heart; severe headache.</p><p class="warning"><b>⚠️ Heatstroke can quickly damage the brain, heart, kidneys and muscles. Get emergency help immediately.</b></p><p><b>While waiting for help:</b> Move the person to shade or a cool place. Remove excess clothing. Cool them with whatever is available: cool water, wet cloths or towels on head, neck, armpits and groin; fan; ice packs if available. Do not give fluids if the person is not fully awake.</p><h2>Prevention</h2><ul><li>Drink plenty of fluids; replace salt and minerals (e.g. through food or rehydration drinks).</li><li>Wear light, loose clothing and a hat.</li><li>Limit strenuous work or exercise during the hottest hours; take breaks in the shade.</li><li>Never leave anyone (especially children or pets) in a parked car.</li><li>Be extra careful if you are older, have young children, or have chronic illness.</li></ul><hr/><div class="sources"><h2>Sources</h2><div class="source-item"><div class="source-name">Mayo Clinic – Heat exhaustion / Heatstroke</div><a href="https://www.mayoclinic.org/diseases-conditions/heat-exhaustion/symptoms-causes/syc-20373250">mayoclinic.org/diseases-conditions/heat-exhaustion</a></div><div class="source-item"><div class="source-name">NIH MedlinePlus – Heat illness</div><a href="https://medlineplus.gov/heatillness.html">medlineplus.gov/heatillness</a></div><div class="source-item"><div class="source-name">WHO – Heat and health</div><a href="https://www.who.int/news-room/fact-sheets/detail/climate-change-heat-and-health">who.int/news-room/fact-sheets/detail/climate-change-heat-and-health</a></div></div>""", summary = "Heat exhaustion and heatstroke: signs, first aid, and prevention. Mayo Clinic, WHO, NIH.", source = "Mayo Clinic, WHO, NIH", category = "Emergency Care"),
-            Article(title = "Safe Food in Hot Weather", content = """<h2>Why it matters</h2><p>Food spoils faster in heat. Contaminated food causes diarrhoea and vomiting.</p><h2>Do</h2><p>Cook food well; eat soon after cooking; store leftovers in a cool place or reheat well. Wash hands and surfaces.</p><h2>Avoid</h2><p>Raw or undercooked meat; food left out for hours; dirty water for washing food.</p>""", summary = "Keep food safe in hot weather to avoid illness.", source = "WHO", category = "Water & Sanitation"),
-            Article(title = "Burns: First Aid at Home", content = """<h2>Small burns</h2><p>Cool under clean running water for 10–20 minutes. Cover with a clean cloth. Do not put butter or paste.</p><h2>When to seek care</h2><p>Burns on face, hands, joints; large area; blisters; or if child or pregnant. Deep or infected burns need care.</p><h2>Do not</h2><p>Break blisters; stick cloth to the burn.</p>""", summary = "First aid for burns and when to go to the clinic.", source = "WHO", category = "Emergency Care"),
-            Article(title = "Cuts and Wounds: When to Stitch", content = """<h2>First aid</h2><p>Press with clean cloth to stop bleeding. Wash with clean water and soap. Cover with clean dressing.</p><h2>When to seek care</h2><p>Deep or long cut; wound on face or hand; bite; dirty or rusty object; signs of infection (redness, pus, fever). May need stitches, tetanus shot, or antibiotics.</p>""", summary = "When to treat cuts at home and when to get stitches.", source = "WHO", category = "Emergency Care"),
-            Article(title = "Fever in Children: When to Worry", content = """<h2>Home care</h2><p>Give fluids; light clothing; paracetamol as advised for age. Watch for other signs.</p><h2>Seek care urgently if</h2><p>Baby under 3 months with fever; child not drinking; convulsion; fast breathing; very sleepy; rash that does not fade when pressed; stiff neck.</p><h2>Malaria</h2><p>In malaria areas, fever can be malaria. Get tested and treat as advised.</p>""", summary = "When fever in a child needs a clinic or hospital.", source = "WHO", category = "Emergency Care"),
-            Article(title = "Stress and Your Health", content = """<h2>What is stress?</h2><p>Feeling overwhelmed, worried, or unable to cope. Can affect sleep, appetite, and health.</p><h2>What helps</h2><p>Rest; talk to someone you trust; regular routine; avoid too much alcohol. Gentle activity and breathing can help.</p><h2>When to seek help</h2><p>If stress lasts a long time or you cannot do daily tasks, talk to a health worker.</p>""", summary = "How stress affects health and what you can do.", source = "WHO", category = "Mental Health"),
-            Article(title = "Signs of Depression", content = """<h2>Common signs</h2><p>Sadness most of the time; loss of interest; tiredness; sleep or appetite changes; difficulty concentrating; hopelessness.</p><h2>It is not your fault</h2><p>Depression is a health condition. It can be treated.</p><h2>What to do</h2><p>Talk to a health worker or someone you trust. Treatment may include support, therapy, or medicine.</p>""", summary = "Recognise signs of depression and where to get help.", source = "WHO", category = "Mental Health"),
-            Article(title = "When to Seek Mental Health Help", content = """<h2>Seek help if</h2><p>You feel very sad or anxious for weeks; you cannot work or care for family; you think about hurting yourself; you hear or see things others do not.</p><h2>Where</h2><p>Health centre, hospital, or community worker. In Uganda and Togo, ask at your nearest facility.</p><h2>You are not alone</h2><p>Mental health problems are common. Getting help is a sign of strength.</p>""", summary = "When and where to get mental health support.", source = "WHO", category = "Mental Health"),
-            Article(title = "Bed Nets: Use and Care", content = """<h2>Why</h2><p>Insecticide-treated nets (ITNs) prevent malaria by stopping mosquito bites at night.</p><h2>How to use</h2><p>Tuck the net under the mattress; no gaps. Everyone under the net. Use every night.</p><h2>Care</h2><p>Do not wash too often; wash in cool water without soap if needed. Replace if torn or after 3 years (or as programme advises).</p>""", summary = "Use and care of mosquito nets for malaria prevention.", source = "WHO", category = "Infectious Diseases"),
-            Article(title = "Vaccination Schedule (EPI) – Uganda & Togo", content = """<h2>Uganda & Togo EPI</h2><p>Both countries follow WHO-recommended schedules: BCG, polio, DTP, measles, yellow fever, and others from birth through childhood.</p><h2>Take your child</h2><p>At birth, 6, 10, 14 weeks; 9 months; 18 months (and as per local schedule). Keep the card safe.</p><h2>Why it matters</h2><p>Vaccines prevent serious diseases. Never skip a visit; catch up if missed.</p>""", summary = "Routine childhood vaccination in Uganda and Togo.", source = "WHO/UNICEF", category = "General Health")
+            // SAFE FOOD IN HOT WEATHER - English (expanded)
+            Article(
+                title = "Safe Food in Hot Weather",
+                content = """
+<div class="key-facts">
+    <h2>Key facts</h2>
+    <ul>
+        <li>Bacteria that cause food poisoning multiply faster in heat. Food spoils quicker in hot weather; contaminated food causes diarrhoea and vomiting.</li>
+        <li>Do not leave perishable food out for more than 2 hours (or 1 hour if very hot, e.g. above 32°C). Keep cold food cold and hot food hot.</li>
+    </ul>
+</div>
+
+<h2>Do</h2>
+<ul>
+    <li>Cook food well; eat soon after cooking.</li>
+    <li>Store leftovers in a cool place (or reheat well before eating). Wash hands and surfaces before preparing food.</li>
+    <li>Keep raw and cooked foods separate; use safe water for washing food and hands.</li>
+</ul>
+
+<h2>Avoid</h2>
+<ul>
+    <li>Raw or undercooked meat, poultry, or eggs.</li>
+    <li>Food left out for hours in the heat; food that looks or smells off.</li>
+    <li>Dirty water for washing food or hands.</li>
+</ul>
+
+<hr/>
+
+<div class="sources">
+    <h2>Sources</h2>
+    <div class="source-item">
+        <div class="source-name">World Health Organization (WHO)</div>
+        <a href="https://www.who.int/news-room/fact-sheets/detail/food-safety">www.who.int/news-room/fact-sheets/detail/food-safety</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">Mayo Clinic</div>
+        <a href="https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/expert-answers/food-safety/faq-20058500">www.mayoclinic.org – Food safety</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">National Institutes of Health (NIH) – MedlinePlus</div>
+        <a href="https://medlineplus.gov/foodsafety.html">medlineplus.gov – Food safety</a>
+    </div>
+</div>
+                """.trimIndent(),
+                summary = "Keep food safe in hot weather to avoid illness. WHO, Mayo Clinic, NIH sources.",
+                source = "WHO, Mayo Clinic, NIH",
+                category = "Water & Sanitation"
+            ),
+            // BURNS: FIRST AID AT HOME - English (expanded)
+            Article(
+                title = "Burns: First Aid at Home",
+                content = """
+<div class="key-facts">
+    <h2>Key facts</h2>
+    <ul>
+        <li>Cool the burn under clean, cool (not ice-cold) running water for 10–20 minutes. Cover with a clean, dry cloth or non-stick dressing. Do not put butter, oil, or paste on the burn.</li>
+    </ul>
+</div>
+
+<h2>Small burns – first aid</h2>
+<ul>
+    <li>Cool under clean running water for 10–20 minutes.</li>
+    <li>Remove jewellery or tight items before swelling. Cover with a clean cloth or sterile dressing.</li>
+    <li>Do not break blisters; do not stick cloth to the burn.</li>
+</ul>
+
+<h2>When to seek care</h2>
+<ul>
+    <li>Burns on face, hands, feet, joints, or groin; burn larger than the palm of the hand.</li>
+    <li>Deep burns; blisters; child or pregnant woman burned; electrical or chemical burn.</li>
+    <li>Signs of infection: redness spreading, pus, fever, increased pain. Get a tetanus shot if needed (e.g. if last dose was over 5 years ago).</li>
+</ul>
+
+<h2>Do not</h2>
+<ul>
+    <li>Break blisters; use ice or very cold water; put butter, oil, or paste on the burn.</li>
+    <li>Remove clothing stuck to the burn (leave it; cool over it).</li>
+</ul>
+
+<hr/>
+
+<div class="sources">
+    <h2>Sources</h2>
+    <div class="source-item">
+        <div class="source-name">World Health Organization (WHO)</div>
+        <a href="https://www.who.int/news-room/fact-sheets/detail/burns">www.who.int/news-room/fact-sheets/detail/burns</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">Mayo Clinic</div>
+        <a href="https://www.mayoclinic.org/first-aid/first-aid-burns/basics/art-20056649">www.mayoclinic.org – First aid burns</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">National Institutes of Health (NIH) – MedlinePlus</div>
+        <a href="https://medlineplus.gov/ency/article/000030.htm">medlineplus.gov – Burns</a>
+    </div>
+</div>
+                """.trimIndent(),
+                summary = "First aid for burns and when to go to the clinic. WHO, Mayo Clinic, NIH sources.",
+                source = "WHO, Mayo Clinic, NIH",
+                category = "Emergency Care"
+            ),
+            // CUTS AND WOUNDS: WHEN TO STITCH - English (expanded)
+            Article(
+                title = "Cuts and Wounds: When to Stitch",
+                content = """
+<div class="key-facts">
+    <h2>Key facts</h2>
+    <ul>
+        <li>Press with a clean cloth to stop bleeding. Wash with clean water and soap. Cover with a clean dressing. For minor cuts, keep the wound clean and dry.</li>
+        <li>Wounds that are deep, gaping, on the face or hand, or from a bite or dirty/rusty object often need medical care—stitches, tetanus shot, or antibiotics. Get care within 6–8 hours for dirty wounds; up to 12–24 hours for clean ones when closure is needed.</li>
+    </ul>
+</div>
+
+<h2>First aid</h2>
+<ul>
+    <li>Wash your hands first. Press firmly with a clean cloth or gauze to stop bleeding.</li>
+    <li>Wash the cut with clean running water and soap. Apply a clean dressing or bandage.</li>
+    <li>Do not remove objects stuck deep in the wound—seek care.</li>
+</ul>
+
+<h2>When to seek care</h2>
+<ul>
+    <li>Deep or long cut; wound gaping or won’t stay closed; cut on face, hand, foot, or near a joint.</li>
+    <li>Bite (animal or human); wound from dirty or rusty object; puncture wound.</li>
+    <li>Bleeding that doesn’t stop after 10–15 minutes of pressure; spurting blood.</li>
+    <li>Signs of infection: redness spreading, warmth, pus, fever, increased pain. You may need stitches, a tetanus shot, or antibiotics.</li>
+</ul>
+
+<hr/>
+
+<div class="sources">
+    <h2>Sources</h2>
+    <div class="source-item">
+        <div class="source-name">World Health Organization (WHO)</div>
+        <a href="https://www.who.int/teams/integrated-health-services/clinical-services-and-systems/emergency-and-critical-care/bec">www.who.int – Basic Emergency Care</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">Mayo Clinic</div>
+        <a href="https://www.mayoclinic.org/first-aid/first-aid-cuts/basics/art-20056711">www.mayoclinic.org – Cuts and scrapes: First aid</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">National Institutes of Health (NIH) – MedlinePlus</div>
+        <a href="https://medlineplus.gov/ency/article/000043.htm">medlineplus.gov – Cuts and puncture wounds</a>
+    </div>
+</div>
+                """.trimIndent(),
+                summary = "When to treat cuts at home and when to get stitches. WHO, Mayo Clinic, NIH sources.",
+                source = "WHO, Mayo Clinic, NIH",
+                category = "Emergency Care"
+            ),
+            // FEVER IN CHILDREN: WHEN TO WORRY - English (expanded)
+            Article(
+                title = "Fever in Children: When to Worry",
+                content = """
+<div class="key-facts">
+    <h2>Key facts</h2>
+    <ul>
+        <li>Fever is the body fighting infection. Most fevers in children are harmless and improve in a few days. A fever is often 38°C (100.4°F) or higher.</li>
+        <li>Home care: give fluids, light clothing, paracetamol (or ibuprofen for older children) as advised for age. Watch for other signs.</li>
+        <li>In malaria areas, fever can be malaria—get tested and treat as advised.</li>
+    </ul>
+</div>
+
+<h2>Home care</h2>
+<ul>
+    <li>Give plenty of fluids; dress the child in light clothing.</li>
+    <li>Paracetamol (acetaminophen) or ibuprofen as advised for age and weight—check the label. Do not give aspirin to children.</li>
+    <li>Watch for other signs. If in doubt, contact a health worker.</li>
+</ul>
+
+<h2>Seek care urgently if</h2>
+<ul>
+    <li>Baby under 3 months with fever (any fever in a young infant needs immediate care).</li>
+    <li>Child not drinking or very dehydrated; convulsion; fast or difficult breathing; very sleepy or hard to wake.</li>
+    <li>Rash that does not fade when you press it (glass test); stiff neck; severe headache or abdominal pain.</li>
+    <li>Fever lasting more than 3–5 days or getting worse despite treatment.</li>
+</ul>
+
+<h2>Malaria</h2>
+<ul>
+    <li>In malaria areas, fever can be malaria. Get tested at a health facility and treat as advised. Do not delay.</li>
+</ul>
+
+<hr/>
+
+<div class="sources">
+    <h2>Sources</h2>
+    <div class="source-item">
+        <div class="source-name">World Health Organization (WHO)</div>
+        <a href="https://www.who.int/maternal_child_adolescent/documents/IMCI_integrated_management_child_illness/en/">www.who.int – IMCI fever in children</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">Mayo Clinic</div>
+        <a href="https://www.mayoclinic.org/diseases-conditions/fever/symptoms-causes/syc-20352759">www.mayoclinic.org – Fever</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">National Institutes of Health (NIH) – MedlinePlus</div>
+        <a href="https://medlineplus.gov/ency/article/003090.htm">medlineplus.gov – Fever</a>
+    </div>
+</div>
+                """.trimIndent(),
+                summary = "When fever in a child needs a clinic or hospital. WHO, Mayo Clinic, NIH sources.",
+                source = "WHO, Mayo Clinic, NIH",
+                category = "Emergency Care"
+            ),
+            // STRESS AND YOUR HEALTH - English (expanded)
+            Article(
+                title = "Stress and Your Health",
+                content = """
+<div class="key-facts">
+    <h2>Key facts</h2>
+    <ul>
+        <li>Stress is a normal response to difficult or challenging situations. It can affect your body (tiredness, headaches, sleep problems), mood (worry, irritability, sadness), and behaviour (eating or sleeping more or less).</li>
+        <li>When stress lasts a long time or is very strong, it can harm health. It is not a sign of weakness to ask for help.</li>
+    </ul>
+</div>
+
+<h2>What is stress?</h2>
+<ul>
+    <li>Feeling overwhelmed, worried, or unable to cope. Can affect sleep, appetite, concentration, and health.</li>
+</ul>
+
+<h2>What helps</h2>
+<ul>
+    <li>Rest; talk to someone you trust; keep a regular routine; avoid too much alcohol and caffeine.</li>
+    <li>Gentle activity (walking, stretching); slow breathing; time for relaxation or things you enjoy.</li>
+    <li>Eat regularly, sleep enough, and stay connected with family or friends.</li>
+</ul>
+
+<h2>When to seek help</h2>
+<ul>
+    <li>If stress lasts a long time or you cannot do daily tasks, work, or care for your family.</li>
+    <li>If you feel very sad, anxious, or think about hurting yourself—talk to a health worker or someone you trust. Help is available.</li>
+</ul>
+
+<hr/>
+
+<div class="sources">
+    <h2>Sources</h2>
+    <div class="source-item">
+        <div class="source-name">World Health Organization (WHO)</div>
+        <a href="https://www.who.int/news-room/questions-and-answers/item/stress">www.who.int – Stress</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">Mayo Clinic</div>
+        <a href="https://www.mayoclinic.org/healthy-lifestyle/stress-management/basics/stress-relief/hlv-20049495">www.mayoclinic.org – Stress management</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">National Institutes of Health (NIH) – NIMH</div>
+        <a href="https://www.nimh.nih.gov/health/publications/so-stressed-out-fact-sheet">www.nimh.nih.gov – I’m so stressed out!</a>
+    </div>
+</div>
+                """.trimIndent(),
+                summary = "How stress affects health and what you can do. WHO, Mayo Clinic, NIH sources.",
+                source = "WHO, Mayo Clinic, NIH",
+                category = "Mental Health"
+            ),
+            // SIGNS OF DEPRESSION - English (expanded)
+            Article(
+                title = "Signs of Depression",
+                content = """
+<div class="key-facts">
+    <h2>Key facts</h2>
+    <ul>
+        <li>Depression is a common mental disorder. About 1 in 6 people will experience a major depressive episode in their lifetime.</li>
+        <li>During a depressive episode, symptoms last most of the day, nearly every day, for at least 2 weeks.</li>
+        <li>Depression is different from normal sadness—it affects daily life and can lead to serious outcomes, but it is treatable.</li>
+        <li>Effective treatment exists: psychological treatment (e.g. talk therapy) and, when needed, medication. Getting help is a sign of strength.</li>
+    </ul>
+</div>
+
+<h2>Common signs and symptoms</h2>
+<ul>
+    <li>Persistent sadness, irritability, or feeling empty</li>
+    <li>Loss of interest or pleasure in activities you used to enjoy</li>
+    <li>Feeling very tired or low in energy</li>
+    <li>Changes in sleep (difficulty sleeping, waking early, or sleeping too much)</li>
+    <li>Changes in appetite or unplanned weight changes</li>
+    <li>Difficulty concentrating, remembering, or making decisions</li>
+    <li>Feelings of hopelessness, worthlessness, or excessive guilt</li>
+    <li>Thoughts about death or suicide (seek help immediately if this applies)</li>
+</ul>
+
+<h2>It is not your fault</h2>
+<p>Depression is a health condition, not a weakness or a character flaw. It can affect anyone. It can be treated with support, therapy, and sometimes medicine.</p>
+
+<h2>What to do</h2>
+<ul>
+    <li>Talk to a health worker or someone you trust. A doctor or nurse can screen for depression and refer you to care.</li>
+    <li>Treatment may include psychological treatment (e.g. cognitive behavioural therapy), medication (antidepressants), or both.</li>
+    <li>If you have thoughts of hurting yourself or ending your life, seek urgent help: go to the nearest health facility or emergency room, or contact a crisis helpline (e.g. 988 in the US; ask at your health facility for local numbers in Uganda and Togo).</li>
+</ul>
+
+<hr/>
+
+<div class="sources">
+    <h2>Sources</h2>
+    <div class="source-item">
+        <div class="source-name">World Health Organization (WHO)</div>
+        <a href="https://www.who.int/news-room/fact-sheets/detail/depression">www.who.int/news-room/fact-sheets/detail/depression</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">National Institute of Mental Health (NIMH)</div>
+        <a href="https://www.nimh.nih.gov/health/publications/depression">www.nimh.nih.gov – Depression</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">Mayo Clinic</div>
+        <a href="https://www.mayoclinic.org/diseases-conditions/depression/symptoms-causes/syc-20356007">www.mayoclinic.org – Depression</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">NIH MedlinePlus</div>
+        <a href="https://medlineplus.gov/depression.html">medlineplus.gov – Depression</a>
+    </div>
+</div>
+                """.trimIndent(),
+                summary = "Recognise signs of depression and where to get help. WHO, NIMH, Mayo Clinic, MedlinePlus.",
+                source = "WHO, NIMH, Mayo Clinic",
+                category = "Mental Health"
+            ),
+            // WHEN TO SEEK MENTAL HEALTH HELP - English (expanded)
+            Article(
+                title = "When to Seek Mental Health Help",
+                content = """
+<div class="key-facts">
+    <h2>Key facts</h2>
+    <ul>
+        <li>Mental health problems are common. One in eight people globally lives with a mental disorder. Getting help is a sign of strength.</li>
+        <li>Seek help if severe symptoms last 2 weeks or more, or if you cannot work, care for yourself or your family, or keep yourself safe.</li>
+        <li>If you have thoughts of hurting yourself or ending your life, get urgent help: go to a health facility or call a crisis helpline.</li>
+        <li>Treatment usually includes talk therapy and/or medication. Many people recover or learn to manage well with support.</li>
+    </ul>
+</div>
+
+<h2>Seek help if</h2>
+<ul>
+    <li>You feel very sad, anxious, or irritable for weeks and it does not get better</li>
+    <li>You cannot work, study, or care for your family as usual</li>
+    <li>Your sleep, appetite, or energy are badly affected for a long time</li>
+    <li>You have lost interest in things you used to enjoy</li>
+    <li>You think about hurting yourself or ending your life—seek urgent care</li>
+    <li>You hear or see things that others do not, or have beliefs that worry you or others</li>
+    <li>You use alcohol or drugs to cope and it is causing problems</li>
+</ul>
+
+<h2>Where to get help</h2>
+<ul>
+    <li><b>Health centre or hospital:</b> Ask for mental health or counselling services. In Uganda and Togo, ask at your nearest facility—many offer basic mental health care or can refer you.</li>
+    <li><b>Community or faith-based workers:</b> Some are trained to support mental health and can help you reach a health worker.</li>
+    <li><b>Crisis support:</b> If you are in danger or thinking about suicide, go to the emergency room or contact a crisis helpline (e.g. 988 in the US; local numbers may be available—ask at a health facility).</li>
+</ul>
+
+<h2>You are not alone</h2>
+<p>Mental health problems are common and can affect anyone. With the right support and treatment, many people recover or learn to manage well. Asking for help is a sign of strength.</p>
+
+<hr/>
+
+<div class="sources">
+    <h2>Sources</h2>
+    <div class="source-item">
+        <div class="source-name">World Health Organization (WHO)</div>
+        <a href="https://www.who.int/news-room/fact-sheets/detail/mental-health">www.who.int – Mental health</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">National Institute of Mental Health (NIMH)</div>
+        <a href="https://www.nimh.nih.gov/health/find-help">www.nimh.nih.gov – Find help for mental illnesses</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">Mayo Clinic</div>
+        <a href="https://www.mayoclinic.org/diseases-conditions/mental-illness/diagnosis-treatment/drc-20374974">www.mayoclinic.org – Mental illness: diagnosis and treatment</a>
+    </div>
+</div>
+                """.trimIndent(),
+                summary = "When and where to get mental health support. WHO, NIMH, Mayo Clinic.",
+                source = "WHO, NIMH, Mayo Clinic",
+                category = "Mental Health"
+            ),
+            // BED NETS: USE AND CARE - English (expanded)
+            Article(
+                title = "Bed Nets: Use and Care",
+                content = """
+<div class="key-facts">
+    <h2>Key facts</h2>
+    <ul>
+        <li>Insecticide-treated nets (ITNs), especially long-lasting insecticidal nets (LLINs), are a core WHO-recommended tool to prevent malaria. They repel, kill, or reduce the ability of mosquitoes to bite.</li>
+        <li>In high-transmission areas, all household members should sleep under a net every night—not only children and pregnant women. Community-wide use increases protection for everyone.</li>
+        <li>Studies in Africa have shown that proper use of ITNs can reduce child deaths from malaria. Nets work best when used correctly and kept in good condition.</li>
+        <li>Nets should be replaced when torn or after about 3 years (or as your national programme advises), as insecticide and fabric wear out.</li>
+    </ul>
+</div>
+
+<h2>Why use a bed net</h2>
+<p>Malaria is spread by mosquito bites, mainly at night. Insecticide-treated nets (ITNs) prevent bites and kill or repel mosquitoes. Using a net every night greatly reduces the risk of malaria for you and your family.</p>
+
+<h2>How to use</h2>
+<ul>
+    <li><b>Hang the net</b> over the sleeping area so it covers the whole bed or sleeping mat.</li>
+    <li><b>Tuck the net under the mattress or mat</b>—no gaps. Mosquitoes can get in through small openings.</li>
+    <li><b>Everyone should sleep under the net</b>—children, pregnant women, and adults. One net per 1–2 people if possible.</li>
+    <li><b>Use the net every night</b>, all year round in areas where malaria is present, not only in the rainy season.</li>
+</ul>
+
+<h2>Care and washing</h2>
+<ul>
+    <li><b>Do not wash the net too often.</b> Washing removes insecticide over time. Wash only when it is dirty (e.g. every few months).</li>
+    <li><b>When washing:</b> Use cool or lukewarm water. Do not use soap—it can damage the insecticide. Rinse well. Dry the net in the shade (drying in direct sun can reduce insecticide).</li>
+    <li><b>Do not wash or rub the net harshly;</b> gentle washing helps the net last longer.</li>
+    <li><b>Replace the net</b> if it has many holes, is torn, or after about 3 years—or follow the advice of your local health programme. Get a new net from your health facility or distribution campaign when available.</li>
+</ul>
+
+<hr/>
+
+<div class="sources">
+    <h2>Sources</h2>
+    <div class="source-item">
+        <div class="source-name">World Health Organization (WHO)</div>
+        <a href="https://www.who.int/groups/vector-control-advisory-group/summary-of-new-interventions-for-vector-control/insecticide-treated-nets">www.who.int – Insecticide-treated nets</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">WHO – Key family practices (bednets)</div>
+        <a href="https://www.emro.who.int/child-health/community-family/key-family-practices-on-child-health-care/Malaria-use-of-bednets.html">www.emro.who.int – Malaria: use of bednets</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">Centers for Disease Control and Prevention (CDC)</div>
+        <a href="https://www.cdc.gov/malaria/php/public-health-strategy/insecticide-treated-nets.html">www.cdc.gov – Insecticide-treated nets</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">NIH MedlinePlus</div>
+        <a href="https://medlineplus.gov/malaria.html">medlineplus.gov – Malaria</a>
+    </div>
+</div>
+                """.trimIndent(),
+                summary = "Use and care of insecticide-treated mosquito nets for malaria prevention. WHO, CDC, NIH.",
+                source = "WHO, CDC, NIH",
+                category = "Infectious Diseases"
+            ),
+            // VACCINATION SCHEDULE (EPI) – UGANDA & TOGO - English (expanded)
+            Article(
+                title = "Vaccination Schedule (EPI) – Uganda & Togo",
+                content = """
+<div class="key-facts">
+    <h2>Key facts</h2>
+    <ul>
+        <li>Uganda and Togo follow WHO-recommended schedules through their national Expanded Programme on Immunization (EPI). Vaccines are among the most effective ways to prevent serious illness and death in children.</li>
+        <li>Routine vaccines typically include: BCG (tuberculosis), hepatitis B, polio, DTP (diphtheria, tetanus, pertussis), Hib, pneumococcal, rotavirus, measles (and often rubella), and in many areas yellow fever. Schedules may include additional vaccines (e.g. HPV for adolescents in Togo).</li>
+        <li>Take your child at the ages your health facility recommends—commonly at birth, 6 weeks, 10 weeks, 14 weeks, 9 months, and 18 months. Exact dates and vaccines can vary; follow your local schedule and keep your vaccination card.</li>
+        <li>If a dose was missed, catch-up is possible. Do not restart the series—take your child to the health facility and they will advise the next doses. Never skip a visit; catching up protects your child.</li>
+    </ul>
+</div>
+
+<h2>Uganda & Togo EPI</h2>
+<p>Both countries run an Expanded Programme on Immunization (EPI) aligned with WHO recommendations. Vaccines offered typically include:</p>
+<ul>
+    <li><b>BCG</b> – soon after birth (against tuberculosis)</li>
+    <li><b>Hepatitis B</b> – often first dose at birth, then with other vaccines</li>
+    <li><b>Polio</b> – oral (OPV) and/or inactivated (IPV) doses in early infancy and beyond</li>
+    <li><b>DTP</b> – diphtheria, tetanus, pertussis (whooping cough), often with Hib and hepatitis B in combination</li>
+    <li><b>Pneumococcal</b> – protects against serious chest and brain infections</li>
+    <li><b>Rotavirus</b> – protects against severe diarrhoea in infants</li>
+    <li><b>Measles</b> (and often <b>rubella</b>) – usually first dose around 9 months, second dose later</li>
+    <li><b>Yellow fever</b> – in areas where it is recommended (e.g. parts of Uganda and Togo)</li>
+</ul>
+<p>Your health facility or national programme may add or adjust vaccines (e.g. HPV for girls). Ask at your nearest clinic for the current schedule.</p>
+
+<h2>Take your child</h2>
+<ul>
+    <li>Common visit ages: <b>at birth</b>; <b>6 weeks, 10 weeks, 14 weeks</b>; <b>9 months</b>; <b>18 months</b>; and sometimes later for boosters (e.g. 4–7 years). Follow the schedule given by your health worker or on your card.</li>
+    <li><b>Keep the vaccination card safe.</b> Bring it every time so the health worker can record doses and tell you when to come back.</li>
+    <li>If you moved or missed a visit, take your child as soon as you can. The health worker will continue from where you left off; you usually do not need to restart.</li>
+</ul>
+
+<h2>Why it matters</h2>
+<p>Vaccines prevent serious diseases such as measles, polio, tetanus, whooping cough, and tuberculosis. They protect your child and the community. Never skip a visit when possible, and catch up if doses were missed—every dose counts.</p>
+
+<hr/>
+
+<div class="sources">
+    <h2>Sources</h2>
+    <div class="source-item">
+        <div class="source-name">World Health Organization (WHO) – Essential Programme on Immunization</div>
+        <a href="https://www.who.int/teams/immunization-vaccines-and-biologicals/essential-programme-on-immunization">www.who.int – EPI</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">WHO – Routine immunization summary tables</div>
+        <a href="https://www.who.int/teams/immunization-vaccines-and-biologicals/policies/who-recommendations-for-routine-immunization---summary-tables">www.who.int – Routine immunization recommendations</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">WHO Immunization Data – country schedules</div>
+        <a href="https://immunizationdata.who.int/">immunizationdata.who.int</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">CDC – Catch-up immunization schedule</div>
+        <a href="https://www.cdc.gov/vaccines/schedules/hcp/imz/catchup.html">www.cdc.gov – Catch-up schedule</a>
+    </div>
+</div>
+                """.trimIndent(),
+                summary = "Routine childhood vaccination in Uganda and Togo. WHO, UNICEF, CDC sources.",
+                source = "WHO, UNICEF, CDC",
+                category = "General Health"
+            )
         )
     }
     
