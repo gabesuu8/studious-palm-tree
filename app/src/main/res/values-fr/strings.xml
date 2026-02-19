@@ -16,7 +16,10 @@
     <string name="no_articles">Aucun article disponible.\nAppuyez sur le bouton actualiser pour charger les articles.</string>
     <string name="no_search_results">Aucun article trouvé pour \"%1$s\".\nEssayez d\'autres mots-clés.</string>
     <string name="did_you_mean">Voulez-vous dire : %1$s ?</string>
-    <string name="suggest_condition_from_symptoms">Suggérer une affection selon les symptômes</string>
+    <string name="symptom_checker_title">Vérification des symptômes</string>
+    <string name="symptom_input_hint">Décrivez vos symptômes (ex. fièvre, mal de tête)</string>
+    <string name="symptom_enter_first">Saisissez d\'abord vos symptômes</string>
+    <string name="suggest_condition_from_symptoms">Suggérer une affection</string>
     <string name="possible_conditions">Affections possibles</string>
     <string name="no_conditions_match">Aucune affection ne correspond. Essayez d\'autres symptômes (ex. fièvre, mal de tête).</string>
     <string name="fetching_articles">Chargement des articles…</string>
@@ -42,6 +45,30 @@
     <string name="filter_by_category">Filtrer par catégorie</string>
     <string name="category_icon_desc">Icône de catégorie</string>
     
+    <!-- Rapid test timer -->
+    <string name="rapid_test_timer_title">Minuteur test rapide</string>
+    <string name="rapid_test_timer_menu">Minuteur test rapide</string>
+    <string name="rapid_test_timer_subtitle">Réglez le compte à rebours pour les tests rapides COVID-19 ou paludisme. Lisez le résultat à la fin du minuteur.</string>
+    <string name="rapid_test_presets">Type de test</string>
+    <string name="rapid_test_preset_covid">COVID-19 (15 min)</string>
+    <string name="rapid_test_preset_malaria">Paludisme (15 min)</string>
+    <string name="rapid_test_preset_custom">Personnalisé</string>
+    <string name="rapid_test_custom_minutes">Minutes :</string>
+    <string name="rapid_test_minutes">min</string>
+    <string name="rapid_test_time_input_label">Durée (mm:ss) :</string>
+    <string name="rapid_test_time_hint">15:00</string>
+    <string name="rapid_test_time_format">%1$d:%2$02d</string>
+    <string name="rapid_test_start">Démarrer</string>
+    <string name="rapid_test_pause">Pause</string>
+    <string name="rapid_test_resume">Reprendre</string>
+    <string name="rapid_test_reset">Réinitialiser</string>
+    <string name="rapid_test_read_result">Lire le résultat maintenant</string>
+    <string name="rapid_test_disclaimer">Ce minuteur est à titre indicatif uniquement. Suivez toujours les instructions de votre kit de test. Les résultats peuvent varier selon la marque.</string>
+    <string name="rapid_test_open_timer">Ouvrir le minuteur de test rapide</string>
+
+    <!-- Articles overflow menu -->
+    <string name="menu_options">Options</string>
+
     <!-- Language -->
     <string name="language">Langue</string>
     <string name="english">English</string>
@@ -163,8 +190,9 @@
     <string name="get_started">Commencer</string>
     <string name="feature_icon">Icône de fonctionnalité</string>
     
+    <string name="onboarding_tutorial_title">Tutoriel — Démarrer</string>
     <string name="onboarding_welcome_title">Bienvenue dans Guide Santé</string>
-    <string name="onboarding_welcome_desc">Votre compagnon santé hors ligne pour les familles en Afrique. Accédez aux informations de santé essentielles à tout moment, n\'importe où — même sans internet.</string>
+    <string name="onboarding_welcome_desc">Votre compagnon santé hors ligne pour les familles en Afrique. Accédez aux informations de santé essentielles à tout moment, n\'importe où — même sans internet. Faites glisser pour en savoir plus.</string>
     
     <string name="onboarding_articles_title">Articles de Santé</string>
     <string name="onboarding_articles_desc">Lisez des articles faciles à comprendre sur les maladies courantes comme le paludisme, la diarrhée, et plus encore. Recherchez par sujet et sauvegardez vos favoris.</string>

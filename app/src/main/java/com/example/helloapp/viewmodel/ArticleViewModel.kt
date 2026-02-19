@@ -9,6 +9,7 @@ import com.example.helloapp.data.Article
 import com.example.helloapp.repository.ArticleRepository
 import com.example.helloapp.service.ArticleFetcher
 import com.example.helloapp.util.LanguageHelper
+import com.example.helloapp.util.matchesWithTypo
 import com.example.helloapp.util.suggestClosestMatch
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -151,24 +152,145 @@ class ArticleViewModel(application: Application) : AndroidViewModel(application)
         listOf("bleeding", "pressure", "wound", "cut", "burn", "choking", "unconscious") to listOf("First aid", "Premiers secours"),
         listOf("fracture", "sprain", "swelling", "pain", "bone", "ankle", "wrist", "rice") to listOf("Fracture", "fractures", "Entorse", "sprains"),
         listOf("snake", "bite", "venom", "swelling", "antivenom", "fang") to listOf("Snake", "serpent", "Morsures"),
-        listOf("cholera", "watery", "rice water", "dehydration", "vomiting", "leg cramp") to listOf("Cholera", "Choléra")
+        listOf("cholera", "watery", "rice water", "dehydration", "vomiting", "leg cramp") to listOf("Cholera", "Choléra"),
+        listOf("worm", "worms", "deworm", "helminth", "stomach", "belly pain") to listOf("Soil-Transmitted", "Helminths", "Vers intestinaux"),
+        listOf("itch", "river", "blind", "eye", "blackfly", "ivermectin") to listOf("River Blindness", "Onchocerciasis", "Cécité des rivières"),
+        listOf("swelling", "leg", "elephant", "filariasis", "lymphatic") to listOf("Lymphatic Filariasis", "Elephantiasis", "Filariose"),
+        listOf("eye", "trachoma", "trichiasis", "eyelash", "blind") to listOf("Trachoma", "Trachome"),
+        listOf("bleeding", "postpartum", "after birth", "haemorrhage", "hemorrhage") to listOf("Postpartum", "Hémorragie"),
+        listOf("newborn", "baby", "first 24", "breastfeed", "skin to skin") to listOf("Newborn Care", "Soins du nouveau-né"),
+        listOf("breastfeed", "breast milk", "exclusive", "lactation") to listOf("Exclusive Breastfeeding", "Allaitement"),
+        listOf("complementary", "weaning", "solid food", "6 months") to listOf("Complementary Feeding", "Alimentation de complément"),
+        listOf("vitamin a", "night blind", "vision", "supplement") to listOf("Vitamin A", "vitamine A"),
+        listOf("anaemia", "anemia", "pale", "tired", "iron") to listOf("Anaemia", "Anémie"),
+        listOf("hepatitis", "jaundice", "waterborne", "yellow") to listOf("Hepatitis A", "Hépatite"),
+        listOf("meningitis", "stiff neck", "headache", "rash", "fontanelle") to listOf("Meningitis", "Méningite"),
+        listOf("measles", "rash", "fever", "cough", "vaccine") to listOf("Measles", "Rougeole"),
+        listOf("hiv", "aids", "test", "antiretroviral", "condom") to listOf("HIV", "VIH"),
+        listOf("lassa", "rodent", "west africa", "bleeding") to listOf("Lassa", "Lassa"),
+        listOf("ebola", "bleeding", "outbreak", "contact") to listOf("Ebola"),
+        listOf("heat", "heatstroke", "exhaustion", "sun", "dehydrat") to listOf("Heat Exhaustion", "Épuisement", "chaleur"),
+        listOf("burn", "scald", "blister") to listOf("Burns", "Brûlures"),
+        listOf("cut", "wound", "stitch", "bleeding", "tetanus") to listOf("Cuts and Wounds", "Coupures"),
+        listOf("fever", "child", "children", "convulsion", "seizure") to listOf("Fever in Children", "Fièvre chez l'enfant"),
+        listOf("stress", "anxiety", "overwhelm", "cope") to listOf("Stress", "stress"),
+        listOf("depression", "sad", "hopeless", "sadness") to listOf("Depression", "Dépression"),
+        listOf("mental health", "mental", "sad", "anxious", "help") to listOf("Mental Health", "Santé Mentale"),
+        listOf("bed net", "mosquito net", "net", "itn", "mii") to listOf("Bed Nets", "Moustiquaires"),
+        listOf("vaccination", "vaccine", "epi", "pev", "schedule", "immunization") to listOf("Vaccination Schedule", "Calendrier vaccinal")
     )
 
-    /** Match articles by symptom keywords; returns list sorted by relevance (most matches first). */
+    /** Informal/colloquial terms → formal symptom keywords (for expansion). */
+    private val informalSymptomMap: Map<String, List<String>> = mapOf(
+        "belly" to listOf("abdominal", "stomach"),
+        "stomach" to listOf("abdominal"),
+        "throwing up" to listOf("vomiting"),
+        "puke" to listOf("vomiting"),
+        "puking" to listOf("vomiting"),
+        "sick" to listOf("vomiting", "nausea"),
+        "pee" to listOf("urination", "urine"),
+        "peeing" to listOf("urination", "urine"),
+        "poop" to listOf("stool", "diarrhoea", "diarrhea"),
+        "pooping" to listOf("stool", "diarrhoea", "diarrhea"),
+        "runny nose" to listOf("sneezing"),
+        "stuffy nose" to listOf("sneezing"),
+        "sweating at night" to listOf("night sweats"),
+        "night sweat" to listOf("night sweats"),
+        "hurts" to listOf("pain"),
+        "hurting" to listOf("pain"),
+        "achy" to listOf("pain", "muscle"),
+        "tummy" to listOf("abdominal", "stomach"),
+        "tired" to listOf("fatigue"),
+        "exhausted" to listOf("fatigue"),
+        "weak" to listOf("weakness", "fatigue"),
+        "skin yellow" to listOf("jaundice", "yellow"),
+        "yellow skin" to listOf("jaundice", "yellow"),
+        "coughing blood" to listOf("cough", "blood"),
+        "blood in pee" to listOf("urine", "blood"),
+        "blood in stool" to listOf("blood", "stool"),
+        "loose stool" to listOf("diarrhoea", "diarrhea", "loose", "stool"),
+        "watery stool" to listOf("watery", "diarrhoea", "diarrhea"),
+        "rice water stool" to listOf("rice water", "cholera", "watery"),
+        "leg cramps" to listOf("leg cramp"),
+        "muscle pain" to listOf("muscle", "pain"),
+        "joint pain" to listOf("joint", "pain"),
+        "high sugar" to listOf("sugar", "diabetes"),
+        "peeing a lot" to listOf("urination", "diabetes"),
+        "very thirsty" to listOf("thirst", "dehydration"),
+        "sunken eyes" to listOf("sunken", "dehydration"),
+        "broken bone" to listOf("fracture", "bone"),
+        "twisted ankle" to listOf("sprain", "ankle"),
+        "snake bite" to listOf("snake", "bite"),
+        "allergic" to listOf("allergy"),
+        "itchy eyes" to listOf("itchy", "allergy"),
+        "weight loss" to listOf("weight"),
+        "losing weight" to listOf("weight"),
+        "chest pain" to listOf("chest", "pain"),
+        "blood glucose" to listOf("sugar", "diabetes")
+    )
+
+    /** All multi-word phrases from symptom keywords + informal keys, longest first for greedy tokenization. */
+    private val symptomPhrases: List<String> by lazy {
+        val fromMap = symptomMap.flatMap { it.first }.filter { " " in it }.distinct()
+        val fromInformal = informalSymptomMap.keys.filter { " " in it }
+        (fromMap + fromInformal).distinct().sortedByDescending { it.length }
+    }
+
+    /** Match articles by symptom keywords; supports multi-word phrases, informal expansion, and typo tolerance. */
     fun getSymptomMatches(articles: List<Article>, symptomText: String): List<Article> {
         if (symptomText.isBlank()) return emptyList()
-        val words = symptomText.lowercase().trim().split(" ").filter { it.length >= 2 }
-        if (words.isEmpty()) return emptyList()
+        val inputLower = symptomText.trim().lowercase()
+        val tokens = tokenizeSymptomInput(inputLower)
+        if (tokens.isEmpty()) return emptyList()
+        val expandedTerms = expandSymptomTokens(tokens)
         val scored = articles.mapNotNull { article ->
             var bestScore = 0
             for ((keywords, titleSubstrings) in symptomMap) {
                 if (!titleSubstrings.any { article.title.contains(it, ignoreCase = true) }) continue
-                val score = words.count { w -> keywords.any { k -> k.contains(w) || w.contains(k) } }
+                val score = countKeywordMatches(keywords, tokens, expandedTerms)
                 if (score > bestScore) bestScore = score
             }
             if (bestScore > 0) article to bestScore else null
         }
         return scored.sortedByDescending { it.second }.map { it.first }.distinct()
+    }
+
+    /** Extract phrases first (longest first), then single words (length >= 2). */
+    private fun tokenizeSymptomInput(input: String): List<String> {
+        var remaining = input
+        val result = mutableListOf<String>()
+        for (phrase in symptomPhrases) {
+            while (remaining.contains(phrase)) {
+                result.add(phrase)
+                remaining = remaining.replaceFirst(phrase, " ").replace(Regex("\\s+"), " ").trim()
+            }
+        }
+        result.addAll(remaining.split(" ").map { it.trim() }.filter { it.length >= 2 })
+        return result
+    }
+
+    /** Expand tokens with informal synonyms for matching. */
+    private fun expandSymptomTokens(tokens: List<String>): Set<String> {
+        val set = mutableSetOf<String>()
+        for (t in tokens) {
+            set.add(t)
+            informalSymptomMap[t]?.let { set.addAll(it) }
+        }
+        return set
+    }
+
+    /** Count how many of [keywords] match [tokens] or [expandedTerms] (exact or typo). */
+    private fun countKeywordMatches(keywords: List<String>, tokens: List<String>, expandedTerms: Set<String>): Int {
+        var count = 0
+        for (k in keywords) {
+            val kLower = k.lowercase()
+            if (" " in k) {
+                if (tokens.any { matchesWithTypo(it, kLower) } || expandedTerms.any { matchesWithTypo(it, kLower) }) count++
+            } else {
+                if (expandedTerms.any { it == kLower || matchesWithTypo(it, kLower) }) count++
+            }
+        }
+        return count
     }
     
     fun setSelectedCategory(category: String?) {

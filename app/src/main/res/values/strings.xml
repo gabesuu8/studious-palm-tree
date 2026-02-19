@@ -16,7 +16,10 @@
     <string name="no_articles">No articles available.\nTap the refresh button to load articles.</string>
     <string name="no_search_results">No articles found for \"%1$s\".\nTry different keywords.</string>
     <string name="did_you_mean">Did you mean: %1$s?</string>
-    <string name="suggest_condition_from_symptoms">Suggest condition from symptoms</string>
+    <string name="symptom_checker_title">Symptom checker</string>
+    <string name="symptom_input_hint">Describe your symptoms (e.g. fever, headache)</string>
+    <string name="symptom_enter_first">Enter your symptoms first</string>
+    <string name="suggest_condition_from_symptoms">Suggest condition</string>
     <string name="possible_conditions">Possible conditions</string>
     <string name="no_conditions_match">No conditions match. Try different symptoms (e.g. fever, headache).</string>
     <string name="fetching_articles">Fetching articles…</string>
@@ -42,6 +45,30 @@
     <string name="filter_by_category">Filter by category</string>
     <string name="category_icon_desc">Category icon</string>
     
+    <!-- Rapid test timer -->
+    <string name="rapid_test_timer_title">Rapid test timer</string>
+    <string name="rapid_test_timer_menu">Rapid test timer</string>
+    <string name="rapid_test_timer_subtitle">Set a countdown for COVID-19 or malaria rapid tests. Read the result when the timer ends.</string>
+    <string name="rapid_test_presets">Test type</string>
+    <string name="rapid_test_preset_covid">COVID-19 (15 min)</string>
+    <string name="rapid_test_preset_malaria">Malaria (15 min)</string>
+    <string name="rapid_test_preset_custom">Custom</string>
+    <string name="rapid_test_custom_minutes">Minutes:</string>
+    <string name="rapid_test_minutes">min</string>
+    <string name="rapid_test_time_input_label">Time (mm:ss):</string>
+    <string name="rapid_test_time_hint">15:00</string>
+    <string name="rapid_test_time_format">%1$d:%2$02d</string>
+    <string name="rapid_test_start">Start</string>
+    <string name="rapid_test_pause">Pause</string>
+    <string name="rapid_test_resume">Resume</string>
+    <string name="rapid_test_reset">Reset</string>
+    <string name="rapid_test_read_result">Read result now</string>
+    <string name="rapid_test_disclaimer">This timer is for convenience only. Always follow the instructions on your test kit. Results may vary by brand.</string>
+    <string name="rapid_test_open_timer">Open rapid test timer</string>
+
+    <!-- Articles overflow menu -->
+    <string name="menu_options">Options</string>
+
     <!-- Language -->
     <string name="language">Language</string>
     <string name="english">English</string>
@@ -163,8 +190,9 @@
     <string name="get_started">Get Started</string>
     <string name="feature_icon">Feature icon</string>
     
+    <string name="onboarding_tutorial_title">Tutorial — Getting started</string>
     <string name="onboarding_welcome_title">Welcome to Healthcare Guide</string>
-    <string name="onboarding_welcome_desc">Your trusted offline health companion for families in Africa. Access essential health information anytime, anywhere — even without internet.</string>
+    <string name="onboarding_welcome_desc">Your trusted offline health companion for families in Africa. Access essential health information anytime, anywhere — even without internet. Swipe to learn more.</string>
     
     <string name="onboarding_articles_title">Health Articles</string>
     <string name="onboarding_articles_desc">Read easy-to-understand articles about common health conditions like malaria, diarrhea, and more. Search by topic and save your favorites.</string>

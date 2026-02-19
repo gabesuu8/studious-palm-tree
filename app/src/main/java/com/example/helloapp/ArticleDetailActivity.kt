@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.webkit.WebView
+import android.widget.Button
 import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
 import com.example.helloapp.data.Article
@@ -44,6 +45,15 @@ class ArticleDetailActivity : AppCompatActivity() {
         val disclaimerDismissed = getSharedPreferences("articles_fragment", Context.MODE_PRIVATE)
             .getBoolean("disclaimer_dismissed", false)
         findViewById<View>(R.id.articleDisclaimer).visibility = if (disclaimerDismissed) View.GONE else View.VISIBLE
+
+        // Show "Open rapid test timer" only for the rapid test article (EN or FR title)
+        val isRapidTestArticle = article.title.contains("Rapid Test", ignoreCase = true) ||
+            article.title.contains("tests rapides", ignoreCase = true)
+        val openTimerButton = findViewById<Button>(R.id.openRapidTestTimerButton)
+        openTimerButton.visibility = if (isRapidTestArticle) View.VISIBLE else View.GONE
+        openTimerButton.setOnClickListener {
+            startActivity(Intent(this, RapidTestTimerActivity::class.java))
+        }
 
         // Render HTML content with CSS styling in WebView
         val webView = findViewById<WebView>(R.id.articleContent)

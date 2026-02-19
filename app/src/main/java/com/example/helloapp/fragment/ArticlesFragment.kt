@@ -23,6 +23,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.helloapp.ArticleDetailActivity
 import com.example.helloapp.FavoritesActivity
+import com.example.helloapp.RapidTestTimerActivity
 import com.example.helloapp.R
 import com.example.helloapp.adapter.ArticleAdapter
 import com.example.helloapp.data.Article
@@ -43,6 +44,7 @@ class ArticlesFragment : Fragment() {
     private var emptyStateLayout: View? = null
     private var emptyStateText: TextView? = null
     private var suggestionText: TextView? = null
+    private var symptomInputEditText: EditText? = null
     private var btnSuggestCondition: android.widget.Button? = null
     private var adapter: ArticleAdapter? = null
     private var searchEditText: EditText? = null
@@ -67,19 +69,14 @@ class ArticlesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         
         try {
-            // Setup toolbar menu click listener (menu is defined in XML)
+            // Setup toolbar: single “Options” opens dialog with three labeled tabs
             val toolbar = view.findViewById<MaterialToolbar>(R.id.toolbar)
             toolbar.setOnMenuItemClickListener { menuItem ->
-                when (menuItem.itemId) {
-                    R.id.menu_favorites -> {
-                        startActivity(Intent(requireContext(), FavoritesActivity::class.java))
-                        true
-                    }
-                    R.id.menu_language -> {
-                        showLanguageDialog()
-                        true
-                    }
-                    else -> false
+                if (menuItem.itemId == R.id.menu_options) {
+                    showOptionsDialog()
+                    true
+                } else {
+                    false
                 }
             }
             
@@ -88,6 +85,7 @@ class ArticlesFragment : Fragment() {
             emptyStateLayout = view.findViewById(R.id.emptyStateLayout)
             emptyStateText = view.findViewById(R.id.emptyStateText)
             suggestionText = view.findViewById(R.id.suggestionText)
+            symptomInputEditText = view.findViewById(R.id.symptomInputEditText)
             btnSuggestCondition = view.findViewById(R.id.btnSuggestCondition)
             searchEditText = view.findViewById(R.id.searchEditText)
             clearSearchButton = view.findViewById(R.id.clearSearchButton)
@@ -198,7 +196,6 @@ class ArticlesFragment : Fragment() {
                 viewModel?.setSearchQuery(query)
                 adapter?.setSearchKeywords(query)
                 clearSearchButton?.isVisible = query.isNotEmpty()
-                btnSuggestCondition?.visibility = if (query.isNotBlank()) View.VISIBLE else View.GONE
             }
             
             override fun afterTextChanged(s: Editable?) {}
@@ -263,8 +260,16 @@ class ArticlesFragment : Fragment() {
     }
 
     private fun showSymptomMatchDialog() {
-        val query = viewModel?.searchQuery?.value?.trim() ?: ""
-        if (query.isBlank()) return
+        val query = symptomInputEditText?.text?.toString()?.trim() ?: ""
+        if (query.isBlank()) {
+            symptomInputEditText?.requestFocus()
+            Snackbar.make(
+                symptomInputEditText ?: view ?: return,
+                getString(R.string.symptom_enter_first),
+                Snackbar.LENGTH_SHORT
+            ).show()
+            return
+        }
         val matches = viewModel?.getSymptomMatches(allArticlesSnapshot, query) ?: emptyList()
         val ctx = context ?: return
         if (matches.isEmpty()) {
@@ -278,9 +283,31 @@ class ArticlesFragment : Fragment() {
         val titles = matches.map { it.title }.toTypedArray()
         AlertDialog.Builder(ctx)
             .setTitle(getString(R.string.possible_conditions))
-            .setItems(titles) { _, which ->
+            .setItems(titles) { dialog, which ->
                 val article = matches.getOrNull(which) ?: return@setItems
+                dialog.dismiss()
                 openArticleDetail(article)
+            }
+            .setNegativeButton(android.R.string.cancel, null)
+            .show()
+    }
+
+    /** Shows three labeled options (Language, Favorites, Rapid test timer) when user taps the three dots. */
+    private fun showOptionsDialog() {
+        val ctx = context ?: return
+        val items = arrayOf(
+            getString(R.string.language),
+            getString(R.string.favorites),
+            getString(R.string.rapid_test_timer_menu)
+        )
+        AlertDialog.Builder(ctx)
+            .setTitle(getString(R.string.menu_options))
+            .setItems(items) { _, which ->
+                when (which) {
+                    0 -> showLanguageDialog()
+                    1 -> startActivity(Intent(requireContext(), FavoritesActivity::class.java))
+                    2 -> startActivity(Intent(requireContext(), RapidTestTimerActivity::class.java))
+                }
             }
             .setNegativeButton(android.R.string.cancel, null)
             .show()
@@ -318,6 +345,7 @@ class ArticlesFragment : Fragment() {
         emptyStateLayout = null
         emptyStateText = null
         suggestionText = null
+        symptomInputEditText = null
         btnSuggestCondition = null
         adapter = null
         searchEditText = null

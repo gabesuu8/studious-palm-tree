@@ -28,6 +28,18 @@ fun levenshteinDistance(a: String, b: String): Int {
 }
 
 /**
+ * True if [a] and [b] are close enough by Levenshtein distance to count as a typo match.
+ * [maxDistance] defaults to allow 1 edit for short strings, 2 for longer (based on length).
+ */
+fun matchesWithTypo(a: String, b: String, maxDistance: Int? = null): Boolean {
+    if (a == b) return true
+    val len = minOf(a.length, b.length)
+    if (len <= 2) return a == b
+    val threshold = maxDistance ?: maxOf(1, len / 3)
+    return levenshteinDistance(a, b) <= threshold
+}
+
+/**
  * Returns the best matching string from [candidates] for [query], or null if no good match.
  * Uses Levenshtein distance; only returns a suggestion if the best distance is better than
  * a threshold (query length / 2 or 4, whichever is larger).

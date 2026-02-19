@@ -31,8 +31,9 @@ class OnboardingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_onboarding)
+        title = getString(R.string.onboarding_tutorial_title)
         
-        // Initialize onboarding pages with localized strings
+        // Initialize onboarding pages with localized strings (tutorial at start)
         initializePages()
         
         viewPager = findViewById(R.id.viewPager)
@@ -74,7 +75,7 @@ class OnboardingActivity : AppCompatActivity() {
         onboardingPages.addAll(listOf(
             OnboardingPage(
                 iconResId = R.drawable.ic_health,
-                title = getString(R.string.onboarding_welcome_title),
+                title = getString(R.string.onboarding_tutorial_title),
                 description = getString(R.string.onboarding_welcome_desc)
             ),
             OnboardingPage(

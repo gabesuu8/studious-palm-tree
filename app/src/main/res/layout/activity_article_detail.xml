@@ -8,7 +8,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#0093D5">
+        android:background="@color/teal_700">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
@@ -90,6 +90,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#E0E0E0"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Open rapid test timer (shown only for rapid test article) -->
+            <Button
+                android:id="@+id/openRapidTestTimerButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/rapid_test_open_timer"
+                android:visibility="gone"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:textAllCaps="false"
                 android:layout_marginBottom="16dp" />
 
         </LinearLayout>

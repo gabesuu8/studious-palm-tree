@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
             android:layout_marginTop="8dp"
-            app:cardCornerRadius="24dp"
+            app:cardCornerRadius="28dp"
             app:cardElevation="4dp">
 
             <LinearLayout
@@ -130,17 +130,55 @@
 
         </FrameLayout>
 
-        <!-- Match by symptoms: visible when user has typed something -->
-        <Button
-            android:id="@+id/btnSuggestCondition"
+        <!-- Symptom checker: separate from search -->
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:visibility="gone"
-            android:text="@string/suggest_condition_from_symptoms"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            tools:visibility="visible" />
+            app:cardCornerRadius="20dp"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/symptom_checker_title"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:layout_marginBottom="8dp" />
+
+                <EditText
+                    android:id="@+id/symptomInputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="40dp"
+                    android:hint="@string/symptom_input_hint"
+                    android:inputType="textCapSentences|textMultiLine"
+                    android:maxLines="3"
+                    android:gravity="top|start"
+                    android:padding="12dp"
+                    android:background="@android:drawable/edit_text"
+                    android:textColorHint="@android:color/darker_gray"
+                    android:textColor="@android:color/black" />
+
+                <Button
+                    android:id="@+id/btnSuggestCondition"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/suggest_condition_from_symptoms"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
         <FrameLayout
             android:layout_width="match_parent"
