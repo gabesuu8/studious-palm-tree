@@ -113,6 +113,7 @@
     <string name="mark_as_not_done">Mark as Not Done</string>
     <string name="measurement_date">Measurement Date</string>
     <string name="measurement_details">Measurement Details</string>
+    <string name="menu_options">Options</string>
     <string name="months">months</string>
     <string name="mother_name">Mother\'s Name</string>
     <string name="next">Next</string>
@@ -143,9 +144,10 @@
     <string name="onboarding_offline_title">Works Offline</string>
     <string name="onboarding_pregnancy_desc">Track your pregnancy week by week. Record prenatal visits and learn about danger signs that need immediate attention.</string>
     <string name="onboarding_pregnancy_title">Pregnancy Tracker</string>
+    <string name="onboarding_tutorial_title">Tutorial — Getting started</string>
     <string name="onboarding_vaccine_desc">Keep track of your child\'s vaccinations. Never miss an important vaccine with our comprehensive immunization schedule.</string>
     <string name="onboarding_vaccine_title">Vaccination Tracker</string>
-    <string name="onboarding_welcome_desc">Your trusted offline health companion for families in Africa. Access essential health information anytime, anywhere — even without internet.</string>
+    <string name="onboarding_welcome_desc">Your trusted offline health companion for families in Africa. Access essential health information anytime, anywhere — even without internet. Swipe to learn more.</string>
     <string name="onboarding_welcome_title">Welcome to Healthcare Guide</string>
     <string name="overdue_vaccine">Overdue: %1$s (recommended by %2$s)</string>
     <string name="phone">Phone</string>
@@ -153,6 +155,25 @@
     <string name="pregnancy">Pregnancy</string>
     <string name="pregnancy_tracker">Pregnancy Tracker</string>
     <string name="prenatal_visits">Prenatal Visits</string>
+    <string name="rapid_test_custom_minutes">Minutes:</string>
+    <string name="rapid_test_disclaimer">This timer is for convenience only. Always follow the instructions on your test kit. Results may vary by brand.</string>
+    <string name="rapid_test_minutes">min</string>
+    <string name="rapid_test_open_timer">Open rapid test timer</string>
+    <string name="rapid_test_pause">Pause</string>
+    <string name="rapid_test_preset_covid">COVID-19 (15 min)</string>
+    <string name="rapid_test_preset_custom">Custom</string>
+    <string name="rapid_test_preset_malaria">Malaria (15 min)</string>
+    <string name="rapid_test_presets">Test type</string>
+    <string name="rapid_test_read_result">Read result now</string>
+    <string name="rapid_test_reset">Reset</string>
+    <string name="rapid_test_resume">Resume</string>
+    <string name="rapid_test_start">Start</string>
+    <string name="rapid_test_time_format">%1$d:%2$02d</string>
+    <string name="rapid_test_time_hint">15:00</string>
+    <string name="rapid_test_time_input_label">Time (mm:ss):</string>
+    <string name="rapid_test_timer_menu">Rapid test timer</string>
+    <string name="rapid_test_timer_subtitle">Set a countdown for COVID-19 or malaria rapid tests. Read the result when the timer ends.</string>
+    <string name="rapid_test_timer_title">Rapid test timer</string>
     <string name="recommended_age">Recommended age</string>
     <string name="recommended_next_visit_week">Recommended next visit: week %d</string>
     <string name="refresh_desc">Refresh articles</string>
@@ -169,7 +190,10 @@
     <string name="share">Share</string>
     <string name="skip">Skip</string>
     <string name="source_prefix">Source: %1$s</string>
-    <string name="suggest_condition_from_symptoms">Suggest condition from symptoms</string>
+    <string name="suggest_condition_from_symptoms">Suggest condition</string>
+    <string name="symptom_checker_title">Symptom checker</string>
+    <string name="symptom_enter_first">Enter your symptoms first</string>
+    <string name="symptom_input_hint">Describe your symptoms (e.g. fever, headache)</string>
     <string name="today">Today</string>
     <string name="toggle_map">Toggle map view</string>
     <string name="trimester">trimester</string>
@@ -195,6 +219,18 @@
     <style name="BottomNavIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
         <item name="android:color">@color/teal_100</item>
     </style>
+    <style name="ShapeAppearance.App.Rounded.Large" parent="ShapeAppearance.MaterialComponents.LargeComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">24dp</item>
+    </style>
+    <style name="ShapeAppearance.App.Rounded.Medium" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+    <style name="ShapeAppearance.App.Rounded.Small" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+    </style>
     <style name="Theme.HelloApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/teal_500</item>
         <item name="colorPrimaryVariant">@color/teal_700</item>
@@ -203,6 +239,9 @@
         <item name="colorSecondaryVariant">@color/light_blue_200</item>
         <item name="colorOnSecondary">@color/black</item>
         <item name="android:statusBarColor">@color/teal_700</item>
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.App.Rounded.Small</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.App.Rounded.Medium</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.App.Rounded.Large</item>
     </style>
     <style name="Theme.HelloApp.NoActionBar" parent="Theme.HelloApp">
         <item name="android:statusBarColor">@android:color/white</item>

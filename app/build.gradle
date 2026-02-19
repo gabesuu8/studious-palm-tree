@@ -36,6 +36,13 @@ android {
 // Room annotation processor
 apply plugin: 'kotlin-kapt'
 
+// Pin kapt to Java 17 to avoid JDK 25+ compatibility issues (javacOptions calculation)
+kapt {
+    javacOptions {
+        option("--release", "17")
+    }
+}
+
 dependencies {
     kapt 'androidx.room:room-compiler:2.6.1'
 }

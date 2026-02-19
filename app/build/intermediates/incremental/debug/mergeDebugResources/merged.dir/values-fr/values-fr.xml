@@ -174,6 +174,7 @@
     <string name="material_timepicker_text_input_mode_description">Passer en mode saisie de texte pour la saisie de l\'heure.</string>
     <string name="measurement_date">Date de mesure</string>
     <string name="measurement_details">Détails de la mesure</string>
+    <string name="menu_options">Options</string>
     <string name="months">mois</string>
     <string name="mother_name">Nom de la mère</string>
     <string name="mtrl_badge_numberless_content_description">Nouvelle notification</string>
@@ -246,9 +247,10 @@
     <string name="onboarding_offline_title">Fonctionne Hors Ligne</string>
     <string name="onboarding_pregnancy_desc">Suivez votre grossesse semaine par semaine. Enregistrez vos visites prénatales et apprenez les signes de danger nécessitant une attention immédiate.</string>
     <string name="onboarding_pregnancy_title">Suivi de Grossesse</string>
+    <string name="onboarding_tutorial_title">Tutoriel — Démarrer</string>
     <string name="onboarding_vaccine_desc">Suivez les vaccinations de votre enfant. Ne manquez jamais un vaccin important avec notre calendrier de vaccination complet.</string>
     <string name="onboarding_vaccine_title">Carnet de Vaccination</string>
-    <string name="onboarding_welcome_desc">Votre compagnon santé hors ligne pour les familles en Afrique. Accédez aux informations de santé essentielles à tout moment, n\'importe où — même sans internet.</string>
+    <string name="onboarding_welcome_desc">Votre compagnon santé hors ligne pour les familles en Afrique. Accédez aux informations de santé essentielles à tout moment, n\'importe où — même sans internet. Faites glisser pour en savoir plus.</string>
     <string name="onboarding_welcome_title">Bienvenue dans Guide Santé</string>
     <string name="overdue_vaccine">En retard : %1$s (recommandé avant le %2$s)</string>
     <string name="password_toggle_content_description">Afficher le mot de passe</string>
@@ -257,6 +259,25 @@
     <string name="pregnancy">Grossesse</string>
     <string name="pregnancy_tracker">Suivi de Grossesse</string>
     <string name="prenatal_visits">Visites Prénatales</string>
+    <string name="rapid_test_custom_minutes">Minutes :</string>
+    <string name="rapid_test_disclaimer">Ce minuteur est à titre indicatif uniquement. Suivez toujours les instructions de votre kit de test. Les résultats peuvent varier selon la marque.</string>
+    <string name="rapid_test_minutes">min</string>
+    <string name="rapid_test_open_timer">Ouvrir le minuteur de test rapide</string>
+    <string name="rapid_test_pause">Pause</string>
+    <string name="rapid_test_preset_covid">COVID-19 (15 min)</string>
+    <string name="rapid_test_preset_custom">Personnalisé</string>
+    <string name="rapid_test_preset_malaria">Paludisme (15 min)</string>
+    <string name="rapid_test_presets">Type de test</string>
+    <string name="rapid_test_read_result">Lire le résultat maintenant</string>
+    <string name="rapid_test_reset">Réinitialiser</string>
+    <string name="rapid_test_resume">Reprendre</string>
+    <string name="rapid_test_start">Démarrer</string>
+    <string name="rapid_test_time_format">%1$d:%2$02d</string>
+    <string name="rapid_test_time_hint">15:00</string>
+    <string name="rapid_test_time_input_label">Durée (mm:ss) :</string>
+    <string name="rapid_test_timer_menu">Minuteur test rapide</string>
+    <string name="rapid_test_timer_subtitle">Réglez le compte à rebours pour les tests rapides COVID-19 ou paludisme. Lisez le résultat à la fin du minuteur.</string>
+    <string name="rapid_test_timer_title">Minuteur test rapide</string>
     <string name="recommended_age">Âge recommandé</string>
     <string name="recommended_next_visit_week">Prochaine visite recommandée : semaine %d</string>
     <string name="refresh_desc">Actualiser les articles</string>
@@ -275,7 +296,10 @@
     <string name="skip">Passer</string>
     <string name="source_prefix">Source: %1$s</string>
     <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
-    <string name="suggest_condition_from_symptoms">Suggérer une affection selon les symptômes</string>
+    <string name="suggest_condition_from_symptoms">Suggérer une affection</string>
+    <string name="symptom_checker_title">Vérification des symptômes</string>
+    <string name="symptom_enter_first">Saisissez d\'abord vos symptômes</string>
+    <string name="symptom_input_hint">Décrivez vos symptômes (ex. fièvre, mal de tête)</string>
     <string name="today">Aujourd\'hui</string>
     <string name="toggle_map">Basculer vers la carte</string>
     <string name="trimester">trimestre</string>

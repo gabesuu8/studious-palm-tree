@@ -44,6 +44,7 @@ drawable ic_star_filled
 drawable ic_vaccine
 drawable indicator_active
 drawable indicator_inactive
+drawable item_article_pressed_overlay
 drawable progress_bar_drawable
 drawable small_status_badge
 drawable spinner_background
@@ -66,12 +67,15 @@ id btnDeleteChild
 id btnDirections
 id btnEnableLocation
 id btnNext
+id btnPause
+id btnReset
 id btnSelectBirthDate
 id btnSelectDate
 id btnSelectLMP
 id btnSelectNextVisit
 id btnSelectVisitDate
 id btnSkip
+id btnStart
 id btnSuggestCondition
 id btnViewDangerSigns
 id categoryChipGroup
@@ -83,6 +87,7 @@ id chipEmergency
 id clearSearchButton
 id clinicsRecyclerView
 id completionDate
+id countdownText
 id dangerSignsCard
 id disclaimerCard
 id disclaimerClose
@@ -119,6 +124,7 @@ id mapContainer
 id menu_favorites
 id menu_growth
 id menu_language
+id menu_options
 id menu_pregnancy
 id menu_share
 id menu_vaccinations
@@ -130,6 +136,7 @@ id nav_vaccinations
 id nextDueCard
 id nextDueText
 id noChildrenState
+id openRapidTestTimerButton
 id pregnancySpinner
 id progressBar
 id progressCard
@@ -144,6 +151,9 @@ id searchEditText
 id spinnerCountry
 id statusCard
 id suggestionText
+id symptomInputEditText
+id timeEdit
+id timerDoneText
 id toolbar
 id txtAddress
 id txtAge
@@ -189,6 +199,7 @@ layout activity_growth_tracker
 layout activity_main
 layout activity_onboarding
 layout activity_pregnancy_tracker
+layout activity_rapid_test_timer
 layout activity_vaccinations
 layout dialog_add_child
 layout dialog_add_measurement
@@ -308,6 +319,7 @@ string mark_as_done
 string mark_as_not_done
 string measurement_date
 string measurement_details
+string menu_options
 string months
 string mother_name
 string next
@@ -338,6 +350,7 @@ string onboarding_offline_desc
 string onboarding_offline_title
 string onboarding_pregnancy_desc
 string onboarding_pregnancy_title
+string onboarding_tutorial_title
 string onboarding_vaccine_desc
 string onboarding_vaccine_title
 string onboarding_welcome_desc
@@ -348,6 +361,25 @@ string possible_conditions
 string pregnancy
 string pregnancy_tracker
 string prenatal_visits
+string rapid_test_custom_minutes
+string rapid_test_disclaimer
+string rapid_test_minutes
+string rapid_test_open_timer
+string rapid_test_pause
+string rapid_test_preset_covid
+string rapid_test_preset_custom
+string rapid_test_preset_malaria
+string rapid_test_presets
+string rapid_test_read_result
+string rapid_test_reset
+string rapid_test_resume
+string rapid_test_start
+string rapid_test_time_format
+string rapid_test_time_hint
+string rapid_test_time_input_label
+string rapid_test_timer_menu
+string rapid_test_timer_subtitle
+string rapid_test_timer_title
 string recommended_age
 string recommended_next_visit_week
 string refresh_desc
@@ -365,6 +397,9 @@ string share
 string skip
 string source_prefix
 string suggest_condition_from_symptoms
+string symptom_checker_title
+string symptom_enter_first
+string symptom_input_hint
 string today
 string toggle_map
 string trimester
@@ -388,5 +423,8 @@ string weight_helper
 string weight_kg
 string who_z_scores
 style BottomNavIndicator
+style ShapeAppearance.App.Rounded.Large
+style ShapeAppearance.App.Rounded.Medium
+style ShapeAppearance.App.Rounded.Small
 style Theme.HelloApp
 style Theme.HelloApp.NoActionBar

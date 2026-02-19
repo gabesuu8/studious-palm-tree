@@ -3077,6 +3077,7 @@ drawable ic_star_filled
 drawable ic_vaccine
 drawable indicator_active
 drawable indicator_inactive
+drawable item_article_pressed_overlay
 drawable m3_appbar_background
 drawable m3_avd_hide_password
 drawable m3_avd_show_password
@@ -3275,12 +3276,15 @@ id btnDeleteChild
 id btnDirections
 id btnEnableLocation
 id btnNext
+id btnPause
+id btnReset
 id btnSelectBirthDate
 id btnSelectDate
 id btnSelectLMP
 id btnSelectNextVisit
 id btnSelectVisitDate
 id btnSkip
+id btnStart
 id btnSuggestCondition
 id btnViewDangerSigns
 id buttonPanel
@@ -3325,6 +3329,7 @@ id contiguous
 id continuousVelocity
 id coordinator
 id cos
+id countdownText
 id counterclockwise
 id cradle
 id currentState
@@ -3501,6 +3506,7 @@ id matrix
 id menu_favorites
 id menu_growth
 id menu_language
+id menu_options
 id menu_pregnancy
 id menu_share
 id menu_vaccinations
@@ -3567,6 +3573,7 @@ id notification_main_column_container
 id off
 id on
 id onInterceptTouchReturnSwipe
+id openRapidTestTimerButton
 id open_search_bar_text_view
 id open_search_view_background
 id open_search_view_clear_button
@@ -3689,6 +3696,7 @@ id submenuarrow
 id submit_area
 id suggestionText
 id supportScrollUp
+id symptomInputEditText
 id tabMode
 id tag_accessibility_actions
 id tag_accessibility_clickable_spans
@@ -3721,6 +3729,8 @@ id textinput_placeholder
 id textinput_prefix_text
 id textinput_suffix_text
 id time
+id timeEdit
+id timerDoneText
 id title
 id titleDividerNoCustom
 id title_template
@@ -3920,6 +3930,7 @@ layout activity_growth_tracker
 layout activity_main
 layout activity_onboarding
 layout activity_pregnancy_tracker
+layout activity_rapid_test_timer
 layout activity_vaccinations
 layout custom_dialog
 layout design_bottom_navigation_item
@@ -4229,6 +4240,7 @@ string material_timepicker_select_time
 string material_timepicker_text_input_mode_description
 string measurement_date
 string measurement_details
+string menu_options
 string months
 string mother_name
 string mtrl_badge_numberless_content_description
@@ -4321,6 +4333,7 @@ string onboarding_offline_desc
 string onboarding_offline_title
 string onboarding_pregnancy_desc
 string onboarding_pregnancy_title
+string onboarding_tutorial_title
 string onboarding_vaccine_desc
 string onboarding_vaccine_title
 string onboarding_welcome_desc
@@ -4336,6 +4349,25 @@ string possible_conditions
 string pregnancy
 string pregnancy_tracker
 string prenatal_visits
+string rapid_test_custom_minutes
+string rapid_test_disclaimer
+string rapid_test_minutes
+string rapid_test_open_timer
+string rapid_test_pause
+string rapid_test_preset_covid
+string rapid_test_preset_custom
+string rapid_test_preset_malaria
+string rapid_test_presets
+string rapid_test_read_result
+string rapid_test_reset
+string rapid_test_resume
+string rapid_test_start
+string rapid_test_time_format
+string rapid_test_time_hint
+string rapid_test_time_input_label
+string rapid_test_timer_menu
+string rapid_test_timer_subtitle
+string rapid_test_timer_title
 string recommended_age
 string recommended_next_visit_week
 string refresh_desc
@@ -4360,6 +4392,9 @@ string skip
 string source_prefix
 string status_bar_notification_info_overflow
 string suggest_condition_from_symptoms
+string symptom_checker_title
+string symptom_enter_first
+string symptom_input_hint
 string today
 string toggle_map
 string trimester
@@ -4724,6 +4759,9 @@ style RtlOverlay_Widget_AppCompat_Search_DropDown_Text
 style RtlOverlay_Widget_AppCompat_SearchView_MagIcon
 style RtlUnderlay_Widget_AppCompat_ActionButton
 style RtlUnderlay_Widget_AppCompat_ActionButton_Overflow
+style ShapeAppearance_App_Rounded_Large
+style ShapeAppearance_App_Rounded_Medium
+style ShapeAppearance_App_Rounded_Small
 style ShapeAppearance_M3_Comp_Badge_Large_Shape
 style ShapeAppearance_M3_Comp_Badge_Shape
 style ShapeAppearance_M3_Comp_BottomAppBar_Container_Shape

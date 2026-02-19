@@ -116,7 +116,7 @@ public final class ArticleDao_Impl implements ArticleDao {
   }
 
   @Override
-  public Object insertArticle(final Article article, final Continuation<? super Unit> arg1) {
+  public Object insertArticle(final Article article, final Continuation<? super Unit> $completion) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -130,12 +130,12 @@ public final class ArticleDao_Impl implements ArticleDao {
           __db.endTransaction();
         }
       }
-    }, arg1);
+    }, $completion);
   }
 
   @Override
   public Object insertArticles(final List<Article> articles,
-      final Continuation<? super Unit> arg1) {
+      final Continuation<? super Unit> $completion) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -149,11 +149,11 @@ public final class ArticleDao_Impl implements ArticleDao {
           __db.endTransaction();
         }
       }
-    }, arg1);
+    }, $completion);
   }
 
   @Override
-  public Object deleteArticle(final Article article, final Continuation<? super Unit> arg1) {
+  public Object deleteArticle(final Article article, final Continuation<? super Unit> $completion) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -167,12 +167,12 @@ public final class ArticleDao_Impl implements ArticleDao {
           __db.endTransaction();
         }
       }
-    }, arg1);
+    }, $completion);
   }
 
   @Override
   public Object updateFavoriteStatus(final long articleId, final boolean isFavorite,
-      final Continuation<? super Unit> arg2) {
+      final Continuation<? super Unit> $completion) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -196,11 +196,11 @@ public final class ArticleDao_Impl implements ArticleDao {
           __preparedStmtOfUpdateFavoriteStatus.release(_stmt);
         }
       }
-    }, arg2);
+    }, $completion);
   }
 
   @Override
-  public Object deleteAllArticles(final Continuation<? super Unit> arg0) {
+  public Object deleteAllArticles(final Continuation<? super Unit> $completion) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -219,7 +219,7 @@ public final class ArticleDao_Impl implements ArticleDao {
           __preparedStmtOfDeleteAllArticles.release(_stmt);
         }
       }
-    }, arg0);
+    }, $completion);
   }
 
   @Override
@@ -298,7 +298,7 @@ public final class ArticleDao_Impl implements ArticleDao {
   }
 
   @Override
-  public Object getArticleById(final long id, final Continuation<? super Article> arg1) {
+  public Object getArticleById(final long id, final Continuation<? super Article> $completion) {
     final String _sql = "SELECT * FROM articles WHERE id = ?";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
     int _argIndex = 1;
@@ -368,7 +368,7 @@ public final class ArticleDao_Impl implements ArticleDao {
           _statement.release();
         }
       }
-    }, arg1);
+    }, $completion);
   }
 
   @Override

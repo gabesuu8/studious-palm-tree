@@ -12,6 +12,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <uses-feature
         android:glEsVersion="0x00020000"
@@ -70,6 +71,10 @@
             android:parentActivityName="com.example.helloapp.MainActivity" />
         <activity
             android:name="com.example.helloapp.PregnancyTrackerActivity"
+            android:exported="false"
+            android:parentActivityName="com.example.helloapp.MainActivity" />
+        <activity
+            android:name="com.example.helloapp.RapidTestTimerActivity"
             android:exported="false"
             android:parentActivityName="com.example.helloapp.MainActivity" />
         <activity
