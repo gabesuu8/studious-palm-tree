@@ -7,6 +7,8 @@
     <string name="growth">Growth</string>
     <string name="pregnancy">Pregnancy</string>
     <string name="vaccinations">Vaccines</string>
+    <string name="vaccines_and_growth">Vaccines &amp; Growth</string>
+    <string name="symptom_predictor">Symptom predictor</string>
     
     <!-- Main Activity -->
     <string name="search_hint">Search health topics (e.g., malaria, fever)</string>

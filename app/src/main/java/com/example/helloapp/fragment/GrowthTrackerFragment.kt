@@ -61,8 +61,9 @@ class GrowthTrackerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         
-        // Setup toolbar menu click listener (menu is defined in XML)
         val toolbar = view.findViewById<MaterialToolbar>(R.id.toolbar)
+        val isEmbedded = arguments?.getBoolean(VaccinationGrowthFragment.ARG_EMBEDDED, false) == true
+        if (isEmbedded) toolbar.visibility = View.GONE
         toolbar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.menu_language -> {

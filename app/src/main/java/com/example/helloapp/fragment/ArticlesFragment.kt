@@ -44,14 +44,11 @@ class ArticlesFragment : Fragment() {
     private var emptyStateLayout: View? = null
     private var emptyStateText: TextView? = null
     private var suggestionText: TextView? = null
-    private var symptomInputEditText: EditText? = null
-    private var btnSuggestCondition: android.widget.Button? = null
     private var adapter: ArticleAdapter? = null
     private var searchEditText: EditText? = null
     private var clearSearchButton: ImageView? = null
     private var categoryChipGroup: ChipGroup? = null
     private var disclaimerCard: View? = null
-    private var allArticlesSnapshot: List<Article> = emptyList()
     private var latestSuggestion: String? = null
 
     private val disclaimerPrefs: SharedPreferences?
@@ -85,8 +82,6 @@ class ArticlesFragment : Fragment() {
             emptyStateLayout = view.findViewById(R.id.emptyStateLayout)
             emptyStateText = view.findViewById(R.id.emptyStateText)
             suggestionText = view.findViewById(R.id.suggestionText)
-            symptomInputEditText = view.findViewById(R.id.symptomInputEditText)
-            btnSuggestCondition = view.findViewById(R.id.btnSuggestCondition)
             searchEditText = view.findViewById(R.id.searchEditText)
             clearSearchButton = view.findViewById(R.id.clearSearchButton)
             categoryChipGroup = view.findViewById(R.id.categoryChipGroup)
@@ -122,13 +117,6 @@ class ArticlesFragment : Fragment() {
             setupCategoryChips()
 
             Log.d(TAG, "Starting article observation")
-            // Keep snapshot of all articles for symptom matching
-            viewLifecycleOwner.lifecycleScope.launch {
-                viewModel?.allArticles?.collect { list ->
-                    allArticlesSnapshot = list
-                }
-            }
-
             // Observe filtered articles and spelling suggestion together
             viewLifecycleOwner.lifecycleScope.launch {
                 var isFirstLoad = true
@@ -180,8 +168,6 @@ class ArticlesFragment : Fragment() {
                     adapter?.setSearchKeywords(suggested)
                 }
             }
-
-            btnSuggestCondition?.setOnClickListener { showSymptomMatchDialog() }
         } catch (e: Exception) {
             Log.e(TAG, "Error in onViewCreated", e)
         }
@@ -259,39 +245,6 @@ class ArticlesFragment : Fragment() {
         recyclerView?.let { Snackbar.make(it, message, Snackbar.LENGTH_SHORT).show() }
     }
 
-    private fun showSymptomMatchDialog() {
-        val query = symptomInputEditText?.text?.toString()?.trim() ?: ""
-        if (query.isBlank()) {
-            symptomInputEditText?.requestFocus()
-            Snackbar.make(
-                symptomInputEditText ?: view ?: return,
-                getString(R.string.symptom_enter_first),
-                Snackbar.LENGTH_SHORT
-            ).show()
-            return
-        }
-        val matches = viewModel?.getSymptomMatches(allArticlesSnapshot, query) ?: emptyList()
-        val ctx = context ?: return
-        if (matches.isEmpty()) {
-            AlertDialog.Builder(ctx)
-                .setTitle(getString(R.string.possible_conditions))
-                .setMessage(getString(R.string.no_conditions_match))
-                .setPositiveButton(android.R.string.ok, null)
-                .show()
-            return
-        }
-        val titles = matches.map { it.title }.toTypedArray()
-        AlertDialog.Builder(ctx)
-            .setTitle(getString(R.string.possible_conditions))
-            .setItems(titles) { dialog, which ->
-                val article = matches.getOrNull(which) ?: return@setItems
-                dialog.dismiss()
-                openArticleDetail(article)
-            }
-            .setNegativeButton(android.R.string.cancel, null)
-            .show()
-    }
-
     /** Shows three labeled options (Language, Favorites, Rapid test timer) when user taps the three dots. */
     private fun showOptionsDialog() {
         val ctx = context ?: return
@@ -345,8 +298,6 @@ class ArticlesFragment : Fragment() {
         emptyStateLayout = null
         emptyStateText = null
         suggestionText = null
-        symptomInputEditText = null
-        btnSuggestCondition = null
         adapter = null
         searchEditText = null
         clearSearchButton = null
