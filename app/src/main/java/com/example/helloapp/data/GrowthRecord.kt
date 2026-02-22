@@ -27,7 +27,8 @@ data class GrowthRecord(
     val date: Long, // Measurement date timestamp
     val weightKg: Float, // Weight in kilograms
     val heightCm: Float, // Height in centimeters
-    val headCircumferenceCm: Float? = null, // Optional head circumference
+    val headCircumferenceCm: Float? = null, // Optional head circumference (most useful <36 months)
+    val muacCm: Float? = null, // Optional Mid-Upper Arm Circumference (malnutrition screening)
     val notes: String? = null,
     val createdAt: Long = System.currentTimeMillis()
 ) : Parcelable

@@ -83,7 +83,7 @@ public final class GrowthDao_Impl implements GrowthDao {
       @Override
       @NonNull
       protected String createQuery() {
-        return "INSERT OR REPLACE INTO `growth_records` (`id`,`childId`,`date`,`weightKg`,`heightCm`,`headCircumferenceCm`,`notes`,`createdAt`) VALUES (nullif(?, 0),?,?,?,?,?,?,?)";
+        return "INSERT OR REPLACE INTO `growth_records` (`id`,`childId`,`date`,`weightKg`,`heightCm`,`headCircumferenceCm`,`muacCm`,`notes`,`createdAt`) VALUES (nullif(?, 0),?,?,?,?,?,?,?,?)";
       }
 
       @Override
@@ -99,12 +99,17 @@ public final class GrowthDao_Impl implements GrowthDao {
         } else {
           statement.bindDouble(6, entity.getHeadCircumferenceCm());
         }
-        if (entity.getNotes() == null) {
+        if (entity.getMuacCm() == null) {
           statement.bindNull(7);
         } else {
-          statement.bindString(7, entity.getNotes());
+          statement.bindDouble(7, entity.getMuacCm());
         }
-        statement.bindLong(8, entity.getCreatedAt());
+        if (entity.getNotes() == null) {
+          statement.bindNull(8);
+        } else {
+          statement.bindString(8, entity.getNotes());
+        }
+        statement.bindLong(9, entity.getCreatedAt());
       }
     };
     this.__deletionAdapterOfChild = new EntityDeletionOrUpdateAdapter<Child>(__db) {
@@ -163,7 +168,7 @@ public final class GrowthDao_Impl implements GrowthDao {
       @Override
       @NonNull
       protected String createQuery() {
-        return "UPDATE OR ABORT `growth_records` SET `id` = ?,`childId` = ?,`date` = ?,`weightKg` = ?,`heightCm` = ?,`headCircumferenceCm` = ?,`notes` = ?,`createdAt` = ? WHERE `id` = ?";
+        return "UPDATE OR ABORT `growth_records` SET `id` = ?,`childId` = ?,`date` = ?,`weightKg` = ?,`heightCm` = ?,`headCircumferenceCm` = ?,`muacCm` = ?,`notes` = ?,`createdAt` = ? WHERE `id` = ?";
       }
 
       @Override
@@ -179,13 +184,18 @@ public final class GrowthDao_Impl implements GrowthDao {
         } else {
           statement.bindDouble(6, entity.getHeadCircumferenceCm());
         }
-        if (entity.getNotes() == null) {
+        if (entity.getMuacCm() == null) {
           statement.bindNull(7);
         } else {
-          statement.bindString(7, entity.getNotes());
+          statement.bindDouble(7, entity.getMuacCm());
         }
-        statement.bindLong(8, entity.getCreatedAt());
-        statement.bindLong(9, entity.getId());
+        if (entity.getNotes() == null) {
+          statement.bindNull(8);
+        } else {
+          statement.bindString(8, entity.getNotes());
+        }
+        statement.bindLong(9, entity.getCreatedAt());
+        statement.bindLong(10, entity.getId());
       }
     };
     this.__preparedStmtOfDeleteAllChildren = new SharedSQLiteStatement(__db) {
@@ -487,6 +497,7 @@ public final class GrowthDao_Impl implements GrowthDao {
           final int _cursorIndexOfWeightKg = CursorUtil.getColumnIndexOrThrow(_cursor, "weightKg");
           final int _cursorIndexOfHeightCm = CursorUtil.getColumnIndexOrThrow(_cursor, "heightCm");
           final int _cursorIndexOfHeadCircumferenceCm = CursorUtil.getColumnIndexOrThrow(_cursor, "headCircumferenceCm");
+          final int _cursorIndexOfMuacCm = CursorUtil.getColumnIndexOrThrow(_cursor, "muacCm");
           final int _cursorIndexOfNotes = CursorUtil.getColumnIndexOrThrow(_cursor, "notes");
           final int _cursorIndexOfCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "createdAt");
           final List<GrowthRecord> _result = new ArrayList<GrowthRecord>(_cursor.getCount());
@@ -508,6 +519,12 @@ public final class GrowthDao_Impl implements GrowthDao {
             } else {
               _tmpHeadCircumferenceCm = _cursor.getFloat(_cursorIndexOfHeadCircumferenceCm);
             }
+            final Float _tmpMuacCm;
+            if (_cursor.isNull(_cursorIndexOfMuacCm)) {
+              _tmpMuacCm = null;
+            } else {
+              _tmpMuacCm = _cursor.getFloat(_cursorIndexOfMuacCm);
+            }
             final String _tmpNotes;
             if (_cursor.isNull(_cursorIndexOfNotes)) {
               _tmpNotes = null;
@@ -516,7 +533,7 @@ public final class GrowthDao_Impl implements GrowthDao {
             }
             final long _tmpCreatedAt;
             _tmpCreatedAt = _cursor.getLong(_cursorIndexOfCreatedAt);
-            _item = new GrowthRecord(_tmpId,_tmpChildId,_tmpDate,_tmpWeightKg,_tmpHeightCm,_tmpHeadCircumferenceCm,_tmpNotes,_tmpCreatedAt);
+            _item = new GrowthRecord(_tmpId,_tmpChildId,_tmpDate,_tmpWeightKg,_tmpHeightCm,_tmpHeadCircumferenceCm,_tmpMuacCm,_tmpNotes,_tmpCreatedAt);
             _result.add(_item);
           }
           return _result;
@@ -550,6 +567,7 @@ public final class GrowthDao_Impl implements GrowthDao {
           final int _cursorIndexOfWeightKg = CursorUtil.getColumnIndexOrThrow(_cursor, "weightKg");
           final int _cursorIndexOfHeightCm = CursorUtil.getColumnIndexOrThrow(_cursor, "heightCm");
           final int _cursorIndexOfHeadCircumferenceCm = CursorUtil.getColumnIndexOrThrow(_cursor, "headCircumferenceCm");
+          final int _cursorIndexOfMuacCm = CursorUtil.getColumnIndexOrThrow(_cursor, "muacCm");
           final int _cursorIndexOfNotes = CursorUtil.getColumnIndexOrThrow(_cursor, "notes");
           final int _cursorIndexOfCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "createdAt");
           final List<GrowthRecord> _result = new ArrayList<GrowthRecord>(_cursor.getCount());
@@ -571,6 +589,12 @@ public final class GrowthDao_Impl implements GrowthDao {
             } else {
               _tmpHeadCircumferenceCm = _cursor.getFloat(_cursorIndexOfHeadCircumferenceCm);
             }
+            final Float _tmpMuacCm;
+            if (_cursor.isNull(_cursorIndexOfMuacCm)) {
+              _tmpMuacCm = null;
+            } else {
+              _tmpMuacCm = _cursor.getFloat(_cursorIndexOfMuacCm);
+            }
             final String _tmpNotes;
             if (_cursor.isNull(_cursorIndexOfNotes)) {
               _tmpNotes = null;
@@ -579,7 +603,7 @@ public final class GrowthDao_Impl implements GrowthDao {
             }
             final long _tmpCreatedAt;
             _tmpCreatedAt = _cursor.getLong(_cursorIndexOfCreatedAt);
-            _item = new GrowthRecord(_tmpId,_tmpChildId,_tmpDate,_tmpWeightKg,_tmpHeightCm,_tmpHeadCircumferenceCm,_tmpNotes,_tmpCreatedAt);
+            _item = new GrowthRecord(_tmpId,_tmpChildId,_tmpDate,_tmpWeightKg,_tmpHeightCm,_tmpHeadCircumferenceCm,_tmpMuacCm,_tmpNotes,_tmpCreatedAt);
             _result.add(_item);
           }
           return _result;
@@ -615,6 +639,7 @@ public final class GrowthDao_Impl implements GrowthDao {
           final int _cursorIndexOfWeightKg = CursorUtil.getColumnIndexOrThrow(_cursor, "weightKg");
           final int _cursorIndexOfHeightCm = CursorUtil.getColumnIndexOrThrow(_cursor, "heightCm");
           final int _cursorIndexOfHeadCircumferenceCm = CursorUtil.getColumnIndexOrThrow(_cursor, "headCircumferenceCm");
+          final int _cursorIndexOfMuacCm = CursorUtil.getColumnIndexOrThrow(_cursor, "muacCm");
           final int _cursorIndexOfNotes = CursorUtil.getColumnIndexOrThrow(_cursor, "notes");
           final int _cursorIndexOfCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "createdAt");
           final GrowthRecord _result;
@@ -635,6 +660,12 @@ public final class GrowthDao_Impl implements GrowthDao {
             } else {
               _tmpHeadCircumferenceCm = _cursor.getFloat(_cursorIndexOfHeadCircumferenceCm);
             }
+            final Float _tmpMuacCm;
+            if (_cursor.isNull(_cursorIndexOfMuacCm)) {
+              _tmpMuacCm = null;
+            } else {
+              _tmpMuacCm = _cursor.getFloat(_cursorIndexOfMuacCm);
+            }
             final String _tmpNotes;
             if (_cursor.isNull(_cursorIndexOfNotes)) {
               _tmpNotes = null;
@@ -643,7 +674,7 @@ public final class GrowthDao_Impl implements GrowthDao {
             }
             final long _tmpCreatedAt;
             _tmpCreatedAt = _cursor.getLong(_cursorIndexOfCreatedAt);
-            _result = new GrowthRecord(_tmpId,_tmpChildId,_tmpDate,_tmpWeightKg,_tmpHeightCm,_tmpHeadCircumferenceCm,_tmpNotes,_tmpCreatedAt);
+            _result = new GrowthRecord(_tmpId,_tmpChildId,_tmpDate,_tmpWeightKg,_tmpHeightCm,_tmpHeadCircumferenceCm,_tmpMuacCm,_tmpNotes,_tmpCreatedAt);
           } else {
             _result = null;
           }
@@ -676,6 +707,7 @@ public final class GrowthDao_Impl implements GrowthDao {
           final int _cursorIndexOfWeightKg = CursorUtil.getColumnIndexOrThrow(_cursor, "weightKg");
           final int _cursorIndexOfHeightCm = CursorUtil.getColumnIndexOrThrow(_cursor, "heightCm");
           final int _cursorIndexOfHeadCircumferenceCm = CursorUtil.getColumnIndexOrThrow(_cursor, "headCircumferenceCm");
+          final int _cursorIndexOfMuacCm = CursorUtil.getColumnIndexOrThrow(_cursor, "muacCm");
           final int _cursorIndexOfNotes = CursorUtil.getColumnIndexOrThrow(_cursor, "notes");
           final int _cursorIndexOfCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "createdAt");
           final GrowthRecord _result;
@@ -696,6 +728,12 @@ public final class GrowthDao_Impl implements GrowthDao {
             } else {
               _tmpHeadCircumferenceCm = _cursor.getFloat(_cursorIndexOfHeadCircumferenceCm);
             }
+            final Float _tmpMuacCm;
+            if (_cursor.isNull(_cursorIndexOfMuacCm)) {
+              _tmpMuacCm = null;
+            } else {
+              _tmpMuacCm = _cursor.getFloat(_cursorIndexOfMuacCm);
+            }
             final String _tmpNotes;
             if (_cursor.isNull(_cursorIndexOfNotes)) {
               _tmpNotes = null;
@@ -704,7 +742,7 @@ public final class GrowthDao_Impl implements GrowthDao {
             }
             final long _tmpCreatedAt;
             _tmpCreatedAt = _cursor.getLong(_cursorIndexOfCreatedAt);
-            _result = new GrowthRecord(_tmpId,_tmpChildId,_tmpDate,_tmpWeightKg,_tmpHeightCm,_tmpHeadCircumferenceCm,_tmpNotes,_tmpCreatedAt);
+            _result = new GrowthRecord(_tmpId,_tmpChildId,_tmpDate,_tmpWeightKg,_tmpHeightCm,_tmpHeadCircumferenceCm,_tmpMuacCm,_tmpNotes,_tmpCreatedAt);
           } else {
             _result = null;
           }

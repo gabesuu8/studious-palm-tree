@@ -5,7 +5,7 @@ package com.example.helloapp.util;
  * Simplified z-score calculation based on WHO Child Growth Standards
  * Reference: https://www.who.int/tools/child-growth-standards
  */
-@kotlin.Metadata(mv = {1, 9, 0}, k = 1, xi = 48, d1 = {"\u0000F\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0002\b\u0002\n\u0002\u0010$\n\u0002\u0010\b\n\u0002\u0018\u0002\n\u0002\u0010\u0006\n\u0002\b\u0006\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u0007\n\u0002\b\u0002\n\u0002\u0010\t\n\u0002\b\u0002\n\u0002\u0010\u000b\n\u0002\b\r\n\u0002\u0018\u0002\n\u0002\b\u0004\b\u00c6\u0002\u0018\u00002\u00020\u0001:\u0002&\'B\u0007\b\u0002\u00a2\u0006\u0002\u0010\u0002J.\u0010\r\u001a\u00020\u000e2\u0006\u0010\u000f\u001a\u00020\u00102\u0006\u0010\u0011\u001a\u00020\u00102\u0006\u0010\u0012\u001a\u00020\u00132\u0006\u0010\u0014\u001a\u00020\u00132\u0006\u0010\u0015\u001a\u00020\u0016J\u0018\u0010\u0017\u001a\u00020\u00052\u0006\u0010\u0012\u001a\u00020\u00132\b\b\u0002\u0010\u0014\u001a\u00020\u0013J\u001e\u0010\u0018\u001a\u00020\u00072\u0006\u0010\u0011\u001a\u00020\u00102\u0006\u0010\u0019\u001a\u00020\u00052\u0006\u0010\u0015\u001a\u00020\u0016J\u001e\u0010\u001a\u001a\u00020\u00072\u0006\u0010\u000f\u001a\u00020\u00102\u0006\u0010\u0019\u001a\u00020\u00052\u0006\u0010\u0015\u001a\u00020\u0016J\u001e\u0010\u001b\u001a\u00020\u00072\u0006\u0010\u000f\u001a\u00020\u00102\u0006\u0010\u0011\u001a\u00020\u00102\u0006\u0010\u0015\u001a\u00020\u0016J(\u0010\u001c\u001a\u00020\u00072\u0006\u0010\u001d\u001a\u00020\u00102\u0006\u0010\u001e\u001a\u00020\u00072\u0006\u0010\u001f\u001a\u00020\u00072\u0006\u0010 \u001a\u00020\u0007H\u0002JJ\u0010!\u001a\u0016\u0012\u0004\u0012\u00020\u0007\u0012\u0004\u0012\u00020\u0007\u0012\u0004\u0012\u00020\u0007\u0018\u00010\u00062\u0006\u0010\u0019\u001a\u00020\u00052$\u0010\"\u001a \u0012\u0004\u0012\u00020\u0005\u0012\u0016\u0012\u0014\u0012\u0004\u0012\u00020\u0007\u0012\u0004\u0012\u00020\u0007\u0012\u0004\u0012\u00020\u00070\u00060\u0004H\u0002J\u000e\u0010#\u001a\u00020$2\u0006\u0010%\u001a\u00020\u0007R,\u0010\u0003\u001a \u0012\u0004\u0012\u00020\u0005\u0012\u0016\u0012\u0014\u0012\u0004\u0012\u00020\u0007\u0012\u0004\u0012\u00020\u0007\u0012\u0004\u0012\u00020\u00070\u00060\u0004X\u0082\u0004\u00a2\u0006\u0002\n\u0000R,\u0010\b\u001a \u0012\u0004\u0012\u00020\u0005\u0012\u0016\u0012\u0014\u0012\u0004\u0012\u00020\u0007\u0012\u0004\u0012\u00020\u0007\u0012\u0004\u0012\u00020\u00070\u00060\u0004X\u0082\u0004\u00a2\u0006\u0002\n\u0000R,\u0010\t\u001a \u0012\u0004\u0012\u00020\u0005\u0012\u0016\u0012\u0014\u0012\u0004\u0012\u00020\u0007\u0012\u0004\u0012\u00020\u0007\u0012\u0004\u0012\u00020\u00070\u00060\u0004X\u0082\u0004\u00a2\u0006\u0002\n\u0000R,\u0010\n\u001a \u0012\u0004\u0012\u00020\u0005\u0012\u0016\u0012\u0014\u0012\u0004\u0012\u00020\u0007\u0012\u0004\u0012\u00020\u0007\u0012\u0004\u0012\u00020\u00070\u00060\u0004X\u0082\u0004\u00a2\u0006\u0002\n\u0000R,\u0010\u000b\u001a \u0012\u0004\u0012\u00020\u0005\u0012\u0016\u0012\u0014\u0012\u0004\u0012\u00020\u0007\u0012\u0004\u0012\u00020\u0007\u0012\u0004\u0012\u00020\u00070\u00060\u0004X\u0082\u0004\u00a2\u0006\u0002\n\u0000R,\u0010\f\u001a \u0012\u0004\u0012\u00020\u0005\u0012\u0016\u0012\u0014\u0012\u0004\u0012\u00020\u0007\u0012\u0004\u0012\u00020\u0007\u0012\u0004\u0012\u00020\u00070\u00060\u0004X\u0082\u0004\u00a2\u0006\u0002\n\u0000\u00a8\u0006("}, d2 = {"Lcom/example/helloapp/util/WHOGrowthStandards;", "", "()V", "boysHeightForAge", "", "", "Lkotlin/Triple;", "", "boysWeightForAge", "boysWeightForHeight", "girlsHeightForAge", "girlsWeightForAge", "girlsWeightForHeight", "assessGrowth", "Lcom/example/helloapp/util/WHOGrowthStandards$GrowthAssessment;", "weightKg", "", "heightCm", "birthDate", "", "measurementDate", "isMale", "", "calculateAgeMonths", "calculateHeightForAgeZScore", "ageMonths", "calculateWeightForAgeZScore", "calculateWeightForHeightZScore", "calculateZScore", "value", "l", "m", "s", "getClosestAgePoint", "referenceMap", "interpretZScore", "Lcom/example/helloapp/util/WHOGrowthStandards$NutritionalStatus;", "zScore", "GrowthAssessment", "NutritionalStatus", "app_debug"})
+@kotlin.Metadata(mv = {1, 9, 0}, k = 1, xi = 48, d1 = {"\u0000^\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0002\b\u0002\n\u0002\u0010$\n\u0002\u0010\b\n\u0002\u0018\u0002\n\u0002\u0010\u0006\n\u0002\b\u0006\n\u0002\u0010 \n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u0007\n\u0002\b\u0002\n\u0002\u0010\t\n\u0002\b\u0002\n\u0002\u0010\u000b\n\u0002\b\u000f\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\b\u0004\b\u00c6\u0002\u0018\u00002\u00020\u0001:\u0003234B\u0007\b\u0002\u00a2\u0006\u0002\u0010\u0002J.\u0010\u0011\u001a\u00020\u00122\u0006\u0010\u0013\u001a\u00020\u00142\u0006\u0010\u0015\u001a\u00020\u00142\u0006\u0010\u0016\u001a\u00020\u00172\u0006\u0010\u0018\u001a\u00020\u00172\u0006\u0010\u0019\u001a\u00020\u001aJ\u0018\u0010\u001b\u001a\u00020\u00052\u0006\u0010\u0016\u001a\u00020\u00172\b\b\u0002\u0010\u0018\u001a\u00020\u0017J\u001e\u0010\u001c\u001a\u00020\u00072\u0006\u0010\u0015\u001a\u00020\u00142\u0006\u0010\u001d\u001a\u00020\u00052\u0006\u0010\u0019\u001a\u00020\u001aJ\u001e\u0010\u001e\u001a\u00020\u00072\u0006\u0010\u0013\u001a\u00020\u00142\u0006\u0010\u001d\u001a\u00020\u00052\u0006\u0010\u0019\u001a\u00020\u001aJ\u001e\u0010\u001f\u001a\u00020\u00072\u0006\u0010\u0013\u001a\u00020\u00142\u0006\u0010\u0015\u001a\u00020\u00142\u0006\u0010\u0019\u001a\u00020\u001aJ(\u0010 \u001a\u00020\u00072\u0006\u0010!\u001a\u00020\u00142\u0006\u0010\"\u001a\u00020\u00072\u0006\u0010#\u001a\u00020\u00072\u0006\u0010$\u001a\u00020\u0007H\u0002J(\u0010%\u001a\u00020\u00142\u0006\u0010&\u001a\u00020\u00072\u0006\u0010\"\u001a\u00020\u00072\u0006\u0010#\u001a\u00020\u00072\u0006\u0010$\u001a\u00020\u0007H\u0002JJ\u0010\'\u001a\u0016\u0012\u0004\u0012\u00020\u0007\u0012\u0004\u0012\u00020\u0007\u0012\u0004\u0012\u00020\u0007\u0018\u00010\u00062\u0006\u0010\u001d\u001a\u00020\u00052$\u0010(\u001a \u0012\u0004\u0012\u00020\u0005\u0012\u0016\u0012\u0014\u0012\u0004\u0012\u00020\u0007\u0012\u0004\u0012\u00020\u0007\u0012\u0004\u0012\u00020\u00070\u00060\u0004H\u0002J\u001a\u0010)\u001a\u000e\u0012\u0004\u0012\u00020\u0005\u0012\u0004\u0012\u00020\u00050*2\u0006\u0010\u001d\u001a\u00020\u0005J\u001e\u0010+\u001a\u00020\u00142\u0006\u0010\u001d\u001a\u00020\u00052\u0006\u0010&\u001a\u00020\u00072\u0006\u0010\u0019\u001a\u00020\u001aJ\u001e\u0010,\u001a\u00020\u00142\u0006\u0010\u001d\u001a\u00020\u00052\u0006\u0010&\u001a\u00020\u00072\u0006\u0010\u0019\u001a\u00020\u001aJ\u000e\u0010-\u001a\u00020.2\u0006\u0010/\u001a\u00020\u0014J\u000e\u00100\u001a\u0002012\u0006\u0010&\u001a\u00020\u0007R,\u0010\u0003\u001a \u0012\u0004\u0012\u00020\u0005\u0012\u0016\u0012\u0014\u0012\u0004\u0012\u00020\u0007\u0012\u0004\u0012\u00020\u0007\u0012\u0004\u0012\u00020\u00070\u00060\u0004X\u0082\u0004\u00a2\u0006\u0002\n\u0000R,\u0010\b\u001a \u0012\u0004\u0012\u00020\u0005\u0012\u0016\u0012\u0014\u0012\u0004\u0012\u00020\u0007\u0012\u0004\u0012\u00020\u0007\u0012\u0004\u0012\u00020\u00070\u00060\u0004X\u0082\u0004\u00a2\u0006\u0002\n\u0000R,\u0010\t\u001a \u0012\u0004\u0012\u00020\u0005\u0012\u0016\u0012\u0014\u0012\u0004\u0012\u00020\u0007\u0012\u0004\u0012\u00020\u0007\u0012\u0004\u0012\u00020\u00070\u00060\u0004X\u0082\u0004\u00a2\u0006\u0002\n\u0000R,\u0010\n\u001a \u0012\u0004\u0012\u00020\u0005\u0012\u0016\u0012\u0014\u0012\u0004\u0012\u00020\u0007\u0012\u0004\u0012\u00020\u0007\u0012\u0004\u0012\u00020\u00070\u00060\u0004X\u0082\u0004\u00a2\u0006\u0002\n\u0000R,\u0010\u000b\u001a \u0012\u0004\u0012\u00020\u0005\u0012\u0016\u0012\u0014\u0012\u0004\u0012\u00020\u0007\u0012\u0004\u0012\u00020\u0007\u0012\u0004\u0012\u00020\u00070\u00060\u0004X\u0082\u0004\u00a2\u0006\u0002\n\u0000R,\u0010\f\u001a \u0012\u0004\u0012\u00020\u0005\u0012\u0016\u0012\u0014\u0012\u0004\u0012\u00020\u0007\u0012\u0004\u0012\u00020\u0007\u0012\u0004\u0012\u00020\u00070\u00060\u0004X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u0017\u0010\r\u001a\b\u0012\u0004\u0012\u00020\u00050\u000e\u00a2\u0006\b\n\u0000\u001a\u0004\b\u000f\u0010\u0010\u00a8\u00065"}, d2 = {"Lcom/example/helloapp/util/WHOGrowthStandards;", "", "()V", "boysHeightForAge", "", "", "Lkotlin/Triple;", "", "boysWeightForAge", "boysWeightForHeight", "girlsHeightForAge", "girlsWeightForAge", "girlsWeightForHeight", "referenceAges", "", "getReferenceAges", "()Ljava/util/List;", "assessGrowth", "Lcom/example/helloapp/util/WHOGrowthStandards$GrowthAssessment;", "weightKg", "", "heightCm", "birthDate", "", "measurementDate", "isMale", "", "calculateAgeMonths", "calculateHeightForAgeZScore", "ageMonths", "calculateWeightForAgeZScore", "calculateWeightForHeightZScore", "calculateZScore", "value", "l", "m", "s", "computeValueFromZScore", "zScore", "getClosestAgePoint", "referenceMap", "getHeadCircumferenceNormalRange", "Lkotlin/Pair;", "getHeightForAgeAtZScore", "getWeightForAgeAtZScore", "interpretMuac", "Lcom/example/helloapp/util/WHOGrowthStandards$MuacStatus;", "muacCm", "interpretZScore", "Lcom/example/helloapp/util/WHOGrowthStandards$NutritionalStatus;", "GrowthAssessment", "MuacStatus", "NutritionalStatus", "app_debug"})
 public final class WHOGrowthStandards {
     @org.jetbrains.annotations.NotNull()
     private static final java.util.Map<java.lang.Integer, kotlin.Triple<java.lang.Double, java.lang.Double, java.lang.Double>> boysWeightForAge = null;
@@ -19,11 +19,63 @@ public final class WHOGrowthStandards {
     private static final java.util.Map<java.lang.Integer, kotlin.Triple<java.lang.Double, java.lang.Double, java.lang.Double>> boysWeightForHeight = null;
     @org.jetbrains.annotations.NotNull()
     private static final java.util.Map<java.lang.Integer, kotlin.Triple<java.lang.Double, java.lang.Double, java.lang.Double>> girlsWeightForHeight = null;
+    
+    /**
+     * Ages (months) for which we have WHO reference data
+     */
+    @org.jetbrains.annotations.NotNull()
+    private static final java.util.List<java.lang.Integer> referenceAges = null;
     @org.jetbrains.annotations.NotNull()
     public static final com.example.helloapp.util.WHOGrowthStandards INSTANCE = null;
     
     private WHOGrowthStandards() {
         super();
+    }
+    
+    /**
+     * Ages (months) for which we have WHO reference data
+     */
+    @org.jetbrains.annotations.NotNull()
+    public final java.util.List<java.lang.Integer> getReferenceAges() {
+        return null;
+    }
+    
+    /**
+     * WHO head circumference normal range (cm) by age in months.
+     * Returns (min, max) of the expected range.
+     * Most clinically meaningful for children under 36 months.
+     */
+    @org.jetbrains.annotations.NotNull()
+    public final kotlin.Pair<java.lang.Integer, java.lang.Integer> getHeadCircumferenceNormalRange(int ageMonths) {
+        return null;
+    }
+    
+    @org.jetbrains.annotations.NotNull()
+    public final com.example.helloapp.util.WHOGrowthStandards.MuacStatus interpretMuac(float muacCm) {
+        return null;
+    }
+    
+    /**
+     * Inverse LMS: compute the measurement value corresponding to a given Z-score.
+     * Y = M * (1 + L*S*Z)^(1/L) when L ≠ 0
+     * Y = M * exp(S*Z)           when L = 0
+     */
+    private final float computeValueFromZScore(double zScore, double l, double m, double s) {
+        return 0.0F;
+    }
+    
+    /**
+     * Weight (kg) at the given age and Z-score from the WHO reference table
+     */
+    public final float getWeightForAgeAtZScore(int ageMonths, double zScore, boolean isMale) {
+        return 0.0F;
+    }
+    
+    /**
+     * Height (cm) at the given age and Z-score from the WHO reference table
+     */
+    public final float getHeightForAgeAtZScore(int ageMonths, double zScore, boolean isMale) {
+        return 0.0F;
     }
     
     /**
@@ -185,6 +237,46 @@ public final class WHOGrowthStandards {
         @java.lang.Override()
         @org.jetbrains.annotations.NotNull()
         public java.lang.String toString() {
+            return null;
+        }
+    }
+    
+    /**
+     * MUAC (Mid-Upper Arm Circumference) status per WHO/UNICEF thresholds.
+     * Used for acute malnutrition screening in children 6–59 months.
+     */
+    @kotlin.Metadata(mv = {1, 9, 0}, k = 1, xi = 48, d1 = {"\u0000\u0012\n\u0002\u0018\u0002\n\u0002\u0010\u0010\n\u0000\n\u0002\u0010\u000e\n\u0002\b\u000b\b\u0086\u0081\u0002\u0018\u00002\b\u0012\u0004\u0012\u00020\u00000\u0001B\u001f\b\u0002\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u0012\u0006\u0010\u0004\u001a\u00020\u0003\u0012\u0006\u0010\u0005\u001a\u00020\u0003\u00a2\u0006\u0002\u0010\u0006R\u0011\u0010\u0005\u001a\u00020\u0003\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0007\u0010\bR\u0011\u0010\u0002\u001a\u00020\u0003\u00a2\u0006\b\n\u0000\u001a\u0004\b\t\u0010\bR\u0011\u0010\u0004\u001a\u00020\u0003\u00a2\u0006\b\n\u0000\u001a\u0004\b\n\u0010\bj\u0002\b\u000bj\u0002\b\fj\u0002\b\r\u00a8\u0006\u000e"}, d2 = {"Lcom/example/helloapp/util/WHOGrowthStandards$MuacStatus;", "", "description", "", "descriptionFr", "colorCode", "(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "getColorCode", "()Ljava/lang/String;", "getDescription", "getDescriptionFr", "SEVERE", "MODERATE", "NORMAL", "app_debug"})
+    public static enum MuacStatus {
+        /*public static final*/ SEVERE /* = new SEVERE(null, null, null) */,
+        /*public static final*/ MODERATE /* = new MODERATE(null, null, null) */,
+        /*public static final*/ NORMAL /* = new NORMAL(null, null, null) */;
+        @org.jetbrains.annotations.NotNull()
+        private final java.lang.String description = null;
+        @org.jetbrains.annotations.NotNull()
+        private final java.lang.String descriptionFr = null;
+        @org.jetbrains.annotations.NotNull()
+        private final java.lang.String colorCode = null;
+        
+        MuacStatus(java.lang.String description, java.lang.String descriptionFr, java.lang.String colorCode) {
+        }
+        
+        @org.jetbrains.annotations.NotNull()
+        public final java.lang.String getDescription() {
+            return null;
+        }
+        
+        @org.jetbrains.annotations.NotNull()
+        public final java.lang.String getDescriptionFr() {
+            return null;
+        }
+        
+        @org.jetbrains.annotations.NotNull()
+        public final java.lang.String getColorCode() {
+            return null;
+        }
+        
+        @org.jetbrains.annotations.NotNull()
+        public static kotlin.enums.EnumEntries<com.example.helloapp.util.WHOGrowthStandards.MuacStatus> getEntries() {
             return null;
         }
     }

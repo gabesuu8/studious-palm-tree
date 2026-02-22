@@ -40,20 +40,20 @@ public final class AppDatabase_Impl extends AppDatabase {
   @Override
   @NonNull
   protected SupportSQLiteOpenHelper createOpenHelper(@NonNull final DatabaseConfiguration config) {
-    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(config, new RoomOpenHelper.Delegate(7) {
+    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(config, new RoomOpenHelper.Delegate(8) {
       @Override
       public void createAllTables(@NonNull final SupportSQLiteDatabase db) {
         db.execSQL("CREATE TABLE IF NOT EXISTS `articles` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `title` TEXT NOT NULL, `content` TEXT NOT NULL, `summary` TEXT NOT NULL, `source` TEXT NOT NULL, `dateAdded` INTEGER NOT NULL, `category` TEXT NOT NULL, `isFavorite` INTEGER NOT NULL)");
         db.execSQL("CREATE TABLE IF NOT EXISTS `vaccinations` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `description` TEXT NOT NULL, `recommendedAge` TEXT NOT NULL, `category` TEXT NOT NULL, `isCompleted` INTEGER NOT NULL, `dateCompleted` INTEGER, `childId` INTEGER NOT NULL)");
         db.execSQL("CREATE TABLE IF NOT EXISTS `children` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `dateOfBirth` INTEGER NOT NULL, `gender` TEXT NOT NULL, `createdAt` INTEGER NOT NULL)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS `growth_records` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `childId` INTEGER NOT NULL, `date` INTEGER NOT NULL, `weightKg` REAL NOT NULL, `heightCm` REAL NOT NULL, `headCircumferenceCm` REAL, `notes` TEXT, `createdAt` INTEGER NOT NULL, FOREIGN KEY(`childId`) REFERENCES `children`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `growth_records` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `childId` INTEGER NOT NULL, `date` INTEGER NOT NULL, `weightKg` REAL NOT NULL, `heightCm` REAL NOT NULL, `headCircumferenceCm` REAL, `muacCm` REAL, `notes` TEXT, `createdAt` INTEGER NOT NULL, FOREIGN KEY(`childId`) REFERENCES `children`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )");
         db.execSQL("CREATE INDEX IF NOT EXISTS `index_growth_records_childId` ON `growth_records` (`childId`)");
         db.execSQL("CREATE TABLE IF NOT EXISTS `pregnancies` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `motherName` TEXT NOT NULL, `lastMenstrualPeriod` INTEGER NOT NULL, `expectedDueDate` INTEGER NOT NULL, `notes` TEXT, `isActive` INTEGER NOT NULL, `createdAt` INTEGER NOT NULL)");
         db.execSQL("CREATE TABLE IF NOT EXISTS `prenatal_visits` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `pregnancyId` INTEGER NOT NULL, `visitDate` INTEGER NOT NULL, `weekOfPregnancy` INTEGER NOT NULL, `weightKg` REAL, `bloodPressure` TEXT, `fetalHeartRate` INTEGER, `notes` TEXT, `nextVisitDate` INTEGER, `createdAt` INTEGER NOT NULL, FOREIGN KEY(`pregnancyId`) REFERENCES `pregnancies`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )");
         db.execSQL("CREATE INDEX IF NOT EXISTS `index_prenatal_visits_pregnancyId` ON `prenatal_visits` (`pregnancyId`)");
         db.execSQL("CREATE TABLE IF NOT EXISTS `clinics` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `address` TEXT NOT NULL, `city` TEXT NOT NULL, `country` TEXT NOT NULL, `latitude` REAL NOT NULL, `longitude` REAL NOT NULL, `phone` TEXT, `services` TEXT, `openingHours` TEXT, `isHospital` INTEGER NOT NULL, `isEmergency` INTEGER NOT NULL)");
         db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'c46df3717218cca8f3c1271105e00497')");
+        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '14a9a8b7ae5ced87b89f2cb7020a8134')");
       }
 
       @Override
@@ -160,13 +160,14 @@ public final class AppDatabase_Impl extends AppDatabase {
                   + " Expected:\n" + _infoChildren + "\n"
                   + " Found:\n" + _existingChildren);
         }
-        final HashMap<String, TableInfo.Column> _columnsGrowthRecords = new HashMap<String, TableInfo.Column>(8);
+        final HashMap<String, TableInfo.Column> _columnsGrowthRecords = new HashMap<String, TableInfo.Column>(9);
         _columnsGrowthRecords.put("id", new TableInfo.Column("id", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsGrowthRecords.put("childId", new TableInfo.Column("childId", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsGrowthRecords.put("date", new TableInfo.Column("date", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsGrowthRecords.put("weightKg", new TableInfo.Column("weightKg", "REAL", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsGrowthRecords.put("heightCm", new TableInfo.Column("heightCm", "REAL", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsGrowthRecords.put("headCircumferenceCm", new TableInfo.Column("headCircumferenceCm", "REAL", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsGrowthRecords.put("muacCm", new TableInfo.Column("muacCm", "REAL", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsGrowthRecords.put("notes", new TableInfo.Column("notes", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsGrowthRecords.put("createdAt", new TableInfo.Column("createdAt", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         final HashSet<TableInfo.ForeignKey> _foreignKeysGrowthRecords = new HashSet<TableInfo.ForeignKey>(1);
@@ -243,7 +244,7 @@ public final class AppDatabase_Impl extends AppDatabase {
         }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "c46df3717218cca8f3c1271105e00497", "16858ea9540fc91df38f4e1fb4325678");
+    }, "14a9a8b7ae5ced87b89f2cb7020a8134", "f91d030d3bc9d509a5ebc4e562befc2a");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(config.context).name(config.name).callback(_openCallback).build();
     final SupportSQLiteOpenHelper _helper = config.sqliteOpenHelperFactory.create(_sqliteConfig);
     return _helper;

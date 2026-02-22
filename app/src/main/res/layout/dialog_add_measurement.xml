@@ -55,10 +55,29 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:hint="@string/head_circumference_optional"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        app:helperText="@string/head_circ_helper"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editHeadCircumference"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="@string/muac_optional"
+        app:helperText="@string/muac_helper"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editMuac"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal" />

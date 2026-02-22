@@ -12,9 +12,9 @@
         android:title="@string/clinics" />
 
     <item
-        android:id="@+id/nav_growth"
-        android:icon="@drawable/ic_growth"
-        android:title="@string/growth" />
+        android:id="@+id/nav_trackers"
+        android:icon="@drawable/ic_vaccine"
+        android:title="@string/vaccines_and_growth" />
 
     <item
         android:id="@+id/nav_pregnancy"
@@ -22,8 +22,8 @@
         android:title="@string/pregnancy" />
 
     <item
-        android:id="@+id/nav_vaccinations"
-        android:icon="@drawable/ic_vaccine"
-        android:title="@string/vaccinations" />
+        android:id="@+id/nav_symptoms"
+        android:icon="@android:drawable/ic_menu_search"
+        android:title="@string/symptom_predictor" />
 
 </menu>

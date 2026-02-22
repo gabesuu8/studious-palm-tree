@@ -7,9 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.helloapp.fragment.ArticlesFragment
 import com.example.helloapp.fragment.ClinicsFragment
-import com.example.helloapp.fragment.GrowthTrackerFragment
 import com.example.helloapp.fragment.PregnancyTrackerFragment
-import com.example.helloapp.fragment.VaccinationFragment
+import com.example.helloapp.fragment.SymptomPredictorFragment
+import com.example.helloapp.fragment.VaccinationGrowthFragment
 import com.example.helloapp.util.LanguageHelper
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -58,9 +58,9 @@ class MainActivity : AppCompatActivity() {
             val tag = when (item.itemId) {
                 R.id.nav_articles -> TAG_ARTICLES
                 R.id.nav_clinics -> TAG_CLINICS
-                R.id.nav_growth -> TAG_GROWTH
+                R.id.nav_trackers -> TAG_TRACKERS
                 R.id.nav_pregnancy -> TAG_PREGNANCY
-                R.id.nav_vaccinations -> TAG_VACCINATION
+                R.id.nav_symptoms -> TAG_SYMPTOMS
                 else -> TAG_ARTICLES
             }
             loadFragment(tag)
@@ -71,9 +71,9 @@ class MainActivity : AppCompatActivity() {
         bottomNavigation.selectedItemId = when (currentFragmentTag) {
             TAG_ARTICLES -> R.id.nav_articles
             TAG_CLINICS -> R.id.nav_clinics
-            TAG_GROWTH -> R.id.nav_growth
+            TAG_TRACKERS -> R.id.nav_trackers
             TAG_PREGNANCY -> R.id.nav_pregnancy
-            TAG_VACCINATION -> R.id.nav_vaccinations
+            TAG_SYMPTOMS -> R.id.nav_symptoms
             else -> R.id.nav_articles
         }
     }
@@ -89,9 +89,9 @@ class MainActivity : AppCompatActivity() {
         val fragment = when (tag) {
             TAG_ARTICLES -> ArticlesFragment()
             TAG_CLINICS -> ClinicsFragment()
-            TAG_GROWTH -> GrowthTrackerFragment()
+            TAG_TRACKERS -> VaccinationGrowthFragment()
             TAG_PREGNANCY -> PregnancyTrackerFragment()
-            TAG_VACCINATION -> VaccinationFragment()
+            TAG_SYMPTOMS -> SymptomPredictorFragment()
             else -> ArticlesFragment()
         }
         
@@ -103,9 +103,9 @@ class MainActivity : AppCompatActivity() {
     companion object {
         private const val TAG_ARTICLES = "articles"
         private const val TAG_CLINICS = "clinics"
-        private const val TAG_GROWTH = "growth"
+        private const val TAG_TRACKERS = "trackers"
         private const val TAG_PREGNANCY = "pregnancy"
-        private const val TAG_VACCINATION = "vaccination"
+        private const val TAG_SYMPTOMS = "symptoms"
         private const val KEY_CURRENT_TAB = "current_tab"
     }
 }

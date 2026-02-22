@@ -83,6 +83,66 @@ object WHOGrowthStandards {
         110 to Triple(0.2, 18.4, 0.10)
     )
     
+    /** Ages (months) for which we have WHO reference data */
+    val referenceAges = listOf(0, 3, 6, 9, 12, 18, 24, 36, 48, 60)
+
+    /**
+     * WHO head circumference normal range (cm) by age in months.
+     * Returns (min, max) of the expected range.
+     * Most clinically meaningful for children under 36 months.
+     */
+    fun getHeadCircumferenceNormalRange(ageMonths: Int): Pair<Int, Int> = when {
+        ageMonths <= 1  -> 33 to 37
+        ageMonths <= 3  -> 38 to 42
+        ageMonths <= 6  -> 41 to 45
+        ageMonths <= 12 -> 44 to 48
+        ageMonths <= 24 -> 46 to 50
+        else            -> 47 to 52
+    }
+
+    /**
+     * MUAC (Mid-Upper Arm Circumference) status per WHO/UNICEF thresholds.
+     * Used for acute malnutrition screening in children 6–59 months.
+     */
+    enum class MuacStatus(val description: String, val descriptionFr: String, val colorCode: String) {
+        SEVERE("Severe Acute Malnutrition (<11.5 cm)", "Malnutrition aiguë sévère (<11,5 cm)", "#D32F2F"),
+        MODERATE("Moderate Acute Malnutrition (11.5–12.5 cm)", "Malnutrition aiguë modérée (11,5–12,5 cm)", "#FF8F00"),
+        NORMAL("Normal (≥12.5 cm)", "Normal (≥12,5 cm)", "#388E3C")
+    }
+
+    fun interpretMuac(muacCm: Float): MuacStatus = when {
+        muacCm < 11.5f -> MuacStatus.SEVERE
+        muacCm < 12.5f -> MuacStatus.MODERATE
+        else           -> MuacStatus.NORMAL
+    }
+
+    /**
+     * Inverse LMS: compute the measurement value corresponding to a given Z-score.
+     * Y = M * (1 + L*S*Z)^(1/L) when L ≠ 0
+     * Y = M * exp(S*Z)           when L = 0
+     */
+    private fun computeValueFromZScore(zScore: Double, l: Double, m: Double, s: Double): Float {
+        return if (l != 0.0) {
+            (m * Math.pow(1.0 + l * s * zScore, 1.0 / l)).toFloat()
+        } else {
+            (m * Math.exp(s * zScore)).toFloat()
+        }
+    }
+
+    /** Weight (kg) at the given age and Z-score from the WHO reference table */
+    fun getWeightForAgeAtZScore(ageMonths: Int, zScore: Double, isMale: Boolean): Float {
+        val reference = if (isMale) boysWeightForAge else girlsWeightForAge
+        val (l, m, s) = getClosestAgePoint(ageMonths, reference) ?: return 0f
+        return computeValueFromZScore(zScore, l, m, s)
+    }
+
+    /** Height (cm) at the given age and Z-score from the WHO reference table */
+    fun getHeightForAgeAtZScore(ageMonths: Int, zScore: Double, isMale: Boolean): Float {
+        val reference = if (isMale) boysHeightForAge else girlsHeightForAge
+        val (l, m, s) = getClosestAgePoint(ageMonths, reference) ?: return 0f
+        return computeValueFromZScore(zScore, l, m, s)
+    }
+
     /**
      * Calculate z-score using LMS method
      * Z = ((value/M)^L - 1) / (L * S) when L ≠ 0

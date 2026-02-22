@@ -1415,6 +1415,9 @@ color common_google_signin_btn_text_light_disabled
 color common_google_signin_btn_text_light_focused
 color common_google_signin_btn_text_light_pressed
 color common_google_signin_btn_tint
+color confidence_high
+color confidence_low
+color confidence_moderate
 color design_bottom_navigation_shadow_color
 color design_box_stroke_color
 color design_dark_default_color_background
@@ -3301,6 +3304,8 @@ id center_vertical
 id chain
 id chain2
 id chains
+id chartCard
+id chartMetricChipGroup
 id checkbox
 id checked
 id childSelectorCard
@@ -3308,6 +3313,8 @@ id childSpinner
 id chipAll
 id chipCompleted
 id chipEmergency
+id chipHeight
+id chipWeight
 id chronometer
 id circle_center
 id clearSearchButton
@@ -3351,6 +3358,7 @@ id design_menu_item_action_area_stub
 id design_menu_item_text
 id design_navigation_view
 id dialog_button
+id differentiatingTipText
 id dimensions
 id direct
 id disableHome
@@ -3381,6 +3389,7 @@ id editFetalHeartRate
 id editHeadCircumference
 id editHeight
 id editMotherName
+id editMuac
 id editNotes
 id editVisitNotes
 id editVisitWeight
@@ -3431,6 +3440,7 @@ id graph_wrap
 id group_divider
 id grouping
 id groups
+id growthLineChart
 id headerIcon
 id headerText
 id header_title
@@ -3546,9 +3556,9 @@ id mtrl_view_tag_bottom_padding
 id multiply
 id nav_articles
 id nav_clinics
-id nav_growth
 id nav_pregnancy
-id nav_vaccinations
+id nav_symptoms
+id nav_trackers
 id navigation_bar_item_active_indicator_view
 id navigation_bar_item_icon_container
 id navigation_bar_item_icon_view
@@ -3623,6 +3633,7 @@ id recommendedAge
 id recordsRecyclerView
 id rectangles
 id report_drawn
+id resultsListView
 id reverseSawtooth
 id right
 id rightToLeft
@@ -3697,6 +3708,7 @@ id submit_area
 id suggestionText
 id supportScrollUp
 id symptomInputEditText
+id tabLayout
 id tabMode
 id tag_accessibility_actions
 id tag_accessibility_clickable_spans
@@ -3952,10 +3964,13 @@ layout dialog_add_child
 layout dialog_add_measurement
 layout dialog_add_pregnancy
 layout dialog_add_visit
+layout dialog_symptom_results
 layout fragment_articles
 layout fragment_clinics
 layout fragment_growth_tracker
 layout fragment_pregnancy_tracker
+layout fragment_symptom_predictor
+layout fragment_vaccination_growth
 layout fragment_vaccinations
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
@@ -4133,6 +4148,9 @@ string common_signin_button_text
 string common_signin_button_text_long
 string completed
 string completed_on
+string confidence_high
+string confidence_low
+string confidence_moderate
 string current_status
 string danger_signs_subtitle
 string danger_signs_title
@@ -4147,6 +4165,8 @@ string directions
 string disclaimer_articles
 string dismiss_disclaimer
 string distance
+string edit
+string edit_measurement
 string emergency_24_7
 string emergency_only
 string enable
@@ -4179,8 +4199,11 @@ string gender
 string get_started
 string google_maps_key
 string growth
+string growth_chart
 string growth_history
 string growth_tracker
+string head_circ_helper
+string head_circ_normal_range
 string head_circumference
 string head_circumference_optional
 string height
@@ -4305,6 +4328,10 @@ string mtrl_switch_track_decoration_path
 string mtrl_switch_track_path
 string mtrl_timepicker_cancel
 string mtrl_timepicker_confirm
+string muac
+string muac_helper
+string muac_optional
+string narrow_down_tip
 string next
 string next_vaccine_due_by
 string next_visit
@@ -4395,6 +4422,8 @@ string suggest_condition_from_symptoms
 string symptom_checker_title
 string symptom_enter_first
 string symptom_input_hint
+string symptom_predictor
+string symptoms_matched_count
 string today
 string toggle_map
 string trimester
@@ -4403,6 +4432,7 @@ string vaccination_marked_incomplete
 string vaccination_progress
 string vaccination_tracker
 string vaccinations
+string vaccines_and_growth
 string view_danger_signs
 string visit_date
 string visit_details
@@ -4416,6 +4446,9 @@ string weight_for_age_z
 string weight_for_height
 string weight_helper
 string weight_kg
+string who_median
+string who_minus2sd
+string who_minus3sd
 string who_z_scores
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light

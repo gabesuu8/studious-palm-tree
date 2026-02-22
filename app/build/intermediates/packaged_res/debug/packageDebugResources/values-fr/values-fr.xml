@@ -33,6 +33,9 @@
     <string name="clinics">Cliniques</string>
     <string name="completed">effectués</string>
     <string name="completed_on">Effectué le</string>
+    <string name="confidence_high">Correspondance forte</string>
+    <string name="confidence_low">Possible</string>
+    <string name="confidence_moderate">Correspondance modérée</string>
     <string name="current_status">État Actuel</string>
     <string name="danger_signs_subtitle">Sachez quand consulter en urgence</string>
     <string name="danger_signs_title">Signes de Danger</string>
@@ -47,6 +50,8 @@
     <string name="disclaimer_articles">Cette application et ses articles sont à titre informatif uniquement. Ils ne remplacent pas l\'avis médical professionnel, le diagnostic ou le traitement. Consultez toujours un médecin ou un professionnel de santé qualifié.</string>
     <string name="dismiss_disclaimer">Fermer l\'avertissement</string>
     <string name="distance">Distance</string>
+    <string name="edit">Modifier</string>
+    <string name="edit_measurement">Modifier la mesure</string>
     <string name="emergency_24_7">Urgences 24h/24</string>
     <string name="emergency_only">Urgences uniquement</string>
     <string name="enable">Activer</string>
@@ -73,10 +78,13 @@
     <string name="gender">Sexe</string>
     <string name="get_started">Commencer</string>
     <string name="growth">Croissance</string>
+    <string name="growth_chart">Courbe de Croissance</string>
     <string name="growth_history">Historique de Croissance</string>
     <string name="growth_tracker">Suivi de Croissance</string>
+    <string name="head_circ_helper">Plus significatif pour les enfants de moins de 3 ans</string>
+    <string name="head_circ_normal_range">Plage normale : %1$d–%2$d cm</string>
     <string name="head_circumference">Périmètre crânien</string>
-    <string name="head_circumference_optional">Périmètre crânien (cm) - Optionnel</string>
+    <string name="head_circumference_optional">Périmètre crânien (cm) — Optionnel</string>
     <string name="height">Taille</string>
     <string name="height_cm">Taille (cm)</string>
     <string name="height_for_age">Taille-pour-âge</string>
@@ -96,6 +104,10 @@
     <string name="menu_options">Options</string>
     <string name="months">mois</string>
     <string name="mother_name">Nom de la mère</string>
+    <string name="muac">PB</string>
+    <string name="muac_helper">Périmètre Brachial · âges 6 mois–5 ans</string>
+    <string name="muac_optional">PB (cm) — Optionnel</string>
+    <string name="narrow_down_tip">Pour affiner, vérifiez :\n%1$s</string>
     <string name="next">Suivant</string>
     <string name="next_vaccine_due_by">Prochaine échéance : %1$s avant le %2$s</string>
     <string name="next_visit">Prochaine visite</string>
@@ -104,7 +116,7 @@
     <string name="no_articles">Aucun article disponible.\nAppuyez sur le bouton actualiser pour charger les articles.</string>
     <string name="no_children">Aucun enfant enregistré.\nAppuyez sur \"Ajouter un enfant\" pour commencer le suivi.</string>
     <string name="no_clinics">Aucune clinique trouvée dans cette zone.</string>
-    <string name="no_conditions_match">Aucune affection ne correspond. Essayez d\'autres symptômes (ex. fièvre, mal de tête).</string>
+    <string name="no_conditions_match">Aucune affection ne correspond. Essayez d\'ajouter plus de symptômes pour affiner (ex. fièvre et frissons, mal de tête et raideur du cou).</string>
     <string name="no_data">Pas de données</string>
     <string name="no_favorites">Pas encore d\'articles favoris.\nAppuyez sur l\'étoile d\'un article pour l\'enregistrer ici.</string>
     <string name="no_pregnancies">Aucune grossesse enregistrée.\nAppuyez sur \"Ajouter une grossesse\" pour commencer le suivi.</string>
@@ -173,7 +185,9 @@
     <string name="suggest_condition_from_symptoms">Suggérer une affection</string>
     <string name="symptom_checker_title">Vérification des symptômes</string>
     <string name="symptom_enter_first">Saisissez d\'abord vos symptômes</string>
-    <string name="symptom_input_hint">Décrivez vos symptômes (ex. fièvre, mal de tête)</string>
+    <string name="symptom_input_hint">Décrivez plusieurs symptômes (ex. fièvre, frissons, sueurs)</string>
+    <string name="symptom_predictor">Prédicteur de symptômes</string>
+    <string name="symptoms_matched_count">%1$d symptômes correspondent</string>
     <string name="today">Aujourd\'hui</string>
     <string name="toggle_map">Basculer vers la carte</string>
     <string name="trimester">trimestre</string>
@@ -182,6 +196,7 @@
     <string name="vaccination_progress">Progrès de vaccination</string>
     <string name="vaccination_tracker">Carnet de Vaccination</string>
     <string name="vaccinations">Vaccins</string>
+    <string name="vaccines_and_growth">Vaccins &amp; Croissance</string>
     <string name="view_danger_signs">Voir tous les signes de danger</string>
     <string name="visit_date">Date de visite</string>
     <string name="visit_details">Détails de la visite</string>
@@ -195,5 +210,8 @@
     <string name="weight_for_height">Poids-pour-taille</string>
     <string name="weight_helper">Entrez le poids actuel de la mère</string>
     <string name="weight_kg">Poids (kg)</string>
+    <string name="who_median">Médiane</string>
+    <string name="who_minus2sd">−2 ET</string>
+    <string name="who_minus3sd">−3 ET</string>
     <string name="who_z_scores">Scores Z (OMS)</string>
 </resources>

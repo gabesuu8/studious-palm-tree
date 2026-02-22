@@ -663,6 +663,9 @@
     <color name="common_google_signin_btn_text_light_disabled">#1F000000</color>
     <color name="common_google_signin_btn_text_light_focused">#90000000</color>
     <color name="common_google_signin_btn_text_light_pressed">#DE000000</color>
+    <color name="confidence_high">#FF2E7D32</color>
+    <color name="confidence_low">#FF9E9E9E</color>
+    <color name="confidence_moderate">#FFE65100</color>
     <color name="design_bottom_navigation_shadow_color">#14000000</color>
     <color name="design_dark_default_color_background">#121212</color>
     <color name="design_dark_default_color_error">#CF6679</color>
@@ -2062,6 +2065,9 @@
     <string name="common_signin_button_text_long">Sign in with Google</string>
     <string name="completed">completed</string>
     <string name="completed_on">Completed on</string>
+    <string name="confidence_high">Strong match</string>
+    <string name="confidence_low">Possible</string>
+    <string name="confidence_moderate">Moderate match</string>
     <string name="current_status">Current Status</string>
     <string name="danger_signs_subtitle">Know when to seek emergency care</string>
     <string name="danger_signs_title">Danger Signs</string>
@@ -2076,6 +2082,8 @@
     <string name="disclaimer_articles">This app and its articles are for information only. They are not a replacement for professional medical advice, diagnosis, or treatment. Always seek the advice of your doctor or another qualified health provider.</string>
     <string name="dismiss_disclaimer">Dismiss warning</string>
     <string name="distance">Distance</string>
+    <string name="edit">Edit</string>
+    <string name="edit_measurement">Edit Measurement</string>
     <string name="emergency_24_7">Emergency 24/7</string>
     <string name="emergency_only">Emergency Only</string>
     <string name="enable">Enable</string>
@@ -2110,10 +2118,13 @@
     <string name="get_started">Get Started</string>
     <string name="google_maps_key">YOUR_GOOGLE_MAPS_API_KEY</string>
     <string name="growth">Growth</string>
+    <string name="growth_chart">Growth Chart</string>
     <string name="growth_history">Growth History</string>
     <string name="growth_tracker">Child Growth Tracker</string>
+    <string name="head_circ_helper">Most meaningful for children under 3 years</string>
+    <string name="head_circ_normal_range">Normal range: %1$d–%2$d cm</string>
     <string name="head_circumference">Head Circumference</string>
-    <string name="head_circumference_optional">Head Circumference (cm) - Optional</string>
+    <string name="head_circumference_optional">Head Circumference (cm) — Optional</string>
     <string name="height">Height</string>
     <string name="height_cm">Height (cm)</string>
     <string name="height_for_age">Height-for-age</string>
@@ -2242,6 +2253,10 @@
     <string name="mtrl_switch_track_path" translatable="false">M0,16 A16,16 0 0,1 16,0 H36 A16,16 0 0,1 36,32 H16 A16,16 0 0,1 0,16</string>
     <string description="Button text to indicate that the widget will ignore the user&apos;s selection [CHAR_LIMIT=16]" name="mtrl_timepicker_cancel">Cancel</string>
     <string description="Button text to indicate that the widget will save the user&apos;s selection [CHAR_LIMIT=16]" name="mtrl_timepicker_confirm">OK</string>
+    <string name="muac">MUAC</string>
+    <string name="muac_helper">Mid-Upper Arm Circumference · ages 6 mo–5 yr</string>
+    <string name="muac_optional">MUAC (cm) — Optional</string>
+    <string name="narrow_down_tip">To narrow down, check for:\n%1$s</string>
     <string name="next">Next</string>
     <string name="next_vaccine_due_by">Next due: %1$s by %2$s</string>
     <string name="next_visit">Next visit</string>
@@ -2250,7 +2265,7 @@
     <string name="no_articles">No articles available.\nTap the refresh button to load articles.</string>
     <string name="no_children">No children registered.\nTap \"Add Child\" to start tracking growth.</string>
     <string name="no_clinics">No clinics found in this area.</string>
-    <string name="no_conditions_match">No conditions match. Try different symptoms (e.g. fever, headache).</string>
+    <string name="no_conditions_match">No conditions match. Try adding more symptoms to narrow down (e.g. fever and chills, headache and stiff neck).</string>
     <string name="no_data">No data</string>
     <string name="no_favorites">No favorite articles yet.\nTap the star on any article to save it here.</string>
     <string name="no_pregnancies">No pregnancies registered.\nTap \"Add Pregnancy\" to start tracking.</string>
@@ -2333,7 +2348,9 @@
     <string name="suggest_condition_from_symptoms">Suggest condition</string>
     <string name="symptom_checker_title">Symptom checker</string>
     <string name="symptom_enter_first">Enter your symptoms first</string>
-    <string name="symptom_input_hint">Describe your symptoms (e.g. fever, headache)</string>
+    <string name="symptom_input_hint">Describe multiple symptoms (e.g. fever, chills, sweating)</string>
+    <string name="symptom_predictor">Symptom predictor</string>
+    <string name="symptoms_matched_count">%1$d symptoms matched</string>
     <string name="today">Today</string>
     <string name="toggle_map">Toggle map view</string>
     <string name="trimester">trimester</string>
@@ -2342,6 +2359,7 @@
     <string name="vaccination_progress">Vaccination Progress</string>
     <string name="vaccination_tracker">Vaccination Tracker</string>
     <string name="vaccinations">Vaccines</string>
+    <string name="vaccines_and_growth">Vaccines &amp; Growth</string>
     <string name="view_danger_signs">View All Danger Signs</string>
     <string name="visit_date">Visit Date</string>
     <string name="visit_details">Visit Details</string>
@@ -2355,6 +2373,9 @@
     <string name="weight_for_height">Weight-for-height</string>
     <string name="weight_helper">Enter mother\'s current weight</string>
     <string name="weight_kg">Weight (kg)</string>
+    <string name="who_median">Median</string>
+    <string name="who_minus2sd">−2 SD</string>
+    <string name="who_minus3sd">−3 SD</string>
     <string name="who_z_scores">WHO Z-Scores</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>

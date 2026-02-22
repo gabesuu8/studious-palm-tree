@@ -172,7 +172,7 @@ public final class VaccinationDao_Impl implements VaccinationDao {
 
   @Override
   public Object insertVaccination(final Vaccination vaccination,
-      final Continuation<? super Unit> $completion) {
+      final Continuation<? super Unit> arg1) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -186,12 +186,12 @@ public final class VaccinationDao_Impl implements VaccinationDao {
           __db.endTransaction();
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @Override
   public Object insertAll(final List<Vaccination> vaccinations,
-      final Continuation<? super Unit> $completion) {
+      final Continuation<? super Unit> arg1) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -205,12 +205,12 @@ public final class VaccinationDao_Impl implements VaccinationDao {
           __db.endTransaction();
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @Override
   public Object deleteVaccination(final Vaccination vaccination,
-      final Continuation<? super Unit> $completion) {
+      final Continuation<? super Unit> arg1) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -224,12 +224,12 @@ public final class VaccinationDao_Impl implements VaccinationDao {
           __db.endTransaction();
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @Override
   public Object updateVaccination(final Vaccination vaccination,
-      final Continuation<? super Unit> $completion) {
+      final Continuation<? super Unit> arg1) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -243,12 +243,11 @@ public final class VaccinationDao_Impl implements VaccinationDao {
           __db.endTransaction();
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @Override
-  public Object deleteAllForChild(final long childId,
-      final Continuation<? super Unit> $completion) {
+  public Object deleteAllForChild(final long childId, final Continuation<? super Unit> arg1) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -269,11 +268,11 @@ public final class VaccinationDao_Impl implements VaccinationDao {
           __preparedStmtOfDeleteAllForChild.release(_stmt);
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @Override
-  public Object deleteTemplates(final Continuation<? super Unit> $completion) {
+  public Object deleteTemplates(final Continuation<? super Unit> arg0) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -292,11 +291,11 @@ public final class VaccinationDao_Impl implements VaccinationDao {
           __preparedStmtOfDeleteTemplates.release(_stmt);
         }
       }
-    }, $completion);
+    }, arg0);
   }
 
   @Override
-  public Object deleteAll(final Continuation<? super Unit> $completion) {
+  public Object deleteAll(final Continuation<? super Unit> arg0) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -315,7 +314,7 @@ public final class VaccinationDao_Impl implements VaccinationDao {
           __preparedStmtOfDeleteAll.release(_stmt);
         }
       }
-    }, $completion);
+    }, arg0);
   }
 
   @Override
@@ -471,8 +470,7 @@ public final class VaccinationDao_Impl implements VaccinationDao {
   }
 
   @Override
-  public Object getTemplateVaccinationsOnce(
-      final Continuation<? super List<Vaccination>> $completion) {
+  public Object getTemplateVaccinationsOnce(final Continuation<? super List<Vaccination>> arg0) {
     final String _sql = "SELECT * FROM vaccinations WHERE childId = 0 ORDER BY id ASC";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
     final CancellationSignal _cancellationSignal = DBUtil.createCancellationSignal();
@@ -540,11 +538,11 @@ public final class VaccinationDao_Impl implements VaccinationDao {
           _statement.release();
         }
       }
-    }, $completion);
+    }, arg0);
   }
 
   @Override
-  public Object getTemplateCount(final Continuation<? super Integer> $completion) {
+  public Object getTemplateCount(final Continuation<? super Integer> arg0) {
     final String _sql = "SELECT COUNT(*) FROM vaccinations WHERE childId = 0";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
     final CancellationSignal _cancellationSignal = DBUtil.createCancellationSignal();
@@ -572,12 +570,12 @@ public final class VaccinationDao_Impl implements VaccinationDao {
           _statement.release();
         }
       }
-    }, $completion);
+    }, arg0);
   }
 
   @Override
   public Object getVaccinationCountForChild(final long childId,
-      final Continuation<? super Integer> $completion) {
+      final Continuation<? super Integer> arg1) {
     final String _sql = "SELECT COUNT(*) FROM vaccinations WHERE childId = ?";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
     int _argIndex = 1;
@@ -607,7 +605,7 @@ public final class VaccinationDao_Impl implements VaccinationDao {
           _statement.release();
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @Override
