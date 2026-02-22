@@ -75,6 +75,7 @@ class GrowthViewModel(application: Application) : AndroidViewModel(application) 
         weightKg: Float,
         heightCm: Float,
         headCircumferenceCm: Float? = null,
+        muacCm: Float? = null,
         notes: String? = null
     ) {
         viewModelScope.launch {
@@ -84,12 +85,19 @@ class GrowthViewModel(application: Application) : AndroidViewModel(application) 
                 weightKg = weightKg,
                 heightCm = heightCm,
                 headCircumferenceCm = headCircumferenceCm,
+                muacCm = muacCm,
                 notes = notes
             )
             repository.insertGrowthRecord(record)
         }
     }
-    
+
+    fun updateGrowthRecord(record: GrowthRecord) {
+        viewModelScope.launch {
+            repository.updateGrowthRecord(record)
+        }
+    }
+
     fun deleteGrowthRecord(record: GrowthRecord) {
         viewModelScope.launch {
             repository.deleteGrowthRecord(record)

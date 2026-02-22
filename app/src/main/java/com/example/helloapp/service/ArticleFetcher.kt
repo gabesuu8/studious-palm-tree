@@ -522,26 +522,27 @@ class ArticleFetcher {
                 category = "Infectious Diseases"
             ),
             
-            // HIV/AIDS - English
+            // HIV/AIDS: TESTING, PREVENTION, AND TREATMENT - English (combined)
             Article(
-                title = "HIV/AIDS",
+                title = "HIV/AIDS: Testing, Prevention, and Treatment",
                 content = """
 <div class="key-facts">
     <h2>Key facts</h2>
     <ul>
-        <li>HIV attacks the body's immune system.</li>
+        <li>HIV attacks the immune system and is spread through blood, semen, vaginal fluids, and breast milk—not through casual contact, hugging, or sharing food. There is no cure, but with treatment people can live long, healthy lives.</li>
         <li>Approximately 39 million people are living with HIV globally.</li>
-        <li>HIV can be suppressed with antiretroviral therapy (ART).</li>
-        <li>With proper treatment, people with HIV can live long, healthy lives.</li>
+        <li>Testing: HIV tests are available at health facilities (blood or oral). Knowing your status lets you start treatment and protect others. People on effective treatment with undetectable viral load do not pass HIV to sexual partners.</li>
+        <li>Prevention: use condoms; do not share needles; take PrEP (pre-exposure prophylaxis) if advised. Pregnant women: get tested and take treatment to prevent passing HIV to the baby.</li>
+        <li>Treatment: antiretroviral therapy (ART) is recommended for everyone with HIV. HIV can be suppressed with ART. Start and stay on treatment as advised.</li>
     </ul>
 </div>
 
 <h2>Transmission</h2>
 <h3>HIV IS spread through:</h3>
 <ul>
-    <li>Unprotected sexual contact</li>
-    <li>Sharing needles</li>
-    <li>Mother-to-child during pregnancy/birth/breastfeeding</li>
+    <li>Unprotected sexual contact (blood, semen, vaginal fluids)</li>
+    <li>Sharing needles or syringes</li>
+    <li>Mother-to-child during pregnancy, birth, or breastfeeding</li>
 </ul>
 
 <h3>HIV is NOT spread through:</h3>
@@ -549,21 +550,37 @@ class ArticleFetcher {
     <li>Hugging, shaking hands</li>
     <li>Sharing food or utensils</li>
     <li>Mosquito bites</li>
+    <li>Casual contact</li>
 </ul>
 
 <hr/>
 
-<h2>Testing & Treatment</h2>
-<p>HIV testing is free, confidential, and quick. ART is available free in most African countries.</p>
-<p><b>Undetectable = Untransmittable (U=U)</b></p>
+<h2>Testing</h2>
+<ul>
+    <li>HIV tests available at health facilities (blood or rapid tests). Testing is free, confidential, and quick.</li>
+    <li>Knowing your status helps you get treatment and protect others.</li>
+    <li>If you might have been exposed recently, ask about the right test and when to retest.</li>
+    <li><b>Undetectable = Untransmittable (U=U):</b> People on effective treatment with undetectable viral load do not pass HIV to sexual partners.</li>
+</ul>
 
 <hr/>
 
 <h2>Prevention</h2>
 <ul>
-    <li>Use condoms correctly every time</li>
-    <li>Get tested regularly</li>
-    <li>PrEP: Daily pill for high-risk individuals</li>
+    <li>Use condoms correctly every time; do not share needles or syringes.</li>
+    <li>Get tested regularly to know your status.</li>
+    <li>Take PrEP (daily medicine to prevent HIV) if a health worker recommends it for high-risk individuals.</li>
+    <li>Pregnant women: get tested and take ART as prescribed to protect the baby.</li>
+</ul>
+
+<hr/>
+
+<h2>Treatment</h2>
+<ul>
+    <li>Antiretroviral therapy (ART)—daily medicines—keeps people with HIV healthy and reduces transmission.</li>
+    <li>ART is available free in most African countries.</li>
+    <li>Start treatment as soon as possible; take it every day as advised. Stay in care and have viral load checked when offered.</li>
+    <li>With proper treatment, people with HIV can live long, healthy lives.</li>
 </ul>
 
 <hr/>
@@ -571,14 +588,26 @@ class ArticleFetcher {
 <div class="sources">
     <h2>Sources</h2>
     <div class="source-item">
+        <div class="source-name">World Health Organization (WHO)</div>
+        <a href="https://www.who.int/news-room/fact-sheets/detail/hiv-aids">www.who.int/news-room/fact-sheets/detail/hiv-aids</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">Mayo Clinic</div>
+        <a href="https://www.mayoclinic.org/diseases-conditions/hiv-aids/diagnosis-treatment/drc-20373531">www.mayoclinic.org – HIV/AIDS diagnosis and treatment</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">National Institutes of Health (NIH) – MedlinePlus</div>
+        <a href="https://medlineplus.gov/hiv.html">medlineplus.gov – HIV</a>
+    </div>
+    <div class="source-item">
         <div class="source-name">UNAIDS</div>
         <a href="https://www.unaids.org">www.unaids.org</a>
     </div>
 </div>
                 """.trimIndent(),
-                summary = "WHO fact sheet on HIV/AIDS: 39 million people living with HIV globally. Learn about testing, ART treatment, and prevention.",
-                source = "WHO, UNAIDS",
-                category = "Sexual Health"
+                summary = "HIV/AIDS: transmission, testing, prevention, and treatment. 39 million people living with HIV globally. WHO, Mayo Clinic, NIH, UNAIDS sources.",
+                source = "WHO, Mayo Clinic, NIH, UNAIDS",
+                category = "Infectious Diseases"
             ),
             
             // TUBERCULOSIS (TB) - English
@@ -2813,37 +2842,45 @@ class ArticleFetcher {
                 source = "WHO, Mayo Clinic, NIH",
                 category = "Infectious Diseases"
             ),
-            // HIV: TESTING AND PREVENTION - English (expanded)
+            // INFLUENZA (FLU) - English
             Article(
-                title = "HIV: Testing and Prevention",
+                title = "Influenza (Flu)",
                 content = """
 <div class="key-facts">
     <h2>Key facts</h2>
     <ul>
-        <li>HIV attacks the immune system and is spread through blood, semen, vaginal fluids, and breast milk—not through casual contact, hugging, or sharing food. There is no cure, but with treatment people can live long, healthy lives.</li>
-        <li>Testing: HIV tests are available at health facilities (blood or oral). Knowing your status lets you start treatment and protect others. People on effective treatment with undetectable viral load do not pass HIV to sexual partners.</li>
-        <li>Prevention: use condoms; do not share needles; take PrEP (pre-exposure prophylaxis) if advised. Pregnant women: get tested and take treatment to prevent passing HIV to the baby.</li>
-        <li>Treatment: antiretroviral therapy (ART) is recommended for everyone with HIV. Start and stay on treatment as advised.</li>
+        <li>Influenza (flu) is a contagious respiratory illness caused by influenza viruses. It can cause mild to severe illness and sometimes death. Seasonal flu occurs every year, usually in colder months.</li>
+        <li>Flu spreads mainly by droplets when people with flu cough, sneeze, or talk. Less often, touching surfaces with the virus and then touching mouth, nose, or eyes.</li>
+        <li>Symptoms: fever, chills, cough, sore throat, runny or stuffy nose, muscle or body aches, headache, fatigue. Some people have vomiting and diarrhoea (more common in children).</li>
+        <li>Annual flu vaccination is the best way to prevent flu. WHO and CDC recommend vaccination for everyone 6 months and older, especially pregnant women, young children, older adults, and people with chronic conditions.</li>
+        <li>Most people recover with rest and fluids. Antiviral medicines can shorten illness and reduce complications if started early. Seek care for severe symptoms or high-risk groups.</li>
     </ul>
 </div>
 
-<h2>Testing</h2>
+<h2>Overview</h2>
+<p>Influenza is a viral infection that attacks the nose, throat, and sometimes the lungs. It is different from the common cold: flu usually comes on suddenly and can lead to serious complications such as pneumonia. People at higher risk include young children, adults 65 and older, pregnant women, and people with asthma, heart disease, diabetes, or weakened immunity.</p>
+
+<h2>Symptoms</h2>
 <ul>
-    <li>HIV tests available at health facilities (blood or rapid tests). Knowing your status helps you get treatment and protect others.</li>
-    <li>If you might have been exposed recently, ask about the right test and when to retest.</li>
+    <li>Fever or feeling feverish/chills (not everyone with flu has fever).</li>
+    <li>Cough, sore throat, runny or stuffy nose, muscle or body aches, headache, tiredness.</li>
+    <li>Some people have vomiting and diarrhoea (more common in children).</li>
 </ul>
+<p class="warning"><b>⚠️ Seek emergency care if: difficulty breathing, chest pain, sudden dizziness, severe vomiting, confusion, or symptoms that improve then return with worse fever and cough.</b></p>
 
 <h2>Prevention</h2>
 <ul>
-    <li>Use condoms correctly every time; do not share needles or syringes.</li>
-    <li>Take PrEP (daily medicine to prevent HIV) if a health worker recommends it.</li>
-    <li>Pregnant women: get tested and take ART as prescribed to protect the baby.</li>
+    <li>Get a flu vaccine every year. Vaccination reduces illness and serious outcomes.</li>
+    <li>Wash hands often with soap and water; avoid touching eyes, nose, and mouth.</li>
+    <li>Stay away from people who are sick; if you are sick, stay home to avoid spreading flu.</li>
+    <li>Cover coughs and sneezes with a tissue or your elbow; throw tissues away and wash hands.</li>
 </ul>
 
 <h2>Treatment</h2>
 <ul>
-    <li>Antiretroviral therapy (ART)—daily medicines—keeps people with HIV healthy and reduces transmission.</li>
-    <li>Start treatment as soon as possible; take it every day as advised. Stay in care and have viral load checked when offered.</li>
+    <li>Rest, drink plenty of fluids, and use fever-reducing medicine (e.g. paracetamol) as advised.</li>
+    <li>Antiviral drugs (e.g. oseltamivir) can lessen symptoms and complications if started within 48 hours of symptoms—ask a health worker, especially for high-risk people.</li>
+    <li>Seek care if you are in a high-risk group, have severe symptoms, or do not improve after a few days.</li>
 </ul>
 
 <hr/>
@@ -2852,20 +2889,24 @@ class ArticleFetcher {
     <h2>Sources</h2>
     <div class="source-item">
         <div class="source-name">World Health Organization (WHO)</div>
-        <a href="https://www.who.int/news-room/fact-sheets/detail/hiv-aids">www.who.int/news-room/fact-sheets/detail/hiv-aids</a>
+        <a href="https://www.who.int/news-room/fact-sheets/detail/influenza-(seasonal)">www.who.int/news-room/fact-sheets/detail/influenza-(seasonal)</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">Centers for Disease Control and Prevention (CDC)</div>
+        <a href="https://www.cdc.gov/flu/about/keyfacts.htm">www.cdc.gov – Key Facts About Influenza (Flu)</a>
     </div>
     <div class="source-item">
         <div class="source-name">Mayo Clinic</div>
-        <a href="https://www.mayoclinic.org/diseases-conditions/hiv-aids/diagnosis-treatment/drc-20373531">www.mayoclinic.org – HIV/AIDS diagnosis and treatment</a>
+        <a href="https://www.mayoclinic.org/diseases-conditions/flu/symptoms-causes/syc-20351719">www.mayoclinic.org – Influenza (flu)</a>
     </div>
     <div class="source-item">
         <div class="source-name">National Institutes of Health (NIH) – MedlinePlus</div>
-        <a href="https://medlineplus.gov/hiv.html">medlineplus.gov – HIV</a>
+        <a href="https://medlineplus.gov/flu.html">medlineplus.gov – Flu</a>
     </div>
 </div>
                 """.trimIndent(),
-                summary = "HIV testing, prevention, and treatment. WHO, Mayo Clinic, NIH sources.",
-                source = "WHO, Mayo Clinic, NIH",
+                summary = "Influenza (flu): symptoms, annual vaccination, and when to seek care. WHO, CDC, Mayo Clinic, NIH sources.",
+                source = "WHO, CDC, Mayo Clinic, NIH",
                 category = "Infectious Diseases"
             ),
             // LASSA FEVER: AWARENESS - English (expanded)
@@ -3988,26 +4029,27 @@ class ArticleFetcher {
                 category = "Maladies Infectieuses"
             ),
             
-            // VIH/SIDA - French
+            // VIH/SIDA : DÉPISTAGE, PRÉVENTION ET TRAITEMENT - French (combined)
             Article(
-                title = "VIH/SIDA",
+                title = "VIH/SIDA : Dépistage, Prévention et Traitement",
                 content = """
 <div class="key-facts">
     <h2>Principaux faits</h2>
     <ul>
-        <li>Le VIH attaque le système immunitaire de l'organisme.</li>
+        <li>Le VIH attaque le système immunitaire et se transmet par le sang, le sperme, les sécrétions vaginales et le lait maternel—pas par contact occasionnel, câlins ou partage de nourriture. Il n'y a pas de guérison, mais avec un traitement les personnes peuvent vivre longtemps et en bonne santé.</li>
         <li>Environ 39 millions de personnes vivent avec le VIH dans le monde.</li>
-        <li>Le VIH peut être supprimé par un traitement antirétroviral (TAR).</li>
-        <li>Avec un traitement approprié, les personnes vivant avec le VIH peuvent vivre longtemps et en bonne santé.</li>
+        <li>Dépistage : les tests VIH sont disponibles en centre de santé (sang ou oral). Connaître son statut permet de se soigner et de protéger les autres. Les personnes sous traitement efficace avec charge virale indétectable ne transmettent pas le VIH aux partenaires sexuels.</li>
+        <li>Prévention : utiliser des préservatifs ; ne pas partager les aiguilles ; prendre la PrEP (prophylaxie pré-exposition) si conseillé. Femmes enceintes : se faire dépister et prendre le traitement pour protéger le bébé.</li>
+        <li>Traitement : le traitement antirétroviral (TAR) est recommandé pour toutes les personnes vivant avec le VIH. Le VIH peut être supprimé par le TAR. Commencer et suivre le traitement comme conseillé.</li>
     </ul>
 </div>
 
 <h2>Transmission</h2>
 <h3>Le VIH SE transmet par :</h3>
 <ul>
-    <li>Rapports sexuels non protégés</li>
-    <li>Partage d'aiguilles</li>
-    <li>Transmission mère-enfant pendant la grossesse/accouchement/allaitement</li>
+    <li>Rapports sexuels non protégés (sang, sperme, sécrétions vaginales)</li>
+    <li>Partage d'aiguilles ou de seringues</li>
+    <li>Transmission mère-enfant pendant la grossesse, l'accouchement ou l'allaitement</li>
 </ul>
 
 <h3>Le VIH NE SE transmet PAS par :</h3>
@@ -4015,21 +4057,37 @@ class ArticleFetcher {
     <li>Les câlins, les poignées de main</li>
     <li>Le partage de nourriture ou d'ustensiles</li>
     <li>Les piqûres de moustiques</li>
+    <li>Contact occasionnel</li>
 </ul>
 
 <hr/>
 
-<h2>Dépistage et traitement</h2>
-<p>Le dépistage du VIH est gratuit, confidentiel et rapide. Le TAR est disponible gratuitement dans la plupart des pays africains.</p>
-<p><b>Indétectable = Intransmissible (I=I)</b></p>
+<h2>Dépistage</h2>
+<ul>
+    <li>Tests VIH disponibles en centre de santé (sang ou tests rapides). Le dépistage est gratuit, confidentiel et rapide.</li>
+    <li>Connaître son statut permet de se soigner et de protéger les autres.</li>
+    <li>Si vous avez pu être exposé récemment, demander le bon test et quand refaire un test.</li>
+    <li><b>Indétectable = Intransmissible (I=I) :</b> Les personnes sous traitement efficace avec charge virale indétectable ne transmettent pas le VIH aux partenaires sexuels.</li>
+</ul>
 
 <hr/>
 
 <h2>Prévention</h2>
 <ul>
-    <li>Utiliser des préservatifs correctement à chaque fois</li>
-    <li>Se faire dépister régulièrement</li>
-    <li>PrEP : Pilule quotidienne pour les personnes à haut risque</li>
+    <li>Utiliser des préservatifs correctement à chaque fois ; ne pas partager les aiguilles ou seringues.</li>
+    <li>Se faire dépister régulièrement pour connaître son statut.</li>
+    <li>Prendre la PrEP (médicament quotidien pour prévenir le VIH) si un soignant le recommande pour les personnes à haut risque.</li>
+    <li>Femmes enceintes : se faire dépister et prendre le TAR comme prescrit pour protéger le bébé.</li>
+</ul>
+
+<hr/>
+
+<h2>Traitement</h2>
+<ul>
+    <li>Le traitement antirétroviral (TAR)—médicaments quotidiens—garde les personnes vivant avec le VIH en bonne santé et réduit la transmission.</li>
+    <li>Le TAR est disponible gratuitement dans la plupart des pays africains.</li>
+    <li>Commencer le traitement dès que possible ; le prendre tous les jours comme conseillé. Rester en soins et faire vérifier la charge virale quand proposé.</li>
+    <li>Avec un traitement approprié, les personnes vivant avec le VIH peuvent vivre longtemps et en bonne santé.</li>
 </ul>
 
 <hr/>
@@ -4037,14 +4095,26 @@ class ArticleFetcher {
 <div class="sources">
     <h2>Sources</h2>
     <div class="source-item">
+        <div class="source-name">Organisation mondiale de la Santé (OMS)</div>
+        <a href="https://www.who.int/news-room/fact-sheets/detail/hiv-aids">www.who.int/news-room/fact-sheets/detail/hiv-aids</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">Mayo Clinic</div>
+        <a href="https://www.mayoclinic.org/diseases-conditions/hiv-aids/diagnosis-treatment/drc-20373531">www.mayoclinic.org – VIH/SIDA diagnostic et traitement</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">National Institutes of Health (NIH) – MedlinePlus</div>
+        <a href="https://medlineplus.gov/hiv.html">medlineplus.gov – VIH</a>
+    </div>
+    <div class="source-item">
         <div class="source-name">ONUSIDA</div>
         <a href="https://www.unaids.org/fr">www.unaids.org/fr</a>
     </div>
 </div>
                 """.trimIndent(),
-                summary = "Fiche OMS sur le VIH/SIDA : 39 millions de personnes vivent avec le VIH. Dépistage, traitement TAR et prévention.",
-                source = "OMS, ONUSIDA",
-                category = "Santé Sexuelle"
+                summary = "VIH/SIDA : transmission, dépistage, prévention et traitement. 39 millions de personnes vivent avec le VIH. Sources OMS, Mayo Clinic, NIH, ONUSIDA.",
+                source = "OMS, Mayo Clinic, NIH, ONUSIDA",
+                category = "Maladies Infectieuses"
             ),
             
             // TUBERCULOSE (TB) - French
@@ -5709,7 +5779,7 @@ class ArticleFetcher {
             Article(title = "Hépatite A et E (hydrique)", content = """<h2>Principaux faits</h2><p>Transmises par eau et aliments contaminés. Jaunisse, fièvre, fatigue.</p><h2>Prévention</h2><p>Eau sûre ; lavage des mains ; aliments cuits.</p><h2>Traitement</h2><p>Repos ; boire. La plupart guérissent. Consulter si vomissements, confusion, jaunisse prolongée.</p>""", summary = "Hépatite hydrique : prévention et soins.", source = "OMS", category = "Maladies Infectieuses"),
             Article(title = "Méningite : signes et prévention", content = """<h2>Qu'est-ce que la méningite ?</h2><p>Infection des enveloppes du cerveau. Peut provoquer des épidémies. Urgent.</p><h2>Signes</h2><p>Nuque raide ; forte tête ; fièvre ; lumière gênante ; éruption ; confusion. Bébé : fontanelle bombée.</p><h2>Que faire</h2><p>Urgence immédiate. La vaccination aide à prévenir certaines formes.</p>""", summary = "Reconnaître la méningite et agir vite.", source = "OMS", category = "Maladies Infectieuses"),
             Article(title = "Rougeole : symptômes et vaccination", content = """<h2>Symptômes</h2><p>Fièvre, toux, nez qui coule, yeux rouges ; puis éruption. Peut causer pneumonie, décès.</p><h2>Prévention</h2><p>Vaccination (ROR). Deux doses. Tenir les enfants loin des malades.</p><h2>Traitement</h2><p>Pas de médicament spécifique. Soins de soutien ; vitamine A. Consulter si grave.</p>""", summary = "Rougeole : symptômes, vaccin et soins.", source = "OMS", category = "Maladies Infectieuses"),
-            Article(title = "VIH : dépistage et prévention", content = """<h2>Dépistage</h2><p>Tests VIH en centre de santé. Connaître son statut permet de se soigner et de protéger les autres.</p><h2>Prévention</h2><p>Préservatifs ; ne pas partager les aiguilles ; PrEP si conseillé. Femmes enceintes : dépistage et traitement pour protéger le bébé.</p><h2>Traitement</h2><p>Les antirétroviraux (ARV) gardent en bonne santé. Suivre le traitement.</p>""", summary = "VIH : dépistage, prévention et traitement.", source = "OMS", category = "Maladies Infectieuses"),
+            Article(title = "Grippe (Influenza)", content = """<h2>Principaux faits</h2><p>Maladie respiratoire virale contagieuse. Fièvre, toux, mal de gorge, courbatures, fatigue. Peut être grave chez les jeunes enfants, personnes âgées et femmes enceintes.</p><h2>Prévention</h2><p>Vaccination annuelle contre la grippe (recommandée par l'OMS et les autorités). Lavage des mains ; éviter les contacts avec les malades ; tousser dans le coude.</p><h2>Traitement</h2><p>Repos ; boire ; paracétamol si fièvre. Antiviraux possibles si pris tôt (demander au soignant). Consulter si symptômes graves ou personne à risque.</p>""", summary = "Grippe : symptômes, vaccination annuelle et soins. OMS, CDC, Mayo Clinic, NIH.", source = "OMS, CDC, Mayo Clinic, NIH", category = "Maladies Infectieuses"),
             Article(title = "Fièvre de Lassa : sensibilisation", content = """<h2>Qu'est-ce que c'est ?</h2><p>Maladie virale transmise par des rongeurs. Présente en Afrique de l'Ouest dont le Togo.</p><h2>Symptômes</h2><p>Fièvre, mal de tête, gorge, vomissements, diarrhée, saignements.</p><h2>Prévention</h2><p>Ranger la nourriture à l'abri des rongeurs ; maison propre. Éviter le contact avec sang et liquides des malades. Consulter tôt si zone à risque.</p>""", summary = "Fièvre de Lassa : transmission et prévention.", source = "OMS", category = "Maladies Infectieuses"),
             Article(title = "Ebola : à savoir", content = """<h2>Qu'est-ce qu'Ebola ?</h2><p>Maladie virale grave. Transmission par contact avec sang ou liquides des malades ou animaux.</p><h2>Symptômes</h2><p>Fièvre brutale, faiblesse, tête, vomissements, diarrhée, éruption, parfois saignements.</p><h2>Que faire</h2><p>Consulter à l'hôpital. Ne pas toucher les malades ou les corps. Se laver les mains. Suivre les consignes en épidémie.</p>""", summary = "Ebola : symptômes et conduite à tenir.", source = "OMS", category = "Maladies Infectieuses"),
             Article(title = "Épuisement et coup de chaleur", content = """<div class="key-facts"><h2>Principaux faits</h2><ul><li>L'épuisement par la chaleur et le coup de chaleur sont dus à une surchauffe du corps, souvent avec forte humidité et effort intense.</li><li>L'épuisement peut évoluer en coup de chaleur, qui met la vie en danger et exige des soins d'urgence.</li><li>Les personnes âgées, les jeunes enfants et les malades ou en surpoids sont plus à risque.</li></ul></div><h2>Épuisement par la chaleur – signes et traitement</h2><p><b>Symptômes :</b> Transpiration abondante ; peau fraîche et moite avec chair de poule ; faiblesse ; vertiges ; nausées ; mal de tête ; crampes ; pouls rapide et faible ; fatigue.</p><p><b>Que faire :</b> Mettre la personne au frais (ombre ou intérieur). Arrêter l'effort. Donner de l'eau fraîche ou des boissons avec électrolytes. Retirer les vêtements en trop. Allonger avec les jambes légèrement surélevées. Refroidir la peau avec linges mouillés ou douche fraîche. Si pas d'amélioration en environ 1 h, ou aggravation, consulter.</p><h2>Coup de chaleur – urgence médicale</h2><p><b>Symptômes :</b> Température ≥ 40 °C ; confusion ou parole difficile ; perte de conscience ; peau chaude et sèche ou transpiration anormale ; nausées, vomissements ; respiration rapide ; cœur qui s'emballe ; mal de tête sévère.</p><p class="warning"><b>⚠️ Le coup de chaleur peut endommager rapidement le cerveau, le cœur, les reins. Appeler les urgences immédiatement.</b></p><p><b>En attendant les secours :</b> Mettre la personne à l'ombre ou au frais. Retirer les vêtements en trop. La refroidir (eau fraîche, linges mouillés sur tête, cou, aisselles, aine ; ventilateur ; glace si possible). Ne pas donner à boire si la personne n'est pas bien consciente.</p><h2>Prévention</h2><ul><li>Boire suffisamment ; compenser le sel et les minéraux (alimentation, solutés de réhydratation).</li><li>Porter des vêtements légers et amples, un chapeau.</li><li>Limiter l'effort intense aux heures les plus chaudes ; faire des pauses à l'ombre.</li><li>Ne jamais laisser quelqu'un (surtout un enfant) dans une voiture en stationnement.</li><li>Être vigilant si on est âgé, avec de jeunes enfants, ou en mauvaise santé.</li></ul><hr/><div class="sources"><h2>Sources</h2><div class="source-item"><div class="source-name">Mayo Clinic – Épuisement / Coup de chaleur</div><a href="https://www.mayoclinic.org/diseases-conditions/heat-exhaustion/symptoms-causes/syc-20373250">mayoclinic.org/diseases-conditions/heat-exhaustion</a></div><div class="source-item"><div class="source-name">NIH MedlinePlus – Maladies liées à la chaleur</div><a href="https://medlineplus.gov/heatillness.html">medlineplus.gov/heatillness</a></div><div class="source-item"><div class="source-name">OMS – Chaleur et santé</div><a href="https://www.who.int/news-room/fact-sheets/detail/climate-change-heat-and-health">who.int/.../climate-change-heat-and-health</a></div></div>""", summary = "Épuisement et coup de chaleur : signes, premiers secours et prévention. Mayo Clinic, OMS, NIH.", source = "Mayo Clinic, OMS, NIH", category = "Soins d'Urgence"),

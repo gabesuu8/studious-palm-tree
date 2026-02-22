@@ -155,7 +155,7 @@ class ArticlesFragment : Fragment() {
                     } else {
                         recyclerView?.visibility = View.VISIBLE
                         emptyStateLayout?.visibility = View.GONE
-                        adapter?.submitList(articles)
+                        submitArticlesPreservingScroll(articles)
                         isFirstLoad = false
                     }
                 }
@@ -226,6 +226,28 @@ class ArticlesFragment : Fragment() {
                     categoryChipGroup?.addView(chip)
                 }
             }
+        }
+    }
+
+    private fun submitArticlesPreservingScroll(articles: List<Article>) {
+        val rv = recyclerView ?: run {
+            adapter?.submitList(articles)
+            return
+        }
+        val lm = rv.layoutManager as? LinearLayoutManager
+        if (lm == null) {
+            adapter?.submitList(articles)
+            return
+        }
+
+        val firstVisible = lm.findFirstVisibleItemPosition().coerceAtLeast(0)
+        val firstView = rv.getChildAt(0)
+        val topOffset = firstView?.top ?: 0
+
+        adapter?.submitList(articles) {
+            if (articles.isEmpty()) return@submitList
+            val targetPos = firstVisible.coerceAtMost(articles.lastIndex)
+            lm.scrollToPositionWithOffset(targetPos, topOffset)
         }
     }
 

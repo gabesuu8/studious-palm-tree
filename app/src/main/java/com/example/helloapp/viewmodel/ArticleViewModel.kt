@@ -139,52 +139,149 @@ class ArticleViewModel(application: Application) : AndroidViewModel(application)
         _searchQuery.value = query
     }
 
-    /**
-     * Symptom keywords per condition. Each pair: (symptom keywords, title substrings to match article).
-     * Title substrings can be EN or FR so we match article.title.contains(any).
-     */
-    private val symptomMap: List<Pair<List<String>, List<String>>> = listOf(
-        listOf("fever", "headache", "chills", "sweating", "vomiting", "fatigue", "jaundice", "convulsions") to listOf("Malaria", "Paludisme"),
-        listOf("diarrhoea", "diarrhea", "dehydration", "thirst", "sunken", "ors", "stool", "loose") to listOf("Diarrhoeal", "diarrhée", "Diarrhea"),
-        listOf("fever", "headache", "muscle", "joint", "rash", "nausea", "bleeding", "vomiting") to listOf("Dengue"),
-        listOf("fever", "headache", "abdominal", "constipation", "rash", "weakness", "typhoid") to listOf("Typhoid", "typhoïde"),
-        listOf("fever", "jaundice", "yellow", "bleeding", "vomiting", "kidney", "liver") to listOf("Yellow fever", "Fièvre jaune", "jaune"),
-        listOf("cough", "blood", "weight", "night sweats", "chest", "tuberculosis", "tb") to listOf("Tuberculosis", "Tuberculose"),
-        listOf("urine", "blood", "water", "swim", "bilharzia", "schisto", "bladder") to listOf("Schistosomiasis", "Bilharzia", "bilharziose"),
-        listOf("thin", "wasting", "swollen", "belly", "edema", "malnutrition", "stunting") to listOf("Malnutrition", "malnutrition"),
-        listOf("sneezing", "runny nose", "itchy", "rash", "hives", "swelling", "anaphylaxis", "allergy") to listOf("Allergies", "Allergies"),
-        listOf("headache", "migraine", "nausea", "light", "aura", "throbbing") to listOf("Migraine", "Migraines"),
-        listOf("sugar", "thirst", "urination", "diabetes", "blood glucose", "insulin", "tired", "blurred") to listOf("Diabetes", "Diabète"),
-        listOf("bleeding", "pressure", "wound", "cut", "burn", "choking", "unconscious") to listOf("First aid", "Premiers secours"),
-        listOf("fracture", "sprain", "swelling", "pain", "bone", "ankle", "wrist", "rice") to listOf("Fracture", "fractures", "Entorse", "sprains"),
-        listOf("snake", "bite", "venom", "swelling", "antivenom", "fang") to listOf("Snake", "serpent", "Morsures"),
-        listOf("cholera", "watery", "rice water", "dehydration", "vomiting", "leg cramp") to listOf("Cholera", "Choléra"),
-        listOf("worm", "worms", "deworm", "helminth", "stomach", "belly pain") to listOf("Soil-Transmitted", "Helminths", "Vers intestinaux"),
-        listOf("itch", "river", "blind", "eye", "blackfly", "ivermectin") to listOf("River Blindness", "Onchocerciasis", "Cécité des rivières"),
-        listOf("swelling", "leg", "elephant", "filariasis", "lymphatic") to listOf("Lymphatic Filariasis", "Elephantiasis", "Filariose"),
-        listOf("eye", "trachoma", "trichiasis", "eyelash", "blind") to listOf("Trachoma", "Trachome"),
-        listOf("bleeding", "postpartum", "after birth", "haemorrhage", "hemorrhage") to listOf("Postpartum", "Hémorragie"),
-        listOf("newborn", "baby", "first 24", "breastfeed", "skin to skin") to listOf("Newborn Care", "Soins du nouveau-né"),
-        listOf("breastfeed", "breast milk", "exclusive", "lactation") to listOf("Exclusive Breastfeeding", "Allaitement"),
-        listOf("complementary", "weaning", "solid food", "6 months") to listOf("Complementary Feeding", "Alimentation de complément"),
-        listOf("vitamin a", "night blind", "vision", "supplement") to listOf("Vitamin A", "vitamine A"),
-        listOf("anaemia", "anemia", "pale", "tired", "iron") to listOf("Anaemia", "Anémie"),
-        listOf("hepatitis", "jaundice", "waterborne", "yellow") to listOf("Hepatitis A", "Hépatite"),
-        listOf("meningitis", "stiff neck", "headache", "rash", "fontanelle") to listOf("Meningitis", "Méningite"),
-        listOf("measles", "rash", "fever", "cough", "vaccine") to listOf("Measles", "Rougeole"),
-        listOf("hiv", "aids", "test", "antiretroviral", "condom") to listOf("HIV", "VIH"),
-        listOf("lassa", "rodent", "west africa", "bleeding") to listOf("Lassa", "Lassa"),
-        listOf("ebola", "bleeding", "outbreak", "contact") to listOf("Ebola"),
-        listOf("heat", "heatstroke", "exhaustion", "sun", "dehydrat") to listOf("Heat Exhaustion", "Épuisement", "chaleur"),
-        listOf("burn", "scald", "blister") to listOf("Burns", "Brûlures"),
-        listOf("cut", "wound", "stitch", "bleeding", "tetanus") to listOf("Cuts and Wounds", "Coupures"),
-        listOf("fever", "child", "children", "convulsion", "seizure") to listOf("Fever in Children", "Fièvre chez l'enfant"),
-        listOf("stress", "anxiety", "overwhelm", "cope") to listOf("Stress", "stress"),
-        listOf("depression", "sad", "hopeless", "sadness") to listOf("Depression", "Dépression"),
-        listOf("mental health", "mental", "sad", "anxious", "help") to listOf("Mental Health", "Santé Mentale"),
-        listOf("bed net", "mosquito net", "net", "itn", "mii") to listOf("Bed Nets", "Moustiquaires"),
-        listOf("vaccination", "vaccine", "epi", "pev", "schedule", "immunization") to listOf("Vaccination Schedule", "Calendrier vaccinal")
+    private data class ConditionProfile(
+        val titleSubstrings: List<String>,
+        val symptoms: List<String>,
+        val keySymptoms: List<String>,
+        val minSymptoms: Int = 2
     )
+
+    data class SymptomMatchResult(
+        val article: Article,
+        val confidence: MatchConfidence,
+        val score: Double,
+        val matchedSymptoms: List<String>,
+        val differentiatingSymptoms: List<String>
+    )
+
+    enum class MatchConfidence { HIGH, MODERATE, LOW }
+
+    private val conditionProfiles: List<ConditionProfile> = listOf(
+        ConditionProfile(listOf("Malaria", "Paludisme"),
+            listOf("fever", "headache", "chills", "sweating", "vomiting", "fatigue", "jaundice", "convulsions"),
+            listOf("chills", "sweating", "convulsions")),
+        ConditionProfile(listOf("Diarrhoeal", "diarrhée", "Diarrhea"),
+            listOf("diarrhoea", "diarrhea", "dehydration", "thirst", "sunken", "ors", "stool", "loose"),
+            listOf("diarrhoea", "diarrhea", "loose", "ors")),
+        ConditionProfile(listOf("Dengue"),
+            listOf("fever", "headache", "muscle", "joint", "rash", "nausea", "bleeding", "vomiting"),
+            listOf("joint", "muscle", "rash")),
+        ConditionProfile(listOf("Typhoid", "typhoïde"),
+            listOf("fever", "headache", "abdominal", "constipation", "rash", "weakness", "typhoid"),
+            listOf("constipation", "typhoid", "abdominal")),
+        ConditionProfile(listOf("Yellow fever", "Fièvre jaune", "jaune"),
+            listOf("fever", "jaundice", "yellow", "bleeding", "vomiting", "kidney", "liver"),
+            listOf("jaundice", "yellow", "liver", "kidney")),
+        ConditionProfile(listOf("Tuberculosis", "Tuberculose"),
+            listOf("cough", "blood", "weight", "night sweats", "chest", "tuberculosis", "tb"),
+            listOf("night sweats", "tb", "tuberculosis")),
+        ConditionProfile(listOf("Schistosomiasis", "Bilharzia", "bilharziose"),
+            listOf("urine", "blood", "water", "swim", "bilharzia", "schisto", "bladder"),
+            listOf("bilharzia", "schisto", "swim", "bladder")),
+        ConditionProfile(listOf("Malnutrition", "malnutrition"),
+            listOf("thin", "wasting", "swollen", "belly", "edema", "malnutrition", "stunting"),
+            listOf("wasting", "stunting", "edema", "malnutrition")),
+        ConditionProfile(listOf("Allergies", "Allergies"),
+            listOf("sneezing", "runny nose", "itchy", "rash", "hives", "swelling", "anaphylaxis", "allergy"),
+            listOf("hives", "anaphylaxis", "itchy", "allergy")),
+        ConditionProfile(listOf("Migraine", "Migraines"),
+            listOf("headache", "migraine", "nausea", "light", "aura", "throbbing"),
+            listOf("migraine", "aura", "throbbing")),
+        ConditionProfile(listOf("Diabetes", "Diabète"),
+            listOf("sugar", "thirst", "urination", "diabetes", "blood glucose", "insulin", "tired", "blurred"),
+            listOf("blood glucose", "insulin", "diabetes")),
+        ConditionProfile(listOf("First aid", "Premiers secours"),
+            listOf("bleeding", "pressure", "wound", "cut", "burn", "choking", "unconscious"),
+            listOf("choking", "unconscious")),
+        ConditionProfile(listOf("Fracture", "fractures", "Entorse", "sprains"),
+            listOf("fracture", "sprain", "swelling", "pain", "bone", "ankle", "wrist", "rice"),
+            listOf("fracture", "sprain", "bone")),
+        ConditionProfile(listOf("Snake", "serpent", "Morsures"),
+            listOf("snake", "bite", "venom", "swelling", "antivenom", "fang"),
+            listOf("snake", "venom", "antivenom", "fang")),
+        ConditionProfile(listOf("Cholera", "Choléra"),
+            listOf("cholera", "watery", "rice water", "dehydration", "vomiting", "leg cramp"),
+            listOf("cholera", "rice water", "leg cramp")),
+        ConditionProfile(listOf("Soil-Transmitted", "Helminths", "Vers intestinaux"),
+            listOf("worm", "worms", "deworm", "helminth", "stomach", "belly pain"),
+            listOf("worm", "worms", "deworm", "helminth")),
+        ConditionProfile(listOf("River Blindness", "Onchocerciasis", "Cécité des rivières"),
+            listOf("itch", "river", "blind", "eye", "blackfly", "ivermectin"),
+            listOf("blackfly", "ivermectin", "river")),
+        ConditionProfile(listOf("Lymphatic Filariasis", "Elephantiasis", "Filariose"),
+            listOf("swelling", "leg", "elephant", "filariasis", "lymphatic"),
+            listOf("elephant", "filariasis", "lymphatic")),
+        ConditionProfile(listOf("Trachoma", "Trachome"),
+            listOf("eye", "trachoma", "trichiasis", "eyelash", "blind"),
+            listOf("trachoma", "trichiasis", "eyelash")),
+        ConditionProfile(listOf("Postpartum", "Hémorragie"),
+            listOf("bleeding", "postpartum", "after birth", "haemorrhage", "hemorrhage"),
+            listOf("postpartum", "after birth")),
+        ConditionProfile(listOf("Newborn Care", "Soins du nouveau-né"),
+            listOf("newborn", "baby", "first 24", "breastfeed", "skin to skin"),
+            listOf("newborn", "skin to skin", "first 24")),
+        ConditionProfile(listOf("Exclusive Breastfeeding", "Allaitement"),
+            listOf("breastfeed", "breast milk", "exclusive", "lactation"),
+            listOf("breast milk", "lactation", "exclusive")),
+        ConditionProfile(listOf("Complementary Feeding", "Alimentation de complément"),
+            listOf("complementary", "weaning", "solid food", "6 months"),
+            listOf("weaning", "complementary", "solid food")),
+        ConditionProfile(listOf("Vitamin A", "vitamine A"),
+            listOf("vitamin a", "night blind", "vision", "supplement"),
+            listOf("vitamin a", "night blind")),
+        ConditionProfile(listOf("Anaemia", "Anémie"),
+            listOf("anaemia", "anemia", "pale", "tired", "iron"),
+            listOf("anaemia", "anemia", "iron")),
+        ConditionProfile(listOf("Hepatitis A", "Hépatite"),
+            listOf("hepatitis", "jaundice", "waterborne", "yellow"),
+            listOf("hepatitis", "waterborne")),
+        ConditionProfile(listOf("Meningitis", "Méningite"),
+            listOf("meningitis", "stiff neck", "headache", "rash", "fontanelle"),
+            listOf("meningitis", "stiff neck", "fontanelle")),
+        ConditionProfile(listOf("Measles", "Rougeole"),
+            listOf("measles", "rash", "fever", "cough", "vaccine"),
+            listOf("measles")),
+        ConditionProfile(listOf("HIV", "VIH"),
+            listOf("hiv", "aids", "test", "antiretroviral", "condom"),
+            listOf("hiv", "aids", "antiretroviral")),
+        ConditionProfile(listOf("Lassa", "Lassa"),
+            listOf("lassa", "rodent", "west africa", "bleeding"),
+            listOf("lassa", "rodent")),
+        ConditionProfile(listOf("Ebola"),
+            listOf("ebola", "bleeding", "outbreak", "contact"),
+            listOf("ebola", "outbreak")),
+        ConditionProfile(listOf("Heat Exhaustion", "Épuisement", "chaleur"),
+            listOf("heat", "heatstroke", "exhaustion", "sun", "dehydrat"),
+            listOf("heatstroke", "heat")),
+        ConditionProfile(listOf("Burns", "Brûlures"),
+            listOf("burn", "scald", "blister"),
+            listOf("scald", "blister", "burn")),
+        ConditionProfile(listOf("Cuts and Wounds", "Coupures"),
+            listOf("cut", "wound", "stitch", "bleeding", "tetanus"),
+            listOf("wound", "stitch", "tetanus")),
+        ConditionProfile(listOf("Fever in Children", "Fièvre chez l'enfant"),
+            listOf("fever", "child", "children", "convulsion", "seizure"),
+            listOf("convulsion", "seizure", "child", "children")),
+        ConditionProfile(listOf("Stress", "stress"),
+            listOf("stress", "anxiety", "overwhelm", "cope"),
+            listOf("stress", "anxiety", "overwhelm")),
+        ConditionProfile(listOf("Depression", "Dépression"),
+            listOf("depression", "sad", "hopeless", "sadness"),
+            listOf("depression", "hopeless")),
+        ConditionProfile(listOf("Mental Health", "Santé Mentale"),
+            listOf("mental health", "mental", "sad", "anxious", "help"),
+            listOf("mental health", "mental")),
+        ConditionProfile(listOf("Bed Nets", "Moustiquaires"),
+            listOf("bed net", "mosquito net", "net", "itn", "mii"),
+            listOf("bed net", "mosquito net", "itn", "mii")),
+        ConditionProfile(listOf("Vaccination Schedule", "Calendrier vaccinal"),
+            listOf("vaccination", "vaccine", "epi", "pev", "schedule", "immunization"),
+            listOf("vaccination", "vaccine", "immunization", "schedule"))
+    )
+
+    @Suppress("unused")
+    private val symptomMap: List<Pair<List<String>, List<String>>>
+        get() = conditionProfiles.map { it.symptoms to it.titleSubstrings }
 
     /** Informal/colloquial terms → formal symptom keywords (for expansion). */
     private val informalSymptomMap: Map<String, List<String>> = mapOf(
@@ -235,33 +332,80 @@ class ArticleViewModel(application: Application) : AndroidViewModel(application)
         "blood glucose" to listOf("sugar", "diabetes")
     )
 
-    /** All multi-word phrases from symptom keywords + informal keys, longest first for greedy tokenization. */
     private val symptomPhrases: List<String> by lazy {
-        val fromMap = symptomMap.flatMap { it.first }.filter { " " in it }.distinct()
+        val fromProfiles = conditionProfiles.flatMap { it.symptoms }.filter { " " in it }.distinct()
         val fromInformal = informalSymptomMap.keys.filter { " " in it }
-        (fromMap + fromInformal).distinct().sortedByDescending { it.length }
+        (fromProfiles + fromInformal).distinct().sortedByDescending { it.length }
     }
 
-    /** Match articles by symptom keywords; supports multi-word phrases, informal expansion, and typo tolerance. */
-    fun getSymptomMatches(articles: List<Article>, symptomText: String): List<Article> {
+    private companion object {
+        const val KEY_SYMPTOM_WEIGHT = 3
+        const val COMMON_SYMPTOM_WEIGHT = 1
+        const val MAX_RESULTS = 5
+        const val HIGH_CONFIDENCE_THRESHOLD = 0.45
+        const val MODERATE_CONFIDENCE_THRESHOLD = 0.25
+    }
+
+    fun getSymptomMatchResults(articles: List<Article>, symptomText: String): List<SymptomMatchResult> {
         if (symptomText.isBlank()) return emptyList()
         val inputLower = symptomText.trim().lowercase()
         val tokens = tokenizeSymptomInput(inputLower)
         if (tokens.isEmpty()) return emptyList()
         val expandedTerms = expandSymptomTokens(tokens)
-        val scored = articles.mapNotNull { article ->
-            var bestScore = 0
-            for ((keywords, titleSubstrings) in symptomMap) {
-                if (!titleSubstrings.any { article.title.contains(it, ignoreCase = true) }) continue
-                val score = countKeywordMatches(keywords, tokens, expandedTerms)
-                if (score > bestScore) bestScore = score
+
+        val results = mutableListOf<SymptomMatchResult>()
+
+        for (article in articles) {
+            var bestResult: SymptomMatchResult? = null
+
+            for (profile in conditionProfiles) {
+                if (!profile.titleSubstrings.any { article.title.contains(it, ignoreCase = true) }) continue
+
+                val matched = mutableListOf<String>()
+                val keyMatched = mutableListOf<String>()
+
+                for (k in profile.symptoms) {
+                    if (keywordPresent(k, tokens, expandedTerms)) {
+                        matched.add(k)
+                        if (k in profile.keySymptoms) keyMatched.add(k)
+                    }
+                }
+
+                val totalSymptoms = profile.symptoms.size
+                val passesMinimum = matched.size >= profile.minSymptoms || keyMatched.isNotEmpty()
+                if (!passesMinimum) continue
+
+                val rawScore = matched.size * COMMON_SYMPTOM_WEIGHT + keyMatched.size * KEY_SYMPTOM_WEIGHT
+                val conditionCoverage = matched.size.toDouble() / totalSymptoms
+                val score = rawScore * (0.4 + 0.6 * conditionCoverage)
+
+                val confidence = when {
+                    conditionCoverage >= HIGH_CONFIDENCE_THRESHOLD || keyMatched.size >= 2 -> MatchConfidence.HIGH
+                    conditionCoverage >= MODERATE_CONFIDENCE_THRESHOLD || keyMatched.isNotEmpty() -> MatchConfidence.MODERATE
+                    else -> MatchConfidence.LOW
+                }
+
+                val unmatchedKey = profile.keySymptoms.filter { it !in matched }.take(3)
+
+                if (bestResult == null || score > bestResult.score) {
+                    bestResult = SymptomMatchResult(article, confidence, score, matched, unmatchedKey)
+                }
             }
-            if (bestScore > 0) article to bestScore else null
+
+            if (bestResult != null) results.add(bestResult)
         }
-        return scored.sortedByDescending { it.second }.map { it.first }.distinct()
+
+        return results
+            .sortedWith(compareBy<SymptomMatchResult> { it.confidence.ordinal }
+                .thenByDescending { it.score })
+            .take(MAX_RESULTS)
     }
 
-    /** Extract phrases first (longest first), then single words (length >= 2). */
+    @Deprecated("Use getSymptomMatchResults for richer results", ReplaceWith("getSymptomMatchResults(articles, symptomText).map { it.article }"))
+    fun getSymptomMatches(articles: List<Article>, symptomText: String): List<Article> {
+        return getSymptomMatchResults(articles, symptomText).map { it.article }
+    }
+
     private fun tokenizeSymptomInput(input: String): List<String> {
         var remaining = input
         val result = mutableListOf<String>()
@@ -275,7 +419,6 @@ class ArticleViewModel(application: Application) : AndroidViewModel(application)
         return result
     }
 
-    /** Expand tokens with informal synonyms for matching. */
     private fun expandSymptomTokens(tokens: List<String>): Set<String> {
         val set = mutableSetOf<String>()
         for (t in tokens) {
@@ -285,18 +428,13 @@ class ArticleViewModel(application: Application) : AndroidViewModel(application)
         return set
     }
 
-    /** Count how many of [keywords] match [tokens] or [expandedTerms] (exact or typo). */
-    private fun countKeywordMatches(keywords: List<String>, tokens: List<String>, expandedTerms: Set<String>): Int {
-        var count = 0
-        for (k in keywords) {
-            val kLower = k.lowercase()
-            if (" " in k) {
-                if (tokens.any { matchesWithTypo(it, kLower) } || expandedTerms.any { matchesWithTypo(it, kLower) }) count++
-            } else {
-                if (expandedTerms.any { it == kLower || matchesWithTypo(it, kLower) }) count++
-            }
+    private fun keywordPresent(keyword: String, tokens: List<String>, expandedTerms: Set<String>): Boolean {
+        val kLower = keyword.lowercase()
+        return if (" " in keyword) {
+            tokens.any { matchesWithTypo(it, kLower) } || expandedTerms.any { matchesWithTypo(it, kLower) }
+        } else {
+            expandedTerms.any { it == kLower || matchesWithTypo(it, kLower) }
         }
-        return count
     }
     
     fun setSelectedCategory(category: String?) {
