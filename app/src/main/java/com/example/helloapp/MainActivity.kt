@@ -1,9 +1,13 @@
 package com.example.helloapp
 
+import android.Manifest
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import com.example.helloapp.fragment.ArticlesFragment
 import com.example.helloapp.fragment.ClinicsFragment
@@ -11,7 +15,11 @@ import com.example.helloapp.fragment.PregnancyTrackerFragment
 import com.example.helloapp.fragment.SymptomPredictorFragment
 import com.example.helloapp.fragment.VaccinationGrowthFragment
 import com.example.helloapp.util.LanguageHelper
+import com.example.helloapp.util.NotificationHelper
+import com.example.helloapp.worker.HealthReminderWorker
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
 
 class MainActivity : AppCompatActivity() {
     
@@ -32,8 +40,18 @@ class MainActivity : AppCompatActivity() {
             return
         }
         
+        // Set up notification channels and schedule daily health reminders
+        NotificationHelper.createChannels(this)
+        requestNotificationPermissionIfNeeded()
+        BootReceiver.scheduleHealthReminder(this)
+
+        // TODO: Remove after testing — fires the reminder worker immediately
+        WorkManager.getInstance(this).enqueue(
+            OneTimeWorkRequestBuilder<HealthReminderWorker>().build()
+        )
+
         setContentView(R.layout.activity_main)
-        
+
         bottomNavigation = findViewById(R.id.bottomNavigation)
         
         if (savedInstanceState != null) {
@@ -100,6 +118,20 @@ class MainActivity : AppCompatActivity() {
             .commit()
     }
     
+    private fun requestNotificationPermissionIfNeeded() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
+                != PackageManager.PERMISSION_GRANTED
+            ) {
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf(Manifest.permission.POST_NOTIFICATIONS),
+                    REQUEST_NOTIFICATION_PERMISSION
+                )
+            }
+        }
+    }
+
     companion object {
         private const val TAG_ARTICLES = "articles"
         private const val TAG_CLINICS = "clinics"
@@ -107,5 +139,6 @@ class MainActivity : AppCompatActivity() {
         private const val TAG_PREGNANCY = "pregnancy"
         private const val TAG_SYMPTOMS = "symptoms"
         private const val KEY_CURRENT_TAB = "current_tab"
+        private const val REQUEST_NOTIFICATION_PERMISSION = 1001
     }
 }

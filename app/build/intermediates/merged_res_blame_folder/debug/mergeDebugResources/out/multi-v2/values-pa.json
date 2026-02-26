@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.helloapp-mergeDebugResources-44:/values-pa/values-pa.xml",
+            "outputFile": "com.example.helloapp-mergeDebugResources-47:/values-pa/values-pa.xml",
             "map": [
                 {
                     "source": "/Users/gabrielsu/.gradle/caches/8.13/transforms/316ce831c1df833ab01b07dfcc491e6a/transformed/play-services-basement-18.1.0/res/values-pa/values.xml",

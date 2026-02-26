@@ -41,6 +41,7 @@ drawable ic_hospital
 drawable ic_list
 drawable ic_location
 drawable ic_map
+drawable ic_notification
 drawable ic_pregnant
 drawable ic_services
 drawable ic_star_filled
