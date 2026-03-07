@@ -27,6 +27,8 @@ anim design_bottom_sheet_slide_in
 anim design_bottom_sheet_slide_out
 anim design_snackbar_in
 anim design_snackbar_out
+anim fade_in
+anim fade_out
 anim fragment_fast_out_extra_slow_in
 anim linear_indeterminate_line1_head_interpolator
 anim linear_indeterminate_line1_tail_interpolator
@@ -43,6 +45,11 @@ anim m3_side_sheet_exit_to_right
 anim mtrl_bottom_sheet_slide_in
 anim mtrl_bottom_sheet_slide_out
 anim mtrl_card_lowers_interpolator
+anim slide_in_left
+anim slide_in_right
+anim slide_out_left
+anim slide_out_right
+anim slide_up_fade_in
 animator design_appbar_state_list_animator
 animator design_fab_hide_motion_spec
 animator design_fab_show_motion_spec
@@ -2133,6 +2140,9 @@ color teal_700
 color teal_900
 color tooltip_background_dark
 color tooltip_background_light
+color urgency_emergency
+color urgency_home_care
+color urgency_see_doctor
 color white
 dimen abc_action_bar_content_inset_material
 dimen abc_action_bar_content_inset_with_nav
@@ -3021,6 +3031,7 @@ drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
 drawable category_badge_background
 drawable circle_background_teal
+drawable circle_dot
 drawable common_full_open_on_phone
 drawable common_google_signin_btn_icon_dark
 drawable common_google_signin_btn_icon_dark_focused
@@ -3330,8 +3341,16 @@ id clip_vertical
 id clockwise
 id closest
 id collapseActionView
+id comparisonConditionTitle
+id comparisonReadArticleButton
+id comparisonSymptomsChips
+id comparisonUrgencyDot
+id comparisonUrgencyLabel
 id completionDate
 id compress
+id conditionCardsContainer
+id conditionTitle
+id confidenceChip
 id confirm_button
 id constraint
 id container
@@ -3363,6 +3382,7 @@ id design_menu_item_action_area_stub
 id design_menu_item_text
 id design_navigation_view
 id dialog_button
+id differentiatingTip
 id differentiatingTipText
 id dimensions
 id direct
@@ -3497,6 +3517,7 @@ id marquee
 id masked
 id match_constraint
 id match_parent
+id matchedSymptomsChips
 id material_clock_display
 id material_clock_display_and_toggle
 id material_clock_face
@@ -3634,6 +3655,7 @@ id radio
 id radioFemale
 id radioMale
 id ratio
+id readArticleButton
 id recommendedAge
 id recordsRecyclerView
 id rectangles
@@ -3799,6 +3821,8 @@ id unchecked
 id uniform
 id unlabeled
 id up
+id urgencyDot
+id urgencyLabel
 id useLogo
 id vaccinationCheckbox
 id vaccinationDescription
@@ -3949,6 +3973,7 @@ layout activity_onboarding
 layout activity_pregnancy_tracker
 layout activity_rapid_test_timer
 layout activity_vaccinations
+layout bottom_sheet_condition_comparison
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -3981,9 +4006,11 @@ layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
 layout item_article
 layout item_clinic
+layout item_condition_comparison_card
 layout item_growth_record
 layout item_onboarding_page
 layout item_prenatal_visit
+layout item_symptom_result
 layout item_vaccination
 layout item_vaccination_header
 layout m3_alert_dialog
@@ -4046,6 +4073,7 @@ layout notification_template_part_time
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
+layout skeleton_article_item
 layout support_simple_spinner_dropdown_item
 menu article_detail_menu
 menu articles_menu
@@ -4151,6 +4179,7 @@ string common_google_play_services_wear_update_text
 string common_open_on_phone
 string common_signin_button_text
 string common_signin_button_text_long
+string compare_conditions
 string completed
 string completed_on
 string confidence_high
@@ -4166,6 +4195,7 @@ string delete
 string delete_child
 string delete_child_confirm
 string did_you_mean
+string differentiating_tip
 string directions
 string disclaimer_articles
 string dismiss_disclaimer
@@ -4400,6 +4430,7 @@ string rapid_test_time_input_label
 string rapid_test_timer_menu
 string rapid_test_timer_subtitle
 string rapid_test_timer_title
+string read_article
 string recommended_age
 string recommended_next_visit_week
 string refresh_desc
@@ -4427,11 +4458,15 @@ string suggest_condition_from_symptoms
 string symptom_checker_title
 string symptom_enter_first
 string symptom_input_hint
+string symptom_more_count
 string symptom_predictor
 string symptoms_matched_count
 string today
 string toggle_map
 string trimester
+string urgency_emergency
+string urgency_home_care
+string urgency_see_doctor
 string vaccination_marked_complete
 string vaccination_marked_incomplete
 string vaccination_progress

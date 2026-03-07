@@ -1,5 +1,12 @@
 R_DEF: Internal format may change without notice
 local
+anim fade_in
+anim fade_out
+anim slide_in_left
+anim slide_in_right
+anim slide_out_left
+anim slide_out_right
+anim slide_up_fade_in
 color black
 color bottom_nav_color
 color chip_background_color
@@ -24,10 +31,14 @@ color teal_50
 color teal_500
 color teal_700
 color teal_900
+color urgency_emergency
+color urgency_home_care
+color urgency_see_doctor
 color white
 drawable age_badge_background
 drawable category_badge_background
 drawable circle_background_teal
+drawable circle_dot
 drawable distance_badge_background
 drawable emergency_badge_background
 drawable ic_baby
@@ -94,9 +105,18 @@ id chipHeight
 id chipWeight
 id clearSearchButton
 id clinicsRecyclerView
+id comparisonConditionTitle
+id comparisonReadArticleButton
+id comparisonSymptomsChips
+id comparisonUrgencyDot
+id comparisonUrgencyLabel
 id completionDate
+id conditionCardsContainer
+id conditionTitle
+id confidenceChip
 id countdownText
 id dangerSignsCard
+id differentiatingTip
 id differentiatingTipText
 id disclaimerCard
 id disclaimerClose
@@ -132,6 +152,7 @@ id indicatorContainer
 id locationStatusBar
 id map
 id mapContainer
+id matchedSymptomsChips
 id menu_favorites
 id menu_growth
 id menu_language
@@ -156,6 +177,7 @@ id progressLabel
 id progressTitle
 id radioFemale
 id radioMale
+id readArticleButton
 id recommendedAge
 id recordsRecyclerView
 id resultsListView
@@ -199,6 +221,8 @@ id txtVisitWeek
 id txtVisitWeight
 id txtWeight
 id txtWeightZScore
+id urgencyDot
+id urgencyLabel
 id vaccinationCheckbox
 id vaccinationDescription
 id vaccinationName
@@ -214,6 +238,7 @@ layout activity_onboarding
 layout activity_pregnancy_tracker
 layout activity_rapid_test_timer
 layout activity_vaccinations
+layout bottom_sheet_condition_comparison
 layout dialog_add_child
 layout dialog_add_measurement
 layout dialog_add_pregnancy
@@ -228,11 +253,14 @@ layout fragment_vaccination_growth
 layout fragment_vaccinations
 layout item_article
 layout item_clinic
+layout item_condition_comparison_card
 layout item_growth_record
 layout item_onboarding_page
 layout item_prenatal_visit
+layout item_symptom_result
 layout item_vaccination
 layout item_vaccination_header
+layout skeleton_article_item
 menu article_detail_menu
 menu articles_menu
 menu bottom_nav_menu
@@ -272,6 +300,7 @@ string child_name
 string clear_search_desc
 string clinic_icon
 string clinics
+string compare_conditions
 string completed
 string completed_on
 string confidence_high
@@ -287,6 +316,7 @@ string delete
 string delete_child
 string delete_child_confirm
 string did_you_mean
+string differentiating_tip
 string directions
 string disclaimer_articles
 string dismiss_disclaimer
@@ -408,6 +438,7 @@ string rapid_test_time_input_label
 string rapid_test_timer_menu
 string rapid_test_timer_subtitle
 string rapid_test_timer_title
+string read_article
 string recommended_age
 string recommended_next_visit_week
 string refresh_desc
@@ -428,11 +459,15 @@ string suggest_condition_from_symptoms
 string symptom_checker_title
 string symptom_enter_first
 string symptom_input_hint
+string symptom_more_count
 string symptom_predictor
 string symptoms_matched_count
 string today
 string toggle_map
 string trimester
+string urgency_emergency
+string urgency_home_care
+string urgency_see_doctor
 string vaccination_marked_complete
 string vaccination_marked_incomplete
 string vaccination_progress

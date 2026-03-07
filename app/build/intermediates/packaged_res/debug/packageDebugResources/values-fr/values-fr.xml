@@ -31,6 +31,7 @@
     <string name="clear_search_desc">Effacer la recherche</string>
     <string name="clinic_icon">Icône de clinique</string>
     <string name="clinics">Cliniques</string>
+    <string name="compare_conditions">Comparer les conditions</string>
     <string name="completed">effectués</string>
     <string name="completed_on">Effectué le</string>
     <string name="confidence_high">Correspondance forte</string>
@@ -166,6 +167,7 @@
     <string name="rapid_test_timer_menu">Minuteur test rapide</string>
     <string name="rapid_test_timer_subtitle">Réglez le compte à rebours pour les tests rapides COVID-19 ou paludisme. Lisez le résultat à la fin du minuteur.</string>
     <string name="rapid_test_timer_title">Minuteur test rapide</string>
+    <string name="read_article">Lire l\'article</string>
     <string name="recommended_age">Âge recommandé</string>
     <string name="recommended_next_visit_week">Prochaine visite recommandée : semaine %d</string>
     <string name="refresh_desc">Actualiser les articles</string>

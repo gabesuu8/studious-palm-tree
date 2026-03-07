@@ -1,0 +1,158 @@
+package com.example.helloapp.adapter
+
+import android.content.res.ColorStateList
+import android.graphics.Color
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.RecyclerView
+import com.example.helloapp.R
+import com.example.helloapp.data.Article
+import com.example.helloapp.viewmodel.ArticleViewModel
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.card.MaterialCardView
+import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
+
+class SymptomResultAdapter(
+    private val onReadArticle: (Article) -> Unit,
+    private val onSelectionChanged: (List<ArticleViewModel.SymptomMatchResult>) -> Unit
+) : RecyclerView.Adapter<SymptomResultAdapter.ViewHolder>() {
+
+    private var results: List<ArticleViewModel.SymptomMatchResult> = emptyList()
+    private val selectedIds = mutableSetOf<Long>()
+
+    fun submitList(newResults: List<ArticleViewModel.SymptomMatchResult>) {
+        results = newResults
+        selectedIds.clear()
+        onSelectionChanged(emptyList())
+        notifyDataSetChanged()
+    }
+
+    fun clearSelection() {
+        selectedIds.clear()
+        onSelectionChanged(emptyList())
+        notifyDataSetChanged()
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_symptom_result, parent, false)
+        return ViewHolder(view)
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val result = results[position]
+        holder.bind(result)
+        holder.itemView.setOnClickListener {
+            val id = result.article.id
+            if (id in selectedIds) selectedIds.remove(id) else selectedIds.add(id)
+            notifyItemChanged(holder.bindingAdapterPosition)
+            onSelectionChanged(results.filter { it.article.id in selectedIds })
+        }
+    }
+
+    override fun getItemCount() = results.size
+
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val urgencyLabel: TextView = itemView.findViewById(R.id.urgencyLabel)
+        private val urgencyDot: View = itemView.findViewById(R.id.urgencyDot)
+        private val confidenceChip: Chip = itemView.findViewById(R.id.confidenceChip)
+        private val conditionTitle: TextView = itemView.findViewById(R.id.conditionTitle)
+        private val matchedSymptomsChips: ChipGroup = itemView.findViewById(R.id.matchedSymptomsChips)
+        private val differentiatingTip: TextView = itemView.findViewById(R.id.differentiatingTip)
+        private val readArticleButton: MaterialButton = itemView.findViewById(R.id.readArticleButton)
+
+        fun bind(result: ArticleViewModel.SymptomMatchResult) {
+            val ctx = itemView.context
+
+            // Urgency row
+            val (urgencyText, urgencyColorRes) = when (result.urgency) {
+                ArticleViewModel.ConditionUrgency.EMERGENCY ->
+                    ctx.getString(R.string.urgency_emergency) to R.color.urgency_emergency
+                ArticleViewModel.ConditionUrgency.SEE_DOCTOR ->
+                    ctx.getString(R.string.urgency_see_doctor) to R.color.urgency_see_doctor
+                ArticleViewModel.ConditionUrgency.HOME_CARE ->
+                    ctx.getString(R.string.urgency_home_care) to R.color.urgency_home_care
+                else -> ctx.getString(R.string.urgency_home_care) to R.color.urgency_home_care
+            }
+            val urgencyColor = ContextCompat.getColor(ctx, urgencyColorRes)
+            urgencyLabel.text = urgencyText
+            urgencyLabel.setTextColor(urgencyColor)
+            urgencyDot.backgroundTintList = ColorStateList.valueOf(urgencyColor)
+
+            // Confidence chip
+            val (confText, confColorRes) = when (result.confidence) {
+                ArticleViewModel.MatchConfidence.HIGH ->
+                    ctx.getString(R.string.confidence_high) to R.color.confidence_high
+                ArticleViewModel.MatchConfidence.MODERATE ->
+                    ctx.getString(R.string.confidence_moderate) to R.color.confidence_moderate
+                ArticleViewModel.MatchConfidence.LOW ->
+                    ctx.getString(R.string.confidence_low) to R.color.confidence_low
+                else -> ctx.getString(R.string.confidence_low) to R.color.confidence_low
+            }
+            val confColor = ContextCompat.getColor(ctx, confColorRes)
+            confidenceChip.text = confText
+            confidenceChip.setTextColor(confColor)
+            confidenceChip.chipBackgroundColor = ColorStateList.valueOf(
+                Color.argb(30, Color.red(confColor), Color.green(confColor), Color.blue(confColor))
+            )
+            confidenceChip.chipStrokeColor = ColorStateList.valueOf(confColor)
+            confidenceChip.chipStrokeWidth = 1f
+
+            // Title
+            conditionTitle.text = result.article.title
+
+            // Matched symptom chips (up to 4)
+            matchedSymptomsChips.removeAllViews()
+            val teal50 = ContextCompat.getColor(ctx, R.color.teal_50)
+            val teal700 = ContextCompat.getColor(ctx, R.color.teal_700)
+            result.matchedSymptoms.take(4).forEach { symptom ->
+                val chip = Chip(ctx).apply {
+                    text = symptom
+                    isClickable = false
+                    isFocusable = false
+                    chipBackgroundColor = ColorStateList.valueOf(teal50)
+                    setTextColor(teal700)
+                    textSize = 11f
+                }
+                matchedSymptomsChips.addView(chip)
+            }
+            if (result.matchedSymptoms.size > 4) {
+                val moreChip = Chip(ctx).apply {
+                    text = ctx.getString(R.string.symptom_more_count, result.matchedSymptoms.size - 4)
+                    isClickable = false
+                    isFocusable = false
+                    chipBackgroundColor = ColorStateList.valueOf(teal50)
+                    setTextColor(teal700)
+                    textSize = 11f
+                }
+                matchedSymptomsChips.addView(moreChip)
+            }
+
+            // Differentiating tip
+            if (result.differentiatingSymptoms.isNotEmpty()) {
+                val tip = result.differentiatingSymptoms.take(2).joinToString(" · ")
+                differentiatingTip.text = ctx.getString(R.string.differentiating_tip, tip)
+                differentiatingTip.visibility = View.VISIBLE
+            } else {
+                differentiatingTip.visibility = View.GONE
+            }
+
+            // Read article button
+            readArticleButton.setOnClickListener { onReadArticle(result.article) }
+
+            // Selection visual state
+            val card = itemView as MaterialCardView
+            val isSelected = result.article.id in selectedIds
+            card.strokeWidth = if (isSelected) 3 else 0
+            card.strokeColor = ContextCompat.getColor(ctx, R.color.teal_700)
+            card.setCardBackgroundColor(
+                if (isSelected) ContextCompat.getColor(ctx, R.color.teal_50)
+                else ContextCompat.getColor(ctx, android.R.color.white)
+            )
+        }
+    }
+}

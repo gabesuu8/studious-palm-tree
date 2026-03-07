@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp"
+    app:strokeWidth="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Urgency + confidence row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="8dp">
+
+            <View
+                android:id="@+id/urgencyDot"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:background="@drawable/circle_background_teal"
+                android:layout_marginEnd="6dp" />
+
+            <TextView
+                android:id="@+id/urgencyLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:letterSpacing="0.05" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/confidenceChip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:focusable="false"
+                android:textSize="11sp"
+                app:chipMinHeight="28dp"
+                style="@style/Widget.MaterialComponents.Chip.Filter" />
+
+        </LinearLayout>
+
+        <!-- Condition title -->
+        <TextView
+            android:id="@+id/conditionTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="?android:attr/textColorPrimary"
+            android:layout_marginBottom="10dp" />
+
+        <!-- Matched symptom chips -->
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/matchedSymptomsChips"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:chipSpacingVertical="4dp"
+            app:chipSpacingHorizontal="4dp" />
+
+        <!-- Differentiating tip -->
+        <TextView
+            android:id="@+id/differentiatingTip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="#666666"
+            android:fontStyle="italic"
+            android:visibility="gone"
+            android:layout_marginBottom="10dp" />
+
+        <!-- Read article button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/readArticleButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/read_article"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            app:strokeColor="@color/teal_700"
+            android:textColor="@color/teal_700" />
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
