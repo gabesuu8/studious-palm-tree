@@ -33,6 +33,13 @@
     <string name="error_init">Error initializing app: %1$s\n\nPlease check Logcat for details.</string>
     <string name="error_loading">Error loading articles. Please try again.</string>
     
+    <!-- Symptom Results -->
+    <string name="urgency_emergency">Emergency Care</string>
+    <string name="urgency_see_doctor">See a Doctor</string>
+    <string name="urgency_home_care">Home Care</string>
+    <string name="symptom_more_count">+%1$d more</string>
+    <string name="differentiating_tip">Check for: %1$s</string>
+
     <!-- Article Detail -->
     <string name="article_title">Article</string>
     <string name="source_prefix">Source: %1$s</string>
@@ -147,7 +154,7 @@
     <string name="height_cm">Height (cm)</string>
     <string name="head_circumference_optional">Head Circumference (cm) — Optional</string>
     <string name="head_circ_helper">Most meaningful for children under 3 years</string>
-    <string name="head_circ_normal_range">Normal range: %1$d–%2$d cm</string>
+    <string name="head_circ_normal_range">%1$d–%2$d cm</string>
     <string name="muac_optional">MUAC (cm) — Optional</string>
     <string name="muac_helper">Mid-Upper Arm Circumference · ages 6 mo–5 yr</string>
     <string name="muac">MUAC</string>
@@ -249,6 +256,8 @@
     <string name="toggle_map">Toggle map view</string>
     <string name="map_requires_internet">Map view requires internet connection</string>
     <string name="all_countries">All countries</string>
+    <string name="compare_conditions">Compare Conditions</string>
+    <string name="read_article">Read Article</string>
     
     <!-- Google Maps API Key - Replace with your actual key from Google Cloud Console -->
     <string name="google_maps_key">YOUR_GOOGLE_MAPS_API_KEY</string>

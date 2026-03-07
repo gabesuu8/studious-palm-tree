@@ -35,4 +35,9 @@
     <color name="confidence_high">#FF2E7D32</color>
     <color name="confidence_moderate">#FFE65100</color>
     <color name="confidence_low">#FF9E9E9E</color>
+
+    <!-- Condition Urgency -->
+    <color name="urgency_emergency">#FFD32F2F</color>
+    <color name="urgency_see_doctor">#FFF57C00</color>
+    <color name="urgency_home_care">#FF1976D2</color>
 </resources>

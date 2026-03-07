@@ -249,4 +249,6 @@
     <string name="toggle_map">Basculer vers la carte</string>
     <string name="map_requires_internet">La vue carte nécessite une connexion internet</string>
     <string name="all_countries">Tous les pays</string>
+    <string name="compare_conditions">Comparer les conditions</string>
+    <string name="read_article">Lire l\'article</string>
 </resources>
