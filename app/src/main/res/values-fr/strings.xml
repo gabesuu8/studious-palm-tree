@@ -19,6 +19,8 @@
     <string name="no_search_results">Aucun article trouvé pour \"%1$s\".\nEssayez d\'autres mots-clés.</string>
     <string name="did_you_mean">Voulez-vous dire : %1$s ?</string>
     <string name="symptom_checker_title">Vérification des symptômes</string>
+    <string name="select_symptoms">Sélectionner des symptômes</string>
+    <string name="clear_all">Tout effacer</string>
     <string name="symptom_input_hint">Décrivez plusieurs symptômes (ex. fièvre, frissons, sueurs)</string>
     <string name="symptom_enter_first">Saisissez d\'abord vos symptômes</string>
     <string name="suggest_condition_from_symptoms">Suggérer une affection</string>
@@ -250,5 +252,6 @@
     <string name="map_requires_internet">La vue carte nécessite une connexion internet</string>
     <string name="all_countries">Tous les pays</string>
     <string name="compare_conditions">Comparer les conditions</string>
+    <string name="compare_conditions_count">Comparer %d conditions</string>
     <string name="read_article">Lire l\'article</string>
 </resources>

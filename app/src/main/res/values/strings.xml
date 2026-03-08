@@ -19,6 +19,8 @@
     <string name="no_search_results">No articles found for \"%1$s\".\nTry different keywords.</string>
     <string name="did_you_mean">Did you mean: %1$s?</string>
     <string name="symptom_checker_title">Symptom checker</string>
+    <string name="select_symptoms">Select symptoms</string>
+    <string name="clear_all">Clear all</string>
     <string name="symptom_input_hint">Describe multiple symptoms (e.g. fever, chills, sweating)</string>
     <string name="symptom_enter_first">Enter your symptoms first</string>
     <string name="suggest_condition_from_symptoms">Suggest condition</string>
@@ -257,6 +259,7 @@
     <string name="map_requires_internet">Map view requires internet connection</string>
     <string name="all_countries">All countries</string>
     <string name="compare_conditions">Compare Conditions</string>
+    <string name="compare_conditions_count">Compare %d Conditions</string>
     <string name="read_article">Read Article</string>
     
     <!-- Google Maps API Key - Replace with your actual key from Google Cloud Console -->
