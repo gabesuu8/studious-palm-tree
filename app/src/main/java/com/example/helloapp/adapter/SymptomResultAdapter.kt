@@ -16,6 +16,8 @@ import com.google.android.material.card.MaterialCardView
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 
+data class SymptomChipColors(val fillColor: Int, val accentColor: Int, val checkedColor: Int)
+
 class SymptomResultAdapter(
     private val onReadArticle: (Article) -> Unit,
     private val onSelectionChanged: (List<ArticleViewModel.SymptomMatchResult>) -> Unit
@@ -23,6 +25,11 @@ class SymptomResultAdapter(
 
     private var results: List<ArticleViewModel.SymptomMatchResult> = emptyList()
     private val selectedIds = mutableSetOf<Long>()
+    private var symptomColorMap: Map<String, SymptomChipColors> = emptyMap()
+
+    fun setSymptomColorMap(map: Map<String, SymptomChipColors>) {
+        symptomColorMap = map
+    }
 
     fun submitList(newResults: List<ArticleViewModel.SymptomMatchResult>) {
         results = newResults
@@ -105,18 +112,31 @@ class SymptomResultAdapter(
             // Title
             conditionTitle.text = result.article.title
 
-            // Matched symptom chips (up to 4)
+            // Matched symptom chips (up to 4) — styled to match the selected symptom bubbles
             matchedSymptomsChips.removeAllViews()
-            val teal50 = ContextCompat.getColor(ctx, R.color.teal_50)
-            val teal700 = ContextCompat.getColor(ctx, R.color.teal_700)
+            val density = ctx.resources.displayMetrics.density
+            val white = ContextCompat.getColor(ctx, android.R.color.white)
+            val defaultColors = SymptomChipColors(0xFFB2DFDB.toInt(), 0xFF00695C.toInt(), 0xFF00897B.toInt())
+            val radius = 20f * density
+
             result.matchedSymptoms.take(4).forEach { symptom ->
+                val colors = symptomColorMap[symptom] ?: defaultColors
                 val chip = Chip(ctx).apply {
-                    text = symptom
+                    text = symptom.replaceFirstChar { it.uppercase() }
                     isClickable = false
                     isFocusable = false
-                    chipBackgroundColor = ColorStateList.valueOf(teal50)
-                    setTextColor(teal700)
-                    textSize = 11f
+                    chipBackgroundColor = ColorStateList.valueOf(colors.fillColor)
+                    setTextColor(colors.accentColor)
+                    chipStrokeColor = ColorStateList.valueOf(colors.accentColor)
+                    chipStrokeWidth = (1f * density)
+                    chipCornerRadius = radius
+                    chipMinHeight = (40f * density)
+                    textSize = 14f
+                    chipEndPadding = (10f * density)
+                    chipStartPadding = (10f * density)
+                    textEndPadding = (2f * density)
+                    textStartPadding = (2f * density)
+                    setEnsureMinTouchTargetSize(false)
                 }
                 matchedSymptomsChips.addView(chip)
             }
@@ -125,9 +145,18 @@ class SymptomResultAdapter(
                     text = ctx.getString(R.string.symptom_more_count, result.matchedSymptoms.size - 4)
                     isClickable = false
                     isFocusable = false
-                    chipBackgroundColor = ColorStateList.valueOf(teal50)
-                    setTextColor(teal700)
-                    textSize = 11f
+                    chipBackgroundColor = ColorStateList.valueOf(defaultColors.fillColor)
+                    setTextColor(defaultColors.accentColor)
+                    chipStrokeColor = ColorStateList.valueOf(defaultColors.accentColor)
+                    chipStrokeWidth = (1f * density)
+                    chipCornerRadius = radius
+                    chipMinHeight = (40f * density)
+                    textSize = 14f
+                    chipEndPadding = (10f * density)
+                    chipStartPadding = (10f * density)
+                    textEndPadding = (2f * density)
+                    textStartPadding = (2f * density)
+                    setEnsureMinTouchTargetSize(false)
                 }
                 matchedSymptomsChips.addView(moreChip)
             }

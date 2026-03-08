@@ -15,56 +15,119 @@
         app:menu="@menu/fragment_menu"
         android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar" />
 
-    <ScrollView
+    <!-- Input + symptom bubbles — scrollable top section -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/topScrollView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true"
-        android:padding="16dp">
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
-        <com.google.android.material.card.MaterialCardView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="2dp">
+            android:orientation="vertical"
+            android:padding="16dp">
 
-            <LinearLayout
+            <!-- Suggest condition button at the top -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSuggestCondition"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
+                android:layout_marginBottom="12dp"
+                android:text="@string/suggest_condition_from_symptoms"
+                app:backgroundTint="@color/teal_700"
+                app:cornerRadius="12dp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/symptom_checker_title"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:textColor="?android:attr/textColorPrimary"
-                    android:layout_marginBottom="8dp" />
+            <!-- Symptom bubble selection card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="2dp">
 
-                <EditText
-                    android:id="@+id/symptomInputEditText"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:minHeight="40dp"
-                    android:hint="@string/symptom_input_hint"
-                    android:inputType="textCapSentences|textMultiLine"
-                    android:maxLines="3"
-                    android:gravity="top|start"
-                    android:padding="12dp"
-                    android:background="@android:drawable/edit_text"
-                    android:textColorHint="@android:color/darker_gray"
-                    android:textColor="@android:color/black" />
+                    android:orientation="vertical"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="12dp"
+                    android:paddingHorizontal="16dp">
 
-                <Button
-                    android:id="@+id/btnSuggestCondition"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/suggest_condition_from_symptoms"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="12dp">
 
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-    </ScrollView>
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/select_symptoms"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="?android:attr/textColorPrimary" />
+
+                        <TextView
+                            android:id="@+id/clearChipsButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/clear_all"
+                            android:textSize="13sp"
+                            android:textColor="@color/teal_700"
+                            android:padding="4dp"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+                    <!-- Container where categories are added programmatically -->
+                    <LinearLayout
+                        android:id="@+id/symptomBubblesContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Empty state (shown when search returns no results) -->
+    <TextView
+        android:id="@+id/emptyStateText"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="24dp"
+        android:text="@string/no_conditions_match"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="14sp"
+        android:visibility="gone" />
+
+    <!-- Results list -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/resultsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="8dp"
+        android:clipToPadding="false"
+        android:visibility="gone" />
+
+    <!-- Compare button (shown when ≥1 result selected) -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/compareButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="12dp"
+        android:text="@string/compare_conditions"
+        android:visibility="gone"
+        app:backgroundTint="@color/teal_700" />
+
 </LinearLayout>

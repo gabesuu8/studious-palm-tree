@@ -53,10 +53,12 @@
     <string name="category_nutrition">Nutrition</string>
     <string name="category_water">Water &amp; Sanitation</string>
     <string name="child_name">Child\'s Name</string>
+    <string name="clear_all">Clear all</string>
     <string name="clear_search_desc">Clear search</string>
     <string name="clinic_icon">Clinic icon</string>
     <string name="clinics">Clinics</string>
     <string name="compare_conditions">Compare Conditions</string>
+    <string name="compare_conditions_count">Compare %d Conditions</string>
     <string name="completed">completed</string>
     <string name="completed_on">Completed on</string>
     <string name="confidence_high">Strong match</string>
@@ -207,6 +209,7 @@
     <string name="select_child_vaccines">Track vaccines for</string>
     <string name="select_date">Select date</string>
     <string name="select_pregnancy">Select Pregnancy</string>
+    <string name="select_symptoms">Select symptoms</string>
     <string name="services">Services</string>
     <string name="share">Share</string>
     <string name="skip">Skip</string>

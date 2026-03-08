@@ -28,10 +28,12 @@
     <string name="category_nutrition">Nutrition</string>
     <string name="category_water">Eau &amp; Assainissement</string>
     <string name="child_name">Nom de l\'enfant</string>
+    <string name="clear_all">Tout effacer</string>
     <string name="clear_search_desc">Effacer la recherche</string>
     <string name="clinic_icon">Icône de clinique</string>
     <string name="clinics">Cliniques</string>
     <string name="compare_conditions">Comparer les conditions</string>
+    <string name="compare_conditions_count">Comparer %d conditions</string>
     <string name="completed">effectués</string>
     <string name="completed_on">Effectué le</string>
     <string name="confidence_high">Correspondance forte</string>
@@ -180,6 +182,7 @@
     <string name="select_child_vaccines">Suivi des vaccins pour</string>
     <string name="select_date">Choisir la date</string>
     <string name="select_pregnancy">Sélectionner la grossesse</string>
+    <string name="select_symptoms">Sélectionner des symptômes</string>
     <string name="services">Services</string>
     <string name="share">Partager</string>
     <string name="skip">Passer</string>
