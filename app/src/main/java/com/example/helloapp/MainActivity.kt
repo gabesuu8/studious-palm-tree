@@ -92,21 +92,33 @@ class MainActivity : AppCompatActivity() {
         if (currentFragmentTag == tag && supportFragmentManager.findFragmentByTag(tag) != null) {
             return
         }
-        
-        currentFragmentTag = tag
-        
-        val fragment = when (tag) {
-            TAG_ARTICLES -> ArticlesFragment()
-            TAG_CLINICS -> ClinicsFragment()
-            TAG_TRACKERS -> VaccinationGrowthFragment()
-            TAG_PREGNANCY -> PregnancyTrackerFragment()
-            TAG_SYMPTOMS -> SymptomPredictorFragment()
-            else -> ArticlesFragment()
+
+        val transaction = supportFragmentManager.beginTransaction()
+
+        // Hide current fragment instead of destroying it
+        supportFragmentManager.findFragmentByTag(currentFragmentTag)?.let {
+            transaction.hide(it)
         }
-        
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fragmentContainer, fragment, tag)
-            .commit()
+
+        currentFragmentTag = tag
+
+        // Show existing fragment or add new one (only created once)
+        val existing = supportFragmentManager.findFragmentByTag(tag)
+        if (existing != null) {
+            transaction.show(existing)
+        } else {
+            val fragment = when (tag) {
+                TAG_ARTICLES -> ArticlesFragment()
+                TAG_CLINICS -> ClinicsFragment()
+                TAG_TRACKERS -> VaccinationGrowthFragment()
+                TAG_PREGNANCY -> PregnancyTrackerFragment()
+                TAG_SYMPTOMS -> SymptomPredictorFragment()
+                else -> ArticlesFragment()
+            }
+            transaction.add(R.id.fragmentContainer, fragment, tag)
+        }
+
+        transaction.commit()
     }
     
     private fun requestNotificationPermissionIfNeeded() {

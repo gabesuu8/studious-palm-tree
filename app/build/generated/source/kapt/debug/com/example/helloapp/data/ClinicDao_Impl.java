@@ -177,7 +177,7 @@ public final class ClinicDao_Impl implements ClinicDao {
   }
 
   @Override
-  public Object insert(final Clinic clinic, final Continuation<? super Long> arg1) {
+  public Object insert(final Clinic clinic, final Continuation<? super Long> $completion) {
     return CoroutinesRoom.execute(__db, true, new Callable<Long>() {
       @Override
       @NonNull
@@ -191,11 +191,12 @@ public final class ClinicDao_Impl implements ClinicDao {
           __db.endTransaction();
         }
       }
-    }, arg1);
+    }, $completion);
   }
 
   @Override
-  public Object insertAll(final List<Clinic> clinics, final Continuation<? super Unit> arg1) {
+  public Object insertAll(final List<Clinic> clinics,
+      final Continuation<? super Unit> $completion) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -209,11 +210,11 @@ public final class ClinicDao_Impl implements ClinicDao {
           __db.endTransaction();
         }
       }
-    }, arg1);
+    }, $completion);
   }
 
   @Override
-  public Object delete(final Clinic clinic, final Continuation<? super Unit> arg1) {
+  public Object delete(final Clinic clinic, final Continuation<? super Unit> $completion) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -227,11 +228,11 @@ public final class ClinicDao_Impl implements ClinicDao {
           __db.endTransaction();
         }
       }
-    }, arg1);
+    }, $completion);
   }
 
   @Override
-  public Object update(final Clinic clinic, final Continuation<? super Unit> arg1) {
+  public Object update(final Clinic clinic, final Continuation<? super Unit> $completion) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -245,11 +246,11 @@ public final class ClinicDao_Impl implements ClinicDao {
           __db.endTransaction();
         }
       }
-    }, arg1);
+    }, $completion);
   }
 
   @Override
-  public Object deleteAll(final Continuation<? super Unit> arg0) {
+  public Object deleteAll(final Continuation<? super Unit> $completion) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -268,7 +269,7 @@ public final class ClinicDao_Impl implements ClinicDao {
           __preparedStmtOfDeleteAll.release(_stmt);
         }
       }
-    }, arg0);
+    }, $completion);
   }
 
   @Override
@@ -841,7 +842,7 @@ public final class ClinicDao_Impl implements ClinicDao {
   }
 
   @Override
-  public Object getClinicCount(final Continuation<? super Integer> arg0) {
+  public Object getClinicCount(final Continuation<? super Integer> $completion) {
     final String _sql = "SELECT COUNT(*) FROM clinics";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
     final CancellationSignal _cancellationSignal = DBUtil.createCancellationSignal();
@@ -869,7 +870,7 @@ public final class ClinicDao_Impl implements ClinicDao {
           _statement.release();
         }
       }
-    }, arg0);
+    }, $completion);
   }
 
   @NonNull

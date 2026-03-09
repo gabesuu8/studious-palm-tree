@@ -10,6 +10,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.transition.AutoTransition
+import androidx.transition.TransitionManager
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.ImageView
@@ -93,6 +95,12 @@ class ArticlesFragment : Fragment() {
                 disclaimerCard?.visibility = View.GONE
             }
             view.findViewById<View>(R.id.disclaimerClose)?.setOnClickListener {
+                val parent = disclaimerCard?.parent as? ViewGroup
+                if (parent != null) {
+                    TransitionManager.beginDelayedTransition(parent, AutoTransition().apply {
+                        duration = 200
+                    })
+                }
                 disclaimerCard?.visibility = View.GONE
                 disclaimerPrefs?.edit()?.putBoolean(KEY_DISCLAIMER_DISMISSED, true)?.apply()
             }
