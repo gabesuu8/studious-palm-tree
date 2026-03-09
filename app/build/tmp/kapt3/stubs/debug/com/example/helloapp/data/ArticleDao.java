@@ -4,7 +4,7 @@ package com.example.helloapp.data;
 @androidx.room.Dao()
 public abstract interface ArticleDao {
     
-    @androidx.room.Query(value = "SELECT * FROM articles ORDER BY dateAdded DESC")
+    @androidx.room.Query(value = "SELECT * FROM articles ORDER BY id ASC")
     @org.jetbrains.annotations.NotNull()
     public abstract kotlinx.coroutines.flow.Flow<java.util.List<com.example.helloapp.data.Article>> getAllArticles();
     

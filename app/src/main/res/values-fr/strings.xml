@@ -231,7 +231,8 @@
     
     <string name="onboarding_offline_title">Fonctionne Hors Ligne</string>
     <string name="onboarding_offline_desc">Toutes vos données sont stockées en sécurité sur votre appareil. Accédez aux informations de santé et suivez la santé de votre famille même sans connexion internet.</string>
-    
+    <string name="replay_tutorial">Revoir le tutoriel</string>
+
     <!-- Clinics -->
     <string name="clinics">Cliniques</string>
     <string name="find_clinics">Trouver des Cliniques</string>

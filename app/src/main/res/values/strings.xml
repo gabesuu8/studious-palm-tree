@@ -238,7 +238,8 @@
     
     <string name="onboarding_offline_title">Works Offline</string>
     <string name="onboarding_offline_desc">All your data is stored safely on your device. Access health information and track your family\'s health even without an internet connection.</string>
-    
+    <string name="replay_tutorial">Replay Tutorial</string>
+
     <!-- Clinics -->
     <string name="clinics">Clinics</string>
     <string name="find_clinics">Find Clinics</string>

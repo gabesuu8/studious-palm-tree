@@ -1,6 +1,7 @@
 package com.example.helloapp.fragment
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +13,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.helloapp.FavoritesActivity
 import com.example.helloapp.R
+import com.example.helloapp.RapidTestTimerActivity
 import com.example.helloapp.adapter.PrenatalVisitAdapter
 import com.example.helloapp.data.Pregnancy
 import com.example.helloapp.data.PrenatalVisit
@@ -66,8 +69,8 @@ class PregnancyTrackerFragment : Fragment() {
         val toolbar = view.findViewById<MaterialToolbar>(R.id.toolbar)
         toolbar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.menu_language -> {
-                    showLanguageDialog()
+                R.id.menu_options -> {
+                    showOptionsDialog()
                     true
                 }
                 else -> false
@@ -122,6 +125,26 @@ class PregnancyTrackerFragment : Fragment() {
         observeData()
     }
     
+    private fun showOptionsDialog() {
+        val ctx = context ?: return
+        val items = arrayOf(
+            getString(R.string.language),
+            getString(R.string.favorites),
+            getString(R.string.rapid_test_timer_menu)
+        )
+        AlertDialog.Builder(ctx)
+            .setTitle(getString(R.string.menu_options))
+            .setItems(items) { _, which ->
+                when (which) {
+                    0 -> showLanguageDialog()
+                    1 -> startActivity(Intent(requireContext(), FavoritesActivity::class.java))
+                    2 -> startActivity(Intent(requireContext(), RapidTestTimerActivity::class.java))
+                }
+            }
+            .setNegativeButton(android.R.string.cancel, null)
+            .show()
+    }
+
     private fun showLanguageDialog() {
         val ctx = context ?: return
         val languages = arrayOf(getString(R.string.english), getString(R.string.french))

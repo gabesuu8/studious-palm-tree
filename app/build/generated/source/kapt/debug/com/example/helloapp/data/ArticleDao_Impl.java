@@ -224,7 +224,7 @@ public final class ArticleDao_Impl implements ArticleDao {
 
   @Override
   public Flow<List<Article>> getAllArticles() {
-    final String _sql = "SELECT * FROM articles ORDER BY dateAdded DESC";
+    final String _sql = "SELECT * FROM articles ORDER BY id ASC";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
     return CoroutinesRoom.createFlow(__db, false, new String[] {"articles"}, new Callable<List<Article>>() {
       @Override

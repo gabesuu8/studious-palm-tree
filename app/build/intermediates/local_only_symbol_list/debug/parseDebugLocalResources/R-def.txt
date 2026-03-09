@@ -55,6 +55,7 @@ drawable ic_map
 drawable ic_notification
 drawable ic_pregnant
 drawable ic_services
+drawable ic_settings
 drawable ic_star_filled
 drawable ic_vaccine
 drawable indicator_active
@@ -241,6 +242,7 @@ layout activity_main
 layout activity_onboarding
 layout activity_pregnancy_tracker
 layout activity_rapid_test_timer
+layout activity_symptom_results
 layout activity_vaccinations
 layout bottom_sheet_condition_comparison
 layout dialog_add_child
@@ -449,6 +451,7 @@ string recommended_age
 string recommended_next_visit_week
 string refresh_desc
 string removed_from_favorites
+string replay_tutorial
 string save
 string search_hint
 string search_icon_desc

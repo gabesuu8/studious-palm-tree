@@ -53,6 +53,10 @@
             android:name=".RapidTestTimerActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".SymptomResultsActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
 
         <activity
             android:name=".OnboardingActivity"

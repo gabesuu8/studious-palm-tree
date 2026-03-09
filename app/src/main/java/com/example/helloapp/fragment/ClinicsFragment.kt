@@ -4,6 +4,7 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.location.Location
+import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Bundle
@@ -19,7 +20,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.helloapp.FavoritesActivity
 import com.example.helloapp.R
+import com.example.helloapp.RapidTestTimerActivity
 import com.example.helloapp.adapter.ClinicAdapter
 import com.example.helloapp.util.LanguageHelper
 import com.example.helloapp.viewmodel.ClinicViewModel
@@ -89,8 +92,8 @@ class ClinicsFragment : Fragment(), OnMapReadyCallback {
         val toolbar = view.findViewById<MaterialToolbar>(R.id.toolbar)
         toolbar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.menu_language -> {
-                    showLanguageDialog()
+                R.id.menu_options -> {
+                    showOptionsDialog()
                     true
                 }
                 else -> false
@@ -387,6 +390,26 @@ class ClinicsFragment : Fragment(), OnMapReadyCallback {
             .show()
     }
     
+    private fun showOptionsDialog() {
+        val ctx = context ?: return
+        val items = arrayOf(
+            getString(R.string.language),
+            getString(R.string.favorites),
+            getString(R.string.rapid_test_timer_menu)
+        )
+        AlertDialog.Builder(ctx)
+            .setTitle(getString(R.string.menu_options))
+            .setItems(items) { _, which ->
+                when (which) {
+                    0 -> showLanguageDialog()
+                    1 -> startActivity(Intent(requireContext(), FavoritesActivity::class.java))
+                    2 -> startActivity(Intent(requireContext(), RapidTestTimerActivity::class.java))
+                }
+            }
+            .setNegativeButton(android.R.string.cancel, null)
+            .show()
+    }
+
     private fun showLanguageDialog() {
         val ctx = context ?: return
         val languages = arrayOf(getString(R.string.english), getString(R.string.french))
@@ -409,7 +432,7 @@ class ClinicsFragment : Fragment(), OnMapReadyCallback {
             .setNegativeButton(android.R.string.cancel, null)
             .show()
     }
-    
+
     override fun onDestroyView() {
         super.onDestroyView()
         recyclerView = null

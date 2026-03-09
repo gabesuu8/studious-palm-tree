@@ -241,8 +241,7 @@ public final class PregnancyDao_Impl implements PregnancyDao {
   }
 
   @Override
-  public Object insertPregnancy(final Pregnancy pregnancy,
-      final Continuation<? super Long> $completion) {
+  public Object insertPregnancy(final Pregnancy pregnancy, final Continuation<? super Long> arg1) {
     return CoroutinesRoom.execute(__db, true, new Callable<Long>() {
       @Override
       @NonNull
@@ -256,12 +255,11 @@ public final class PregnancyDao_Impl implements PregnancyDao {
           __db.endTransaction();
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @Override
-  public Object insertVisit(final PrenatalVisit visit,
-      final Continuation<? super Long> $completion) {
+  public Object insertVisit(final PrenatalVisit visit, final Continuation<? super Long> arg1) {
     return CoroutinesRoom.execute(__db, true, new Callable<Long>() {
       @Override
       @NonNull
@@ -275,12 +273,11 @@ public final class PregnancyDao_Impl implements PregnancyDao {
           __db.endTransaction();
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @Override
-  public Object deletePregnancy(final Pregnancy pregnancy,
-      final Continuation<? super Unit> $completion) {
+  public Object deletePregnancy(final Pregnancy pregnancy, final Continuation<? super Unit> arg1) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -294,12 +291,11 @@ public final class PregnancyDao_Impl implements PregnancyDao {
           __db.endTransaction();
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @Override
-  public Object deleteVisit(final PrenatalVisit visit,
-      final Continuation<? super Unit> $completion) {
+  public Object deleteVisit(final PrenatalVisit visit, final Continuation<? super Unit> arg1) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -313,12 +309,11 @@ public final class PregnancyDao_Impl implements PregnancyDao {
           __db.endTransaction();
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @Override
-  public Object updatePregnancy(final Pregnancy pregnancy,
-      final Continuation<? super Unit> $completion) {
+  public Object updatePregnancy(final Pregnancy pregnancy, final Continuation<? super Unit> arg1) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -332,12 +327,11 @@ public final class PregnancyDao_Impl implements PregnancyDao {
           __db.endTransaction();
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @Override
-  public Object updateVisit(final PrenatalVisit visit,
-      final Continuation<? super Unit> $completion) {
+  public Object updateVisit(final PrenatalVisit visit, final Continuation<? super Unit> arg1) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -351,12 +345,12 @@ public final class PregnancyDao_Impl implements PregnancyDao {
           __db.endTransaction();
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @Override
   public Object markPregnancyComplete(final long pregnancyId,
-      final Continuation<? super Unit> $completion) {
+      final Continuation<? super Unit> arg1) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -377,11 +371,11 @@ public final class PregnancyDao_Impl implements PregnancyDao {
           __preparedStmtOfMarkPregnancyComplete.release(_stmt);
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @Override
-  public Object deleteAllPregnancies(final Continuation<? super Unit> $completion) {
+  public Object deleteAllPregnancies(final Continuation<? super Unit> arg0) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -400,7 +394,7 @@ public final class PregnancyDao_Impl implements PregnancyDao {
           __preparedStmtOfDeleteAllPregnancies.release(_stmt);
         }
       }
-    }, $completion);
+    }, arg0);
   }
 
   @Override
@@ -525,7 +519,7 @@ public final class PregnancyDao_Impl implements PregnancyDao {
 
   @Override
   public Object getPregnancyById(final long pregnancyId,
-      final Continuation<? super Pregnancy> $completion) {
+      final Continuation<? super Pregnancy> arg1) {
     final String _sql = "SELECT * FROM pregnancies WHERE id = ?";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
     int _argIndex = 1;
@@ -580,7 +574,7 @@ public final class PregnancyDao_Impl implements PregnancyDao {
           _statement.release();
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @Override
@@ -746,8 +740,7 @@ public final class PregnancyDao_Impl implements PregnancyDao {
   }
 
   @Override
-  public Object getVisitById(final long visitId,
-      final Continuation<? super PrenatalVisit> $completion) {
+  public Object getVisitById(final long visitId, final Continuation<? super PrenatalVisit> arg1) {
     final String _sql = "SELECT * FROM prenatal_visits WHERE id = ?";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
     int _argIndex = 1;
@@ -821,12 +814,12 @@ public final class PregnancyDao_Impl implements PregnancyDao {
           _statement.release();
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @Override
   public Object getLatestVisit(final long pregnancyId,
-      final Continuation<? super PrenatalVisit> $completion) {
+      final Continuation<? super PrenatalVisit> arg1) {
     final String _sql = "SELECT * FROM prenatal_visits WHERE pregnancyId = ? ORDER BY visitDate DESC LIMIT 1";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
     int _argIndex = 1;
@@ -900,12 +893,11 @@ public final class PregnancyDao_Impl implements PregnancyDao {
           _statement.release();
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @Override
-  public Object getVisitCount(final long pregnancyId,
-      final Continuation<? super Integer> $completion) {
+  public Object getVisitCount(final long pregnancyId, final Continuation<? super Integer> arg1) {
     final String _sql = "SELECT COUNT(*) FROM prenatal_visits WHERE pregnancyId = ?";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
     int _argIndex = 1;
@@ -935,7 +927,7 @@ public final class PregnancyDao_Impl implements PregnancyDao {
           _statement.release();
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @NonNull

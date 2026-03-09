@@ -1,5 +1,6 @@
 package com.example.helloapp.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +9,10 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
+import com.example.helloapp.FavoritesActivity
+import com.example.helloapp.OnboardingActivity
 import com.example.helloapp.R
+import com.example.helloapp.RapidTestTimerActivity
 import com.example.helloapp.util.LanguageHelper
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.tabs.TabLayout
@@ -32,8 +36,8 @@ class VaccinationGrowthFragment : Fragment() {
 
         view.findViewById<MaterialToolbar>(R.id.toolbar)?.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.menu_language -> {
-                    showLanguageDialog()
+                R.id.menu_options -> {
+                    showOptionsDialog()
                     true
                 }
                 else -> false
@@ -62,6 +66,28 @@ class VaccinationGrowthFragment : Fragment() {
                 else -> ""
             }
         }.attach()
+    }
+
+    private fun showOptionsDialog() {
+        val ctx = context ?: return
+        val items = arrayOf(
+            getString(R.string.language),
+            getString(R.string.favorites),
+            getString(R.string.rapid_test_timer_menu),
+            getString(R.string.replay_tutorial)
+        )
+        AlertDialog.Builder(ctx)
+            .setTitle(getString(R.string.menu_options))
+            .setItems(items) { _, which ->
+                when (which) {
+                    0 -> showLanguageDialog()
+                    1 -> startActivity(Intent(requireContext(), FavoritesActivity::class.java))
+                    2 -> startActivity(Intent(requireContext(), RapidTestTimerActivity::class.java))
+                    3 -> startActivity(Intent(requireContext(), OnboardingActivity::class.java))
+                }
+            }
+            .setNegativeButton(android.R.string.cancel, null)
+            .show()
     }
 
     private fun showLanguageDialog() {

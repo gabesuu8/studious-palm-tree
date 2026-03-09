@@ -86,25 +86,28 @@ class VaccinationViewModel(application: Application) : AndroidViewModel(applicat
         NextVaccineDue(next.first.name, next.second, next.third)
     }
 
-    /** Parse recommendedAge string to approximate days from birth for ordering. */
-    private fun parseRecommendedAgeToDays(recommendedAge: String): Long {
-        val s = recommendedAge.lowercase()
-        when {
-            s.contains("birth") || s.contains("naissance") -> return 0
-            s.contains("week") || s.contains("semaine") -> {
-                val num = Regex("(\\d+)").find(s)?.groupValues?.get(1)?.toLongOrNull() ?: 0
-                return num * 7
+    companion object {
+        /** Parse recommendedAge string to approximate days from birth for ordering. */
+        @JvmStatic
+        fun parseRecommendedAgeToDays(recommendedAge: String): Long {
+            val s = recommendedAge.lowercase()
+            when {
+                s.contains("birth") || s.contains("naissance") -> return 0
+                s.contains("week") || s.contains("semaine") -> {
+                    val num = Regex("(\\d+)").find(s)?.groupValues?.get(1)?.toLongOrNull() ?: 0
+                    return num * 7
+                }
+                s.contains("month") || s.contains("mois") -> {
+                    val num = Regex("(\\d+)").find(s)?.groupValues?.get(1)?.toLongOrNull() ?: 0
+                    return num * 30
+                }
+                s.contains("year") || s.contains("an") -> {
+                    val num = Regex("(\\d+)").find(s)?.groupValues?.get(1)?.toLongOrNull() ?: 2
+                    return num * 365
+                }
             }
-            s.contains("month") || s.contains("mois") -> {
-                val num = Regex("(\\d+)").find(s)?.groupValues?.get(1)?.toLongOrNull() ?: 0
-                return num * 30
-            }
-            s.contains("year") || s.contains("an") -> {
-                val num = Regex("(\\d+)").find(s)?.groupValues?.get(1)?.toLongOrNull() ?: 2
-                return num * 365
-            }
+            return 0
         }
-        return 0
     }
 
     val filteredVaccinations: Flow<List<Vaccination>> = combine(

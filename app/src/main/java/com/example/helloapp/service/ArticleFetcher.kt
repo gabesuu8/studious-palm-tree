@@ -15,6 +15,134 @@ class ArticleFetcher {
     
     private fun getEnglishArticles(): List<Article> {
         return listOf(
+            // RAPID TESTS - English
+            Article(
+                title = "How to Use Rapid Tests (COVID-19 & Malaria)",
+                content = """
+<div class="highlight-box">
+    <b>📋 Before you start</b><br/>
+    • Read the test kit instructions – brands can vary.<br/>
+    • Use before the expiry date.<br/>
+    • Store in a cool, dry place. Keep in the foil until use.
+</div>
+
+<div class="key-facts">
+    <h2>Quick guide</h2>
+    <ul>
+        <li>Rapid tests give results in about 15–30 minutes at home or in the clinic.</li>
+        <li>Malaria RDTs detect malaria parasite in a drop of blood.</li>
+        <li>COVID-19 rapid tests detect the virus from a nasal or throat swab.</li>
+        <li>A negative result does not always rule out infection – follow health advice.</li>
+    </ul>
+</div>
+
+<hr/>
+
+<h2>🩸 Malaria rapid test (RDT)</h2>
+
+<h3>What you need</h3>
+<ul>
+    <li>Test device (in sealed pouch)</li>
+    <li>Lancet (small needle) or finger-prick device</li>
+    <li>Buffer solution (small bottle or dropper)</li>
+    <li>Alcohol wipe and clean tissue</li>
+</ul>
+
+<h3>Steps</h3>
+<ol>
+    <li><b>Wash hands</b> with soap and dry well.</li>
+    <li><b>Open the pouch</b> only when ready. Take out the test device and place it on a clean, flat surface.</li>
+    <li><b>Clean the finger</b> (usually ring or middle finger) with the alcohol wipe. Let it dry.</li>
+    <li><b>Prick the finger</b> with the lancet. Gently squeeze to get a small drop of blood.</li>
+    <li><b>Add the blood</b> to the round well (sample area) on the test device – usually 1 drop or as the leaflet says.</li>
+    <li><b>Add the buffer</b> – squeeze the correct number of drops into the same well or the buffer well. Check the kit instructions (often 2–4 drops).</li>
+    <li><b>Wait 15–20 minutes</b>. Do not touch the device. Set a timer.</li>
+    <li><b>Read the result</b> (see below). Do not read after 30 minutes.</li>
+</ol>
+
+<h3>How to read the result</h3>
+<div style="background: #E8F5E9; border-radius: 12px; padding: 16px; margin: 12px 0; border-left: 5px solid #4CAF50;">
+    <p style="margin: 0 0 8px 0;"><b>✅ NEGATIVE (no malaria):</b></p>
+    <p style="margin: 0;">Only <b>one line</b> appears – in the <b>Control (C)</b> zone. The result is valid.</p>
+</div>
+<div style="background: #FFEBEE; border-radius: 12px; padding: 16px; margin: 12px 0; border-left: 5px solid #D32F2F;">
+    <p style="margin: 0 0 8px 0;"><b>⚠️ POSITIVE (malaria likely):</b></p>
+    <p style="margin: 0;"><b>Two lines</b> appear – one at <b>Control (C)</b> and one at <b>Test (T)</b>. Seek care and treatment as advised.</p>
+</div>
+<div style="background: #FFF8E1; border-radius: 12px; padding: 16px; margin: 12px 0; border-left: 5px solid #F9A825;">
+    <p style="margin: 0 0 8px 0;"><b>❌ Invalid:</b></p>
+    <p style="margin: 0;">No line at <b>Control (C)</b>. The test did not work. Use a new test kit.</p>
+</div>
+
+<p><b>Summary:</b> C only = negative. C + T = positive. No C = invalid.</p>
+
+<hr/>
+
+<h2>🦠 COVID-19 rapid antigen test</h2>
+
+<h3>What you need</h3>
+<ul>
+    <li>Test device (in sealed pouch)</li>
+    <li>Swab (long cotton tip)</li>
+    <li>Buffer solution (small tube with cap)</li>
+    <li>Timer</li>
+</ul>
+
+<h3>Steps</h3>
+<ol>
+    <li><b>Wash hands</b> with soap and dry well. Blow your nose gently, then wash hands again.</li>
+    <li><b>Open the kit</b> and place the test device on a clean, flat surface. Open the buffer tube – do not spill.</li>
+    <li><b>Swab</b> – Insert the soft end of the swab about 2 cm into one nostril, press gently against the inside for 10–15 seconds. Use the same swab in the other nostril the same way. (Some kits use throat + nose – follow the leaflet.)</li>
+    <li><b>Put the swab in the buffer</b> – Place the swab into the buffer tube and swirl or press against the sides for the time given (often 10–30 seconds). Squeeze the tube and remove the swab as instructed.</li>
+    <li><b>Add drops to the test</b> – Close the buffer cap (if it has a nozzle) or use the dropper. Add the number of drops shown on the leaflet onto the sample well (S) of the test device.</li>
+    <li><b>Wait</b> – Usually 15–30 minutes. Do not move the device. Set a timer.</li>
+    <li><b>Read the result</b> (see below). Do not read after the maximum time stated (e.g. 30 min).</li>
+</ol>
+
+<h3>How to read the result</h3>
+<div style="background: #E8F5E9; border-radius: 12px; padding: 16px; margin: 12px 0; border-left: 5px solid #4CAF50;">
+    <p style="margin: 0 0 8px 0;"><b>✅ NEGATIVE (no COVID-19 detected):</b></p>
+    <p style="margin: 0;">Only <b>one line</b> at <b>Control (C)</b>. The test worked and the result is negative at the time of testing.</p>
+</div>
+<div style="background: #FFEBEE; border-radius: 12px; padding: 16px; margin: 12px 0; border-left: 5px solid #D32F2F;">
+    <p style="margin: 0 0 8px 0;"><b>⚠️ POSITIVE (COVID-19 likely):</b></p>
+    <p style="margin: 0;"><b>Two lines</b> – one at <b>Control (C)</b> and one at <b>Test (T)</b>. Even a faint line at T is positive. Isolate and follow local health advice.</p>
+</div>
+<div style="background: #FFF8E1; border-radius: 12px; padding: 16px; margin: 12px 0; border-left: 5px solid #F9A825;">
+    <p style="margin: 0 0 8px 0;"><b>❌ Invalid:</b></p>
+    <p style="margin: 0;">No line at <b>Control (C)</b>. The test failed. Use a new test kit.</p>
+</div>
+
+<p><b>Summary:</b> C only = negative. C + T = positive. No C = invalid.</p>
+
+<hr/>
+
+<h2>⚠️ Important</h2>
+<ul>
+    <li>Rapid tests are a guide, not a replacement for a health worker’s assessment.</li>
+    <li>If you have strong symptoms (e.g. high fever, difficulty breathing) but the test is negative, still seek care.</li>
+    <li>Dispose of lancets and swabs safely (e.g. in a closed container, away from children).</li>
+</ul>
+
+<hr/>
+
+<div class="sources">
+    <h2>Sources</h2>
+    <div class="source-item">
+        <div class="source-name">WHO – Malaria rapid diagnostic tests</div>
+        <a href="https://www.who.int/news-room/questions-and-answers/item/malaria-rapid-diagnostic-tests">WHO Malaria RDTs</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">WHO – COVID-19 antigen-detection tests</div>
+        <a href="https://www.who.int/publications/i/item/WHO-2019-nCoV-Antigen_Detection-2021.1">WHO COVID-19 Antigen Tests</a>
+    </div>
+</div>
+                """.trimIndent(),
+                summary = "Simple step-by-step guide to using rapid tests for malaria and COVID-19. Easy-to-interpret results: one line vs two lines, positive and negative.",
+                source = "WHO",
+                category = "Infectious Diseases"
+            ),
+
             // MALARIA - English
             Article(
                 title = "Malaria",
@@ -1985,133 +2113,6 @@ class ArticleFetcher {
                 category = "Medications"
             ),
             
-            // RAPID TESTS - English
-            Article(
-                title = "How to Use Rapid Tests (COVID-19 & Malaria)",
-                content = """
-<div class="highlight-box">
-    <b>📋 Before you start</b><br/>
-    • Read the test kit instructions – brands can vary.<br/>
-    • Use before the expiry date.<br/>
-    • Store in a cool, dry place. Keep in the foil until use.
-</div>
-
-<div class="key-facts">
-    <h2>Quick guide</h2>
-    <ul>
-        <li>Rapid tests give results in about 15–30 minutes at home or in the clinic.</li>
-        <li>Malaria RDTs detect malaria parasite in a drop of blood.</li>
-        <li>COVID-19 rapid tests detect the virus from a nasal or throat swab.</li>
-        <li>A negative result does not always rule out infection – follow health advice.</li>
-    </ul>
-</div>
-
-<hr/>
-
-<h2>🩸 Malaria rapid test (RDT)</h2>
-
-<h3>What you need</h3>
-<ul>
-    <li>Test device (in sealed pouch)</li>
-    <li>Lancet (small needle) or finger-prick device</li>
-    <li>Buffer solution (small bottle or dropper)</li>
-    <li>Alcohol wipe and clean tissue</li>
-</ul>
-
-<h3>Steps</h3>
-<ol>
-    <li><b>Wash hands</b> with soap and dry well.</li>
-    <li><b>Open the pouch</b> only when ready. Take out the test device and place it on a clean, flat surface.</li>
-    <li><b>Clean the finger</b> (usually ring or middle finger) with the alcohol wipe. Let it dry.</li>
-    <li><b>Prick the finger</b> with the lancet. Gently squeeze to get a small drop of blood.</li>
-    <li><b>Add the blood</b> to the round well (sample area) on the test device – usually 1 drop or as the leaflet says.</li>
-    <li><b>Add the buffer</b> – squeeze the correct number of drops into the same well or the buffer well. Check the kit instructions (often 2–4 drops).</li>
-    <li><b>Wait 15–20 minutes</b>. Do not touch the device. Set a timer.</li>
-    <li><b>Read the result</b> (see below). Do not read after 30 minutes.</li>
-</ol>
-
-<h3>How to read the result</h3>
-<div style="background: #E8F5E9; border-radius: 12px; padding: 16px; margin: 12px 0; border-left: 5px solid #4CAF50;">
-    <p style="margin: 0 0 8px 0;"><b>✅ NEGATIVE (no malaria):</b></p>
-    <p style="margin: 0;">Only <b>one line</b> appears – in the <b>Control (C)</b> zone. The result is valid.</p>
-</div>
-<div style="background: #FFEBEE; border-radius: 12px; padding: 16px; margin: 12px 0; border-left: 5px solid #D32F2F;">
-    <p style="margin: 0 0 8px 0;"><b>⚠️ POSITIVE (malaria likely):</b></p>
-    <p style="margin: 0;"><b>Two lines</b> appear – one at <b>Control (C)</b> and one at <b>Test (T)</b>. Seek care and treatment as advised.</p>
-</div>
-<div style="background: #FFF8E1; border-radius: 12px; padding: 16px; margin: 12px 0; border-left: 5px solid #F9A825;">
-    <p style="margin: 0 0 8px 0;"><b>❌ Invalid:</b></p>
-    <p style="margin: 0;">No line at <b>Control (C)</b>. The test did not work. Use a new test kit.</p>
-</div>
-
-<p><b>Summary:</b> C only = negative. C + T = positive. No C = invalid.</p>
-
-<hr/>
-
-<h2>🦠 COVID-19 rapid antigen test</h2>
-
-<h3>What you need</h3>
-<ul>
-    <li>Test device (in sealed pouch)</li>
-    <li>Swab (long cotton tip)</li>
-    <li>Buffer solution (small tube with cap)</li>
-    <li>Timer</li>
-</ul>
-
-<h3>Steps</h3>
-<ol>
-    <li><b>Wash hands</b> with soap and dry well. Blow your nose gently, then wash hands again.</li>
-    <li><b>Open the kit</b> and place the test device on a clean, flat surface. Open the buffer tube – do not spill.</li>
-    <li><b>Swab</b> – Insert the soft end of the swab about 2 cm into one nostril, press gently against the inside for 10–15 seconds. Use the same swab in the other nostril the same way. (Some kits use throat + nose – follow the leaflet.)</li>
-    <li><b>Put the swab in the buffer</b> – Place the swab into the buffer tube and swirl or press against the sides for the time given (often 10–30 seconds). Squeeze the tube and remove the swab as instructed.</li>
-    <li><b>Add drops to the test</b> – Close the buffer cap (if it has a nozzle) or use the dropper. Add the number of drops shown on the leaflet onto the sample well (S) of the test device.</li>
-    <li><b>Wait</b> – Usually 15–30 minutes. Do not move the device. Set a timer.</li>
-    <li><b>Read the result</b> (see below). Do not read after the maximum time stated (e.g. 30 min).</li>
-</ol>
-
-<h3>How to read the result</h3>
-<div style="background: #E8F5E9; border-radius: 12px; padding: 16px; margin: 12px 0; border-left: 5px solid #4CAF50;">
-    <p style="margin: 0 0 8px 0;"><b>✅ NEGATIVE (no COVID-19 detected):</b></p>
-    <p style="margin: 0;">Only <b>one line</b> at <b>Control (C)</b>. The test worked and the result is negative at the time of testing.</p>
-</div>
-<div style="background: #FFEBEE; border-radius: 12px; padding: 16px; margin: 12px 0; border-left: 5px solid #D32F2F;">
-    <p style="margin: 0 0 8px 0;"><b>⚠️ POSITIVE (COVID-19 likely):</b></p>
-    <p style="margin: 0;"><b>Two lines</b> – one at <b>Control (C)</b> and one at <b>Test (T)</b>. Even a faint line at T is positive. Isolate and follow local health advice.</p>
-</div>
-<div style="background: #FFF8E1; border-radius: 12px; padding: 16px; margin: 12px 0; border-left: 5px solid #F9A825;">
-    <p style="margin: 0 0 8px 0;"><b>❌ Invalid:</b></p>
-    <p style="margin: 0;">No line at <b>Control (C)</b>. The test failed. Use a new test kit.</p>
-</div>
-
-<p><b>Summary:</b> C only = negative. C + T = positive. No C = invalid.</p>
-
-<hr/>
-
-<h2>⚠️ Important</h2>
-<ul>
-    <li>Rapid tests are a guide, not a replacement for a health worker’s assessment.</li>
-    <li>If you have strong symptoms (e.g. high fever, difficulty breathing) but the test is negative, still seek care.</li>
-    <li>Dispose of lancets and swabs safely (e.g. in a closed container, away from children).</li>
-</ul>
-
-<hr/>
-
-<div class="sources">
-    <h2>Sources</h2>
-    <div class="source-item">
-        <div class="source-name">WHO – Malaria rapid diagnostic tests</div>
-        <a href="https://www.who.int/news-room/questions-and-answers/item/malaria-rapid-diagnostic-tests">WHO Malaria RDTs</a>
-    </div>
-    <div class="source-item">
-        <div class="source-name">WHO – COVID-19 antigen-detection tests</div>
-        <a href="https://www.who.int/publications/i/item/WHO-2019-nCoV-Antigen_Detection-2021.1">WHO COVID-19 Antigen Tests</a>
-    </div>
-</div>
-                """.trimIndent(),
-                summary = "Simple step-by-step guide to using rapid tests for malaria and COVID-19. Easy-to-interpret results: one line vs two lines, positive and negative.",
-                source = "WHO",
-                category = "Infectious Diseases"
-            ),
 
             // === 30 articles for Uganda & Togo (English) ===
             // SCHISTOSOMIASIS (BILHARZIA) - English (expanded)
@@ -3527,6 +3528,134 @@ class ArticleFetcher {
     
     private fun getFrenchArticles(): List<Article> {
         return listOf(
+            // TESTS RAPIDES - French
+            Article(
+                title = "Comment utiliser les tests rapides (COVID-19 et Paludisme)",
+                content = """
+<div class="highlight-box">
+    <b>📋 Avant de commencer</b><br/>
+    • Lisez la notice du kit – les marques peuvent varier.<br/>
+    • Utilisez avant la date de péremption.<br/>
+    • Conservez au sec et au frais. Gardez dans l'emballage aluminium jusqu'à l'utilisation.
+</div>
+
+<div class="key-facts">
+    <h2>En bref</h2>
+    <ul>
+        <li>Les tests rapides donnent un résultat en 15–30 minutes à la maison ou au centre de santé.</li>
+        <li>Les TDR paludisme détectent le parasite dans une goutte de sang.</li>
+        <li>Les tests rapides COVID-19 détectent le virus à partir d’un prélèvement nasal ou gorge.</li>
+        <li>Un résultat négatif n’élimine pas toujours l’infection – suivez les conseils sanitaires.</li>
+    </ul>
+</div>
+
+<hr/>
+
+<h2>🩸 Test rapide paludisme (TDR)</h2>
+
+<h3>Ce qu’il vous faut</h3>
+<ul>
+    <li>Dispositif de test (sous sachet)</li>
+    <li>Lancette (petite aiguille) ou autopiqueur</li>
+    <li>Solution tampon (flacon ou compte-gouttes)</li>
+    <li>Compresse alcool et mouchoir propre</li>
+</ul>
+
+<h3>Étapes</h3>
+<ol>
+    <li><b>Lavez les mains</b> au savon et séchez bien.</li>
+    <li><b>Ouvrez le sachet</b> au moment de l’usage. Sortez le dispositif et posez-le sur une surface propre et plate.</li>
+    <li><b>Désinfectez le doigt</b> (souvent annulaire ou majeur) avec la compresse alcool. Laissez sécher.</li>
+    <li><b>Piquez le doigt</b> avec la lancette. Pressez légèrement pour obtenir une petite goutte de sang.</li>
+    <li><b>Déposez le sang</b> dans le puits rond (zone échantillon) du dispositif – en général 1 goutte, ou selon la notice.</li>
+    <li><b>Ajoutez le tampon</b> – le nombre de gouttes indiqué (souvent 2–4) dans le même puits ou le puits tampon.</li>
+    <li><b>Attendez 15–20 minutes</b>. Ne touchez pas au dispositif. Utilisez un minuteur.</li>
+    <li><b>Lisez le résultat</b> (voir ci-dessous). Ne pas lire après 30 minutes.</li>
+</ol>
+
+<h3>Comment lire le résultat</h3>
+<div style="background: #E8F5E9; border-radius: 12px; padding: 16px; margin: 12px 0; border-left: 5px solid #4CAF50;">
+    <p style="margin: 0 0 8px 0;"><b>✅ NÉGATIF (pas de paludisme) :</b></p>
+    <p style="margin: 0;">Une <b>seule bande</b> apparaît – dans la zone <b>Témoin (C)</b>. Le résultat est valide.</p>
+</div>
+<div style="background: #FFEBEE; border-radius: 12px; padding: 16px; margin: 12px 0; border-left: 5px solid #D32F2F;">
+    <p style="margin: 0 0 8px 0;"><b>⚠️ POSITIF (paludisme probable) :</b></p>
+    <p style="margin: 0;"><b>Deux bandes</b> – une au <b>Témoin (C)</b> et une à la <b>Test (T)</b>. Consultez et suivez le traitement conseillé.</p>
+</div>
+<div style="background: #FFF8E1; border-radius: 12px; padding: 16px; margin: 12px 0; border-left: 5px solid #F9A825;">
+    <p style="margin: 0 0 8px 0;"><b>❌ Invalide :</b></p>
+    <p style="margin: 0;">Aucune bande au <b>Témoin (C)</b>. Le test n’a pas fonctionné. Utilisez un nouveau kit.</p>
+</div>
+
+<p><b>Résumé :</b> C seule = négatif. C + T = positif. Pas de C = invalide.</p>
+
+<hr/>
+
+<h2>🦠 Test rapide antigénique COVID-19</h2>
+
+<h3>Ce qu’il vous faut</h3>
+<ul>
+    <li>Dispositif de test (sous sachet)</li>
+    <li>Écouvillon (long coton-tige)</li>
+    <li>Solution tampon (tube avec bouchon)</li>
+    <li>Minuteur</li>
+</ul>
+
+<h3>Étapes</h3>
+<ol>
+    <li><b>Lavez les mains</b> au savon et séchez. Mouchez-vous doucement, puis relavez les mains.</li>
+    <li><b>Ouvrez le kit</b> et posez le dispositif sur une surface propre. Ouvrez le tube tampon sans renverser.</li>
+    <li><b>Prélèvement</b> – Introduisez l’extrémité souple de l’écouvillon d’environ 2 cm dans une narine, appuyez doucement contre la paroi 10–15 secondes. Même chose dans l’autre narine avec le même écouvillon. (Certains kits utilisent gorge + nez – suivez la notice.)</li>
+    <li><b>Mettez l’écouvillon dans le tampon</b> – Plongez l’écouvillon dans le tube, tournez ou pressez contre les parois pendant le temps indiqué (souvent 10–30 secondes). Pressez le tube et retirez l’écouvillon selon la notice.</li>
+    <li><b>Déposez les gouttes sur le test</b> – Fermez le bouchon (s’il a un bec) ou utilisez la pipette. Ajoutez le nombre de gouttes indiqué sur le puits échantillon (S) du dispositif.</li>
+    <li><b>Attendez</b> – En général 15–30 minutes. Ne déplacez pas le dispositif. Utilisez un minuteur.</li>
+    <li><b>Lisez le résultat</b> (voir ci-dessous). Ne pas lire après le temps maximum indiqué (ex. 30 min).</li>
+</ol>
+
+<h3>Comment lire le résultat</h3>
+<div style="background: #E8F5E9; border-radius: 12px; padding: 16px; margin: 12px 0; border-left: 5px solid #4CAF50;">
+    <p style="margin: 0 0 8px 0;"><b>✅ NÉGATIF (COVID-19 non détecté) :</b></p>
+    <p style="margin: 0;">Une <b>seule bande</b> au <b>Témoin (C)</b>. Le test a fonctionné et le résultat est négatif au moment du test.</p>
+</div>
+<div style="background: #FFEBEE; border-radius: 12px; padding: 16px; margin: 12px 0; border-left: 5px solid #D32F2F;">
+    <p style="margin: 0 0 8px 0;"><b>⚠️ POSITIF (COVID-19 probable) :</b></p>
+    <p style="margin: 0;"><b>Deux bandes</b> – une au <b>Témoin (C)</b> et une à la <b>Test (T)</b>. Même une bande faible en T = positif. Isolez-vous et suivez les consignes sanitaires.</p>
+</div>
+<div style="background: #FFF8E1; border-radius: 12px; padding: 16px; margin: 12px 0; border-left: 5px solid #F9A825;">
+    <p style="margin: 0 0 8px 0;"><b>❌ Invalide :</b></p>
+    <p style="margin: 0;">Aucune bande au <b>Témoin (C)</b>. Le test a échoué. Utilisez un nouveau kit.</p>
+</div>
+
+<p><b>Résumé :</b> C seule = négatif. C + T = positif. Pas de C = invalide.</p>
+
+<hr/>
+
+<h2>⚠️ Important</h2>
+<ul>
+    <li>Les tests rapides sont une aide, pas un remplacement du jugement d’un soignant.</li>
+    <li>En cas de symptômes forts (forte fièvre, difficultés à respirer) avec test négatif, consultez quand même.</li>
+    <li>Jetez lancettes et écouvillons en sécurité (conteneur fermé, hors de portée des enfants).</li>
+</ul>
+
+<hr/>
+
+<div class="sources">
+    <h2>Sources</h2>
+    <div class="source-item">
+        <div class="source-name">OMS – Tests de diagnostic rapide du paludisme</div>
+        <a href="https://www.who.int/fr/news-room/questions-and-answers/item/malaria-rapid-diagnostic-tests">OMS TDR Paludisme</a>
+    </div>
+    <div class="source-item">
+        <div class="source-name">OMS – Tests de détection antigénique COVID-19</div>
+        <a href="https://www.who.int/publications/i/item/WHO-2019-nCoV-Antigen_Detection-2021.1">OMS Tests antigéniques COVID-19</a>
+    </div>
+</div>
+                """.trimIndent(),
+                summary = "Guide simple étape par étape pour les tests rapides paludisme et COVID-19. Résultats faciles à lire : une bande ou deux, positif et négatif.",
+                source = "OMS",
+                category = "Maladies Infectieuses"
+            ),
+
             // PALUDISME - French
             Article(
                 title = "Paludisme",
@@ -5478,134 +5607,6 @@ class ArticleFetcher {
                 summary = "Guide complet des Sels de réhydratation orale (SRO) : préparation, posologie pour enfants et adultes, supplémentation en zinc et signes d'alerte.",
                 source = "OMS, UNICEF",
                 category = "Médicaments"
-            ),
-            
-            // TESTS RAPIDES - French
-            Article(
-                title = "Comment utiliser les tests rapides (COVID-19 et Paludisme)",
-                content = """
-<div class="highlight-box">
-    <b>📋 Avant de commencer</b><br/>
-    • Lisez la notice du kit – les marques peuvent varier.<br/>
-    • Utilisez avant la date de péremption.<br/>
-    • Conservez au sec et au frais. Gardez dans l'emballage aluminium jusqu'à l'utilisation.
-</div>
-
-<div class="key-facts">
-    <h2>En bref</h2>
-    <ul>
-        <li>Les tests rapides donnent un résultat en 15–30 minutes à la maison ou au centre de santé.</li>
-        <li>Les TDR paludisme détectent le parasite dans une goutte de sang.</li>
-        <li>Les tests rapides COVID-19 détectent le virus à partir d’un prélèvement nasal ou gorge.</li>
-        <li>Un résultat négatif n’élimine pas toujours l’infection – suivez les conseils sanitaires.</li>
-    </ul>
-</div>
-
-<hr/>
-
-<h2>🩸 Test rapide paludisme (TDR)</h2>
-
-<h3>Ce qu’il vous faut</h3>
-<ul>
-    <li>Dispositif de test (sous sachet)</li>
-    <li>Lancette (petite aiguille) ou autopiqueur</li>
-    <li>Solution tampon (flacon ou compte-gouttes)</li>
-    <li>Compresse alcool et mouchoir propre</li>
-</ul>
-
-<h3>Étapes</h3>
-<ol>
-    <li><b>Lavez les mains</b> au savon et séchez bien.</li>
-    <li><b>Ouvrez le sachet</b> au moment de l’usage. Sortez le dispositif et posez-le sur une surface propre et plate.</li>
-    <li><b>Désinfectez le doigt</b> (souvent annulaire ou majeur) avec la compresse alcool. Laissez sécher.</li>
-    <li><b>Piquez le doigt</b> avec la lancette. Pressez légèrement pour obtenir une petite goutte de sang.</li>
-    <li><b>Déposez le sang</b> dans le puits rond (zone échantillon) du dispositif – en général 1 goutte, ou selon la notice.</li>
-    <li><b>Ajoutez le tampon</b> – le nombre de gouttes indiqué (souvent 2–4) dans le même puits ou le puits tampon.</li>
-    <li><b>Attendez 15–20 minutes</b>. Ne touchez pas au dispositif. Utilisez un minuteur.</li>
-    <li><b>Lisez le résultat</b> (voir ci-dessous). Ne pas lire après 30 minutes.</li>
-</ol>
-
-<h3>Comment lire le résultat</h3>
-<div style="background: #E8F5E9; border-radius: 12px; padding: 16px; margin: 12px 0; border-left: 5px solid #4CAF50;">
-    <p style="margin: 0 0 8px 0;"><b>✅ NÉGATIF (pas de paludisme) :</b></p>
-    <p style="margin: 0;">Une <b>seule bande</b> apparaît – dans la zone <b>Témoin (C)</b>. Le résultat est valide.</p>
-</div>
-<div style="background: #FFEBEE; border-radius: 12px; padding: 16px; margin: 12px 0; border-left: 5px solid #D32F2F;">
-    <p style="margin: 0 0 8px 0;"><b>⚠️ POSITIF (paludisme probable) :</b></p>
-    <p style="margin: 0;"><b>Deux bandes</b> – une au <b>Témoin (C)</b> et une à la <b>Test (T)</b>. Consultez et suivez le traitement conseillé.</p>
-</div>
-<div style="background: #FFF8E1; border-radius: 12px; padding: 16px; margin: 12px 0; border-left: 5px solid #F9A825;">
-    <p style="margin: 0 0 8px 0;"><b>❌ Invalide :</b></p>
-    <p style="margin: 0;">Aucune bande au <b>Témoin (C)</b>. Le test n’a pas fonctionné. Utilisez un nouveau kit.</p>
-</div>
-
-<p><b>Résumé :</b> C seule = négatif. C + T = positif. Pas de C = invalide.</p>
-
-<hr/>
-
-<h2>🦠 Test rapide antigénique COVID-19</h2>
-
-<h3>Ce qu’il vous faut</h3>
-<ul>
-    <li>Dispositif de test (sous sachet)</li>
-    <li>Écouvillon (long coton-tige)</li>
-    <li>Solution tampon (tube avec bouchon)</li>
-    <li>Minuteur</li>
-</ul>
-
-<h3>Étapes</h3>
-<ol>
-    <li><b>Lavez les mains</b> au savon et séchez. Mouchez-vous doucement, puis relavez les mains.</li>
-    <li><b>Ouvrez le kit</b> et posez le dispositif sur une surface propre. Ouvrez le tube tampon sans renverser.</li>
-    <li><b>Prélèvement</b> – Introduisez l’extrémité souple de l’écouvillon d’environ 2 cm dans une narine, appuyez doucement contre la paroi 10–15 secondes. Même chose dans l’autre narine avec le même écouvillon. (Certains kits utilisent gorge + nez – suivez la notice.)</li>
-    <li><b>Mettez l’écouvillon dans le tampon</b> – Plongez l’écouvillon dans le tube, tournez ou pressez contre les parois pendant le temps indiqué (souvent 10–30 secondes). Pressez le tube et retirez l’écouvillon selon la notice.</li>
-    <li><b>Déposez les gouttes sur le test</b> – Fermez le bouchon (s’il a un bec) ou utilisez la pipette. Ajoutez le nombre de gouttes indiqué sur le puits échantillon (S) du dispositif.</li>
-    <li><b>Attendez</b> – En général 15–30 minutes. Ne déplacez pas le dispositif. Utilisez un minuteur.</li>
-    <li><b>Lisez le résultat</b> (voir ci-dessous). Ne pas lire après le temps maximum indiqué (ex. 30 min).</li>
-</ol>
-
-<h3>Comment lire le résultat</h3>
-<div style="background: #E8F5E9; border-radius: 12px; padding: 16px; margin: 12px 0; border-left: 5px solid #4CAF50;">
-    <p style="margin: 0 0 8px 0;"><b>✅ NÉGATIF (COVID-19 non détecté) :</b></p>
-    <p style="margin: 0;">Une <b>seule bande</b> au <b>Témoin (C)</b>. Le test a fonctionné et le résultat est négatif au moment du test.</p>
-</div>
-<div style="background: #FFEBEE; border-radius: 12px; padding: 16px; margin: 12px 0; border-left: 5px solid #D32F2F;">
-    <p style="margin: 0 0 8px 0;"><b>⚠️ POSITIF (COVID-19 probable) :</b></p>
-    <p style="margin: 0;"><b>Deux bandes</b> – une au <b>Témoin (C)</b> et une à la <b>Test (T)</b>. Même une bande faible en T = positif. Isolez-vous et suivez les consignes sanitaires.</p>
-</div>
-<div style="background: #FFF8E1; border-radius: 12px; padding: 16px; margin: 12px 0; border-left: 5px solid #F9A825;">
-    <p style="margin: 0 0 8px 0;"><b>❌ Invalide :</b></p>
-    <p style="margin: 0;">Aucune bande au <b>Témoin (C)</b>. Le test a échoué. Utilisez un nouveau kit.</p>
-</div>
-
-<p><b>Résumé :</b> C seule = négatif. C + T = positif. Pas de C = invalide.</p>
-
-<hr/>
-
-<h2>⚠️ Important</h2>
-<ul>
-    <li>Les tests rapides sont une aide, pas un remplacement du jugement d’un soignant.</li>
-    <li>En cas de symptômes forts (forte fièvre, difficultés à respirer) avec test négatif, consultez quand même.</li>
-    <li>Jetez lancettes et écouvillons en sécurité (conteneur fermé, hors de portée des enfants).</li>
-</ul>
-
-<hr/>
-
-<div class="sources">
-    <h2>Sources</h2>
-    <div class="source-item">
-        <div class="source-name">OMS – Tests de diagnostic rapide du paludisme</div>
-        <a href="https://www.who.int/fr/news-room/questions-and-answers/item/malaria-rapid-diagnostic-tests">OMS TDR Paludisme</a>
-    </div>
-    <div class="source-item">
-        <div class="source-name">OMS – Tests de détection antigénique COVID-19</div>
-        <a href="https://www.who.int/publications/i/item/WHO-2019-nCoV-Antigen_Detection-2021.1">OMS Tests antigéniques COVID-19</a>
-    </div>
-</div>
-                """.trimIndent(),
-                summary = "Guide simple étape par étape pour les tests rapides paludisme et COVID-19. Résultats faciles à lire : une bande ou deux, positif et négatif.",
-                source = "OMS",
-                category = "Maladies Infectieuses"
             ),
 
             // === 30 articles pour Ouganda & Togo (français) ===

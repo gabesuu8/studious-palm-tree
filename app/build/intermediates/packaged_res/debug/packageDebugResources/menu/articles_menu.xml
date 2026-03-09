@@ -5,7 +5,7 @@
     <!-- Single overflow item: opens dialog with three labeled options -->
     <item
         android:id="@+id/menu_options"
-        android:icon="@android:drawable/ic_menu_more"
+        android:icon="@drawable/ic_settings"
         android:title="@string/menu_options"
         app:showAsAction="always" />
 

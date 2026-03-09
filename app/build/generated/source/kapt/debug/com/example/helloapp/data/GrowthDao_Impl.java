@@ -217,7 +217,7 @@ public final class GrowthDao_Impl implements GrowthDao {
   }
 
   @Override
-  public Object insertChild(final Child child, final Continuation<? super Long> $completion) {
+  public Object insertChild(final Child child, final Continuation<? super Long> arg1) {
     return CoroutinesRoom.execute(__db, true, new Callable<Long>() {
       @Override
       @NonNull
@@ -231,12 +231,12 @@ public final class GrowthDao_Impl implements GrowthDao {
           __db.endTransaction();
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @Override
   public Object insertGrowthRecord(final GrowthRecord record,
-      final Continuation<? super Long> $completion) {
+      final Continuation<? super Long> arg1) {
     return CoroutinesRoom.execute(__db, true, new Callable<Long>() {
       @Override
       @NonNull
@@ -250,11 +250,11 @@ public final class GrowthDao_Impl implements GrowthDao {
           __db.endTransaction();
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @Override
-  public Object deleteChild(final Child child, final Continuation<? super Unit> $completion) {
+  public Object deleteChild(final Child child, final Continuation<? super Unit> arg1) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -268,12 +268,12 @@ public final class GrowthDao_Impl implements GrowthDao {
           __db.endTransaction();
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @Override
   public Object deleteGrowthRecord(final GrowthRecord record,
-      final Continuation<? super Unit> $completion) {
+      final Continuation<? super Unit> arg1) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -287,11 +287,11 @@ public final class GrowthDao_Impl implements GrowthDao {
           __db.endTransaction();
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @Override
-  public Object updateChild(final Child child, final Continuation<? super Unit> $completion) {
+  public Object updateChild(final Child child, final Continuation<? super Unit> arg1) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -305,12 +305,12 @@ public final class GrowthDao_Impl implements GrowthDao {
           __db.endTransaction();
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @Override
   public Object updateGrowthRecord(final GrowthRecord record,
-      final Continuation<? super Unit> $completion) {
+      final Continuation<? super Unit> arg1) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -324,11 +324,11 @@ public final class GrowthDao_Impl implements GrowthDao {
           __db.endTransaction();
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @Override
-  public Object deleteAllChildren(final Continuation<? super Unit> $completion) {
+  public Object deleteAllChildren(final Continuation<? super Unit> arg0) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -347,12 +347,12 @@ public final class GrowthDao_Impl implements GrowthDao {
           __preparedStmtOfDeleteAllChildren.release(_stmt);
         }
       }
-    }, $completion);
+    }, arg0);
   }
 
   @Override
   public Object deleteAllGrowthRecordsForChild(final long childId,
-      final Continuation<? super Unit> $completion) {
+      final Continuation<? super Unit> arg1) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -373,7 +373,7 @@ public final class GrowthDao_Impl implements GrowthDao {
           __preparedStmtOfDeleteAllGrowthRecordsForChild.release(_stmt);
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @Override
@@ -429,7 +429,7 @@ public final class GrowthDao_Impl implements GrowthDao {
   }
 
   @Override
-  public Object getChildById(final long childId, final Continuation<? super Child> $completion) {
+  public Object getChildById(final long childId, final Continuation<? super Child> arg1) {
     final String _sql = "SELECT * FROM children WHERE id = ?";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
     int _argIndex = 1;
@@ -476,7 +476,7 @@ public final class GrowthDao_Impl implements GrowthDao {
           _statement.release();
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @Override
@@ -621,7 +621,7 @@ public final class GrowthDao_Impl implements GrowthDao {
 
   @Override
   public Object getGrowthRecordById(final long recordId,
-      final Continuation<? super GrowthRecord> $completion) {
+      final Continuation<? super GrowthRecord> arg1) {
     final String _sql = "SELECT * FROM growth_records WHERE id = ?";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
     int _argIndex = 1;
@@ -684,12 +684,12 @@ public final class GrowthDao_Impl implements GrowthDao {
           _statement.release();
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @Override
   public Object getLatestGrowthRecord(final long childId,
-      final Continuation<? super GrowthRecord> $completion) {
+      final Continuation<? super GrowthRecord> arg1) {
     final String _sql = "SELECT * FROM growth_records WHERE childId = ? ORDER BY date DESC LIMIT 1";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
     int _argIndex = 1;
@@ -752,12 +752,11 @@ public final class GrowthDao_Impl implements GrowthDao {
           _statement.release();
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @Override
-  public Object getGrowthRecordCount(final long childId,
-      final Continuation<? super Integer> $completion) {
+  public Object getGrowthRecordCount(final long childId, final Continuation<? super Integer> arg1) {
     final String _sql = "SELECT COUNT(*) FROM growth_records WHERE childId = ?";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
     int _argIndex = 1;
@@ -787,7 +786,7 @@ public final class GrowthDao_Impl implements GrowthDao {
           _statement.release();
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @NonNull

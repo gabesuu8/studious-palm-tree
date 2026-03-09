@@ -23,6 +23,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.helloapp.ArticleDetailActivity
 import com.example.helloapp.FavoritesActivity
+import com.example.helloapp.OnboardingActivity
 import com.example.helloapp.RapidTestTimerActivity
 import com.example.helloapp.R
 import com.example.helloapp.adapter.ArticleAdapter
@@ -273,7 +274,8 @@ class ArticlesFragment : Fragment() {
         val items = arrayOf(
             getString(R.string.language),
             getString(R.string.favorites),
-            getString(R.string.rapid_test_timer_menu)
+            getString(R.string.rapid_test_timer_menu),
+            getString(R.string.replay_tutorial)
         )
         AlertDialog.Builder(ctx)
             .setTitle(getString(R.string.menu_options))
@@ -282,6 +284,7 @@ class ArticlesFragment : Fragment() {
                     0 -> showLanguageDialog()
                     1 -> startActivity(Intent(requireContext(), FavoritesActivity::class.java))
                     2 -> startActivity(Intent(requireContext(), RapidTestTimerActivity::class.java))
+                    3 -> startActivity(Intent(requireContext(), OnboardingActivity::class.java))
                 }
             }
             .setNegativeButton(android.R.string.cancel, null)

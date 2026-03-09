@@ -8,7 +8,6 @@ import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.fragment.app.Fragment
 import com.example.helloapp.fragment.ArticlesFragment
 import com.example.helloapp.fragment.ClinicsFragment
 import com.example.helloapp.fragment.PregnancyTrackerFragment
@@ -16,10 +15,7 @@ import com.example.helloapp.fragment.SymptomPredictorFragment
 import com.example.helloapp.fragment.VaccinationGrowthFragment
 import com.example.helloapp.util.LanguageHelper
 import com.example.helloapp.util.NotificationHelper
-import com.example.helloapp.worker.HealthReminderWorker
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import androidx.work.OneTimeWorkRequestBuilder
-import androidx.work.WorkManager
 
 class MainActivity : AppCompatActivity() {
     
@@ -44,11 +40,6 @@ class MainActivity : AppCompatActivity() {
         NotificationHelper.createChannels(this)
         requestNotificationPermissionIfNeeded()
         BootReceiver.scheduleHealthReminder(this)
-
-        // TODO: Remove after testing — fires the reminder worker immediately
-        WorkManager.getInstance(this).enqueue(
-            OneTimeWorkRequestBuilder<HealthReminderWorker>().build()
-        )
 
         setContentView(R.layout.activity_main)
 
