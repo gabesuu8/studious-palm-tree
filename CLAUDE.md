@@ -26,6 +26,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **JDK Requirement**: JDK 17 is required. JDK 25+ causes kapt compatibility issues. Set via Android Studio: File → Settings → Build → Gradle → Gradle JDK = 17, or set `JAVA_HOME` to a JDK 17 path.
 
+**SDK & Tooling**: compileSdk 34, minSdk 24, targetSdk 34. Gradle 8.13, AGP 8.13.2, Kotlin 2.0.21.
+
 ## Architecture
 
 This is a maternal and child health tracking app (MVVM + Repository pattern) supporting English and French. It covers: health articles, vaccination tracking, child growth monitoring (WHO standards), pregnancy tracking with prenatal visits, symptom prediction, and clinic finding.
@@ -50,17 +52,19 @@ Data Layer      → Room Database (7 tables) + SharedPreferences
 | `adapter/` | RecyclerView adapters |
 | `service/` | `ArticleFetcher` — returns hardcoded articles in EN/FR (no remote API) |
 | `worker/` | `HealthReminderWorker` for daily WorkManager reminders |
-| `util/` | `LanguageHelper`, `NotificationHelper`, `WHOGrowthStandards`, `SearchSuggestions` |
+| `util/` | `LanguageHelper`, `NotificationHelper`, `WHOGrowthStandards`, `SearchSuggestions`, `SymptomCategories` |
 
 ### Navigation
 
 **Bottom navigation** in `MainActivity` drives 5 tabs: Articles, Clinics, Vaccination+Growth, Pregnancy, Symptom Predictor.
 
-Detail screens are separate Activities: `ArticleDetailActivity`, `FavoritesActivity`, `GrowthTrackerActivity`, `VaccinationActivity`, `PregnancyTrackerActivity`, `RapidTestTimerActivity`.
+Detail screens are separate Activities: `ArticleDetailActivity`, `FavoritesActivity`, `GrowthTrackerActivity`, `VaccinationActivity`, `PregnancyTrackerActivity`, `RapidTestTimerActivity`, `SymptomResultsActivity`.
+
+`OnboardingActivity` handles first-launch onboarding. `ConditionComparisonBottomSheet` provides a bottom sheet for comparing symptom conditions.
 
 ### Key Architectural Details
 
-- **Room Database**: `AppDatabase` is a thread-safe singleton (volatile + synchronized). Schema has 7 tables. `fallbackToDestructiveMigration()` is enabled — schema changes will wipe data in dev builds.
+- **Room Database**: `AppDatabase` (named `"healthcare_app_database"`) is a thread-safe singleton (volatile + synchronized). Schema has 7 tables. `fallbackToDestructiveMigration()` is enabled — schema changes will wipe data in dev builds.
 - **All DAOs return `Flow<T>`** for live updates. ViewModels expose `StateFlow` to the UI.
 - **Articles are hardcoded** in `ArticleFetcher.kt` (~38 health conditions in EN/FR). OkHttp is a dependency but not actively used for fetching.
 - **`ArticleViewModel`** contains a sophisticated symptom matching engine: maps informal terms (e.g. "belly" → "abdominal") to medical conditions with HIGH/MODERATE/LOW confidence scoring. Also handles fuzzy search with Levenshtein distance via `SearchSuggestions.kt`.
@@ -78,3 +82,23 @@ Detail screens are separate Activities: `ArticleDetailActivity`, `FavoritesActiv
 - **Google Play Services Maps + Location** for clinic finder
 - **WorkManager 2.9.0** for background reminders
 - **Jsoup 1.17.2** for HTML content parsing in articles
+
+## Testing
+
+Unit tests live in `app/src/test/java/com/example/helloapp/`:
+
+- `ArticleViewModelSymptomMatchTest.kt` — symptom matching engine validation
+- `VaccinationDateParsingTest.kt` — vaccination age parsing logic
+- `WHOGrowthStandardsTest.kt` — WHO growth percentile assessments
+
+Test dependencies: JUnit 4.13.2, MockK 1.13.9. No instrumentation tests implemented yet (Espresso 3.5.1 is included as a dependency).
+
+## Permissions
+
+INTERNET, ACCESS_NETWORK_STATE, ACCESS_FINE_LOCATION, ACCESS_COARSE_LOCATION, VIBRATE, POST_NOTIFICATIONS, RECEIVE_BOOT_COMPLETED.
+
+## Task-Specific Workflows
+
+- `/code-review` — Quick code review (MVVM compliance, Kotlin idioms, i18n, security)
+- `/optimize` — Quick optimization guidance (Room queries, Flow patterns, RecyclerView, memory)
+- Subagents `code-reviewer` and `optimizer` are available for deeper, isolated analysis across multiple files

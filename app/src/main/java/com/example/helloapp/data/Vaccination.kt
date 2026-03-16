@@ -1,9 +1,13 @@
 package com.example.helloapp.data
 
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "vaccinations")
+@Entity(
+    tableName = "vaccinations",
+    indices = [Index("childId")]
+)
 data class Vaccination(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,

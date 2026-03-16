@@ -22,10 +22,10 @@ class ArticleAdapter(
 ) : ListAdapter<Article, ArticleAdapter.ArticleViewHolder>(ArticleDiffCallback()) {
 
     private var searchKeywords: List<String> = emptyList()
-    
+
     fun setSearchKeywords(query: String) {
         searchKeywords = query.lowercase().split(" ").filter { it.isNotBlank() && it.length > 1 }
-        notifyDataSetChanged()
+        notifyItemRangeChanged(0, itemCount, PAYLOAD_HIGHLIGHT)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
@@ -36,6 +36,14 @@ class ArticleAdapter(
 
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
         holder.bind(getItem(position))
+    }
+
+    override fun onBindViewHolder(holder: ArticleViewHolder, position: Int, payloads: MutableList<Any>) {
+        if (payloads.contains(PAYLOAD_HIGHLIGHT)) {
+            holder.bind(getItem(position))
+        } else {
+            super.onBindViewHolder(holder, position, payloads)
+        }
     }
 
     inner class ArticleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -98,6 +106,10 @@ class ArticleAdapter(
             }
             return spannable
         }
+    }
+
+    companion object {
+        private const val PAYLOAD_HIGHLIGHT = "highlight"
     }
 
     class ArticleDiffCallback : DiffUtil.ItemCallback<Article>() {

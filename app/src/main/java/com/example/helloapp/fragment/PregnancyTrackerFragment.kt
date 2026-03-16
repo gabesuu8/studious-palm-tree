@@ -98,7 +98,9 @@ class PregnancyTrackerFragment : Fragment() {
         txtNoVisits = view.findViewById(R.id.txtNoVisits)
         
         visitsRecyclerView?.layoutManager = LinearLayoutManager(requireContext())
-        
+        adapter = PrenatalVisitAdapter { visit -> showVisitDetails(visit) }
+        visitsRecyclerView?.adapter = adapter
+
         // Initialize ViewModel
         viewModel = ViewModelProvider(
             requireActivity(),
@@ -201,10 +203,6 @@ class PregnancyTrackerFragment : Fragment() {
                     
                     updatePregnancyDisplay(pregnancy)
                     
-                    adapter = PrenatalVisitAdapter { visit ->
-                        showVisitDetails(visit)
-                    }
-                    visitsRecyclerView?.adapter = adapter
                     adapter?.submitList(visits)
                     
                     if (visits.isEmpty()) {

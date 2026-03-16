@@ -50,17 +50,6 @@
             android:textSize="14sp"
             android:visibility="gone" />
 
-        <!-- Compare button (shown when ≥1 result selected) -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/compareButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginBottom="12dp"
-            android:text="@string/compare_conditions"
-            android:visibility="gone"
-            app:backgroundTint="@color/teal_700" />
-
     </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

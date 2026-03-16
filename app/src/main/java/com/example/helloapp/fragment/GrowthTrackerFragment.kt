@@ -64,6 +64,7 @@ class GrowthTrackerFragment : Fragment() {
     private var showWeightChart = true
 
     private var adapter: GrowthRecordAdapter? = null
+    private var currentChildId: Long? = null
     private var children: List<Child> = emptyList()
 
     override fun onCreateView(
@@ -256,10 +257,13 @@ class GrowthTrackerFragment : Fragment() {
                     statusCard?.visibility = View.VISIBLE
                     historyCard?.visibility = View.VISIBLE
 
-                    adapter = GrowthRecordAdapter(child) { record ->
-                        showRecordDetails(record, child)
+                    if (child.id != currentChildId) {
+                        currentChildId = child.id
+                        adapter = GrowthRecordAdapter(child) { record ->
+                            showRecordDetails(record, child)
+                        }
+                        recordsRecyclerView?.adapter = adapter
                     }
-                    recordsRecyclerView?.adapter = adapter
                     adapter?.submitList(records)
 
                     if (records.isNotEmpty()) {
@@ -603,5 +607,6 @@ class GrowthTrackerFragment : Fragment() {
         growthLineChart = null
         chartMetricChipGroup = null
         adapter = null
+        currentChildId = null
     }
 }

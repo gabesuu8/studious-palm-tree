@@ -8,6 +8,7 @@ import com.example.helloapp.data.AppDatabase
 import com.example.helloapp.data.Article
 import com.example.helloapp.repository.ArticleRepository
 import com.example.helloapp.service.ArticleFetcher
+import com.example.helloapp.util.SymptomCategories
 import com.example.helloapp.util.LanguageHelper
 import com.example.helloapp.util.keywordMatchesText
 import com.example.helloapp.util.matchesWithTypo
@@ -162,15 +163,15 @@ class ArticleViewModel(application: Application) : AndroidViewModel(application)
     private val conditionProfiles: List<ConditionProfile> = listOf(
         ConditionProfile(listOf("Malaria", "Paludisme"),
             listOf("fever", "headache", "chills", "sweating", "vomiting", "fatigue", "jaundice", "convulsions"),
-            listOf("chills", "sweating", "convulsions"),
+            listOf("chills", "sweating", "convulsions", "fever"),
             defaultUrgency = ConditionUrgency.EMERGENCY),
         ConditionProfile(listOf("Diarrhoeal", "diarrhée", "Diarrhea"),
             listOf("diarrhea", "dehydration", "thirst", "sunken", "ors", "stool", "loose"),
-            listOf("diarrhea", "loose", "ors"),
+            listOf("diarrhea", "loose", "ors", "dehydration", "thirst"),
             defaultUrgency = ConditionUrgency.SEE_DOCTOR),
         ConditionProfile(listOf("Dengue"),
             listOf("fever", "headache", "muscle", "joint", "rash", "nausea", "bleeding", "vomiting"),
-            listOf("joint", "muscle", "rash"),
+            listOf("joint", "muscle", "rash", "nausea"),
             defaultUrgency = ConditionUrgency.SEE_DOCTOR),
         ConditionProfile(listOf("Typhoid", "typhoïde"),
             listOf("fever", "headache", "abdominal", "constipation", "rash", "weakness", "typhoid"),
@@ -181,8 +182,8 @@ class ArticleViewModel(application: Application) : AndroidViewModel(application)
             listOf("jaundice", "yellow", "liver", "kidney"),
             defaultUrgency = ConditionUrgency.EMERGENCY),
         ConditionProfile(listOf("Tuberculosis", "Tuberculose"),
-            listOf("cough", "blood", "weight", "night sweats", "chest", "tuberculosis", "tb"),
-            listOf("night sweats", "tb", "tuberculosis"),
+            listOf("cough", "blood", "weight", "night sweats", "chest", "tuberculosis", "tb", "breathing"),
+            listOf("night sweats", "tb", "tuberculosis", "cough", "chest", "weight"),
             defaultUrgency = ConditionUrgency.SEE_DOCTOR),
         ConditionProfile(listOf("Schistosomiasis", "Bilharzia", "bilharziose"),
             listOf("urine", "blood", "water", "swim", "bilharzia", "schisto", "bladder"),
@@ -194,11 +195,11 @@ class ArticleViewModel(application: Application) : AndroidViewModel(application)
             defaultUrgency = ConditionUrgency.SEE_DOCTOR),
         ConditionProfile(listOf("Allergies", "Allergies"),
             listOf("sneezing", "runny nose", "itchy", "rash", "hives", "swelling", "anaphylaxis", "allergy"),
-            listOf("hives", "anaphylaxis", "itchy", "allergy"),
+            listOf("hives", "anaphylaxis", "itchy", "allergy", "swelling"),
             defaultUrgency = ConditionUrgency.HOME_CARE),
         ConditionProfile(listOf("Migraine", "Migraines"),
             listOf("headache", "migraine", "nausea", "light", "aura", "throbbing"),
-            listOf("migraine", "aura", "throbbing"),
+            listOf("migraine", "aura", "throbbing", "headache"),
             defaultUrgency = ConditionUrgency.HOME_CARE),
         ConditionProfile(listOf("Diabetes", "Diabète"),
             listOf("sugar", "thirst", "urination", "diabetes", "blood glucose", "insulin", "tired", "blurred"),
@@ -206,7 +207,7 @@ class ArticleViewModel(application: Application) : AndroidViewModel(application)
             defaultUrgency = ConditionUrgency.SEE_DOCTOR),
         ConditionProfile(listOf("First aid", "Premiers secours"),
             listOf("bleeding", "pressure", "wound", "cut", "burn", "choking", "unconscious"),
-            listOf("choking", "unconscious"),
+            listOf("choking", "unconscious", "bleeding"),
             defaultUrgency = ConditionUrgency.EMERGENCY),
         ConditionProfile(listOf("Fracture", "fractures", "Entorse", "sprains"),
             listOf("fracture", "sprain", "swelling", "pain", "bone", "ankle", "wrist", "rice"),
@@ -218,7 +219,7 @@ class ArticleViewModel(application: Application) : AndroidViewModel(application)
             defaultUrgency = ConditionUrgency.EMERGENCY),
         ConditionProfile(listOf("Cholera", "Choléra"),
             listOf("cholera", "watery", "rice water", "dehydration", "vomiting", "leg cramp"),
-            listOf("cholera", "rice water", "leg cramp"),
+            listOf("cholera", "rice water", "leg cramp", "vomiting"),
             defaultUrgency = ConditionUrgency.EMERGENCY),
         ConditionProfile(listOf("Soil-Transmitted", "Helminths", "Vers intestinaux"),
             listOf("worm", "worms", "deworm", "helminth", "stomach", "belly pain"),
@@ -254,11 +255,11 @@ class ArticleViewModel(application: Application) : AndroidViewModel(application)
             defaultUrgency = ConditionUrgency.HOME_CARE),
         ConditionProfile(listOf("Vitamin A", "vitamine A"),
             listOf("vitamin a", "night blind", "vision", "supplement"),
-            listOf("vitamin a", "night blind"),
+            listOf("vitamin a", "night blind", "vision"),
             defaultUrgency = ConditionUrgency.SEE_DOCTOR),
         ConditionProfile(listOf("Anaemia", "Anémie"),
-            listOf("anaemia", "anemia", "pale", "tired", "iron"),
-            listOf("anaemia", "anemia", "iron"),
+            listOf("anaemia", "anemia", "pale", "tired", "iron", "fatigue", "weakness", "dizziness"),
+            listOf("anaemia", "anemia", "iron", "fatigue", "weakness"),
             defaultUrgency = ConditionUrgency.SEE_DOCTOR),
         ConditionProfile(listOf("Hepatitis A", "Hépatite"),
             listOf("hepatitis", "jaundice", "waterborne", "yellow"),
@@ -270,8 +271,12 @@ class ArticleViewModel(application: Application) : AndroidViewModel(application)
             defaultUrgency = ConditionUrgency.EMERGENCY),
         ConditionProfile(listOf("Measles", "Rougeole"),
             listOf("measles", "rash", "fever", "cough", "vaccine"),
-            listOf("measles"),
+            listOf("measles", "rash"),
             defaultUrgency = ConditionUrgency.SEE_DOCTOR),
+        ConditionProfile(listOf("Influenza", "Grippe", "Flu"),
+            listOf("fever", "cough", "breathing", "fatigue", "headache", "muscle", "sore throat"),
+            listOf("cough", "breathing"),
+            defaultUrgency = ConditionUrgency.HOME_CARE),
         ConditionProfile(listOf("HIV", "VIH"),
             listOf("hiv", "aids", "test", "antiretroviral", "condom"),
             listOf("hiv", "aids", "antiretroviral"),
@@ -285,8 +290,8 @@ class ArticleViewModel(application: Application) : AndroidViewModel(application)
             listOf("ebola", "outbreak"),
             defaultUrgency = ConditionUrgency.EMERGENCY),
         ConditionProfile(listOf("Heat Exhaustion", "Épuisement", "chaleur"),
-            listOf("heat", "heatstroke", "exhaustion", "sun", "dehydrat"),
-            listOf("heatstroke", "heat"),
+            listOf("heat", "heatstroke", "exhaustion", "sun", "dehydrat", "dizziness"),
+            listOf("heatstroke", "heat", "dizziness"),
             defaultUrgency = ConditionUrgency.SEE_DOCTOR),
         ConditionProfile(listOf("Burns", "Brûlures"),
             listOf("burn", "scald", "blister"),
@@ -306,7 +311,7 @@ class ArticleViewModel(application: Application) : AndroidViewModel(application)
             defaultUrgency = ConditionUrgency.HOME_CARE),
         ConditionProfile(listOf("Depression", "Dépression"),
             listOf("depression", "sad", "hopeless", "sadness"),
-            listOf("depression", "hopeless"),
+            listOf("depression", "hopeless", "sad"),
             defaultUrgency = ConditionUrgency.SEE_DOCTOR),
         ConditionProfile(listOf("Mental Health", "Santé Mentale"),
             listOf("mental health", "mental", "sad", "anxious", "help"),
@@ -389,6 +394,22 @@ class ArticleViewModel(application: Application) : AndroidViewModel(application)
         const val MODERATE_CONFIDENCE_THRESHOLD = 0.25
     }
 
+    /** Valid symptom terms for "Check for" tips — filters out condition names and treatments. */
+    private val validCheckForTerms: Set<String> by lazy {
+        val terms = mutableSetOf<String>()
+        SymptomCategories.symptomCategories.forEach { (_, symptoms) ->
+            symptoms.forEach { (_, keyword) ->
+                keyword.split(" ").forEach { token -> terms.add(token) }
+            }
+        }
+        terms += setOf(
+            "constipation", "burn", "wound", "cut", "blister", "scald",
+            "choking", "unconscious", "convulsion", "seizure", "pale",
+            "sore", "throat", "leg", "cramp", "heat", "blood"
+        )
+        terms
+    }
+
     fun getSymptomMatchResults(articles: List<Article>, symptomText: String): List<SymptomMatchResult> {
         if (symptomText.isBlank()) return emptyList()
         val inputLower = symptomText.trim().lowercase()
@@ -398,44 +419,40 @@ class ArticleViewModel(application: Application) : AndroidViewModel(application)
 
         val results = mutableListOf<SymptomMatchResult>()
 
-        for (article in articles) {
-            var bestResult: SymptomMatchResult? = null
+        for (profile in conditionProfiles) {
+            val matched = mutableListOf<String>()
+            val keyMatched = mutableListOf<String>()
 
-            for (profile in conditionProfiles) {
-                if (!profile.titleSubstrings.any { article.title.contains(it, ignoreCase = true) }) continue
-
-                val matched = mutableListOf<String>()
-                val keyMatched = mutableListOf<String>()
-
-                for (k in profile.symptoms) {
-                    if (keywordPresent(k, tokens, expandedTerms)) {
-                        matched.add(k)
-                        if (k in profile.keySymptoms) keyMatched.add(k)
-                    }
-                }
-
-                val totalSymptoms = profile.symptoms.size
-                val passesMinimum = matched.size >= profile.minSymptoms || keyMatched.isNotEmpty()
-                if (!passesMinimum) continue
-
-                val rawScore = matched.size * COMMON_SYMPTOM_WEIGHT + keyMatched.size * KEY_SYMPTOM_WEIGHT
-                val conditionCoverage = matched.size.toDouble() / totalSymptoms
-                val score = rawScore * (0.4 + 0.6 * conditionCoverage)
-
-                val confidence = when {
-                    conditionCoverage >= HIGH_CONFIDENCE_THRESHOLD || keyMatched.size >= 2 -> MatchConfidence.HIGH
-                    conditionCoverage >= MODERATE_CONFIDENCE_THRESHOLD || keyMatched.isNotEmpty() -> MatchConfidence.MODERATE
-                    else -> MatchConfidence.LOW
-                }
-
-                val unmatchedKey = profile.keySymptoms.filter { it !in matched }.take(3)
-
-                if (bestResult == null || score > bestResult.score) {
-                    bestResult = SymptomMatchResult(article, confidence, profile.defaultUrgency, score, matched, unmatchedKey)
+            for (k in profile.symptoms) {
+                if (keywordPresent(k, tokens, expandedTerms)) {
+                    matched.add(k)
+                    if (k in profile.keySymptoms) keyMatched.add(k)
                 }
             }
 
-            if (bestResult != null) results.add(bestResult)
+            val passesMinimum = matched.size >= profile.minSymptoms || keyMatched.isNotEmpty()
+            if (!passesMinimum) continue
+
+            val matchingArticle = articles.firstOrNull { article ->
+                profile.titleSubstrings.any { article.title.contains(it, ignoreCase = true) }
+            } ?: continue
+
+            val totalSymptoms = profile.symptoms.size
+            val rawScore = matched.size * COMMON_SYMPTOM_WEIGHT + keyMatched.size * KEY_SYMPTOM_WEIGHT
+            val conditionCoverage = matched.size.toDouble() / totalSymptoms
+            val score = rawScore * (0.4 + 0.6 * conditionCoverage)
+
+            val confidence = when {
+                conditionCoverage >= HIGH_CONFIDENCE_THRESHOLD || keyMatched.size >= 2 -> MatchConfidence.HIGH
+                conditionCoverage >= MODERATE_CONFIDENCE_THRESHOLD || keyMatched.isNotEmpty() -> MatchConfidence.MODERATE
+                else -> MatchConfidence.LOW
+            }
+
+            val unmatchedKey = profile.keySymptoms
+                .filter { it !in matched && it.split(" ").all { term -> term in validCheckForTerms } }
+                .take(3)
+
+            results.add(SymptomMatchResult(matchingArticle, confidence, profile.defaultUrgency, score, matched, unmatchedKey))
         }
 
         return results

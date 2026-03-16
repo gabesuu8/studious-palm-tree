@@ -1,5 +1,6 @@
 package com.example.helloapp.util
 
+import com.example.helloapp.R
 import com.example.helloapp.adapter.SymptomChipColors
 
 object SymptomCategories {
@@ -64,6 +65,42 @@ object SymptomCategories {
         CategoryColors(0xFFF8BBD0.toInt(), 0xFFAD1457.toInt(), 0xFFC2185B.toInt()),  // Skin – pink
         CategoryColors(0xFFFFE0B2.toInt(), 0xFFE65100.toInt(), 0xFFF57C00.toInt()),  // Muscles – orange
         CategoryColors(0xFFE1BEE7.toInt(), 0xFF6A1B9A.toInt(), 0xFF7B1FA2.toInt())   // Mental – purple
+    )
+
+    val symptomDefinitions: Map<String, Int> = mapOf(
+        "fever"           to R.string.symptom_def_fever,
+        "fatigue tired"   to R.string.symptom_def_fatigue,
+        "chills"          to R.string.symptom_def_chills,
+        "sweating"        to R.string.symptom_def_sweating,
+        "weight"          to R.string.symptom_def_weight_loss,
+        "night sweats"    to R.string.symptom_def_night_sweats,
+        "headache"        to R.string.symptom_def_headache,
+        "stiff neck"      to R.string.symptom_def_stiff_neck,
+        "blurred vision"  to R.string.symptom_def_blurred_vision,
+        "convulsions"     to R.string.symptom_def_convulsions,
+        "dizziness"       to R.string.symptom_def_dizziness,
+        "nausea"          to R.string.symptom_def_nausea,
+        "vomiting"        to R.string.symptom_def_vomiting,
+        "diarrhea"        to R.string.symptom_def_diarrhea,
+        "abdominal"       to R.string.symptom_def_abdominal,
+        "dehydration"     to R.string.symptom_def_dehydration,
+        "thirst"          to R.string.symptom_def_thirst,
+        "cough"           to R.string.symptom_def_cough,
+        "chest"           to R.string.symptom_def_chest,
+        "breathing"       to R.string.symptom_def_breathing,
+        "rash"            to R.string.symptom_def_rash,
+        "itchy"           to R.string.symptom_def_itchy,
+        "jaundice"        to R.string.symptom_def_jaundice,
+        "swelling"        to R.string.symptom_def_swelling,
+        "hives"           to R.string.symptom_def_hives,
+        "bleeding"        to R.string.symptom_def_bleeding,
+        "muscle pain"     to R.string.symptom_def_muscle_pain,
+        "joint"           to R.string.symptom_def_joint,
+        "weakness"        to R.string.symptom_def_weakness,
+        "anxiety"         to R.string.symptom_def_anxiety,
+        "sad"             to R.string.symptom_def_sad,
+        "stress"          to R.string.symptom_def_stress,
+        "hopeless"        to R.string.symptom_def_hopeless
     )
 
     fun buildSymptomColorMap(): Map<String, SymptomChipColors> {

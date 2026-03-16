@@ -96,6 +96,18 @@ class SymptomPredictorFragment : Fragment() {
         val iconTint = ColorStateList.valueOf(white)
         val radius = 20f * density
 
+        // Hint for long-press feature
+        val hintText = TextView(ctx).apply {
+            text = getString(R.string.symptom_long_press_hint)
+            textSize = 12f
+            setTextColor(ContextCompat.getColor(ctx, android.R.color.darker_gray))
+            layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            ).apply { setMargins(0, 0, 0, (12 * density).toInt()) }
+        }
+        container.addView(hintText)
+
         SymptomCategories.symptomCategories.forEachIndexed { catIndex, (category, symptoms) ->
 
             val colors = SymptomCategories.categoryColorsList[catIndex]
@@ -164,6 +176,17 @@ class SymptomPredictorFragment : Fragment() {
                         }
                         clearChipsButton?.visibility =
                             if (selectedChipKeywords.isNotEmpty()) View.VISIBLE else View.GONE
+                    }
+                    setOnLongClickListener {
+                        val defResId = SymptomCategories.symptomDefinitions[keyword]
+                        if (defResId != null) {
+                            AlertDialog.Builder(ctx)
+                                .setTitle(label)
+                                .setMessage(getString(defResId))
+                                .setPositiveButton(android.R.string.ok, null)
+                                .show()
+                        }
+                        true
                     }
                 }
                 chipGroup.addView(chip)
