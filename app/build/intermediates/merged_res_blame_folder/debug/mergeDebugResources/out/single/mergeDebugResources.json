@@ -28,10 +28,6 @@
         "source": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-main-51:/drawable/ic_map.xml"
     },
     {
-        "merged": "com.example.helloapp-debug-49:/layout_item_vaccination.xml.flat",
-        "source": "com.example.helloapp-main-51:/layout/item_vaccination.xml"
-    },
-    {
         "merged": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-debug-49:/drawable_ic_vaccine.xml.flat",
         "source": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-main-51:/drawable/ic_vaccine.xml"
     },
@@ -136,10 +132,6 @@
         "source": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-main-51:/anim/slide_in_left.xml"
     },
     {
-        "merged": "com.example.helloapp-debug-49:/layout_item_dose_row.xml.flat",
-        "source": "com.example.helloapp-main-51:/layout/item_dose_row.xml"
-    },
-    {
         "merged": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-debug-49:/layout_activity_main.xml.flat",
         "source": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-main-51:/layout/activity_main.xml"
     },
@@ -192,6 +184,10 @@
         "source": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-main-51:/drawable/ic_clock.xml"
     },
     {
+        "merged": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-debug-49:/layout_item_dose_row.xml.flat",
+        "source": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-main-51:/layout/item_dose_row.xml"
+    },
+    {
         "merged": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-debug-49:/layout_activity_onboarding.xml.flat",
         "source": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-main-51:/layout/activity_onboarding.xml"
     },
@@ -214,6 +210,14 @@
     {
         "merged": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-debug-49:/drawable_ic_health.xml.flat",
         "source": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-main-51:/drawable/ic_health.xml"
+    },
+    {
+        "merged": "com.example.helloapp-debug-49:/menu_bottom_nav_menu.xml.flat",
+        "source": "com.example.helloapp-main-51:/menu/bottom_nav_menu.xml"
+    },
+    {
+        "merged": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-debug-49:/drawable_bottom_nav_item_bg.xml.flat",
+        "source": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-main-51:/drawable/bottom_nav_item_bg.xml"
     },
     {
         "merged": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-debug-49:/layout_activity_favorites.xml.flat",

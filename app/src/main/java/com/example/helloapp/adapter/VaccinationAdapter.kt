@@ -32,6 +32,7 @@ class VaccinationAdapter(
     companion object {
         private const val VIEW_TYPE_HEADER = 0
         private const val VIEW_TYPE_VACCINATION = 1
+        private val DATE_FORMAT = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
     }
 
     var expandedIds: Set<Int> = emptySet()
@@ -183,8 +184,7 @@ class VaccinationAdapter(
                 expandIndicator.text = if (isExpanded) "▲" else "▼"
                 expandIndicator.visibility = View.VISIBLE
             } else if (vaccination.isFullyCompleted && vaccination.lastDoseDate != null) {
-                val dateFormat = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
-                dateText.text = "✓ ${dateFormat.format(Date(vaccination.lastDoseDate))}"
+                dateText.text = "✓ ${DATE_FORMAT.format(Date(vaccination.lastDoseDate))}"
                 dateText.visibility = View.VISIBLE
                 expandIndicator.visibility = View.GONE
             } else {
@@ -206,20 +206,29 @@ class VaccinationAdapter(
                 populateDoseRows(vaccination)
             } else {
                 doseListContainer.visibility = View.GONE
-                doseListContainer.removeAllViews()
             }
         }
 
         private fun populateDoseRows(vaccination: Vaccination) {
-            doseListContainer.removeAllViews()
             val context = itemView.context
             val inflater = LayoutInflater.from(context)
+            val needed = vaccination.totalDoses
+            val existing = doseListContainer.childCount
+
+            // Remove extra views
+            if (existing > needed) {
+                doseListContainer.removeViews(needed, existing - needed)
+            }
+            // Add missing views
+            for (i in existing until needed) {
+                inflater.inflate(R.layout.item_dose_row, doseListContainer, true)
+            }
+
             val doseDates = vaccination.parsedDoseDates
             val scheduleAges = vaccination.doseSchedule.split("|")
-            val dateFormat = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
 
-            for (i in 0 until vaccination.totalDoses) {
-                val row = inflater.inflate(R.layout.item_dose_row, doseListContainer, false)
+            for (i in 0 until needed) {
+                val row = doseListContainer.getChildAt(i)
                 val dot = row.findViewById<View>(R.id.doseStatusDot)
                 val label = row.findViewById<TextView>(R.id.doseLabel)
                 val action = row.findViewById<TextView>(R.id.doseAction)
@@ -241,7 +250,7 @@ class VaccinationAdapter(
 
                 // Action text
                 if (isCompleted) {
-                    action.text = dateFormat.format(Date(doseDate!!))
+                    action.text = DATE_FORMAT.format(Date(doseDate!!))
                     action.setTextColor(0xFF4CAF50.toInt())
                     action.setOnClickListener {
                         currentVaccination?.let { v -> onUndoDose(v, i) }
@@ -253,8 +262,6 @@ class VaccinationAdapter(
                         currentVaccination?.let { v -> onRecordDose(v, i) }
                     }
                 }
-
-                doseListContainer.addView(row)
             }
         }
     }

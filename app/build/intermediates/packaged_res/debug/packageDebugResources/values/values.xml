@@ -72,6 +72,7 @@
     <string name="delete">Delete</string>
     <string name="delete_child">Delete child</string>
     <string name="delete_child_confirm">Remove this child and all their growth and vaccine records? This cannot be undone.</string>
+    <string name="delete_measurement_confirm">Delete this measurement? This cannot be undone.</string>
     <string name="did_you_mean">Did you mean: %1$s?</string>
     <string name="differentiating_tip">Check for: %1$s</string>
     <string name="directions">Directions</string>
@@ -141,6 +142,8 @@
     <string name="muac_helper">Mid-Upper Arm Circumference · ages 6 mo–5 yr</string>
     <string name="muac_optional">MUAC (cm) — Optional</string>
     <string name="narrow_down_tip">To narrow down, check for:\n%1$s</string>
+    <string name="nav_predictor">Predictor</string>
+    <string name="nav_vaccines">Vaccines</string>
     <string name="next">Next</string>
     <string name="next_vaccine_due_by">Next due: %1$s by %2$s</string>
     <string name="next_visit">Next visit</string>
@@ -290,9 +293,6 @@
     <string name="who_minus2sd">−2 SD</string>
     <string name="who_minus3sd">−3 SD</string>
     <string name="who_z_scores">WHO Z-Scores</string>
-    <style name="BottomNavIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
-        <item name="android:color">@color/teal_100</item>
-    </style>
     <style name="ShapeAppearance.App.Rounded.Large" parent="ShapeAppearance.MaterialComponents.LargeComponent">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">24dp</item>

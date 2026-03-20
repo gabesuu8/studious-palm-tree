@@ -580,7 +580,7 @@ class GrowthTrackerFragment : Fragment() {
             .setNegativeButton(R.string.delete) { _, _ ->
                 AlertDialog.Builder(ctx)
                     .setTitle(R.string.delete)
-                    .setMessage(getString(R.string.delete_child_confirm))
+                    .setMessage(getString(R.string.delete_measurement_confirm))
                     .setPositiveButton(android.R.string.ok) { _, _ -> viewModel?.deleteGrowthRecord(record) }
                     .setNegativeButton(android.R.string.cancel, null)
                     .show()

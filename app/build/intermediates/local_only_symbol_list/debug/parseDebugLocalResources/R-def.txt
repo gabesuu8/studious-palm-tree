@@ -36,6 +36,7 @@ color urgency_home_care
 color urgency_see_doctor
 color white
 drawable age_badge_background
+drawable bottom_nav_item_bg
 drawable category_badge_background
 drawable circle_background_teal
 drawable circle_dot
@@ -321,6 +322,7 @@ string days_left
 string delete
 string delete_child
 string delete_child_confirm
+string delete_measurement_confirm
 string did_you_mean
 string differentiating_tip
 string directions
@@ -390,6 +392,8 @@ string muac
 string muac_helper
 string muac_optional
 string narrow_down_tip
+string nav_predictor
+string nav_vaccines
 string next
 string next_vaccine_due_by
 string next_visit
@@ -539,7 +543,6 @@ string who_median
 string who_minus2sd
 string who_minus3sd
 string who_z_scores
-style BottomNavIndicator
 style ShapeAppearance.App.Rounded.Large
 style ShapeAppearance.App.Rounded.Medium
 style ShapeAppearance.App.Rounded.Small

@@ -111,6 +111,7 @@
     <string name="delete">Supprimer</string>
     <string name="delete_child">Supprimer l\'enfant</string>
     <string name="delete_child_confirm">Supprimer cet enfant et tous ses enregistrements de croissance et de vaccins ? Cette action est irréversible.</string>
+    <string name="delete_measurement_confirm">Supprimer cette mesure ? Cette action est irréversible.</string>
     <string name="did_you_mean">Voulez-vous dire : %1$s ?</string>
     <string name="directions">Itinéraire</string>
     <string name="disclaimer_articles">Cette application et ses articles sont à titre informatif uniquement. Ils ne remplacent pas l\'avis médical professionnel, le diagnostic ou le traitement. Consultez toujours un médecin ou un professionnel de santé qualifié.</string>
@@ -237,6 +238,8 @@
     <string name="muac_helper">Périmètre Brachial · âges 6 mois–5 ans</string>
     <string name="muac_optional">PB (cm) — Optionnel</string>
     <string name="narrow_down_tip">Pour affiner, vérifiez :\n%1$s</string>
+    <string name="nav_predictor">Prédicteur</string>
+    <string name="nav_vaccines">Vaccins</string>
     <string name="next">Suivant</string>
     <string name="next_vaccine_due_by">Prochaine échéance : %1$s avant le %2$s</string>
     <string name="next_visit">Prochaine visite</string>

@@ -14,7 +14,7 @@
     <item
         android:id="@+id/nav_trackers"
         android:icon="@drawable/ic_vaccine"
-        android:title="@string/vaccines_and_growth" />
+        android:title="@string/nav_vaccines" />
 
     <item
         android:id="@+id/nav_pregnancy"
@@ -24,6 +24,6 @@
     <item
         android:id="@+id/nav_symptoms"
         android:icon="@android:drawable/ic_menu_search"
-        android:title="@string/symptom_predictor" />
+        android:title="@string/nav_predictor" />
 
 </menu>

@@ -23,7 +23,7 @@
         android:background="@android:color/white"
         app:menu="@menu/bottom_nav_menu"
         app:labelVisibilityMode="labeled"
-        app:itemActiveIndicatorStyle="@style/BottomNavIndicator"
+        app:itemBackground="@drawable/bottom_nav_item_bg"
         app:itemIconTint="@color/bottom_nav_color"
         app:itemTextColor="@color/bottom_nav_color"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -13,10 +13,13 @@ import com.example.helloapp.util.LanguageHelper
 import com.example.helloapp.util.keywordMatchesText
 import com.example.helloapp.util.matchesWithTypo
 import com.example.helloapp.util.suggestClosestMatchFromTexts
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.debounce
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 
 class ArticleViewModel(application: Application) : AndroidViewModel(application) {
@@ -69,9 +72,12 @@ class ArticleViewModel(application: Application) : AndroidViewModel(application)
         repository.allCategories
     }
     
+    @OptIn(kotlinx.coroutines.FlowPreview::class)
+    private val debouncedQuery = _searchQuery.debounce(150)
+
     /** Suggested search when no results (spelling / "did you mean"). */
     val suggestedSearchQuery: Flow<String?> by lazy {
-        combine(allArticles, _searchQuery, _selectedCategory) { articles, query, category ->
+        combine(allArticles, debouncedQuery, _selectedCategory) { articles, query, category ->
             if (query.isBlank()) return@combine null
             var filtered = articles
             if (category != null) filtered = filtered.filter { it.category == category }
@@ -89,12 +95,12 @@ class ArticleViewModel(application: Application) : AndroidViewModel(application)
             }
             if (filtered.isNotEmpty()) return@combine null
             suggestClosestMatchFromTexts(query, categoryFiltered.map { it.title to (it.title + " " + it.summary) })
-        }
+        }.flowOn(Dispatchers.Default)
     }
 
     // Filtered articles based on search query and category
     val filteredArticles: Flow<List<Article>> by lazy {
-        combine(allArticles, _searchQuery, _selectedCategory) { articles, query, category ->
+        combine(allArticles, debouncedQuery, _selectedCategory) { articles, query, category ->
             var filtered = articles
             
             // Filter by category first
@@ -132,9 +138,9 @@ class ArticleViewModel(application: Application) : AndroidViewModel(application)
                     score
                 }
             }
-        }
+        }.flowOn(Dispatchers.Default)
     }
-    
+
     fun setSearchQuery(query: String) {
         _searchQuery.value = query
     }

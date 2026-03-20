@@ -9,6 +9,8 @@
     <string name="vaccinations">Vaccines</string>
     <string name="vaccines_and_growth">Vaccines &amp; Growth</string>
     <string name="symptom_predictor">Symptom predictor</string>
+    <string name="nav_vaccines">Vaccines</string>
+    <string name="nav_predictor">Predictor</string>
     
     <!-- Main Activity -->
     <string name="search_hint">Search health topics (e.g., malaria, fever)</string>
@@ -132,6 +134,7 @@
     <string name="add_child">Add Child</string>
     <string name="delete_child">Delete child</string>
     <string name="delete_child_confirm">Remove this child and all their growth and vaccine records? This cannot be undone.</string>
+    <string name="delete_measurement_confirm">Delete this measurement? This cannot be undone.</string>
     <string name="no_children">No children registered.\nTap \"Add Child\" to start tracking growth.</string>
     <string name="current_status">Current Status</string>
     <string name="weight">Weight</string>

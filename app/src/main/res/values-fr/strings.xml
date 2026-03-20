@@ -9,6 +9,8 @@
     <string name="vaccinations">Vaccins</string>
     <string name="vaccines_and_growth">Vaccins &amp; Croissance</string>
     <string name="symptom_predictor">Prédicteur de symptômes</string>
+    <string name="nav_vaccines">Vaccins</string>
+    <string name="nav_predictor">Prédicteur</string>
     
     <!-- Main Activity -->
     <string name="search_hint">Rechercher des sujets de santé (ex: paludisme, fièvre)</string>
@@ -124,6 +126,7 @@
     <string name="add_child">Ajouter un enfant</string>
     <string name="delete_child">Supprimer l\'enfant</string>
     <string name="delete_child_confirm">Supprimer cet enfant et tous ses enregistrements de croissance et de vaccins ? Cette action est irréversible.</string>
+    <string name="delete_measurement_confirm">Supprimer cette mesure ? Cette action est irréversible.</string>
     <string name="no_children">Aucun enfant enregistré.\nAppuyez sur \"Ajouter un enfant\" pour commencer le suivi.</string>
     <string name="current_status">État Actuel</string>
     <string name="weight">Poids</string>
