@@ -46,13 +46,15 @@ public final class VaccinationDao_Impl implements VaccinationDao {
 
   private final SharedSQLiteStatement __preparedStmtOfDeleteAll;
 
+  private final SharedSQLiteStatement __preparedStmtOfDeleteDuplicates;
+
   public VaccinationDao_Impl(@NonNull final RoomDatabase __db) {
     this.__db = __db;
     this.__insertionAdapterOfVaccination = new EntityInsertionAdapter<Vaccination>(__db) {
       @Override
       @NonNull
       protected String createQuery() {
-        return "INSERT OR REPLACE INTO `vaccinations` (`id`,`name`,`description`,`recommendedAge`,`category`,`isCompleted`,`dateCompleted`,`childId`) VALUES (nullif(?, 0),?,?,?,?,?,?,?)";
+        return "INSERT OR IGNORE INTO `vaccinations` (`id`,`name`,`description`,`totalDoses`,`completedDoses`,`doseSchedule`,`category`,`lastDoseDate`,`childId`,`doseDates`) VALUES (nullif(?, 0),?,?,?,?,?,?,?,?,?)";
       }
 
       @Override
@@ -69,24 +71,29 @@ public final class VaccinationDao_Impl implements VaccinationDao {
         } else {
           statement.bindString(3, entity.getDescription());
         }
-        if (entity.getRecommendedAge() == null) {
-          statement.bindNull(4);
+        statement.bindLong(4, entity.getTotalDoses());
+        statement.bindLong(5, entity.getCompletedDoses());
+        if (entity.getDoseSchedule() == null) {
+          statement.bindNull(6);
         } else {
-          statement.bindString(4, entity.getRecommendedAge());
+          statement.bindString(6, entity.getDoseSchedule());
         }
         if (entity.getCategory() == null) {
-          statement.bindNull(5);
-        } else {
-          statement.bindString(5, entity.getCategory());
-        }
-        final int _tmp = entity.isCompleted() ? 1 : 0;
-        statement.bindLong(6, _tmp);
-        if (entity.getDateCompleted() == null) {
           statement.bindNull(7);
         } else {
-          statement.bindLong(7, entity.getDateCompleted());
+          statement.bindString(7, entity.getCategory());
         }
-        statement.bindLong(8, entity.getChildId());
+        if (entity.getLastDoseDate() == null) {
+          statement.bindNull(8);
+        } else {
+          statement.bindLong(8, entity.getLastDoseDate());
+        }
+        statement.bindLong(9, entity.getChildId());
+        if (entity.getDoseDates() == null) {
+          statement.bindNull(10);
+        } else {
+          statement.bindString(10, entity.getDoseDates());
+        }
       }
     };
     this.__deletionAdapterOfVaccination = new EntityDeletionOrUpdateAdapter<Vaccination>(__db) {
@@ -106,7 +113,7 @@ public final class VaccinationDao_Impl implements VaccinationDao {
       @Override
       @NonNull
       protected String createQuery() {
-        return "UPDATE OR ABORT `vaccinations` SET `id` = ?,`name` = ?,`description` = ?,`recommendedAge` = ?,`category` = ?,`isCompleted` = ?,`dateCompleted` = ?,`childId` = ? WHERE `id` = ?";
+        return "UPDATE OR ABORT `vaccinations` SET `id` = ?,`name` = ?,`description` = ?,`totalDoses` = ?,`completedDoses` = ?,`doseSchedule` = ?,`category` = ?,`lastDoseDate` = ?,`childId` = ?,`doseDates` = ? WHERE `id` = ?";
       }
 
       @Override
@@ -123,25 +130,30 @@ public final class VaccinationDao_Impl implements VaccinationDao {
         } else {
           statement.bindString(3, entity.getDescription());
         }
-        if (entity.getRecommendedAge() == null) {
-          statement.bindNull(4);
+        statement.bindLong(4, entity.getTotalDoses());
+        statement.bindLong(5, entity.getCompletedDoses());
+        if (entity.getDoseSchedule() == null) {
+          statement.bindNull(6);
         } else {
-          statement.bindString(4, entity.getRecommendedAge());
+          statement.bindString(6, entity.getDoseSchedule());
         }
         if (entity.getCategory() == null) {
-          statement.bindNull(5);
-        } else {
-          statement.bindString(5, entity.getCategory());
-        }
-        final int _tmp = entity.isCompleted() ? 1 : 0;
-        statement.bindLong(6, _tmp);
-        if (entity.getDateCompleted() == null) {
           statement.bindNull(7);
         } else {
-          statement.bindLong(7, entity.getDateCompleted());
+          statement.bindString(7, entity.getCategory());
         }
-        statement.bindLong(8, entity.getChildId());
-        statement.bindLong(9, entity.getId());
+        if (entity.getLastDoseDate() == null) {
+          statement.bindNull(8);
+        } else {
+          statement.bindLong(8, entity.getLastDoseDate());
+        }
+        statement.bindLong(9, entity.getChildId());
+        if (entity.getDoseDates() == null) {
+          statement.bindNull(10);
+        } else {
+          statement.bindString(10, entity.getDoseDates());
+        }
+        statement.bindLong(11, entity.getId());
       }
     };
     this.__preparedStmtOfDeleteAllForChild = new SharedSQLiteStatement(__db) {
@@ -165,6 +177,14 @@ public final class VaccinationDao_Impl implements VaccinationDao {
       @NonNull
       public String createQuery() {
         final String _query = "DELETE FROM vaccinations";
+        return _query;
+      }
+    };
+    this.__preparedStmtOfDeleteDuplicates = new SharedSQLiteStatement(__db) {
+      @Override
+      @NonNull
+      public String createQuery() {
+        final String _query = "DELETE FROM vaccinations WHERE id NOT IN (SELECT MIN(id) FROM vaccinations GROUP BY name, childId)";
         return _query;
       }
     };
@@ -319,6 +339,29 @@ public final class VaccinationDao_Impl implements VaccinationDao {
   }
 
   @Override
+  public Object deleteDuplicates(final Continuation<? super Unit> $completion) {
+    return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
+      @Override
+      @NonNull
+      public Unit call() throws Exception {
+        final SupportSQLiteStatement _stmt = __preparedStmtOfDeleteDuplicates.acquire();
+        try {
+          __db.beginTransaction();
+          try {
+            _stmt.executeUpdateDelete();
+            __db.setTransactionSuccessful();
+            return Unit.INSTANCE;
+          } finally {
+            __db.endTransaction();
+          }
+        } finally {
+          __preparedStmtOfDeleteDuplicates.release(_stmt);
+        }
+      }
+    }, $completion);
+  }
+
+  @Override
   public Flow<List<Vaccination>> getVaccinationsForChild(final long childId) {
     final String _sql = "SELECT * FROM vaccinations WHERE childId = ? ORDER BY id ASC";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
@@ -333,11 +376,13 @@ public final class VaccinationDao_Impl implements VaccinationDao {
           final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
           final int _cursorIndexOfName = CursorUtil.getColumnIndexOrThrow(_cursor, "name");
           final int _cursorIndexOfDescription = CursorUtil.getColumnIndexOrThrow(_cursor, "description");
-          final int _cursorIndexOfRecommendedAge = CursorUtil.getColumnIndexOrThrow(_cursor, "recommendedAge");
+          final int _cursorIndexOfTotalDoses = CursorUtil.getColumnIndexOrThrow(_cursor, "totalDoses");
+          final int _cursorIndexOfCompletedDoses = CursorUtil.getColumnIndexOrThrow(_cursor, "completedDoses");
+          final int _cursorIndexOfDoseSchedule = CursorUtil.getColumnIndexOrThrow(_cursor, "doseSchedule");
           final int _cursorIndexOfCategory = CursorUtil.getColumnIndexOrThrow(_cursor, "category");
-          final int _cursorIndexOfIsCompleted = CursorUtil.getColumnIndexOrThrow(_cursor, "isCompleted");
-          final int _cursorIndexOfDateCompleted = CursorUtil.getColumnIndexOrThrow(_cursor, "dateCompleted");
+          final int _cursorIndexOfLastDoseDate = CursorUtil.getColumnIndexOrThrow(_cursor, "lastDoseDate");
           final int _cursorIndexOfChildId = CursorUtil.getColumnIndexOrThrow(_cursor, "childId");
+          final int _cursorIndexOfDoseDates = CursorUtil.getColumnIndexOrThrow(_cursor, "doseDates");
           final List<Vaccination> _result = new ArrayList<Vaccination>(_cursor.getCount());
           while (_cursor.moveToNext()) {
             final Vaccination _item;
@@ -355,11 +400,15 @@ public final class VaccinationDao_Impl implements VaccinationDao {
             } else {
               _tmpDescription = _cursor.getString(_cursorIndexOfDescription);
             }
-            final String _tmpRecommendedAge;
-            if (_cursor.isNull(_cursorIndexOfRecommendedAge)) {
-              _tmpRecommendedAge = null;
+            final int _tmpTotalDoses;
+            _tmpTotalDoses = _cursor.getInt(_cursorIndexOfTotalDoses);
+            final int _tmpCompletedDoses;
+            _tmpCompletedDoses = _cursor.getInt(_cursorIndexOfCompletedDoses);
+            final String _tmpDoseSchedule;
+            if (_cursor.isNull(_cursorIndexOfDoseSchedule)) {
+              _tmpDoseSchedule = null;
             } else {
-              _tmpRecommendedAge = _cursor.getString(_cursorIndexOfRecommendedAge);
+              _tmpDoseSchedule = _cursor.getString(_cursorIndexOfDoseSchedule);
             }
             final String _tmpCategory;
             if (_cursor.isNull(_cursorIndexOfCategory)) {
@@ -367,19 +416,21 @@ public final class VaccinationDao_Impl implements VaccinationDao {
             } else {
               _tmpCategory = _cursor.getString(_cursorIndexOfCategory);
             }
-            final boolean _tmpIsCompleted;
-            final int _tmp;
-            _tmp = _cursor.getInt(_cursorIndexOfIsCompleted);
-            _tmpIsCompleted = _tmp != 0;
-            final Long _tmpDateCompleted;
-            if (_cursor.isNull(_cursorIndexOfDateCompleted)) {
-              _tmpDateCompleted = null;
+            final Long _tmpLastDoseDate;
+            if (_cursor.isNull(_cursorIndexOfLastDoseDate)) {
+              _tmpLastDoseDate = null;
             } else {
-              _tmpDateCompleted = _cursor.getLong(_cursorIndexOfDateCompleted);
+              _tmpLastDoseDate = _cursor.getLong(_cursorIndexOfLastDoseDate);
             }
             final long _tmpChildId;
             _tmpChildId = _cursor.getLong(_cursorIndexOfChildId);
-            _item = new Vaccination(_tmpId,_tmpName,_tmpDescription,_tmpRecommendedAge,_tmpCategory,_tmpIsCompleted,_tmpDateCompleted,_tmpChildId);
+            final String _tmpDoseDates;
+            if (_cursor.isNull(_cursorIndexOfDoseDates)) {
+              _tmpDoseDates = null;
+            } else {
+              _tmpDoseDates = _cursor.getString(_cursorIndexOfDoseDates);
+            }
+            _item = new Vaccination(_tmpId,_tmpName,_tmpDescription,_tmpTotalDoses,_tmpCompletedDoses,_tmpDoseSchedule,_tmpCategory,_tmpLastDoseDate,_tmpChildId,_tmpDoseDates);
             _result.add(_item);
           }
           return _result;
@@ -408,11 +459,13 @@ public final class VaccinationDao_Impl implements VaccinationDao {
           final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
           final int _cursorIndexOfName = CursorUtil.getColumnIndexOrThrow(_cursor, "name");
           final int _cursorIndexOfDescription = CursorUtil.getColumnIndexOrThrow(_cursor, "description");
-          final int _cursorIndexOfRecommendedAge = CursorUtil.getColumnIndexOrThrow(_cursor, "recommendedAge");
+          final int _cursorIndexOfTotalDoses = CursorUtil.getColumnIndexOrThrow(_cursor, "totalDoses");
+          final int _cursorIndexOfCompletedDoses = CursorUtil.getColumnIndexOrThrow(_cursor, "completedDoses");
+          final int _cursorIndexOfDoseSchedule = CursorUtil.getColumnIndexOrThrow(_cursor, "doseSchedule");
           final int _cursorIndexOfCategory = CursorUtil.getColumnIndexOrThrow(_cursor, "category");
-          final int _cursorIndexOfIsCompleted = CursorUtil.getColumnIndexOrThrow(_cursor, "isCompleted");
-          final int _cursorIndexOfDateCompleted = CursorUtil.getColumnIndexOrThrow(_cursor, "dateCompleted");
+          final int _cursorIndexOfLastDoseDate = CursorUtil.getColumnIndexOrThrow(_cursor, "lastDoseDate");
           final int _cursorIndexOfChildId = CursorUtil.getColumnIndexOrThrow(_cursor, "childId");
+          final int _cursorIndexOfDoseDates = CursorUtil.getColumnIndexOrThrow(_cursor, "doseDates");
           final List<Vaccination> _result = new ArrayList<Vaccination>(_cursor.getCount());
           while (_cursor.moveToNext()) {
             final Vaccination _item;
@@ -430,11 +483,15 @@ public final class VaccinationDao_Impl implements VaccinationDao {
             } else {
               _tmpDescription = _cursor.getString(_cursorIndexOfDescription);
             }
-            final String _tmpRecommendedAge;
-            if (_cursor.isNull(_cursorIndexOfRecommendedAge)) {
-              _tmpRecommendedAge = null;
+            final int _tmpTotalDoses;
+            _tmpTotalDoses = _cursor.getInt(_cursorIndexOfTotalDoses);
+            final int _tmpCompletedDoses;
+            _tmpCompletedDoses = _cursor.getInt(_cursorIndexOfCompletedDoses);
+            final String _tmpDoseSchedule;
+            if (_cursor.isNull(_cursorIndexOfDoseSchedule)) {
+              _tmpDoseSchedule = null;
             } else {
-              _tmpRecommendedAge = _cursor.getString(_cursorIndexOfRecommendedAge);
+              _tmpDoseSchedule = _cursor.getString(_cursorIndexOfDoseSchedule);
             }
             final String _tmpCategory;
             if (_cursor.isNull(_cursorIndexOfCategory)) {
@@ -442,19 +499,21 @@ public final class VaccinationDao_Impl implements VaccinationDao {
             } else {
               _tmpCategory = _cursor.getString(_cursorIndexOfCategory);
             }
-            final boolean _tmpIsCompleted;
-            final int _tmp;
-            _tmp = _cursor.getInt(_cursorIndexOfIsCompleted);
-            _tmpIsCompleted = _tmp != 0;
-            final Long _tmpDateCompleted;
-            if (_cursor.isNull(_cursorIndexOfDateCompleted)) {
-              _tmpDateCompleted = null;
+            final Long _tmpLastDoseDate;
+            if (_cursor.isNull(_cursorIndexOfLastDoseDate)) {
+              _tmpLastDoseDate = null;
             } else {
-              _tmpDateCompleted = _cursor.getLong(_cursorIndexOfDateCompleted);
+              _tmpLastDoseDate = _cursor.getLong(_cursorIndexOfLastDoseDate);
             }
             final long _tmpChildId;
             _tmpChildId = _cursor.getLong(_cursorIndexOfChildId);
-            _item = new Vaccination(_tmpId,_tmpName,_tmpDescription,_tmpRecommendedAge,_tmpCategory,_tmpIsCompleted,_tmpDateCompleted,_tmpChildId);
+            final String _tmpDoseDates;
+            if (_cursor.isNull(_cursorIndexOfDoseDates)) {
+              _tmpDoseDates = null;
+            } else {
+              _tmpDoseDates = _cursor.getString(_cursorIndexOfDoseDates);
+            }
+            _item = new Vaccination(_tmpId,_tmpName,_tmpDescription,_tmpTotalDoses,_tmpCompletedDoses,_tmpDoseSchedule,_tmpCategory,_tmpLastDoseDate,_tmpChildId,_tmpDoseDates);
             _result.add(_item);
           }
           return _result;
@@ -485,11 +544,13 @@ public final class VaccinationDao_Impl implements VaccinationDao {
           final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
           final int _cursorIndexOfName = CursorUtil.getColumnIndexOrThrow(_cursor, "name");
           final int _cursorIndexOfDescription = CursorUtil.getColumnIndexOrThrow(_cursor, "description");
-          final int _cursorIndexOfRecommendedAge = CursorUtil.getColumnIndexOrThrow(_cursor, "recommendedAge");
+          final int _cursorIndexOfTotalDoses = CursorUtil.getColumnIndexOrThrow(_cursor, "totalDoses");
+          final int _cursorIndexOfCompletedDoses = CursorUtil.getColumnIndexOrThrow(_cursor, "completedDoses");
+          final int _cursorIndexOfDoseSchedule = CursorUtil.getColumnIndexOrThrow(_cursor, "doseSchedule");
           final int _cursorIndexOfCategory = CursorUtil.getColumnIndexOrThrow(_cursor, "category");
-          final int _cursorIndexOfIsCompleted = CursorUtil.getColumnIndexOrThrow(_cursor, "isCompleted");
-          final int _cursorIndexOfDateCompleted = CursorUtil.getColumnIndexOrThrow(_cursor, "dateCompleted");
+          final int _cursorIndexOfLastDoseDate = CursorUtil.getColumnIndexOrThrow(_cursor, "lastDoseDate");
           final int _cursorIndexOfChildId = CursorUtil.getColumnIndexOrThrow(_cursor, "childId");
+          final int _cursorIndexOfDoseDates = CursorUtil.getColumnIndexOrThrow(_cursor, "doseDates");
           final List<Vaccination> _result = new ArrayList<Vaccination>(_cursor.getCount());
           while (_cursor.moveToNext()) {
             final Vaccination _item;
@@ -507,11 +568,15 @@ public final class VaccinationDao_Impl implements VaccinationDao {
             } else {
               _tmpDescription = _cursor.getString(_cursorIndexOfDescription);
             }
-            final String _tmpRecommendedAge;
-            if (_cursor.isNull(_cursorIndexOfRecommendedAge)) {
-              _tmpRecommendedAge = null;
+            final int _tmpTotalDoses;
+            _tmpTotalDoses = _cursor.getInt(_cursorIndexOfTotalDoses);
+            final int _tmpCompletedDoses;
+            _tmpCompletedDoses = _cursor.getInt(_cursorIndexOfCompletedDoses);
+            final String _tmpDoseSchedule;
+            if (_cursor.isNull(_cursorIndexOfDoseSchedule)) {
+              _tmpDoseSchedule = null;
             } else {
-              _tmpRecommendedAge = _cursor.getString(_cursorIndexOfRecommendedAge);
+              _tmpDoseSchedule = _cursor.getString(_cursorIndexOfDoseSchedule);
             }
             final String _tmpCategory;
             if (_cursor.isNull(_cursorIndexOfCategory)) {
@@ -519,19 +584,21 @@ public final class VaccinationDao_Impl implements VaccinationDao {
             } else {
               _tmpCategory = _cursor.getString(_cursorIndexOfCategory);
             }
-            final boolean _tmpIsCompleted;
-            final int _tmp;
-            _tmp = _cursor.getInt(_cursorIndexOfIsCompleted);
-            _tmpIsCompleted = _tmp != 0;
-            final Long _tmpDateCompleted;
-            if (_cursor.isNull(_cursorIndexOfDateCompleted)) {
-              _tmpDateCompleted = null;
+            final Long _tmpLastDoseDate;
+            if (_cursor.isNull(_cursorIndexOfLastDoseDate)) {
+              _tmpLastDoseDate = null;
             } else {
-              _tmpDateCompleted = _cursor.getLong(_cursorIndexOfDateCompleted);
+              _tmpLastDoseDate = _cursor.getLong(_cursorIndexOfLastDoseDate);
             }
             final long _tmpChildId;
             _tmpChildId = _cursor.getLong(_cursorIndexOfChildId);
-            _item = new Vaccination(_tmpId,_tmpName,_tmpDescription,_tmpRecommendedAge,_tmpCategory,_tmpIsCompleted,_tmpDateCompleted,_tmpChildId);
+            final String _tmpDoseDates;
+            if (_cursor.isNull(_cursorIndexOfDoseDates)) {
+              _tmpDoseDates = null;
+            } else {
+              _tmpDoseDates = _cursor.getString(_cursorIndexOfDoseDates);
+            }
+            _item = new Vaccination(_tmpId,_tmpName,_tmpDescription,_tmpTotalDoses,_tmpCompletedDoses,_tmpDoseSchedule,_tmpCategory,_tmpLastDoseDate,_tmpChildId,_tmpDoseDates);
             _result.add(_item);
           }
           return _result;
@@ -612,7 +679,7 @@ public final class VaccinationDao_Impl implements VaccinationDao {
 
   @Override
   public Flow<List<Vaccination>> getCompletedVaccinationsForChild(final long childId) {
-    final String _sql = "SELECT * FROM vaccinations WHERE childId = ? AND isCompleted = 1";
+    final String _sql = "SELECT * FROM vaccinations WHERE childId = ? AND completedDoses >= totalDoses";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
     int _argIndex = 1;
     _statement.bindLong(_argIndex, childId);
@@ -625,11 +692,13 @@ public final class VaccinationDao_Impl implements VaccinationDao {
           final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
           final int _cursorIndexOfName = CursorUtil.getColumnIndexOrThrow(_cursor, "name");
           final int _cursorIndexOfDescription = CursorUtil.getColumnIndexOrThrow(_cursor, "description");
-          final int _cursorIndexOfRecommendedAge = CursorUtil.getColumnIndexOrThrow(_cursor, "recommendedAge");
+          final int _cursorIndexOfTotalDoses = CursorUtil.getColumnIndexOrThrow(_cursor, "totalDoses");
+          final int _cursorIndexOfCompletedDoses = CursorUtil.getColumnIndexOrThrow(_cursor, "completedDoses");
+          final int _cursorIndexOfDoseSchedule = CursorUtil.getColumnIndexOrThrow(_cursor, "doseSchedule");
           final int _cursorIndexOfCategory = CursorUtil.getColumnIndexOrThrow(_cursor, "category");
-          final int _cursorIndexOfIsCompleted = CursorUtil.getColumnIndexOrThrow(_cursor, "isCompleted");
-          final int _cursorIndexOfDateCompleted = CursorUtil.getColumnIndexOrThrow(_cursor, "dateCompleted");
+          final int _cursorIndexOfLastDoseDate = CursorUtil.getColumnIndexOrThrow(_cursor, "lastDoseDate");
           final int _cursorIndexOfChildId = CursorUtil.getColumnIndexOrThrow(_cursor, "childId");
+          final int _cursorIndexOfDoseDates = CursorUtil.getColumnIndexOrThrow(_cursor, "doseDates");
           final List<Vaccination> _result = new ArrayList<Vaccination>(_cursor.getCount());
           while (_cursor.moveToNext()) {
             final Vaccination _item;
@@ -647,11 +716,15 @@ public final class VaccinationDao_Impl implements VaccinationDao {
             } else {
               _tmpDescription = _cursor.getString(_cursorIndexOfDescription);
             }
-            final String _tmpRecommendedAge;
-            if (_cursor.isNull(_cursorIndexOfRecommendedAge)) {
-              _tmpRecommendedAge = null;
+            final int _tmpTotalDoses;
+            _tmpTotalDoses = _cursor.getInt(_cursorIndexOfTotalDoses);
+            final int _tmpCompletedDoses;
+            _tmpCompletedDoses = _cursor.getInt(_cursorIndexOfCompletedDoses);
+            final String _tmpDoseSchedule;
+            if (_cursor.isNull(_cursorIndexOfDoseSchedule)) {
+              _tmpDoseSchedule = null;
             } else {
-              _tmpRecommendedAge = _cursor.getString(_cursorIndexOfRecommendedAge);
+              _tmpDoseSchedule = _cursor.getString(_cursorIndexOfDoseSchedule);
             }
             final String _tmpCategory;
             if (_cursor.isNull(_cursorIndexOfCategory)) {
@@ -659,19 +732,21 @@ public final class VaccinationDao_Impl implements VaccinationDao {
             } else {
               _tmpCategory = _cursor.getString(_cursorIndexOfCategory);
             }
-            final boolean _tmpIsCompleted;
-            final int _tmp;
-            _tmp = _cursor.getInt(_cursorIndexOfIsCompleted);
-            _tmpIsCompleted = _tmp != 0;
-            final Long _tmpDateCompleted;
-            if (_cursor.isNull(_cursorIndexOfDateCompleted)) {
-              _tmpDateCompleted = null;
+            final Long _tmpLastDoseDate;
+            if (_cursor.isNull(_cursorIndexOfLastDoseDate)) {
+              _tmpLastDoseDate = null;
             } else {
-              _tmpDateCompleted = _cursor.getLong(_cursorIndexOfDateCompleted);
+              _tmpLastDoseDate = _cursor.getLong(_cursorIndexOfLastDoseDate);
             }
             final long _tmpChildId;
             _tmpChildId = _cursor.getLong(_cursorIndexOfChildId);
-            _item = new Vaccination(_tmpId,_tmpName,_tmpDescription,_tmpRecommendedAge,_tmpCategory,_tmpIsCompleted,_tmpDateCompleted,_tmpChildId);
+            final String _tmpDoseDates;
+            if (_cursor.isNull(_cursorIndexOfDoseDates)) {
+              _tmpDoseDates = null;
+            } else {
+              _tmpDoseDates = _cursor.getString(_cursorIndexOfDoseDates);
+            }
+            _item = new Vaccination(_tmpId,_tmpName,_tmpDescription,_tmpTotalDoses,_tmpCompletedDoses,_tmpDoseSchedule,_tmpCategory,_tmpLastDoseDate,_tmpChildId,_tmpDoseDates);
             _result.add(_item);
           }
           return _result;

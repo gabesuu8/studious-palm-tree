@@ -93,7 +93,15 @@ class VaccinationFragment : Fragment() {
         // Setup adapter
         adapter = VaccinationAdapter(
             onCheckChanged = { vaccination -> toggleVaccination(vaccination) },
-            onItemClick = { vaccination -> showVaccinationDetails(vaccination) }
+            onItemClick = { vaccination ->
+                if (vaccination.totalDoses > 1) {
+                    viewModel?.toggleExpanded(vaccination.id)
+                } else {
+                    showVaccinationDetails(vaccination)
+                }
+            },
+            onRecordDose = { vaccination, doseIndex -> showDatePickerForDose(vaccination, doseIndex) },
+            onUndoDose = { vaccination, doseIndex -> viewModel?.undoDose(vaccination, doseIndex) }
         )
         
         recyclerView?.layoutManager = LinearLayoutManager(requireContext())
@@ -171,6 +179,13 @@ class VaccinationFragment : Fragment() {
                 } else {
                     nextDueCard?.visibility = View.GONE
                 }
+            }
+        }
+
+        // Observe expansion state
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel?.expandedVaccineIds?.collect { ids ->
+                adapter?.expandedIds = ids
             }
         }
     }
@@ -254,9 +269,9 @@ class VaccinationFragment : Fragment() {
     }
     
     private fun toggleVaccination(vaccination: Vaccination) {
-        viewModel?.toggleVaccinationStatus(vaccination)
-        
-        val message = if (!vaccination.isCompleted) {
+        viewModel?.recordNextDose(vaccination)
+
+        val message = if (!vaccination.isFullyCompleted) {
             getString(R.string.vaccination_marked_complete, vaccination.name)
         } else {
             getString(R.string.vaccination_marked_incomplete, vaccination.name)
@@ -267,39 +282,42 @@ class VaccinationFragment : Fragment() {
     private fun showVaccinationDetails(vaccination: Vaccination) {
         val ctx = context ?: return
         val dateFormat = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault())
-        val completionInfo = if (vaccination.isCompleted && vaccination.dateCompleted != null) {
-            "\n\n${getString(R.string.completed_on)}: ${dateFormat.format(Date(vaccination.dateCompleted))}"
-        } else {
-            ""
-        }
-        
+
+        val scheduleInfo = "\n\n${getString(R.string.recommended_age)}: ${vaccination.doseSchedule.replace("|", " → ")}"
+        val progressInfo = if (vaccination.totalDoses > 1) {
+            "\n${getString(R.string.dose_progress, vaccination.completedDoses, vaccination.totalDoses)}"
+        } else ""
+        val completionInfo = if (vaccination.isFullyCompleted && vaccination.lastDoseDate != null) {
+            "\n\n${getString(R.string.completed_on)}: ${dateFormat.format(Date(vaccination.lastDoseDate))}"
+        } else ""
+
         val dialog = AlertDialog.Builder(ctx)
             .setTitle(vaccination.name)
-            .setMessage("${vaccination.description}\n\n${getString(R.string.recommended_age)}: ${vaccination.recommendedAge}$completionInfo")
-        
-        if (!vaccination.isCompleted) {
-            dialog.setPositiveButton(getString(R.string.mark_as_done)) { _, _ ->
+            .setMessage("${vaccination.description}$scheduleInfo$progressInfo$completionInfo")
+
+        if (!vaccination.isFullyCompleted) {
+            dialog.setPositiveButton(getString(R.string.record_next_dose)) { _, _ ->
                 showDatePicker(vaccination)
             }
         } else {
-            dialog.setPositiveButton(getString(R.string.mark_as_not_done)) { _, _ ->
-                viewModel?.toggleVaccinationStatus(vaccination)
+            dialog.setPositiveButton(getString(R.string.undo_last_dose)) { _, _ ->
+                viewModel?.undoLastDose(vaccination)
             }
         }
-        
+
         dialog.setNegativeButton(android.R.string.cancel, null)
         dialog.show()
     }
     
-    private fun showDatePicker(vaccination: Vaccination) {
+    private fun showDatePickerForDose(vaccination: Vaccination, doseIndex: Int) {
         val ctx = context ?: return
         val calendar = Calendar.getInstance()
-        
+
         DatePickerDialog(
             ctx,
             { _, year, month, dayOfMonth ->
                 calendar.set(year, month, dayOfMonth)
-                viewModel?.updateVaccinationDate(vaccination, calendar.timeInMillis)
+                viewModel?.recordDoseWithDate(vaccination, doseIndex, calendar.timeInMillis)
                 recyclerView?.let {
                     Snackbar.make(
                         it,
@@ -317,13 +335,20 @@ class VaccinationFragment : Fragment() {
             show()
         }
     }
+
+    private fun showDatePicker(vaccination: Vaccination) {
+        val nextIndex = vaccination.parsedDoseDates.indexOfFirst { it == null }
+        if (nextIndex >= 0) {
+            showDatePickerForDose(vaccination, nextIndex)
+        }
+    }
     
     private fun updateProgress(vaccinations: List<Vaccination>) {
-        val completed = vaccinations.count { it.isCompleted }
-        val total = vaccinations.size
-        
+        val completed = vaccinations.sumOf { it.completedDoses }
+        val total = vaccinations.sumOf { it.totalDoses }
+
         progressCount?.text = "$completed/$total"
-        
+
         if (total > 0) {
             val percentage = (completed * 100) / total
             progressBar?.progress = percentage

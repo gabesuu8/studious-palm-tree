@@ -11,11 +11,14 @@ import com.example.helloapp.repository.VaccinationRepository
 import com.example.helloapp.util.LanguageHelper
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.emitAll
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 class VaccinationViewModel(application: Application) : AndroidViewModel(application) {
@@ -32,8 +35,18 @@ class VaccinationViewModel(application: Application) : AndroidViewModel(applicat
     private val _selectedFilter = MutableStateFlow("all")
     val selectedFilter: StateFlow<String> = _selectedFilter
 
+    private val _expandedVaccineIds = MutableStateFlow<Set<Int>>(emptySet())
+    val expandedVaccineIds: StateFlow<Set<Int>> = _expandedVaccineIds
+
+    fun toggleExpanded(vaccinationId: Int) {
+        _expandedVaccineIds.value = _expandedVaccineIds.value.toMutableSet().apply {
+            if (contains(vaccinationId)) remove(vaccinationId) else add(vaccinationId)
+        }
+    }
+
     init {
         viewModelScope.launch {
+            database.vaccinationDao().deleteDuplicates()
             if (repository.getTemplateCount() == 0) {
                 initializeDefaultVaccinations()
             }
@@ -41,19 +54,23 @@ class VaccinationViewModel(application: Application) : AndroidViewModel(applicat
     }
 
     /** Vaccinations for the currently selected child. */
-    val vaccinationsForSelectedChild: Flow<List<Vaccination>> = _selectedChild.flatMapLatest { child ->
+    val vaccinationsForSelectedChild: StateFlow<List<Vaccination>> = _selectedChild.flatMapLatest { child ->
         if (child != null) {
             flow {
                 ensureChildHasVaccinationRecords(child.id)
-                repository.getVaccinationsForChild(child.id).collect { emit(it) }
+                emitAll(repository.getVaccinationsForChild(child.id))
             }
         } else {
             flowOf(emptyList())
         }
-    }
+    }.stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
 
     private suspend fun ensureChildHasVaccinationRecords(childId: Long) {
         if (repository.getVaccinationCountForChild(childId) == 0) {
+            // Ensure templates exist before copying (fixes race with init block)
+            if (repository.getTemplateCount() == 0) {
+                initializeDefaultVaccinations()
+            }
             repository.copyTemplatesToChild(childId)
         }
     }
@@ -63,7 +80,7 @@ class VaccinationViewModel(application: Application) : AndroidViewModel(applicat
     }
 
     /** All vaccinations for selected child (for progress). */
-    val allVaccinations: Flow<List<Vaccination>> = vaccinationsForSelectedChild
+    val allVaccinations: StateFlow<List<Vaccination>> = vaccinationsForSelectedChild
 
     /** Next vaccine due for selected child (name, due date ms, isOverdue). Null if no child or all complete. */
     data class NextVaccineDue(val name: String, val dueDateMillis: Long, val isOverdue: Boolean)
@@ -72,15 +89,17 @@ class VaccinationViewModel(application: Application) : AndroidViewModel(applicat
         _selectedChild
     ) { vaccinations, child ->
         if (child == null || vaccinations.isEmpty()) return@combine null
-        val pending = vaccinations.filter { !it.isCompleted }
+        val pending = vaccinations.filter { !it.isFullyCompleted }
         if (pending.isEmpty()) return@combine null
         val now = System.currentTimeMillis()
         val dob = child.dateOfBirth
-        val withDue = pending.map { v ->
-            val days = parseRecommendedAgeToDays(v.recommendedAge)
+        val withDue = pending.mapNotNull { v ->
+            val nextAge = v.nextDoseAge ?: return@mapNotNull null
+            val days = parseRecommendedAgeToDays(nextAge)
             val dueMs = dob + days * 24L * 60 * 60 * 1000
             Triple(v, dueMs, dueMs < now)
         }
+        if (withDue.isEmpty()) return@combine null
         val sorted = withDue.sortedBy { it.second }
         val next = sorted.first()
         NextVaccineDue(next.first.name, next.second, next.third)
@@ -115,36 +134,72 @@ class VaccinationViewModel(application: Application) : AndroidViewModel(applicat
         _selectedFilter
     ) { vaccinations, filter ->
         when (filter) {
-            "completed" -> vaccinations.filter { it.isCompleted }
-            "pending" -> vaccinations.filter { !it.isCompleted }
+            "completed" -> vaccinations.filter { it.isFullyCompleted }
+            "pending" -> vaccinations.filter { !it.isFullyCompleted }
             else -> vaccinations
         }
     }
-    
+
     fun setFilter(filter: String) {
         _selectedFilter.value = filter
     }
-    
-    fun toggleVaccinationStatus(vaccination: Vaccination) {
+
+    fun recordNextDose(vaccination: Vaccination) {
         viewModelScope.launch {
-            val updated = vaccination.copy(
-                isCompleted = !vaccination.isCompleted,
-                dateCompleted = if (!vaccination.isCompleted) System.currentTimeMillis() else null
-            )
-            repository.updateVaccination(updated)
+            if (vaccination.isFullyCompleted) {
+                // Undo the last recorded dose
+                val dates = vaccination.parsedDoseDates
+                val lastIndex = dates.indexOfLast { it != null }
+                if (lastIndex >= 0) {
+                    repository.updateVaccination(vaccination.withDoseUndone(lastIndex))
+                }
+            } else {
+                // Record next pending dose
+                val dates = vaccination.parsedDoseDates
+                val nextIndex = dates.indexOfFirst { it == null }
+                if (nextIndex >= 0) {
+                    repository.updateVaccination(vaccination.withDoseRecorded(nextIndex, System.currentTimeMillis()))
+                }
+            }
         }
     }
-    
-    fun updateVaccinationDate(vaccination: Vaccination, date: Long) {
+
+    fun recordDoseWithDate(vaccination: Vaccination, doseIndex: Int, date: Long) {
         viewModelScope.launch {
-            val updated = vaccination.copy(
-                isCompleted = true,
-                dateCompleted = date
-            )
-            repository.updateVaccination(updated)
+            val updated = vaccination.withDoseRecorded(doseIndex, date)
+            if (updated !== vaccination) {
+                repository.updateVaccination(updated)
+            }
         }
     }
-    
+
+    fun undoDose(vaccination: Vaccination, doseIndex: Int) {
+        viewModelScope.launch {
+            val updated = vaccination.withDoseUndone(doseIndex)
+            if (updated !== vaccination) {
+                repository.updateVaccination(updated)
+            }
+        }
+    }
+
+    fun undoLastDose(vaccination: Vaccination) {
+        viewModelScope.launch {
+            if (vaccination.completedDoses > 0) {
+                val dates = vaccination.parsedDoseDates
+                val lastIndex = dates.indexOfLast { it != null }
+                if (lastIndex >= 0) {
+                    repository.updateVaccination(vaccination.withDoseUndone(lastIndex))
+                } else {
+                    val updated = vaccination.copy(
+                        completedDoses = vaccination.completedDoses - 1,
+                        lastDoseDate = null
+                    )
+                    repository.updateVaccination(updated)
+                }
+            }
+        }
+    }
+
     /** Reset vaccination progress for the selected child only. */
     fun resetVaccinationsForSelectedChild() {
         viewModelScope.launch {
@@ -160,7 +215,7 @@ class VaccinationViewModel(application: Application) : AndroidViewModel(applicat
             initializeDefaultVaccinations()
         }
     }
-    
+
     private suspend fun initializeDefaultVaccinations() {
         val languageCode = LanguageHelper.getLanguage(getApplication())
         val vaccinations = if (languageCode == "fr") {
@@ -170,351 +225,239 @@ class VaccinationViewModel(application: Application) : AndroidViewModel(applicat
         }
         repository.insertAll(vaccinations)
     }
-    
+
     private fun getEnglishVaccinations(): List<Vaccination> {
         return listOf(
             // At Birth
             Vaccination(
                 name = "BCG",
                 description = "Protects against tuberculosis (TB). Given as a single dose at birth.",
-                recommendedAge = "At birth",
+                totalDoses = 1,
+                doseSchedule = "At birth",
                 category = "Birth"
             ),
             Vaccination(
-                name = "OPV-0 (Oral Polio)",
-                description = "First dose of oral polio vaccine. Protects against poliomyelitis.",
-                recommendedAge = "At birth",
+                name = "OPV (Oral Polio)",
+                description = "Protects against poliomyelitis. Given in multiple doses from birth through 15-18 months.",
+                totalDoses = 5,
+                doseSchedule = "At birth|6 weeks|10 weeks|14 weeks|15-18 months",
                 category = "Birth"
             ),
             Vaccination(
-                name = "Hepatitis B - Birth Dose",
-                description = "First dose to prevent Hepatitis B infection. Should be given within 24 hours of birth.",
-                recommendedAge = "At birth (within 24 hours)",
+                name = "Hepatitis B",
+                description = "Prevents Hepatitis B infection. Should be given within 24 hours of birth.",
+                totalDoses = 1,
+                doseSchedule = "At birth",
                 category = "Birth"
             ),
-            
+
             // 6 Weeks
             Vaccination(
-                name = "DTP-HepB-Hib 1 (Pentavalent)",
+                name = "Pentavalent (DTP-HepB-Hib)",
                 description = "Protects against Diphtheria, Tetanus, Pertussis, Hepatitis B, and Haemophilus influenzae type b.",
-                recommendedAge = "6 weeks",
+                totalDoses = 3,
+                doseSchedule = "6 weeks|10 weeks|14 weeks",
                 category = "6 Weeks"
             ),
             Vaccination(
-                name = "OPV-1",
-                description = "Second dose of oral polio vaccine.",
-                recommendedAge = "6 weeks",
+                name = "Pneumococcal (PCV)",
+                description = "Protects against pneumococcal diseases including pneumonia and meningitis.",
+                totalDoses = 3,
+                doseSchedule = "6 weeks|10 weeks|14 weeks",
                 category = "6 Weeks"
             ),
             Vaccination(
-                name = "Pneumococcal (PCV) 1",
-                description = "First dose protecting against pneumococcal diseases including pneumonia and meningitis.",
-                recommendedAge = "6 weeks",
+                name = "Rotavirus",
+                description = "Protects against rotavirus, a common cause of severe diarrhea in children.",
+                totalDoses = 2,
+                doseSchedule = "6 weeks|10 weeks",
                 category = "6 Weeks"
             ),
-            Vaccination(
-                name = "Rotavirus 1",
-                description = "First dose protecting against rotavirus, a common cause of severe diarrhea in children.",
-                recommendedAge = "6 weeks",
-                category = "6 Weeks"
-            ),
-            
-            // 10 Weeks
-            Vaccination(
-                name = "DTP-HepB-Hib 2 (Pentavalent)",
-                description = "Second dose of the pentavalent vaccine.",
-                recommendedAge = "10 weeks",
-                category = "10 Weeks"
-            ),
-            Vaccination(
-                name = "OPV-2",
-                description = "Third dose of oral polio vaccine.",
-                recommendedAge = "10 weeks",
-                category = "10 Weeks"
-            ),
-            Vaccination(
-                name = "Pneumococcal (PCV) 2",
-                description = "Second dose of pneumococcal vaccine.",
-                recommendedAge = "10 weeks",
-                category = "10 Weeks"
-            ),
-            Vaccination(
-                name = "Rotavirus 2",
-                description = "Second dose of rotavirus vaccine.",
-                recommendedAge = "10 weeks",
-                category = "10 Weeks"
-            ),
-            
+
             // 14 Weeks
             Vaccination(
-                name = "DTP-HepB-Hib 3 (Pentavalent)",
-                description = "Third and final dose of the pentavalent vaccine.",
-                recommendedAge = "14 weeks",
-                category = "14 Weeks"
-            ),
-            Vaccination(
-                name = "OPV-3",
-                description = "Fourth dose of oral polio vaccine.",
-                recommendedAge = "14 weeks",
-                category = "14 Weeks"
-            ),
-            Vaccination(
-                name = "Pneumococcal (PCV) 3",
-                description = "Third dose of pneumococcal vaccine.",
-                recommendedAge = "14 weeks",
-                category = "14 Weeks"
-            ),
-            Vaccination(
                 name = "IPV (Inactivated Polio)",
-                description = "Injectable polio vaccine for additional protection.",
-                recommendedAge = "14 weeks",
+                description = "Injectable polio vaccine for additional protection against poliomyelitis.",
+                totalDoses = 1,
+                doseSchedule = "14 weeks",
                 category = "14 Weeks"
             ),
-            
+
             // 6 Months
             Vaccination(
-                name = "Vitamin A - 1st Dose",
-                description = "First dose of Vitamin A supplementation to prevent deficiency and boost immunity.",
-                recommendedAge = "6 months",
+                name = "Vitamin A",
+                description = "Vitamin A supplementation to prevent deficiency and boost immunity.",
+                totalDoses = 2,
+                doseSchedule = "6 months|12 months",
                 category = "6 Months"
             ),
-            
+
             // 9 Months
             Vaccination(
-                name = "Measles-Rubella 1 (MR)",
-                description = "First dose protecting against measles and rubella.",
-                recommendedAge = "9 months",
+                name = "Measles-Rubella (MR)",
+                description = "Protects against measles and rubella.",
+                totalDoses = 2,
+                doseSchedule = "9 months|15-18 months",
                 category = "9 Months"
             ),
             Vaccination(
                 name = "Yellow Fever",
                 description = "Single dose vaccine protecting against yellow fever. Required in endemic areas.",
-                recommendedAge = "9 months",
+                totalDoses = 1,
+                doseSchedule = "9 months",
                 category = "9 Months"
             ),
             Vaccination(
                 name = "Meningococcal A",
                 description = "Protects against meningococcal meningitis type A.",
-                recommendedAge = "9 months",
+                totalDoses = 1,
+                doseSchedule = "9 months",
                 category = "9 Months"
             ),
-            
-            // 12 Months
-            Vaccination(
-                name = "Vitamin A - 2nd Dose",
-                description = "Second dose of Vitamin A supplementation.",
-                recommendedAge = "12 months",
-                category = "12 Months"
-            ),
-            
+
             // 15-18 Months
-            Vaccination(
-                name = "Measles-Rubella 2 (MR)",
-                description = "Second dose of measles-rubella vaccine for lasting protection.",
-                recommendedAge = "15-18 months",
-                category = "15-18 Months"
-            ),
             Vaccination(
                 name = "DTP Booster",
                 description = "Booster dose for continued protection against diphtheria, tetanus, and pertussis.",
-                recommendedAge = "15-18 months",
+                totalDoses = 1,
+                doseSchedule = "15-18 months",
                 category = "15-18 Months"
             ),
-            Vaccination(
-                name = "OPV Booster",
-                description = "Booster dose of oral polio vaccine.",
-                recommendedAge = "15-18 months",
-                category = "15-18 Months"
-            ),
-            
-            // Additional vaccines
+
+            // Special Vaccines
             Vaccination(
                 name = "Malaria Vaccine (RTS,S)",
                 description = "Recommended in areas with moderate to high malaria transmission. Given in 4 doses.",
-                recommendedAge = "5-17 months (series)",
+                totalDoses = 4,
+                doseSchedule = "5 months|6 months|7 months|17 months",
                 category = "Special Vaccines"
             ),
             Vaccination(
                 name = "Typhoid",
                 description = "Protects against typhoid fever. Recommended in endemic areas.",
-                recommendedAge = "2 years and above",
+                totalDoses = 1,
+                doseSchedule = "2 years and above",
                 category = "Special Vaccines"
             )
         )
     }
-    
+
     private fun getFrenchVaccinations(): List<Vaccination> {
         return listOf(
             // À la naissance
             Vaccination(
                 name = "BCG",
                 description = "Protège contre la tuberculose. Administré en dose unique à la naissance.",
-                recommendedAge = "À la naissance",
+                totalDoses = 1,
+                doseSchedule = "À la naissance",
                 category = "Naissance"
             ),
             Vaccination(
-                name = "VPO-0 (Polio oral)",
-                description = "Première dose du vaccin antipoliomyélitique oral. Protège contre la poliomyélite.",
-                recommendedAge = "À la naissance",
+                name = "VPO (Polio oral)",
+                description = "Protège contre la poliomyélite. Administré en plusieurs doses de la naissance à 15-18 mois.",
+                totalDoses = 5,
+                doseSchedule = "À la naissance|6 semaines|10 semaines|14 semaines|15-18 mois",
                 category = "Naissance"
             ),
             Vaccination(
-                name = "Hépatite B - Dose de naissance",
-                description = "Première dose pour prévenir l'infection par l'hépatite B. Doit être administrée dans les 24 heures suivant la naissance.",
-                recommendedAge = "À la naissance (dans les 24 heures)",
+                name = "Hépatite B",
+                description = "Prévient l'infection par l'hépatite B. Doit être administrée dans les 24 heures suivant la naissance.",
+                totalDoses = 1,
+                doseSchedule = "À la naissance",
                 category = "Naissance"
             ),
-            
+
             // 6 Semaines
             Vaccination(
-                name = "DTC-HépB-Hib 1 (Pentavalent)",
+                name = "Pentavalent (DTC-HépB-Hib)",
                 description = "Protège contre la diphtérie, le tétanos, la coqueluche, l'hépatite B et Haemophilus influenzae type b.",
-                recommendedAge = "6 semaines",
+                totalDoses = 3,
+                doseSchedule = "6 semaines|10 semaines|14 semaines",
                 category = "6 Semaines"
             ),
             Vaccination(
-                name = "VPO-1",
-                description = "Deuxième dose du vaccin antipoliomyélitique oral.",
-                recommendedAge = "6 semaines",
+                name = "Pneumocoque (PCV)",
+                description = "Protège contre les maladies pneumococciques, y compris la pneumonie et la méningite.",
+                totalDoses = 3,
+                doseSchedule = "6 semaines|10 semaines|14 semaines",
                 category = "6 Semaines"
             ),
             Vaccination(
-                name = "Pneumocoque (PCV) 1",
-                description = "Première dose protégeant contre les maladies pneumococciques, y compris la pneumonie et la méningite.",
-                recommendedAge = "6 semaines",
+                name = "Rotavirus",
+                description = "Protège contre le rotavirus, cause fréquente de diarrhée sévère chez les enfants.",
+                totalDoses = 2,
+                doseSchedule = "6 semaines|10 semaines",
                 category = "6 Semaines"
             ),
-            Vaccination(
-                name = "Rotavirus 1",
-                description = "Première dose protégeant contre le rotavirus, cause fréquente de diarrhée sévère chez les enfants.",
-                recommendedAge = "6 semaines",
-                category = "6 Semaines"
-            ),
-            
-            // 10 Semaines
-            Vaccination(
-                name = "DTC-HépB-Hib 2 (Pentavalent)",
-                description = "Deuxième dose du vaccin pentavalent.",
-                recommendedAge = "10 semaines",
-                category = "10 Semaines"
-            ),
-            Vaccination(
-                name = "VPO-2",
-                description = "Troisième dose du vaccin antipoliomyélitique oral.",
-                recommendedAge = "10 semaines",
-                category = "10 Semaines"
-            ),
-            Vaccination(
-                name = "Pneumocoque (PCV) 2",
-                description = "Deuxième dose du vaccin pneumococcique.",
-                recommendedAge = "10 semaines",
-                category = "10 Semaines"
-            ),
-            Vaccination(
-                name = "Rotavirus 2",
-                description = "Deuxième dose du vaccin contre le rotavirus.",
-                recommendedAge = "10 semaines",
-                category = "10 Semaines"
-            ),
-            
+
             // 14 Semaines
-            Vaccination(
-                name = "DTC-HépB-Hib 3 (Pentavalent)",
-                description = "Troisième et dernière dose du vaccin pentavalent.",
-                recommendedAge = "14 semaines",
-                category = "14 Semaines"
-            ),
-            Vaccination(
-                name = "VPO-3",
-                description = "Quatrième dose du vaccin antipoliomyélitique oral.",
-                recommendedAge = "14 semaines",
-                category = "14 Semaines"
-            ),
-            Vaccination(
-                name = "Pneumocoque (PCV) 3",
-                description = "Troisième dose du vaccin pneumococcique.",
-                recommendedAge = "14 semaines",
-                category = "14 Semaines"
-            ),
             Vaccination(
                 name = "VPI (Polio inactivé)",
                 description = "Vaccin antipoliomyélitique injectable pour une protection supplémentaire.",
-                recommendedAge = "14 semaines",
+                totalDoses = 1,
+                doseSchedule = "14 semaines",
                 category = "14 Semaines"
             ),
-            
+
             // 6 Mois
             Vaccination(
-                name = "Vitamine A - 1ère dose",
-                description = "Première dose de supplémentation en vitamine A pour prévenir les carences et renforcer l'immunité.",
-                recommendedAge = "6 mois",
+                name = "Vitamine A",
+                description = "Supplémentation en vitamine A pour prévenir les carences et renforcer l'immunité.",
+                totalDoses = 2,
+                doseSchedule = "6 mois|12 mois",
                 category = "6 Mois"
             ),
-            
+
             // 9 Mois
             Vaccination(
-                name = "Rougeole-Rubéole 1 (RR)",
-                description = "Première dose protégeant contre la rougeole et la rubéole.",
-                recommendedAge = "9 mois",
+                name = "Rougeole-Rubéole (RR)",
+                description = "Protège contre la rougeole et la rubéole.",
+                totalDoses = 2,
+                doseSchedule = "9 mois|15-18 mois",
                 category = "9 Mois"
             ),
             Vaccination(
                 name = "Fièvre jaune",
                 description = "Vaccin à dose unique protégeant contre la fièvre jaune. Obligatoire dans les zones endémiques.",
-                recommendedAge = "9 mois",
+                totalDoses = 1,
+                doseSchedule = "9 mois",
                 category = "9 Mois"
             ),
             Vaccination(
                 name = "Méningocoque A",
                 description = "Protège contre la méningite à méningocoque de type A.",
-                recommendedAge = "9 mois",
+                totalDoses = 1,
+                doseSchedule = "9 mois",
                 category = "9 Mois"
             ),
-            
-            // 12 Mois
-            Vaccination(
-                name = "Vitamine A - 2ème dose",
-                description = "Deuxième dose de supplémentation en vitamine A.",
-                recommendedAge = "12 mois",
-                category = "12 Mois"
-            ),
-            
+
             // 15-18 Mois
-            Vaccination(
-                name = "Rougeole-Rubéole 2 (RR)",
-                description = "Deuxième dose du vaccin rougeole-rubéole pour une protection durable.",
-                recommendedAge = "15-18 mois",
-                category = "15-18 Mois"
-            ),
             Vaccination(
                 name = "DTC Rappel",
                 description = "Dose de rappel pour une protection continue contre la diphtérie, le tétanos et la coqueluche.",
-                recommendedAge = "15-18 mois",
+                totalDoses = 1,
+                doseSchedule = "15-18 mois",
                 category = "15-18 Mois"
             ),
-            Vaccination(
-                name = "VPO Rappel",
-                description = "Dose de rappel du vaccin antipoliomyélitique oral.",
-                recommendedAge = "15-18 mois",
-                category = "15-18 Mois"
-            ),
-            
+
             // Vaccins spéciaux
             Vaccination(
                 name = "Vaccin antipaludique (RTS,S)",
                 description = "Recommandé dans les zones à transmission modérée à élevée du paludisme. Administré en 4 doses.",
-                recommendedAge = "5-17 mois (série)",
+                totalDoses = 4,
+                doseSchedule = "5 mois|6 mois|7 mois|17 mois",
                 category = "Vaccins Spéciaux"
             ),
             Vaccination(
                 name = "Typhoïde",
                 description = "Protège contre la fièvre typhoïde. Recommandé dans les zones endémiques.",
-                recommendedAge = "2 ans et plus",
+                totalDoses = 1,
+                doseSchedule = "2 ans et plus",
                 category = "Vaccins Spéciaux"
             )
         )
     }
-    
+
     class Factory(private val application: Application) : ViewModelProvider.Factory {
         override fun <T : androidx.lifecycle.ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(VaccinationViewModel::class.java)) {

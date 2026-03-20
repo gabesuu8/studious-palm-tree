@@ -119,6 +119,10 @@ id differentiatingTipText
 id disclaimerCard
 id disclaimerClose
 id disclaimerText
+id doseAction
+id doseLabel
+id doseListContainer
+id doseStatusDot
 id editBloodPressure
 id editChildName
 id editFetalHeartRate
@@ -134,6 +138,7 @@ id emergencyBadge
 id emptyState
 id emptyStateLayout
 id emptyStateText
+id expandIndicator
 id fabToggleView
 id favoriteButton
 id favoritesRecyclerView
@@ -253,6 +258,7 @@ layout fragment_vaccination_growth
 layout fragment_vaccinations
 layout item_article
 layout item_clinic
+layout item_dose_row
 layout item_growth_record
 layout item_onboarding_page
 layout item_prenatal_visit
@@ -321,6 +327,10 @@ string directions
 string disclaimer_articles
 string dismiss_disclaimer
 string distance
+string dose_number_with_schedule
+string dose_pending
+string dose_progress
+string dose_record
 string edit
 string edit_measurement
 string emergency_24_7
@@ -441,6 +451,7 @@ string rapid_test_timer_title
 string read_article
 string recommended_age
 string recommended_next_visit_week
+string record_next_dose
 string refresh_desc
 string removed_from_favorites
 string replay_tutorial
@@ -501,6 +512,7 @@ string symptoms_matched_count
 string today
 string toggle_map
 string trimester
+string undo_last_dose
 string urgency_emergency
 string urgency_home_care
 string urgency_see_doctor

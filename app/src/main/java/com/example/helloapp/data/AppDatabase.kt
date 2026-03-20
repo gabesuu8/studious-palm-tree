@@ -15,7 +15,7 @@ import androidx.room.RoomDatabase
         PrenatalVisit::class,
         Clinic::class
     ], 
-    version = 10,
+    version = 13,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {

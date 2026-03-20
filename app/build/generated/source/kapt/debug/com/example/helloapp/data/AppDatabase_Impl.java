@@ -40,12 +40,13 @@ public final class AppDatabase_Impl extends AppDatabase {
   @Override
   @NonNull
   protected SupportSQLiteOpenHelper createOpenHelper(@NonNull final DatabaseConfiguration config) {
-    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(config, new RoomOpenHelper.Delegate(10) {
+    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(config, new RoomOpenHelper.Delegate(13) {
       @Override
       public void createAllTables(@NonNull final SupportSQLiteDatabase db) {
         db.execSQL("CREATE TABLE IF NOT EXISTS `articles` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `title` TEXT NOT NULL, `content` TEXT NOT NULL, `summary` TEXT NOT NULL, `source` TEXT NOT NULL, `dateAdded` INTEGER NOT NULL, `category` TEXT NOT NULL, `isFavorite` INTEGER NOT NULL)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS `vaccinations` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `description` TEXT NOT NULL, `recommendedAge` TEXT NOT NULL, `category` TEXT NOT NULL, `isCompleted` INTEGER NOT NULL, `dateCompleted` INTEGER, `childId` INTEGER NOT NULL)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `vaccinations` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `description` TEXT NOT NULL, `totalDoses` INTEGER NOT NULL, `completedDoses` INTEGER NOT NULL, `doseSchedule` TEXT NOT NULL, `category` TEXT NOT NULL, `lastDoseDate` INTEGER, `childId` INTEGER NOT NULL, `doseDates` TEXT NOT NULL)");
         db.execSQL("CREATE INDEX IF NOT EXISTS `index_vaccinations_childId` ON `vaccinations` (`childId`)");
+        db.execSQL("CREATE UNIQUE INDEX IF NOT EXISTS `index_vaccinations_name_childId` ON `vaccinations` (`name`, `childId`)");
         db.execSQL("CREATE TABLE IF NOT EXISTS `children` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `dateOfBirth` INTEGER NOT NULL, `gender` TEXT NOT NULL, `createdAt` INTEGER NOT NULL)");
         db.execSQL("CREATE TABLE IF NOT EXISTS `growth_records` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `childId` INTEGER NOT NULL, `date` INTEGER NOT NULL, `weightKg` REAL NOT NULL, `heightCm` REAL NOT NULL, `headCircumferenceCm` REAL, `muacCm` REAL, `notes` TEXT, `createdAt` INTEGER NOT NULL, FOREIGN KEY(`childId`) REFERENCES `children`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )");
         db.execSQL("CREATE INDEX IF NOT EXISTS `index_growth_records_childId` ON `growth_records` (`childId`)");
@@ -54,7 +55,7 @@ public final class AppDatabase_Impl extends AppDatabase {
         db.execSQL("CREATE INDEX IF NOT EXISTS `index_prenatal_visits_pregnancyId` ON `prenatal_visits` (`pregnancyId`)");
         db.execSQL("CREATE TABLE IF NOT EXISTS `clinics` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `address` TEXT NOT NULL, `city` TEXT NOT NULL, `country` TEXT NOT NULL, `latitude` REAL NOT NULL, `longitude` REAL NOT NULL, `phone` TEXT, `services` TEXT, `openingHours` TEXT, `isHospital` INTEGER NOT NULL, `isEmergency` INTEGER NOT NULL)");
         db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'fd2f9051158200f4503a6df5ee750cd6')");
+        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'f5e9748df295a851a2d0fc4fa9b3f24c')");
       }
 
       @Override
@@ -128,18 +129,21 @@ public final class AppDatabase_Impl extends AppDatabase {
                   + " Expected:\n" + _infoArticles + "\n"
                   + " Found:\n" + _existingArticles);
         }
-        final HashMap<String, TableInfo.Column> _columnsVaccinations = new HashMap<String, TableInfo.Column>(8);
+        final HashMap<String, TableInfo.Column> _columnsVaccinations = new HashMap<String, TableInfo.Column>(10);
         _columnsVaccinations.put("id", new TableInfo.Column("id", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsVaccinations.put("name", new TableInfo.Column("name", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsVaccinations.put("description", new TableInfo.Column("description", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsVaccinations.put("recommendedAge", new TableInfo.Column("recommendedAge", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsVaccinations.put("totalDoses", new TableInfo.Column("totalDoses", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsVaccinations.put("completedDoses", new TableInfo.Column("completedDoses", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsVaccinations.put("doseSchedule", new TableInfo.Column("doseSchedule", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsVaccinations.put("category", new TableInfo.Column("category", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsVaccinations.put("isCompleted", new TableInfo.Column("isCompleted", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsVaccinations.put("dateCompleted", new TableInfo.Column("dateCompleted", "INTEGER", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsVaccinations.put("lastDoseDate", new TableInfo.Column("lastDoseDate", "INTEGER", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsVaccinations.put("childId", new TableInfo.Column("childId", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsVaccinations.put("doseDates", new TableInfo.Column("doseDates", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         final HashSet<TableInfo.ForeignKey> _foreignKeysVaccinations = new HashSet<TableInfo.ForeignKey>(0);
-        final HashSet<TableInfo.Index> _indicesVaccinations = new HashSet<TableInfo.Index>(1);
+        final HashSet<TableInfo.Index> _indicesVaccinations = new HashSet<TableInfo.Index>(2);
         _indicesVaccinations.add(new TableInfo.Index("index_vaccinations_childId", false, Arrays.asList("childId"), Arrays.asList("ASC")));
+        _indicesVaccinations.add(new TableInfo.Index("index_vaccinations_name_childId", true, Arrays.asList("name", "childId"), Arrays.asList("ASC", "ASC")));
         final TableInfo _infoVaccinations = new TableInfo("vaccinations", _columnsVaccinations, _foreignKeysVaccinations, _indicesVaccinations);
         final TableInfo _existingVaccinations = TableInfo.read(db, "vaccinations");
         if (!_infoVaccinations.equals(_existingVaccinations)) {
@@ -246,7 +250,7 @@ public final class AppDatabase_Impl extends AppDatabase {
         }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "fd2f9051158200f4503a6df5ee750cd6", "d9d7c7377e1747a366ba77bbc97bc570");
+    }, "f5e9748df295a851a2d0fc4fa9b3f24c", "88cbb4e293690a3c56125b3b4b0d1a6f");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(config.context).name(config.name).callback(_openCallback).build();
     final SupportSQLiteOpenHelper _helper = config.sqliteOpenHelperFactory.create(_sqliteConfig);
     return _helper;

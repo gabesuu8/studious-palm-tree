@@ -104,14 +104,20 @@
     <string name="filter_completed">Effectués</string>
     <string name="vaccination_marked_complete">%1$s marqué comme effectué</string>
     <string name="vaccination_marked_incomplete">%1$s marqué comme non effectué</string>
-    <string name="recommended_age">Âge recommandé</string>
+    <string name="recommended_age">Calendrier</string>
     <string name="completed_on">Effectué le</string>
     <string name="mark_as_done">Marquer comme effectué</string>
     <string name="mark_as_not_done">Marquer comme non effectué</string>
+    <string name="dose_progress">Dose %1$d sur %2$d</string>
+    <string name="record_next_dose">Enregistrer la dose suivante</string>
+    <string name="undo_last_dose">Annuler la dernière dose</string>
     <string name="select_date">Choisir la date</string>
     <string name="next_vaccine_due_by">Prochaine échéance : %1$s avant le %2$s</string>
     <string name="overdue_vaccine">En retard : %1$s (recommandé avant le %2$s)</string>
-    
+    <string name="dose_number_with_schedule">Dose %1$d — %2$s</string>
+    <string name="dose_record">Enregistrer</string>
+    <string name="dose_pending">En attente</string>
+
     <!-- Growth Tracker -->
     <string name="growth_tracker">Suivi de Croissance</string>
     <string name="select_child">Sélectionner l\'enfant</string>

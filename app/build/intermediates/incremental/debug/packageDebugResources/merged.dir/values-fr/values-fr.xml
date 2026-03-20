@@ -52,6 +52,10 @@
     <string name="disclaimer_articles">Cette application et ses articles sont à titre informatif uniquement. Ils ne remplacent pas l\'avis médical professionnel, le diagnostic ou le traitement. Consultez toujours un médecin ou un professionnel de santé qualifié.</string>
     <string name="dismiss_disclaimer">Fermer l\'avertissement</string>
     <string name="distance">Distance</string>
+    <string name="dose_number_with_schedule">Dose %1$d — %2$s</string>
+    <string name="dose_pending">En attente</string>
+    <string name="dose_progress">Dose %1$d sur %2$d</string>
+    <string name="dose_record">Enregistrer</string>
     <string name="edit">Modifier</string>
     <string name="edit_measurement">Modifier la mesure</string>
     <string name="emergency_24_7">Urgences 24h/24</string>
@@ -169,8 +173,9 @@
     <string name="rapid_test_timer_subtitle">Réglez le compte à rebours pour les tests rapides COVID-19 ou paludisme. Lisez le résultat à la fin du minuteur.</string>
     <string name="rapid_test_timer_title">Minuteur test rapide</string>
     <string name="read_article">Lire l\'article</string>
-    <string name="recommended_age">Âge recommandé</string>
+    <string name="recommended_age">Calendrier</string>
     <string name="recommended_next_visit_week">Prochaine visite recommandée : semaine %d</string>
+    <string name="record_next_dose">Enregistrer la dose suivante</string>
     <string name="refresh_desc">Actualiser les articles</string>
     <string name="removed_from_favorites">Retiré des favoris</string>
     <string name="replay_tutorial">Revoir le tutoriel</string>
@@ -230,6 +235,7 @@
     <string name="today">Aujourd\'hui</string>
     <string name="toggle_map">Basculer vers la carte</string>
     <string name="trimester">trimestre</string>
+    <string name="undo_last_dose">Annuler la dernière dose</string>
     <string name="vaccination_marked_complete">%1$s marqué comme effectué</string>
     <string name="vaccination_marked_incomplete">%1$s marqué comme non effectué</string>
     <string name="vaccination_progress">Progrès de vaccination</string>

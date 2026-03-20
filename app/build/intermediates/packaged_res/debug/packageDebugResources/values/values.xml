@@ -78,6 +78,10 @@
     <string name="disclaimer_articles">This app and its articles are for information only. They are not a replacement for professional medical advice, diagnosis, or treatment. Always seek the advice of your doctor or another qualified health provider.</string>
     <string name="dismiss_disclaimer">Dismiss warning</string>
     <string name="distance">Distance</string>
+    <string name="dose_number_with_schedule">Dose %1$d — %2$s</string>
+    <string name="dose_pending">Pending</string>
+    <string name="dose_progress">Dose %1$d of %2$d</string>
+    <string name="dose_record">Record</string>
     <string name="edit">Edit</string>
     <string name="edit_measurement">Edit Measurement</string>
     <string name="emergency_24_7">Emergency 24/7</string>
@@ -196,8 +200,9 @@
     <string name="rapid_test_timer_subtitle">Set a countdown for COVID-19 or malaria rapid tests. Read the result when the timer ends.</string>
     <string name="rapid_test_timer_title">Rapid test timer</string>
     <string name="read_article">Read Article</string>
-    <string name="recommended_age">Recommended age</string>
+    <string name="recommended_age">Schedule</string>
     <string name="recommended_next_visit_week">Recommended next visit: week %d</string>
+    <string name="record_next_dose">Record Next Dose</string>
     <string name="refresh_desc">Refresh articles</string>
     <string name="removed_from_favorites">Removed from favorites</string>
     <string name="replay_tutorial">Replay Tutorial</string>
@@ -258,6 +263,7 @@
     <string name="today">Today</string>
     <string name="toggle_map">Toggle map view</string>
     <string name="trimester">trimester</string>
+    <string name="undo_last_dose">Undo Last Dose</string>
     <string name="urgency_emergency">Emergency Care</string>
     <string name="urgency_home_care">Home Care</string>
     <string name="urgency_see_doctor">See a Doctor</string>

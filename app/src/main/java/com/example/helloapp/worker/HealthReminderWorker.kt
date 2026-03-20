@@ -26,20 +26,21 @@ class HealthReminderWorker(
                 val templates = vaccinationDao.getTemplateVaccinationsOnce()
                 if (templates.isNotEmpty()) {
                     vaccinationDao.insertAll(templates.map { t ->
-                        t.copy(id = 0, childId = child.id, isCompleted = false, dateCompleted = null)
+                        t.copy(id = 0, childId = child.id, completedDoses = 0, lastDoseDate = null, doseDates = "")
                     })
                 }
             }
 
             val pending = vaccinationDao.getVaccinationsForChild(child.id).first()
-                .filter { !it.isCompleted }
+                .filter { !it.isFullyCompleted }
 
             if (pending.isEmpty()) continue
 
             // Collect all vaccines that are overdue or due within 7 days, sorted by urgency
             val dueVaccines = pending
-                .map { v ->
-                    val days = parseRecommendedAgeToDays(v.recommendedAge)
+                .mapNotNull { v ->
+                    val nextAge = v.nextDoseAge ?: return@mapNotNull null
+                    val days = parseRecommendedAgeToDays(nextAge)
                     val dueMs = child.dateOfBirth + days * 24 * 60 * 60 * 1000L
                     val daysUntilDue = (dueMs - now) / (24 * 60 * 60 * 1000L)
                     Pair(v.name, daysUntilDue)

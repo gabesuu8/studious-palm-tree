@@ -22,13 +22,13 @@ interface VaccinationDao {
     @Query("SELECT COUNT(*) FROM vaccinations WHERE childId = :childId")
     suspend fun getVaccinationCountForChild(childId: Long): Int
     
-    @Query("SELECT * FROM vaccinations WHERE childId = :childId AND isCompleted = 1")
+    @Query("SELECT * FROM vaccinations WHERE childId = :childId AND completedDoses >= totalDoses")
     fun getCompletedVaccinationsForChild(childId: Long): Flow<List<Vaccination>>
     
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertVaccination(vaccination: Vaccination)
-    
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertAll(vaccinations: List<Vaccination>)
     
     @Update
@@ -45,4 +45,7 @@ interface VaccinationDao {
     
     @Query("DELETE FROM vaccinations")
     suspend fun deleteAll()
+
+    @Query("DELETE FROM vaccinations WHERE id NOT IN (SELECT MIN(id) FROM vaccinations GROUP BY name, childId)")
+    suspend fun deleteDuplicates()
 }

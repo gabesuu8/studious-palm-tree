@@ -22,7 +22,7 @@ class VaccinationRepository(private val vaccinationDao: VaccinationDao) {
         val templates = vaccinationDao.getTemplateVaccinationsOnce()
         if (templates.isEmpty()) return
         val forChild = templates.map { t ->
-            t.copy(id = 0, childId = childId, isCompleted = false, dateCompleted = null)
+            t.copy(id = 0, childId = childId, completedDoses = 0, lastDoseDate = null, doseDates = "")
         }
         vaccinationDao.insertAll(forChild)
     }
