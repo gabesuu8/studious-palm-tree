@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -18,6 +17,7 @@ import com.example.helloapp.util.LanguageHelper
 import com.example.helloapp.viewmodel.VaccinationViewModel
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.chip.Chip
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
@@ -68,6 +68,7 @@ class VaccinationActivity : AppCompatActivity() {
                     showVaccinationDetails(vaccination)
                 }
             },
+            onInfoClick = { vaccination -> showVaccinationDetails(vaccination) },
             onRecordDose = { vaccination, doseIndex -> showDatePickerForDose(vaccination, doseIndex) },
             onUndoDose = { vaccination, doseIndex -> viewModel.undoDose(vaccination, doseIndex) }
         )
@@ -144,7 +145,7 @@ class VaccinationActivity : AppCompatActivity() {
             "\n\n${getString(R.string.completed_on)}: ${dateFormat.format(Date(vaccination.lastDoseDate))}"
         } else ""
 
-        val dialog = AlertDialog.Builder(this)
+        val dialog = MaterialAlertDialogBuilder(this, R.style.Theme_HelloApp_AlertDialog)
             .setTitle(vaccination.name)
             .setMessage("${vaccination.description}$scheduleInfo$progressInfo$completionInfo")
 

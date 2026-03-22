@@ -13,7 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AlertDialog
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -383,7 +383,7 @@ class ClinicsFragment : Fragment(), OnMapReadyCallback {
             message.append("\n${getString(R.string.distance)}: $distance")
         }
         
-        AlertDialog.Builder(ctx)
+        MaterialAlertDialogBuilder(ctx, R.style.Theme_HelloApp_AlertDialog)
             .setTitle(clinic.name)
             .setMessage(message.toString())
             .setPositiveButton(android.R.string.ok, null)
@@ -397,7 +397,7 @@ class ClinicsFragment : Fragment(), OnMapReadyCallback {
             getString(R.string.favorites),
             getString(R.string.rapid_test_timer_menu)
         )
-        AlertDialog.Builder(ctx)
+        MaterialAlertDialogBuilder(ctx, R.style.Theme_HelloApp_AlertDialog)
             .setTitle(getString(R.string.menu_options))
             .setItems(items) { _, which ->
                 when (which) {
@@ -417,7 +417,7 @@ class ClinicsFragment : Fragment(), OnMapReadyCallback {
         val currentLanguage = LanguageHelper.getLanguage(ctx)
         val currentIndex = languageCodes.indexOf(currentLanguage)
 
-        AlertDialog.Builder(ctx)
+        MaterialAlertDialogBuilder(ctx, R.style.Theme_HelloApp_AlertDialog)
             .setTitle(getString(R.string.language))
             .setSingleChoiceItems(languages, currentIndex) { dialog, which ->
                 val selectedCode = languageCodes[which]

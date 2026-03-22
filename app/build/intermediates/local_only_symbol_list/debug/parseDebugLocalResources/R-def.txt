@@ -44,6 +44,7 @@ drawable distance_badge_background
 drawable emergency_badge_background
 drawable ic_baby
 drawable ic_calendar
+drawable ic_chevron_right
 drawable ic_clinic
 drawable ic_clock
 drawable ic_directions
@@ -153,6 +154,7 @@ id historyCard
 id iconType
 id imgIcon
 id indicatorContainer
+id infoArrow
 id locationStatusBar
 id map
 id mapContainer
@@ -543,8 +545,14 @@ string who_median
 string who_minus2sd
 string who_minus3sd
 string who_z_scores
+style MaterialAlertDialog.Body.Text.HelloApp
+style MaterialAlertDialog.Button.NegativeButton.HelloApp
+style MaterialAlertDialog.Button.PositiveButton.HelloApp
+style MaterialAlertDialog.Title.Text.HelloApp
+style ShapeAppearance.App.Dialog.Rounded
 style ShapeAppearance.App.Rounded.Large
 style ShapeAppearance.App.Rounded.Medium
 style ShapeAppearance.App.Rounded.Small
 style Theme.HelloApp
+style Theme.HelloApp.AlertDialog
 style Theme.HelloApp.NoActionBar

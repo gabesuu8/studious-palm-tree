@@ -94,6 +94,16 @@
 
             </LinearLayout>
 
+            <ImageView
+                android:id="@+id/infoArrow"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/ic_chevron_right"
+                android:contentDescription="@string/menu_options"
+                android:padding="6dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:layout_gravity="center_vertical" />
+
         </LinearLayout>
 
         <LinearLayout

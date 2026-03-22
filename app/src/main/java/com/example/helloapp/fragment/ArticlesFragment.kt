@@ -3,6 +3,7 @@ package com.example.helloapp.fragment
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -10,6 +11,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ListView
 import androidx.transition.AutoTransition
 import androidx.transition.TransitionManager
 import android.view.inputmethod.EditorInfo
@@ -35,6 +37,7 @@ import com.example.helloapp.viewmodel.ArticleViewModel
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 
@@ -285,7 +288,7 @@ class ArticlesFragment : Fragment() {
             getString(R.string.rapid_test_timer_menu),
             getString(R.string.replay_tutorial)
         )
-        AlertDialog.Builder(ctx)
+        val dialog = MaterialAlertDialogBuilder(ctx, R.style.Theme_HelloApp_AlertDialog)
             .setTitle(getString(R.string.menu_options))
             .setItems(items) { _, which ->
                 when (which) {
@@ -297,6 +300,10 @@ class ArticlesFragment : Fragment() {
             }
             .setNegativeButton(android.R.string.cancel, null)
             .show()
+        dialog.listView?.apply {
+            divider = android.graphics.drawable.ColorDrawable(Color.parseColor("#B2DFDB"))
+            dividerHeight = 2
+        }
     }
 
     private fun showLanguageDialog() {
@@ -306,23 +313,27 @@ class ArticlesFragment : Fragment() {
         val currentLanguage = LanguageHelper.getLanguage(ctx)
         val currentIndex = languageCodes.indexOf(currentLanguage)
 
-        AlertDialog.Builder(ctx)
+        val dialog = MaterialAlertDialogBuilder(ctx, R.style.Theme_HelloApp_AlertDialog)
             .setTitle(getString(R.string.language))
-            .setSingleChoiceItems(languages, currentIndex) { dialog, which ->
+            .setSingleChoiceItems(languages, currentIndex) { dlg, which ->
                 val selectedCode = languageCodes[which]
                 if (currentLanguage != selectedCode) {
                     LanguageHelper.setLanguage(ctx, selectedCode)
-                    dialog.dismiss()
+                    dlg.dismiss()
                     // Reload articles in new language
                     viewModel?.fetchAndSaveArticles()
                     // Recreate activity to apply language change to UI
                     activity?.recreate()
                 } else {
-                    dialog.dismiss()
+                    dlg.dismiss()
                 }
             }
             .setNegativeButton(android.R.string.cancel, null)
             .show()
+        dialog.listView?.apply {
+            divider = android.graphics.drawable.ColorDrawable(Color.parseColor("#B2DFDB"))
+            dividerHeight = 2
+        }
     }
     
     override fun onDestroyView() {

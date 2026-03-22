@@ -20,6 +20,7 @@ import java.util.*
 class VaccinationAdapter(
     private val onCheckChanged: (Vaccination) -> Unit,
     private val onItemClick: (Vaccination) -> Unit,
+    private val onInfoClick: (Vaccination) -> Unit,
     private val onRecordDose: (Vaccination, Int) -> Unit,
     private val onUndoDose: (Vaccination, Int) -> Unit
 ) : ListAdapter<VaccinationAdapter.ListItem, RecyclerView.ViewHolder>(VaccinationDiffCallback()) {
@@ -68,7 +69,7 @@ class VaccinationAdapter(
             else -> {
                 val view = LayoutInflater.from(parent.context)
                     .inflate(R.layout.item_vaccination, parent, false)
-                VaccinationViewHolder(view, onCheckChanged, onItemClick, onRecordDose, onUndoDose)
+                VaccinationViewHolder(view, onCheckChanged, onItemClick, onInfoClick, onRecordDose, onUndoDose)
             }
         }
     }
@@ -138,6 +139,7 @@ class VaccinationAdapter(
         itemView: View,
         private val onCheckChanged: (Vaccination) -> Unit,
         private val onItemClick: (Vaccination) -> Unit,
+        private val onInfoClick: (Vaccination) -> Unit,
         private val onRecordDose: (Vaccination, Int) -> Unit,
         private val onUndoDose: (Vaccination, Int) -> Unit
     ) : RecyclerView.ViewHolder(itemView) {
@@ -148,6 +150,7 @@ class VaccinationAdapter(
         private val dateText: TextView = itemView.findViewById(R.id.completionDate)
         private val expandIndicator: TextView = itemView.findViewById(R.id.expandIndicator)
         private val doseListContainer: LinearLayout = itemView.findViewById(R.id.doseListContainer)
+        private val infoArrow: ImageView = itemView.findViewById(R.id.infoArrow)
 
         private var currentVaccination: Vaccination? = null
 
@@ -157,6 +160,9 @@ class VaccinationAdapter(
             }
             itemView.setOnClickListener {
                 currentVaccination?.let { onItemClick(it) }
+            }
+            infoArrow.setOnClickListener {
+                currentVaccination?.let { onInfoClick(it) }
             }
         }
 

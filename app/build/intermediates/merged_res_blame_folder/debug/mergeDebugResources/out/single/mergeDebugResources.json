@@ -28,6 +28,10 @@
         "source": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-main-51:/drawable/ic_map.xml"
     },
     {
+        "merged": "com.example.helloapp-debug-49:/layout_item_vaccination.xml.flat",
+        "source": "com.example.helloapp-main-51:/layout/item_vaccination.xml"
+    },
+    {
         "merged": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-debug-49:/drawable_ic_vaccine.xml.flat",
         "source": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-main-51:/drawable/ic_vaccine.xml"
     },
@@ -36,12 +40,12 @@
         "source": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-main-51:/drawable/progress_bar_drawable.xml"
     },
     {
-        "merged": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-debug-49:/drawable_circle_dot.xml.flat",
-        "source": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-main-51:/drawable/circle_dot.xml"
-    },
-    {
         "merged": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-debug-49:/layout_item_article.xml.flat",
         "source": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-main-51:/layout/item_article.xml"
+    },
+    {
+        "merged": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-debug-49:/drawable_circle_dot.xml.flat",
+        "source": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-main-51:/drawable/circle_dot.xml"
     },
     {
         "merged": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-debug-49:/layout_item_onboarding_page.xml.flat",
@@ -76,12 +80,12 @@
         "source": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-main-51:/menu/bottom_nav_menu.xml"
     },
     {
-        "merged": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-debug-49:/mipmap-xhdpi_ic_launcher.xml.flat",
-        "source": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-main-51:/mipmap-xhdpi/ic_launcher.xml"
-    },
-    {
         "merged": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-debug-49:/layout_activity_growth_tracker.xml.flat",
         "source": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-main-51:/layout/activity_growth_tracker.xml"
+    },
+    {
+        "merged": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-debug-49:/mipmap-xhdpi_ic_launcher.xml.flat",
+        "source": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-main-51:/mipmap-xhdpi/ic_launcher.xml"
     },
     {
         "merged": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-debug-49:/layout_fragment_clinics.xml.flat",
@@ -116,16 +120,16 @@
         "source": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-main-51:/layout/item_vaccination_header.xml"
     },
     {
-        "merged": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-debug-49:/anim_slide_out_right.xml.flat",
-        "source": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-main-51:/anim/slide_out_right.xml"
+        "merged": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-debug-49:/layout_activity_pregnancy_tracker.xml.flat",
+        "source": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-main-51:/layout/activity_pregnancy_tracker.xml"
     },
     {
         "merged": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-debug-49:/color_chip_filter_color.xml.flat",
         "source": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-main-51:/color/chip_filter_color.xml"
     },
     {
-        "merged": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-debug-49:/layout_activity_pregnancy_tracker.xml.flat",
-        "source": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-main-51:/layout/activity_pregnancy_tracker.xml"
+        "merged": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-debug-49:/anim_slide_out_right.xml.flat",
+        "source": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-main-51:/anim/slide_out_right.xml"
     },
     {
         "merged": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-debug-49:/anim_slide_in_left.xml.flat",
@@ -144,12 +148,12 @@
         "source": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-main-51:/anim/fade_in.xml"
     },
     {
-        "merged": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-debug-49:/drawable_indicator_active.xml.flat",
-        "source": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-main-51:/drawable/indicator_active.xml"
-    },
-    {
         "merged": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-debug-49:/mipmap-mdpi_ic_launcher.xml.flat",
         "source": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-main-51:/mipmap-mdpi/ic_launcher.xml"
+    },
+    {
+        "merged": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-debug-49:/drawable_indicator_active.xml.flat",
+        "source": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-main-51:/drawable/indicator_active.xml"
     },
     {
         "merged": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-debug-49:/mipmap-hdpi_ic_launcher_foreground.xml.flat",
@@ -210,10 +214,6 @@
     {
         "merged": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-debug-49:/drawable_ic_health.xml.flat",
         "source": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-main-51:/drawable/ic_health.xml"
-    },
-    {
-        "merged": "com.example.helloapp-debug-49:/menu_bottom_nav_menu.xml.flat",
-        "source": "com.example.helloapp-main-51:/menu/bottom_nav_menu.xml"
     },
     {
         "merged": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-debug-49:/drawable_bottom_nav_item_bg.xml.flat",
@@ -386,5 +386,9 @@
     {
         "merged": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-debug-49:/menu_fragment_menu.xml.flat",
         "source": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-main-51:/menu/fragment_menu.xml"
+    },
+    {
+        "merged": "com.example.helloapp-debug-49:/drawable_ic_chevron_right.xml.flat",
+        "source": "com.example.helloapp-main-51:/drawable/ic_chevron_right.xml"
     }
 ]

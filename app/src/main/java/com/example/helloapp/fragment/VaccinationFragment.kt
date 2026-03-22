@@ -11,7 +11,6 @@ import android.widget.ArrayAdapter
 import android.widget.ProgressBar
 import android.widget.Spinner
 import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -27,6 +26,7 @@ import com.example.helloapp.util.LanguageHelper
 import com.example.helloapp.viewmodel.VaccinationViewModel
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.chip.Chip
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
@@ -100,6 +100,7 @@ class VaccinationFragment : Fragment() {
                     showVaccinationDetails(vaccination)
                 }
             },
+            onInfoClick = { vaccination -> showVaccinationDetails(vaccination) },
             onRecordDose = { vaccination, doseIndex -> showDatePickerForDose(vaccination, doseIndex) },
             onUndoDose = { vaccination, doseIndex -> viewModel?.undoDose(vaccination, doseIndex) }
         )
@@ -220,7 +221,7 @@ class VaccinationFragment : Fragment() {
             getString(R.string.favorites),
             getString(R.string.rapid_test_timer_menu)
         )
-        AlertDialog.Builder(ctx)
+        MaterialAlertDialogBuilder(ctx, R.style.Theme_HelloApp_AlertDialog)
             .setTitle(getString(R.string.menu_options))
             .setItems(items) { _, which ->
                 when (which) {
@@ -240,7 +241,7 @@ class VaccinationFragment : Fragment() {
         val currentLanguage = LanguageHelper.getLanguage(ctx)
         val currentIndex = languageCodes.indexOf(currentLanguage)
 
-        AlertDialog.Builder(ctx)
+        MaterialAlertDialogBuilder(ctx, R.style.Theme_HelloApp_AlertDialog)
             .setTitle(getString(R.string.language))
             .setSingleChoiceItems(languages, currentIndex) { dialog, which ->
                 val selectedCode = languageCodes[which]
@@ -291,7 +292,7 @@ class VaccinationFragment : Fragment() {
             "\n\n${getString(R.string.completed_on)}: ${dateFormat.format(Date(vaccination.lastDoseDate))}"
         } else ""
 
-        val dialog = AlertDialog.Builder(ctx)
+        val dialog = MaterialAlertDialogBuilder(ctx, R.style.Theme_HelloApp_AlertDialog)
             .setTitle(vaccination.name)
             .setMessage("${vaccination.description}$scheduleInfo$progressInfo$completionInfo")
 
