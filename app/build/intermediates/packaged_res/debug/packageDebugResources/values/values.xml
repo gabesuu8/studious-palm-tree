@@ -112,7 +112,6 @@
     <string name="get_started">Get Started</string>
     <string name="google_maps_key">YOUR_GOOGLE_MAPS_API_KEY</string>
     <string name="growth">Growth</string>
-    <string name="growth_chart">Growth Chart</string>
     <string name="growth_history">Growth History</string>
     <string name="growth_tracker">Child Growth Tracker</string>
     <string name="head_circ_helper">Most meaningful for children under 3 years</string>
@@ -286,12 +285,8 @@
     <string name="weight">Weight</string>
     <string name="weight_for_age">Weight-for-age</string>
     <string name="weight_for_age_z">Weight-for-age: %1$s</string>
-    <string name="weight_for_height">Weight-for-height</string>
     <string name="weight_helper">Enter mother\'s current weight</string>
     <string name="weight_kg">Weight (kg)</string>
-    <string name="who_median">Median</string>
-    <string name="who_minus2sd">−2 SD</string>
-    <string name="who_minus3sd">−3 SD</string>
     <string name="who_z_scores">WHO Z-Scores</string>
     <style name="MaterialAlertDialog.Body.Text.HelloApp" parent="MaterialAlertDialog.MaterialComponents.Body.Text">
         <item name="android:textColor">@color/black</item>

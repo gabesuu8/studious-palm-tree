@@ -4,26 +4,7 @@
             "outputFile": "com.example.helloapp-mergeDebugResources-47:/values-v23/values-v23.xml",
             "map": [
                 {
-                    "source": "/Users/gabrielsu/.gradle/caches/8.13/transforms/5543413ea9c61d6bf2bacb4402a8d718/transformed/material-1.10.0/res/values-v23/values-v23.xml",
-                    "from": {
-                        "startLines": "2,5,9,13,16,21,25,28,31,34,39,42,46",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,271,413,574,784,1104,1341,1548,1755,1958,2290,2492,2757",
-                        "endLines": "4,8,12,15,20,24,27,30,33,38,41,45,49",
-                        "endColumns": "10,10,10,10,10,10,10,10,10,10,10,10,10",
-                        "endOffsets": "266,408,569,779,1099,1336,1543,1750,1953,2285,2487,2752,3025"
-                    },
-                    "to": {
-                        "startLines": "55,58,62,66,69,74,78,81,84,87,92,95,99",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "3511,3727,3869,4030,4240,4560,4797,5004,5211,5414,5746,5948,6213",
-                        "endLines": "57,61,65,68,73,77,80,83,86,91,94,98,102",
-                        "endColumns": "10,10,10,10,10,10,10,10,10,10,10,10,10",
-                        "endOffsets": "3722,3864,4025,4235,4555,4792,4999,5206,5409,5741,5943,6208,6481"
-                    }
-                },
-                {
-                    "source": "/Users/gabrielsu/.gradle/caches/8.13/transforms/18b52b121b357e8fbd0022ed41d38b9e/transformed/cardview-1.0.0/res/values-v23/values-v23.xml",
+                    "source": "/Users/gabrielsu/.gradle/caches/8.13/transforms/0c132d77974583e01730d38186824901/transformed/cardview-1.0.0/res/values-v23/values-v23.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -42,7 +23,26 @@
                     }
                 },
                 {
-                    "source": "/Users/gabrielsu/.gradle/caches/8.13/transforms/092d4034874cbb1f046f01469e3ecb6c/transformed/work-runtime-2.9.0/res/values-v23/values-v23.xml",
+                    "source": "/Users/gabrielsu/.gradle/caches/8.13/transforms/811c8df3b080fbc60da3b05498c55ba7/transformed/material-1.10.0/res/values-v23/values-v23.xml",
+                    "from": {
+                        "startLines": "2,5,9,13,16,21,25,28,31,34,39,42,46",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,271,413,574,784,1104,1341,1548,1755,1958,2290,2492,2757",
+                        "endLines": "4,8,12,15,20,24,27,30,33,38,41,45,49",
+                        "endColumns": "10,10,10,10,10,10,10,10,10,10,10,10,10",
+                        "endOffsets": "266,408,569,779,1099,1336,1543,1750,1953,2285,2487,2752,3025"
+                    },
+                    "to": {
+                        "startLines": "55,58,62,66,69,74,78,81,84,87,92,95,99",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "3511,3727,3869,4030,4240,4560,4797,5004,5211,5414,5746,5948,6213",
+                        "endLines": "57,61,65,68,73,77,80,83,86,91,94,98,102",
+                        "endColumns": "10,10,10,10,10,10,10,10,10,10,10,10,10",
+                        "endOffsets": "3722,3864,4025,4235,4555,4792,4999,5206,5409,5741,5943,6208,6481"
+                    }
+                },
+                {
+                    "source": "/Users/gabrielsu/.gradle/caches/8.13/transforms/e9d8968bcc9afafaceed6b6e30d901ca/transformed/work-runtime-2.9.0/res/values-v23/values-v23.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
@@ -52,7 +52,7 @@
                     }
                 },
                 {
-                    "source": "/Users/gabrielsu/.gradle/caches/8.13/transforms/e601ebd5034f11e67493e02addcc6f93/transformed/appcompat-1.6.1/res/values-v23/values-v23.xml",
+                    "source": "/Users/gabrielsu/.gradle/caches/8.13/transforms/cda8cb822fc24f52ab0c1716020e2761/transformed/appcompat-1.6.1/res/values-v23/values-v23.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,20,34,35,36,39,43,44,45,46",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",

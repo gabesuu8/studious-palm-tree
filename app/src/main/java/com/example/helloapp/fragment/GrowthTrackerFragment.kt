@@ -23,15 +23,7 @@ import com.example.helloapp.data.GrowthRecord
 import com.example.helloapp.util.LanguageHelper
 import com.example.helloapp.util.WHOGrowthStandards
 import com.example.helloapp.viewmodel.GrowthViewModel
-import com.github.mikephil.charting.charts.LineChart
-import com.github.mikephil.charting.components.XAxis
-import com.github.mikephil.charting.data.Entry
-import com.github.mikephil.charting.data.LineData
-import com.github.mikephil.charting.data.LineDataSet
-import com.github.mikephil.charting.formatter.ValueFormatter
-import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import com.google.android.material.appbar.MaterialToolbar
-import com.google.android.material.chip.ChipGroup
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
@@ -46,7 +38,6 @@ class GrowthTrackerFragment : Fragment() {
     private var btnAddChild: Button? = null
     private var btnDeleteChild: Button? = null
     private var statusCard: View? = null
-    private var chartCard: View? = null
     private var historyCard: View? = null
     private var emptyState: View? = null
 
@@ -59,9 +50,6 @@ class GrowthTrackerFragment : Fragment() {
     private var btnAddMeasurement: Button? = null
     private var recordsRecyclerView: RecyclerView? = null
 
-    private var growthLineChart: LineChart? = null
-    private var chartMetricChipGroup: ChipGroup? = null
-    private var showWeightChart = true
 
     private var adapter: GrowthRecordAdapter? = null
     private var currentChildId: Long? = null
@@ -92,7 +80,6 @@ class GrowthTrackerFragment : Fragment() {
         btnAddChild = view.findViewById(R.id.btnAddChild)
         btnDeleteChild = view.findViewById(R.id.btnDeleteChild)
         statusCard = view.findViewById(R.id.statusCard)
-        chartCard = view.findViewById(R.id.chartCard)
         historyCard = view.findViewById(R.id.historyCard)
         emptyState = view.findViewById(R.id.emptyState)
 
@@ -105,18 +92,7 @@ class GrowthTrackerFragment : Fragment() {
         btnAddMeasurement = view.findViewById(R.id.btnAddMeasurement)
         recordsRecyclerView = view.findViewById(R.id.recordsRecyclerView)
 
-        growthLineChart = view.findViewById(R.id.growthLineChart)
-        chartMetricChipGroup = view.findViewById(R.id.chartMetricChipGroup)
-
         recordsRecyclerView?.layoutManager = LinearLayoutManager(requireContext())
-        growthLineChart?.let { setupChartAppearance(it) }
-
-        chartMetricChipGroup?.setOnCheckedStateChangeListener { _, checkedIds ->
-            showWeightChart = checkedIds.contains(R.id.chipWeight)
-            val child = viewModel?.selectedChild?.value ?: return@setOnCheckedStateChangeListener
-            val records = viewModel?.growthRecords?.value ?: return@setOnCheckedStateChangeListener
-            updateGrowthChart(records, child)
-        }
 
         viewModel = ViewModelProvider(
             requireActivity(),
@@ -139,95 +115,7 @@ class GrowthTrackerFragment : Fragment() {
         observeData()
     }
 
-    // ── Chart ─────────────────────────────────────────────────────────────────
 
-    private fun setupChartAppearance(chart: LineChart) {
-        chart.description.isEnabled = false
-        chart.setTouchEnabled(true)
-        chart.isDragEnabled = true
-        chart.setScaleEnabled(true)
-        chart.setPinchZoom(true)
-        chart.setDrawGridBackground(false)
-        chart.legend.isEnabled = false
-
-        chart.xAxis.apply {
-            position = XAxis.XAxisPosition.BOTTOM
-            setDrawGridLines(true)
-            granularity = 3f
-            valueFormatter = object : ValueFormatter() {
-                override fun getFormattedValue(value: Float) = value.toInt().toString()
-            }
-            textSize = 10f
-        }
-        chart.axisLeft.apply {
-            setDrawGridLines(true)
-            axisMinimum = 0f
-            textSize = 10f
-        }
-        chart.axisRight.isEnabled = false
-    }
-
-    private fun updateGrowthChart(records: List<GrowthRecord>, child: Child) {
-        val chart = growthLineChart ?: return
-        val sortedRecords = records.sortedBy { it.date }
-        val isMale = child.gender == "male"
-
-        val actualEntries = sortedRecords.mapNotNull { record ->
-            val ageMonths = WHOGrowthStandards.calculateAgeMonths(child.dateOfBirth, record.date)
-            if (ageMonths < 0) return@mapNotNull null
-            val value = if (showWeightChart) record.weightKg else record.heightCm
-            Entry(ageMonths.toFloat(), value)
-        }
-
-        val label = if (showWeightChart) getString(R.string.weight_kg) else getString(R.string.height_cm)
-        val actualSet = LineDataSet(actualEntries, label).apply {
-            color = Color.parseColor("#009688")
-            setCircleColor(Color.parseColor("#009688"))
-            lineWidth = 2.5f
-            circleRadius = 4f
-            circleHoleRadius = 2f
-            setDrawValues(false)
-            mode = LineDataSet.Mode.LINEAR
-        }
-
-        val dataSets = mutableListOf<ILineDataSet>(actualSet)
-        dataSets.addAll(buildWHOReferenceLines(isMale))
-
-        chart.data = LineData(dataSets)
-
-        val maxAge = sortedRecords.maxOfOrNull { record ->
-            WHOGrowthStandards.calculateAgeMonths(child.dateOfBirth, record.date)
-        } ?: 60
-        chart.xAxis.axisMaximum = (maxOf(maxAge, 12) + 3).toFloat()
-        chart.xAxis.axisMinimum = 0f
-        chart.invalidate()
-    }
-
-    private fun buildWHOReferenceLines(isMale: Boolean): List<ILineDataSet> {
-        data class RefLine(val zScore: Double, val color: Int, val label: String)
-        val lines = listOf(
-            RefLine(0.0,  Color.parseColor("#4CAF50"), getString(R.string.who_median)),
-            RefLine(-2.0, Color.parseColor("#FF8F00"), getString(R.string.who_minus2sd)),
-            RefLine(-3.0, Color.parseColor("#D32F2F"), getString(R.string.who_minus3sd))
-        )
-        return lines.map { (zScore, color, label) ->
-            val entries = WHOGrowthStandards.referenceAges.map { ageMonths ->
-                val value = if (showWeightChart) {
-                    WHOGrowthStandards.getWeightForAgeAtZScore(ageMonths, zScore, isMale)
-                } else {
-                    WHOGrowthStandards.getHeightForAgeAtZScore(ageMonths, zScore, isMale)
-                }
-                Entry(ageMonths.toFloat(), value)
-            }
-            LineDataSet(entries, label).apply {
-                this.color = color
-                lineWidth = 1.2f
-                setDrawCircles(false)
-                setDrawValues(false)
-                enableDashedLine(10f, 6f, 0f)
-            }
-        }
-    }
 
     // ── Data observation ──────────────────────────────────────────────────────
 
@@ -239,7 +127,6 @@ class GrowthTrackerFragment : Fragment() {
                 if (childList.isEmpty()) {
                     emptyState?.visibility = View.VISIBLE
                     statusCard?.visibility = View.GONE
-                    chartCard?.visibility = View.GONE
                     historyCard?.visibility = View.GONE
                 } else {
                     emptyState?.visibility = View.GONE
@@ -268,15 +155,11 @@ class GrowthTrackerFragment : Fragment() {
 
                     if (records.isNotEmpty()) {
                         updateStatusDisplay(records.first(), child)
-                        chartCard?.visibility = View.VISIBLE
-                        updateGrowthChart(records, child)
                     } else {
                         clearStatusDisplay()
-                        chartCard?.visibility = View.GONE
                     }
                 } else {
                     statusCard?.visibility = View.GONE
-                    chartCard?.visibility = View.GONE
                     historyCard?.visibility = View.GONE
                 }
             }
@@ -536,45 +419,48 @@ class GrowthTrackerFragment : Fragment() {
         val ageMonths = WHOGrowthStandards.calculateAgeMonths(child.dateOfBirth, record.date)
         val isFrench = LanguageHelper.getLanguage(ctx) == LanguageHelper.FRENCH
 
-        val message = StringBuilder()
-        message.append("${getString(R.string.date)}: ${dateFormat.format(Date(record.date))}\n")
-        message.append("${getString(R.string.age)}: $ageMonths ${getString(R.string.months)}\n\n")
-        message.append("${getString(R.string.weight)}: ${String.format("%.1f", record.weightKg)} kg\n")
-        message.append("${getString(R.string.height)}: ${String.format("%.1f", record.heightCm)} cm\n")
+        val dialogView = LayoutInflater.from(ctx).inflate(R.layout.dialog_record_details, null)
 
-        // Head circumference with WHO normal range
-        if (record.headCircumferenceCm != null) {
-            val (hcMin, hcMax) = WHOGrowthStandards.getHeadCircumferenceNormalRange(ageMonths)
-            message.append("${getString(R.string.head_circumference)}: ${String.format("%.1f", record.headCircumferenceCm)} cm")
-            message.append("  (${getString(R.string.head_circ_normal_range, hcMin, hcMax)})\n")
-        }
+        dialogView.findViewById<TextView>(R.id.detailDate).text = dateFormat.format(Date(record.date))
+        dialogView.findViewById<TextView>(R.id.detailAge).text = "${getString(R.string.age)}: $ageMonths ${getString(R.string.months)}"
 
-        // MUAC with WHO status
-        if (record.muacCm != null) {
-            val muacStatus = WHOGrowthStandards.interpretMuac(record.muacCm)
-            val statusLabel = if (isFrench) muacStatus.descriptionFr else muacStatus.description
-            message.append("${getString(R.string.muac)}: ${String.format("%.1f", record.muacCm)} cm  → $statusLabel\n")
-        }
+        val statusText = if (isFrench) assessment.weightStatus.descriptionFr else assessment.weightStatus.description
+        val statusView = dialogView.findViewById<TextView>(R.id.detailStatus)
+        statusView.text = statusText
+        statusView.background.setTint(Color.parseColor(assessment.weightStatus.colorCode))
+
+        dialogView.findViewById<TextView>(R.id.detailWeight).text = String.format("%.1f kg", record.weightKg)
+        dialogView.findViewById<TextView>(R.id.detailHeight).text = String.format("%.1f cm", record.heightCm)
+        dialogView.findViewById<TextView>(R.id.detailWeightZScore).text = "z: ${String.format("%.2f", assessment.weightForAgeZScore)}"
+        dialogView.findViewById<TextView>(R.id.detailHeightZScore).text = "z: ${String.format("%.2f", assessment.heightForAgeZScore)}"
 
         val heightM = record.heightCm / 100
         val bmi = record.weightKg / (heightM * heightM)
-        message.append("${getString(R.string.bmi)}: ${String.format("%.1f", bmi)}\n\n")
+        dialogView.findViewById<TextView>(R.id.detailBmi).text = String.format("%.1f", bmi)
 
-        val statusText = if (isFrench) assessment.weightStatus.descriptionFr else assessment.weightStatus.description
-        message.append("${getString(R.string.nutritional_status)}: $statusText\n\n")
+        if (record.headCircumferenceCm != null) {
+            val (hcMin, hcMax) = WHOGrowthStandards.getHeadCircumferenceNormalRange(ageMonths)
+            dialogView.findViewById<View>(R.id.detailHeadCircSection).visibility = View.VISIBLE
+            dialogView.findViewById<TextView>(R.id.detailHeadCirc).text =
+                "${String.format("%.1f", record.headCircumferenceCm)} cm  (${getString(R.string.head_circ_normal_range, hcMin, hcMax)})"
+        }
 
-        message.append("${getString(R.string.who_z_scores)}:\n")
-        message.append("• ${getString(R.string.weight_for_age)}: ${String.format("%.2f", assessment.weightForAgeZScore)}\n")
-        message.append("• ${getString(R.string.height_for_age)}: ${String.format("%.2f", assessment.heightForAgeZScore)}\n")
-        message.append("• ${getString(R.string.weight_for_height)}: ${String.format("%.2f", assessment.weightForHeightZScore)}\n")
+        if (record.muacCm != null) {
+            val muacStatus = WHOGrowthStandards.interpretMuac(record.muacCm)
+            val muacLabel = if (isFrench) muacStatus.descriptionFr else muacStatus.description
+            dialogView.findViewById<View>(R.id.detailMuacSection).visibility = View.VISIBLE
+            dialogView.findViewById<TextView>(R.id.detailMuac).text =
+                "${String.format("%.1f", record.muacCm)} cm  \u2192 $muacLabel"
+        }
 
         if (!record.notes.isNullOrBlank()) {
-            message.append("\n${getString(R.string.notes)}: ${record.notes}")
+            dialogView.findViewById<View>(R.id.detailNotesSection).visibility = View.VISIBLE
+            dialogView.findViewById<TextView>(R.id.detailNotes).text = record.notes
         }
 
         AlertDialog.Builder(ctx)
             .setTitle(R.string.measurement_details)
-            .setMessage(message.toString())
+            .setView(dialogView)
             .setPositiveButton(R.string.edit) { _, _ -> showEditMeasurementDialog(record, child) }
             .setNeutralButton(android.R.string.ok, null)
             .setNegativeButton(R.string.delete) { _, _ ->
@@ -593,7 +479,6 @@ class GrowthTrackerFragment : Fragment() {
         childSpinner = null
         btnAddChild = null
         statusCard = null
-        chartCard = null
         historyCard = null
         emptyState = null
         txtWeight = null
@@ -604,8 +489,6 @@ class GrowthTrackerFragment : Fragment() {
         txtHeightZScore = null
         btnAddMeasurement = null
         recordsRecyclerView = null
-        growthLineChart = null
-        chartMetricChipGroup = null
         adapter = null
         currentChildId = null
     }

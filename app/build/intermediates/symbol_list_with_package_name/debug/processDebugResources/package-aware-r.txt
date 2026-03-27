@@ -3323,8 +3323,6 @@ id center_vertical
 id chain
 id chain2
 id chains
-id chartCard
-id chartMetricChipGroup
 id checkbox
 id checked
 id childSelectorCard
@@ -3332,8 +3330,6 @@ id childSpinner
 id chipAll
 id chipCompleted
 id chipEmergency
-id chipHeight
-id chipWeight
 id chronometer
 id circle_center
 id clearChipsButton
@@ -3379,6 +3375,20 @@ id design_menu_item_action_area
 id design_menu_item_action_area_stub
 id design_menu_item_text
 id design_navigation_view
+id detailAge
+id detailBmi
+id detailDate
+id detailHeadCirc
+id detailHeadCircSection
+id detailHeight
+id detailHeightZScore
+id detailMuac
+id detailMuacSection
+id detailNotes
+id detailNotesSection
+id detailStatus
+id detailWeight
+id detailWeightZScore
 id dialog_button
 id differentiatingChips
 id differentiatingLabel
@@ -3470,7 +3480,6 @@ id graph_wrap
 id group_divider
 id grouping
 id groups
-id growthLineChart
 id headerIcon
 id headerText
 id header_title
@@ -4002,6 +4011,7 @@ layout dialog_add_child
 layout dialog_add_measurement
 layout dialog_add_pregnancy
 layout dialog_add_visit
+layout dialog_record_details
 layout dialog_symptom_results
 layout fragment_articles
 layout fragment_clinics
@@ -4248,7 +4258,6 @@ string gender
 string get_started
 string google_maps_key
 string growth
-string growth_chart
 string growth_history
 string growth_tracker
 string head_circ_helper
@@ -4537,12 +4546,8 @@ string weeks
 string weight
 string weight_for_age
 string weight_for_age_z
-string weight_for_height
 string weight_helper
 string weight_kg
-string who_median
-string who_minus2sd
-string who_minus3sd
 string who_z_scores
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light

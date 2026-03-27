@@ -62,27 +62,6 @@ object WHOGrowthStandards {
         60 to Triple(1.0, 109.4335, 0.03292)
     )
     
-    // Weight-for-height (kg per cm) - simplified ranges
-    private val boysWeightForHeight = mapOf(
-        50 to Triple(0.2, 3.4, 0.09),
-        60 to Triple(0.2, 5.9, 0.09),
-        70 to Triple(0.2, 8.4, 0.09),
-        80 to Triple(0.2, 10.5, 0.09),
-        90 to Triple(0.2, 12.8, 0.09),
-        100 to Triple(0.2, 15.5, 0.09),
-        110 to Triple(0.2, 18.6, 0.10)
-    )
-    
-    private val girlsWeightForHeight = mapOf(
-        50 to Triple(0.2, 3.2, 0.09),
-        60 to Triple(0.2, 5.6, 0.09),
-        70 to Triple(0.2, 8.0, 0.09),
-        80 to Triple(0.2, 10.1, 0.09),
-        90 to Triple(0.2, 12.5, 0.09),
-        100 to Triple(0.2, 15.2, 0.09),
-        110 to Triple(0.2, 18.4, 0.10)
-    )
-    
     /** Ages (months) for which we have WHO reference data */
     val referenceAges = listOf(0, 3, 6, 9, 12, 18, 24, 36, 48, 60)
 
@@ -188,17 +167,6 @@ object WHOGrowthStandards {
     }
     
     /**
-     * Calculate weight-for-height z-score
-     */
-    fun calculateWeightForHeightZScore(weightKg: Float, heightCm: Float, isMale: Boolean): Double {
-        val reference = if (isMale) boysWeightForHeight else girlsWeightForHeight
-        val heights = reference.keys.toList().sorted()
-        val closestHeight = heights.minByOrNull { Math.abs(it - heightCm.toInt()) } ?: return 0.0
-        val (l, m, s) = reference[closestHeight] ?: return 0.0
-        return calculateZScore(weightKg, l, m, s)
-    }
-    
-    /**
      * Interpret z-score for nutritional status
      */
     fun interpretZScore(zScore: Double): NutritionalStatus {
@@ -233,10 +201,8 @@ object WHOGrowthStandards {
     data class GrowthAssessment(
         val weightForAgeZScore: Double,
         val heightForAgeZScore: Double,
-        val weightForHeightZScore: Double,
         val weightStatus: NutritionalStatus,
-        val heightStatus: NutritionalStatus, // Stunting assessment
-        val wastingStatus: NutritionalStatus // Wasting assessment (acute malnutrition)
+        val heightStatus: NutritionalStatus // Stunting assessment
     )
     
     /**
@@ -253,15 +219,12 @@ object WHOGrowthStandards {
         
         val wfaZ = calculateWeightForAgeZScore(weightKg, ageMonths, isMale)
         val hfaZ = calculateHeightForAgeZScore(heightCm, ageMonths, isMale)
-        val wfhZ = calculateWeightForHeightZScore(weightKg, heightCm, isMale)
-        
+
         return GrowthAssessment(
             weightForAgeZScore = wfaZ,
             heightForAgeZScore = hfaZ,
-            weightForHeightZScore = wfhZ,
             weightStatus = interpretZScore(wfaZ),
-            heightStatus = interpretZScore(hfaZ),
-            wastingStatus = interpretZScore(wfhZ)
+            heightStatus = interpretZScore(hfaZ)
         )
     }
 }

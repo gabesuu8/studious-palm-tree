@@ -316,41 +316,50 @@ class GrowthTrackerActivity : AppCompatActivity() {
         val assessment = viewModel.assessGrowth(record, child)
         val dateFormat = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
         val ageMonths = WHOGrowthStandards.calculateAgeMonths(child.dateOfBirth, record.date)
-        
         val isFrench = LanguageHelper.getLanguage(this) == LanguageHelper.FRENCH
-        
-        val message = StringBuilder()
-        message.append("${getString(R.string.date)}: ${dateFormat.format(Date(record.date))}\n")
-        message.append("${getString(R.string.age)}: $ageMonths ${getString(R.string.months)}\n\n")
-        message.append("${getString(R.string.weight)}: ${String.format("%.1f", record.weightKg)} kg\n")
-        message.append("${getString(R.string.height)}: ${String.format("%.1f", record.heightCm)} cm\n")
-        
-        if (record.headCircumferenceCm != null) {
-            message.append("${getString(R.string.head_circumference)}: ${String.format("%.1f", record.headCircumferenceCm)} cm\n")
-        }
-        
-        // BMI
+
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_record_details, null)
+
+        dialogView.findViewById<TextView>(R.id.detailDate).text = dateFormat.format(Date(record.date))
+        dialogView.findViewById<TextView>(R.id.detailAge).text = "${getString(R.string.age)}: $ageMonths ${getString(R.string.months)}"
+
+        val statusText = if (isFrench) assessment.weightStatus.descriptionFr else assessment.weightStatus.description
+        val statusView = dialogView.findViewById<TextView>(R.id.detailStatus)
+        statusView.text = statusText
+        statusView.background.setTint(Color.parseColor(assessment.weightStatus.colorCode))
+
+        dialogView.findViewById<TextView>(R.id.detailWeight).text = String.format("%.1f kg", record.weightKg)
+        dialogView.findViewById<TextView>(R.id.detailHeight).text = String.format("%.1f cm", record.heightCm)
+        dialogView.findViewById<TextView>(R.id.detailWeightZScore).text = "z: ${String.format("%.2f", assessment.weightForAgeZScore)}"
+        dialogView.findViewById<TextView>(R.id.detailHeightZScore).text = "z: ${String.format("%.2f", assessment.heightForAgeZScore)}"
+
         val heightM = record.heightCm / 100
         val bmi = record.weightKg / (heightM * heightM)
-        message.append("${getString(R.string.bmi)}: ${String.format("%.1f", bmi)}\n\n")
-        
-        // Status
-        val statusText = if (isFrench) assessment.weightStatus.descriptionFr else assessment.weightStatus.description
-        message.append("${getString(R.string.nutritional_status)}: $statusText\n\n")
-        
-        // Z-scores
-        message.append("${getString(R.string.who_z_scores)}:\n")
-        message.append("• ${getString(R.string.weight_for_age)}: ${String.format("%.2f", assessment.weightForAgeZScore)}\n")
-        message.append("• ${getString(R.string.height_for_age)}: ${String.format("%.2f", assessment.heightForAgeZScore)}\n")
-        message.append("• ${getString(R.string.weight_for_height)}: ${String.format("%.2f", assessment.weightForHeightZScore)}\n")
-        
-        if (!record.notes.isNullOrBlank()) {
-            message.append("\n${getString(R.string.notes)}: ${record.notes}")
+        dialogView.findViewById<TextView>(R.id.detailBmi).text = String.format("%.1f", bmi)
+
+        if (record.headCircumferenceCm != null) {
+            val (hcMin, hcMax) = WHOGrowthStandards.getHeadCircumferenceNormalRange(ageMonths)
+            dialogView.findViewById<View>(R.id.detailHeadCircSection).visibility = View.VISIBLE
+            dialogView.findViewById<TextView>(R.id.detailHeadCirc).text =
+                "${String.format("%.1f", record.headCircumferenceCm)} cm  (${getString(R.string.head_circ_normal_range, hcMin, hcMax)})"
         }
-        
+
+        if (record.muacCm != null) {
+            val muacStatus = WHOGrowthStandards.interpretMuac(record.muacCm)
+            val muacLabel = if (isFrench) muacStatus.descriptionFr else muacStatus.description
+            dialogView.findViewById<View>(R.id.detailMuacSection).visibility = View.VISIBLE
+            dialogView.findViewById<TextView>(R.id.detailMuac).text =
+                "${String.format("%.1f", record.muacCm)} cm  \u2192 $muacLabel"
+        }
+
+        if (!record.notes.isNullOrBlank()) {
+            dialogView.findViewById<View>(R.id.detailNotesSection).visibility = View.VISIBLE
+            dialogView.findViewById<TextView>(R.id.detailNotes).text = record.notes
+        }
+
         AlertDialog.Builder(this)
             .setTitle(R.string.measurement_details)
-            .setMessage(message.toString())
+            .setView(dialogView)
             .setPositiveButton(android.R.string.ok, null)
             .setNegativeButton(R.string.delete) { _, _ ->
                 viewModel.deleteGrowthRecord(record)

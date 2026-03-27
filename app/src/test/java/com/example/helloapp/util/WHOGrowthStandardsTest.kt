@@ -122,13 +122,6 @@ class WHOGrowthStandardsTest {
         assertTrue("Z-score for median height should be near 0, was $zScore", Math.abs(zScore) < 0.1)
     }
 
-    @Test
-    fun calculateWeightForHeightZScore_normalProportion_returnsNearZero() {
-        // At 70cm, median weight for boys is 8.4 kg
-        val zScore = WHOGrowthStandards.calculateWeightForHeightZScore(8.4f, 70f, isMale = true)
-        assertTrue("Z-score should be near 0, was $zScore", Math.abs(zScore) < 0.1)
-    }
-
     // --- interpretZScore() tests ---
 
     @Test

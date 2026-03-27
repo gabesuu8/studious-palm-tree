@@ -138,13 +138,8 @@
     <string name="height_for_age_z">Taille-pour-âge: %1$s</string>
     <string name="weight_for_age">Poids-pour-âge</string>
     <string name="height_for_age">Taille-pour-âge</string>
-    <string name="weight_for_height">Poids-pour-taille</string>
     <string name="add_measurement">Ajouter une mesure</string>
     <string name="growth_history">Historique de Croissance</string>
-    <string name="growth_chart">Courbe de Croissance</string>
-    <string name="who_median">Médiane</string>
-    <string name="who_minus2sd">−2 ET</string>
-    <string name="who_minus3sd">−3 ET</string>
     <string name="child_name">Nom de l\'enfant</string>
     <string name="date_of_birth">Date de naissance</string>
     <string name="gender">Sexe</string>

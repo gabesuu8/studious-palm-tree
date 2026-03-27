@@ -28,10 +28,6 @@
         "source": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-main-51:/drawable/ic_map.xml"
     },
     {
-        "merged": "com.example.helloapp-debug-49:/layout_item_vaccination.xml.flat",
-        "source": "com.example.helloapp-main-51:/layout/item_vaccination.xml"
-    },
-    {
         "merged": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-debug-49:/drawable_ic_vaccine.xml.flat",
         "source": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-main-51:/drawable/ic_vaccine.xml"
     },
@@ -196,10 +192,6 @@
         "source": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-main-51:/layout/activity_onboarding.xml"
     },
     {
-        "merged": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-debug-49:/layout_item_condition_comparison_card.xml.flat",
-        "source": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-main-51:/layout/item_condition_comparison_card.xml"
-    },
-    {
         "merged": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-debug-49:/layout_fragment_vaccination_growth.xml.flat",
         "source": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-main-51:/layout/fragment_vaccination_growth.xml"
     },
@@ -240,6 +232,10 @@
         "source": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-main-51:/drawable/ic_hospital.xml"
     },
     {
+        "merged": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-debug-49:/drawable_ic_chevron_right.xml.flat",
+        "source": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-main-51:/drawable/ic_chevron_right.xml"
+    },
+    {
         "merged": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-debug-49:/layout_activity_symptom_results.xml.flat",
         "source": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-main-51:/layout/activity_symptom_results.xml"
     },
@@ -276,6 +272,10 @@
         "source": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-main-51:/layout/fragment_growth_tracker.xml"
     },
     {
+        "merged": "com.example.helloapp-debug-49:/layout_dialog_record_details.xml.flat",
+        "source": "com.example.helloapp-main-51:/layout/dialog_record_details.xml"
+    },
+    {
         "merged": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-debug-49:/mipmap-hdpi_ic_launcher_round.xml.flat",
         "source": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-main-51:/mipmap-hdpi/ic_launcher_round.xml"
     },
@@ -302,10 +302,6 @@
     {
         "merged": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-debug-49:/menu_main_menu.xml.flat",
         "source": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-main-51:/menu/main_menu.xml"
-    },
-    {
-        "merged": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-debug-49:/layout_bottom_sheet_condition_comparison.xml.flat",
-        "source": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-main-51:/layout/bottom_sheet_condition_comparison.xml"
     },
     {
         "merged": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-debug-49:/layout_fragment_symptom_predictor.xml.flat",
@@ -386,9 +382,5 @@
     {
         "merged": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-debug-49:/menu_fragment_menu.xml.flat",
         "source": "/Users/gabrielsu/.gradle/daemon/8.13/com.example.helloapp-main-51:/menu/fragment_menu.xml"
-    },
-    {
-        "merged": "com.example.helloapp-debug-49:/drawable_ic_chevron_right.xml.flat",
-        "source": "com.example.helloapp-main-51:/drawable/ic_chevron_right.xml"
     }
 ]
